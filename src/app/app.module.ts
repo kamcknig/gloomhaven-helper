@@ -6,6 +6,19 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DockModule } from 'primeng/dock';
 
+import {
+  createStore,
+  actionSanitizer,
+  stateSanitizer,
+  AdaptCommon,
+} from '@state-adapt/core';
+import { ToolbarModule } from 'primeng/toolbar';
+
+const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
+  actionSanitizer,
+  stateSanitizer
+});
+
 @NgModule({
   declarations: [
     AppComponent
@@ -14,9 +27,11 @@ import { DockModule } from 'primeng/dock';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    DockModule
+    DockModule,
+    ToolbarModule
   ],
-  providers: [],
+  providers: [{provide: AdaptCommon, useValue: createStore(enableReduxDevtools)}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
