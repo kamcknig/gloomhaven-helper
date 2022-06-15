@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,26 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'gloomhaven-helper';
+
+  dockModel: MenuItem[] = [
+    {
+      label: 'Test',
+      tooltipOptions: {
+        tooltipLabel: 'Add monster',
+        tooltipPosition: 'top',
+        showDelay: 300,
+        positionLeft: 20
+      }
+    },
+    {
+      label: 'Add monster',
+      icon: 'assets/monster-ability-cards/monster-ability-card-back.jpg',
+      tooltipOptions: {
+        tooltipLabel: 'Add monster',
+        tooltipPosition: 'top',
+        showDelay: 300,
+        positionLeft: 20
+      }
+    }
+  ]
 }
