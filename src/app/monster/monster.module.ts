@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MonsterCardComponent } from './components/monster-card/monster-card.component';
+import { ActiveMonsterCard } from './components/active-monster-card/active-monster-card.component';
 import { DataViewModule } from 'primeng/dataview';
 import { CardModule } from 'primeng/card';
+import { DividerModule } from 'primeng/divider';
 
 
 
 @NgModule({
   declarations: [
-    MonsterCardComponent
+    ActiveMonsterCard
   ],
   exports: [
-    MonsterCardComponent
+    ActiveMonsterCard
   ],
   imports: [
     CommonModule,
     DataViewModule,
-    CardModule
+    CardModule,
+    DividerModule
   ]
 })
 export class MonsterModule { }

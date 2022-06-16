@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AppService } from './app.service';
+import { MonsterInfo, MonsterService } from './monster/services/monster.service';
+import { map, Observable, take } from 'rxjs';
+
+export type AppMenuItem<T = any> = MenuItem & { metadata?: T };
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'gloomhaven-helper';
 
-  dockModel: MenuItem[] = [
+  dockModel: AppMenuItem<MonsterInfo>[] = [
     {
       label: 'Test',
       tooltipOptions: {
@@ -23,6 +27,14 @@ export class AppComponent {
     {
       label: 'Add monster',
       icon: 'assets/monster-ability-cards/monster-ability-card-back.jpg',
+      command: (...args: any[]) => {
+        let monster: MonsterInfo = {} as MonsterInfo;
+        this.monsterService.monsterStore['monsters$'].pipe(take(1)).subscribe(
+          (m: MonsterInfo[]) => {
+            monster = m[Math.floor(Math.random() * m.length)];
+          })
+        this.monsterService.activateMonster$.next(monster)
+      },
       tooltipOptions: {
         tooltipLabel: 'Add monster',
         tooltipPosition: 'top',
@@ -32,6 +44,14 @@ export class AppComponent {
     }
   ];
 
-  constructor(public appService: AppService) {
+  constructor(
+    public appService: AppService,
+    public monsterService: MonsterService
+  ) {
+
+  }
+
+  ngOnInit(): void {
+
   }
 }

@@ -19,6 +19,8 @@ import { FormsModule } from '@angular/forms';
 import { ScenarioOptionsModule } from './scenario-options/scenario-options.module';
 import { MAX_LEVEL } from './scenario-options/max-level.token';
 import { MonsterModule } from './monster/monster.module';
+import { DataViewModule } from 'primeng/dataview';
+import { HttpClientModule } from '@angular/common/http';
 
 const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   actionSanitizer,
@@ -33,13 +35,15 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     DockModule,
     ToolbarModule,
     DividerModule,
     InputNumberModule,
     FormsModule,
     ScenarioOptionsModule.forRoot(),
-    MonsterModule
+    MonsterModule,
+    DataViewModule
   ],
   providers: [
     { provide: AdaptCommon, useValue: createStore(enableReduxDevtools) },

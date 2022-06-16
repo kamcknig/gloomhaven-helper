@@ -1,0 +1,89 @@
+{
+  "monsters": [
+    {
+      "name": "Ancient Artillery",
+      "health": [
+        [4, 7]
+      ],
+      "attack": [
+        [2, 3]
+      ],
+      "conditionsAndEffects": {
+        "AddTarget": [],
+        "Bless": [],
+        "Curse": [],
+        "Disarm": [],
+        "Immobilize": [],
+        "Invisibility": [],
+        "Muddle": [],
+        "Pierce": [],
+        "Poison": [],
+        "Pull": [],
+        "Push": [],
+        "Retaliate": [],
+        "Shield": [],
+        "Strengthen": [],
+        "Stun": [],
+        "Wound": []
+      },
+      "flying": [
+        [false, false]
+      ],
+      "move": [
+        [0, 0]
+      ],
+      "range": [
+        [4, 5]
+      ],
+      "retaliate": [
+        [0, 0]
+      ],
+      "target": [
+        [0, 0]
+      ]
+    },
+
+    {
+      "name": "Bandit Archer",
+      "health": [
+        [4, 6]
+      ],
+      "attack": [
+        [2, 3]
+      ],
+      "conditionsAndEffects": {
+        "AddTarget": [],
+        "Bless": [],
+        "Curse": [],
+        "Disarm": [],
+        "Immobilize": [],
+        "Invisibility": [],
+        "Muddle": [],
+        "Pierce": [],
+        "Poison": [],
+        "Pull": [],
+        "Push": [],
+        "Retaliate": [],
+        "Shield": [],
+        "Strengthen": [],
+        "Stun": [],
+        "Wound": []
+      },
+      "flying": [
+        [false, false]
+      ],
+      "move": [
+        [2, 2]
+      ],
+      "range": [
+        [3, 3]
+      ],
+      "retaliate": [
+        [0, 0]
+      ],
+      "target": [
+        [0, 0]
+      ]
+    }
+  ]
+}

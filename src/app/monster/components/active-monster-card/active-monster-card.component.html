@@ -1,0 +1,25 @@
+<p-card>
+  <ng-template pTemplate="title">
+    {{value?.name}}
+  </ng-template>
+
+  <div class="flex flex-row justify-content-between text-xl">
+    <div class="flex flex-column">
+      <span class="flex-1">Normal</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/health.png">{{value?.health?.[0]?.[0]}}</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/move.png">{{value?.move?.[0]?.[0]}}</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/attack.png">{{value?.attack?.[0]?.[0]}}</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/range.png">{{value?.range?.[0]?.[0]}}</span>
+    </div>
+
+    <p-divider layout="vertical"></p-divider>
+
+    <div class="flex flex-column align-items-end">
+      <span class="flex-1" style="text-align: right">Elite</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/health.png">{{value?.health?.[0]?.[1]}}</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/move.png">{{value?.move?.[0]?.[1]}}</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/attack.png">{{value?.attack?.[0]?.[1]}}</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/range.png">{{value?.range?.[0]?.[1]}}</span>
+    </div>
+  </div>
+</p-card>

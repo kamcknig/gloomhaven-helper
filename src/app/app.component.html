@@ -13,11 +13,19 @@
     <p-inputNumber [showButtons]="true"
                    [min]="0"
                    [max]="7"
-                   [inputStyle]="{ maxWidth: '100px' }"
+                   [inputStyle]="{ maxWidth: '4rem' }"
                    (onInput)="appService.scenarioLevel$.next($event.value)"
                    [ngModel]="appService.scenarioStore.level$ | async"></p-inputNumber>
   </div>
   <div class="p-toolbar-group-right"></div>
 </p-toolbar>
 
-<app-monster-card></app-monster-card>
+<p-dataView [value]="(monsterService.activeMonsterStore.activeMonsters$ | async) ?? []" layout="grid" [rows]="3">
+  <ng-template let-monster pTemplate="gridItem">
+    <div class="col-4">
+      <app-active-monster-card [value]="monster"></app-active-monster-card>
+    </div>
+  </ng-template>
+</p-dataView>
+
+
