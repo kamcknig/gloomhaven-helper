@@ -1,0 +1,35 @@
+<p-card>
+  <ng-template pTemplate="title">
+    {{value?.name}}
+  </ng-template>
+
+  <div class="flex flex-row justify-content-between text-xl">
+    <div class="flex flex-column">
+      <span class="flex-1">Normal</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/health.png">{{getStatDisplayValue(value?.health?.[0]?.[0])}}</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/move.png">{{getStatDisplayValue(value?.move?.[0]?.[0])}}</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/attack.png">{{getStatDisplayValue(value?.attack?.[0]?.[0])}}</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/range.png">{{getStatDisplayValue(value?.range?.[0]?.[0])}}</span>
+    </div>
+
+    <p-divider class="flex-none" layout="vertical"></p-divider>
+
+    <div class="flex flex-column align-items-end">
+      <span class="flex-1" style="text-align: right">Elite</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/health.png">{{getStatDisplayValue(value?.health?.[0]?.[1])}}</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/move.png">{{getStatDisplayValue(value?.move?.[0]?.[1])}}</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/attack.png">{{getStatDisplayValue(value?.attack?.[0]?.[1])}}</span>
+      <span class="flex gap-2 flex-row align-items-center"><img class="icon" src="assets/icons/range.png">{{getStatDisplayValue(value?.range?.[0]?.[1])}}</span>
+    </div>
+  </div>
+
+  <p-divider></p-divider>
+
+  <div class="text-xl">
+    <span class="flex-1">Tokens</span>
+  </div>
+
+  <ng-template pTemplate="footer">
+    <button pButton icon="pi pi-plus" class="p-button-rounded" (click)=""></button>
+  </ng-template>
+</p-card>
