@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MonsterInfo, MonsterService } from '../../services/monster.service';
 import { AppService } from '../../../app.service';
+import { TokenInfo, TokenService } from '../../../token/services/token.service';
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-active-monster-card',
@@ -9,41 +11,11 @@ import { AppService } from '../../../app.service';
 })
 export class ActiveMonsterCard implements OnInit {
   @Input() value: MonsterInfo | undefined;
-  tokens: any[] = [{
-    number: 1,
-    health: 10
-  },{
-    number: 1,
-    health: 10
-  },{
-    number: 1,
-    health: 10
-  },{
-    number: 1,
-    health: 10
-  },{
-    number: 1,
-    health: 10
-  },{
-    number: 1,
-    health: 10
-  },{
-    number: 1,
-    health: 10
-  },{
-    number: 1,
-    health: 10
-  },{
-    number: 1,
-    health: 10
-  },{
-    number: 1,
-    health: 10
-  }];
 
   constructor(
     public monsterService: MonsterService,
-    public appService: AppService
+    public appService: AppService,
+    public tokenService: TokenService
   ) { }
 
   ngOnInit(): void {

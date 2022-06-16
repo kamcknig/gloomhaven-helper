@@ -22,7 +22,7 @@
 
 <p-dataView [value]="(monsterService.activeMonsterStore.activeMonsters$ | async) ?? []" layout="grid" [rows]="3">
   <ng-template let-monster pTemplate="gridItem">
-    <div class="col-3">
+    <div class="col-2">
       <app-active-monster-card [value]="monster"></app-active-monster-card>
     </div>
   </ng-template>

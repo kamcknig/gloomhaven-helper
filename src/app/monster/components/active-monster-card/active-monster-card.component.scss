@@ -1,6 +1,22 @@
-:host ::ng-deep .p-card {
-  margin: .5rem;
-  padding: .15rem;
-  max-width: 20rem;
-  max-height: 25rem;
+:host ::ng-deep {
+  .p-card {
+    margin: .25rem;
+    padding: .25rem;
+    max-width: 18rem;
+    min-width: 13rem;
+  }
+
+  .p-divider {
+    &.p-divider-vertical {
+      margin: 0 .5rem;
+    }
+
+    &.p-divider-horizontal {
+      margin: .5rem 0;
+    }
+  }
+
+  .p-card-body {
+    padding: .25rem;
+  }
 }
