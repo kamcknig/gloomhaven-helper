@@ -4,6 +4,7 @@ import { ActiveMonsterCard } from './components/active-monster-card/active-monst
 import { DataViewModule } from 'primeng/dataview';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
+import { ButtonModule } from 'primeng/button';
 
 
 
@@ -18,7 +19,8 @@ import { DividerModule } from 'primeng/divider';
     CommonModule,
     DataViewModule,
     CardModule,
-    DividerModule
+    DividerModule,
+    ButtonModule
   ]
 })
 export class MonsterModule { }

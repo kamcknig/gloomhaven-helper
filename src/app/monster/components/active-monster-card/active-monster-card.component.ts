@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MonsterInfo } from '../../services/monster.service';
+import { MonsterInfo, MonsterService } from '../../services/monster.service';
 
 @Component({
   selector: 'app-active-monster-card',
@@ -9,9 +9,14 @@ import { MonsterInfo } from '../../services/monster.service';
 export class ActiveMonsterCard implements OnInit {
   @Input() value: MonsterInfo | undefined;
 
-  constructor() { }
+  constructor(
+    public monsterService: MonsterService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  getStatDisplayValue(value: number | string | undefined) {
+    return value === 0 ? '-' : value;
+  }
 }
