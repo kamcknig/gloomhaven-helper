@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AttackCardComponent } from './components/attack-card/attack-card.component';
+import { DataViewModule } from 'primeng/dataview';
 
 
 
@@ -9,7 +10,8 @@ import { AttackCardComponent } from './components/attack-card/attack-card.compon
     AttackCardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DataViewModule
   ]
 })
 export class AttackCardModule { }

@@ -6,7 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./attack-card.component.scss']
 })
 export class AttackCardComponent implements OnInit {
-
+  monsters: any[] = [
+    {
+      name: 'Monster 1'
+    },
+    {
+      name: 'Monster 2'
+    }
+  ]
   constructor() { }
 
   ngOnInit(): void {
