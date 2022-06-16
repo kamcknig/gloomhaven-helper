@@ -3,10 +3,12 @@
     {
       "name": "Ancient Artillery",
       "health": [
-        [4, 7]
+        [4, 7],
+        [6, 9]
       ],
       "attack": [
-        [2, 3]
+        [2, 3],
+        [3, 4]
       ],
       "conditionsAndEffects": {
         "AddTarget": [],
@@ -30,10 +32,12 @@
         [false, false]
       ],
       "move": [
-        [0, 0]
+        [0, 0],
+        [1, 2]
       ],
       "range": [
-        [4, 5]
+        [4, 5],
+        [3, 6]
       ],
       "retaliate": [
         [0, 0]
@@ -46,10 +50,12 @@
     {
       "name": "Bandit Archer",
       "health": [
-        [4, 6]
+        [4, 6],
+        [3, 5]
       ],
       "attack": [
-        [2, 3]
+        [2, 3],
+        [3, 4]
       ],
       "conditionsAndEffects": {
         "AddTarget": [],
@@ -73,10 +79,12 @@
         [false, false]
       ],
       "move": [
-        [2, 2]
+        [2, 2],
+        [3, 3]
       ],
       "range": [
-        [3, 3]
+        [3, 3],
+        [4, 4]
       ],
       "retaliate": [
         [0, 0]

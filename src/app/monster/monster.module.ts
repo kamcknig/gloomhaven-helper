@@ -5,6 +5,7 @@ import { DataViewModule } from 'primeng/dataview';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 
 
@@ -20,7 +21,8 @@ import { ButtonModule } from 'primeng/button';
     DataViewModule,
     CardModule,
     DividerModule,
-    ButtonModule
+    ButtonModule,
+    ScrollPanelModule
   ]
 })
 export class MonsterModule { }
