@@ -4,3 +4,15 @@
   font-family: 'gloomhaven';
   src: url('/assets/fonts/PirataOne-Gloomhaven.ttf');
 }
+
+html {
+  font-size: 20px;
+}
+
+.p-component {
+  font-family: gloomhaven, "Segoe UI", Roboto, sans-serif;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -29,5 +30,8 @@ export class AppComponent {
         positionLeft: 20
       }
     }
-  ]
+  ];
+
+  constructor(public appService: AppService) {
+  }
 }

@@ -13,6 +13,11 @@ import {
   AdaptCommon,
 } from '@state-adapt/core';
 import { ToolbarModule } from 'primeng/toolbar';
+import { DividerModule } from 'primeng/divider';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { FormsModule } from '@angular/forms';
+import { ScenarioOptionsModule } from './scenario-options/scenario-options.module';
+import { MAX_LEVEL } from './scenario-options/max-level.token';
 
 const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   actionSanitizer,
@@ -28,9 +33,16 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
     BrowserAnimationsModule,
     AppRoutingModule,
     DockModule,
-    ToolbarModule
+    ToolbarModule,
+    DividerModule,
+    InputNumberModule,
+    FormsModule,
+    ScenarioOptionsModule.forRoot()
   ],
-  providers: [{provide: AdaptCommon, useValue: createStore(enableReduxDevtools)}],
+  providers: [
+    { provide: AdaptCommon, useValue: createStore(enableReduxDevtools) },
+    { provide: MAX_LEVEL, useValue: 7 }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
