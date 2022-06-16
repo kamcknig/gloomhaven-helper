@@ -1,0 +1,12 @@
+<p-dataView [value]="monsters" layout="grid" [rows]="3">
+  <ng-template let-monster pTemplate="gridItem">
+    <div class="col-4">
+      <p-card>
+        <ng-template pTemplate="title">
+          {{monster.name}}
+        </ng-template>
+        <div>{{monster.name}}</div>
+      </p-card>
+    </div>
+  </ng-template>
+</p-dataView>

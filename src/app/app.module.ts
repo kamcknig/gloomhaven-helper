@@ -18,6 +18,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule } from '@angular/forms';
 import { ScenarioOptionsModule } from './scenario-options/scenario-options.module';
 import { MAX_LEVEL } from './scenario-options/max-level.token';
+import { MonsterModule } from './monster/monster.module';
 
 const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   actionSanitizer,
@@ -37,7 +38,8 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
     DividerModule,
     InputNumberModule,
     FormsModule,
-    ScenarioOptionsModule.forRoot()
+    ScenarioOptionsModule.forRoot(),
+    MonsterModule
   ],
   providers: [
     { provide: AdaptCommon, useValue: createStore(enableReduxDevtools) },

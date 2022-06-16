@@ -17,6 +17,7 @@
                    (onInput)="appService.scenarioLevel$.next($event.value)"
                    [ngModel]="appService.scenarioStore.level$ | async"></p-inputNumber>
   </div>
-
   <div class="p-toolbar-group-right"></div>
 </p-toolbar>
+
+<app-monster-card></app-monster-card>

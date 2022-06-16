@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-attack-card',
-  templateUrl: './attack-card.component.html',
-  styleUrls: ['./attack-card.component.scss']
+  selector: 'app-monster-card',
+  templateUrl: './monster-card.component.html',
+  styleUrls: ['./monster-card.component.scss']
 })
-export class AttackCardComponent implements OnInit {
+export class MonsterCardComponent implements OnInit {
   monsters: any[] = [
     {
       name: 'Monster 1'
