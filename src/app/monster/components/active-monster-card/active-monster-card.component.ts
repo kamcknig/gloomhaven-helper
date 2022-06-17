@@ -4,7 +4,7 @@ import { AppService } from '../../../app.service';
 import { TokenInfo, TokenService } from '../../../token/services/token.service';
 import { DialogService } from 'primeng/dynamicdialog';
 import { AddTokenDialogComponent } from './add-token-dialog/add-token-dialog.component';
-import { map, Observable, Subject, take, takeUntil, tap, withLatestFrom } from 'rxjs';
+import { map, Observable, Subject, takeUntil, tap, withLatestFrom } from 'rxjs';
 import { AdaptCommon } from '@state-adapt/core';
 
 @Component({
@@ -15,7 +15,7 @@ import { AdaptCommon } from '@state-adapt/core';
 export class ActiveMonsterCard implements OnInit {
   @Input() public value: MonsterInfo | undefined;
 
-  private _tokens: any | undefined;
+  private _tokens: { elites: TokenInfo[], normals: TokenInfo[] } | undefined;
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
   private _destroy$: Subject<void> = new Subject<void>();
 
@@ -71,7 +71,7 @@ export class ActiveMonsterCard implements OnInit {
           this.tokenService.addToken$.next({
             number: tokenNumber,
             elite: elite,
-            maxHealth: this.value!.health[scenarioLevel][this.value?.elite ? 0 : 1],
+            maxHealth: this.value!.health[scenarioLevel][elite ? 1 : 0],
             monsterId: this.value!.id
           })
         }

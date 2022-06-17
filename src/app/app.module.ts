@@ -22,6 +22,7 @@ import { MonsterModule } from './monster/monster.module';
 import { DataViewModule } from 'primeng/dataview';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   actionSanitizer,
@@ -45,7 +46,8 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
     FormsModule,
     ScenarioOptionsModule.forRoot(),
     MonsterModule,
-    DataViewModule
+    DataViewModule,
+    FlexLayoutModule
   ],
   providers: [
     { provide: AdaptCommon, useValue: createStore(enableReduxDevtools) },

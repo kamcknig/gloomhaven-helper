@@ -1,81 +1,72 @@
-<p-card>
-  <ng-template pTemplate="header">
-    <span class="text-lg">{{value?.name}}</span>
-  </ng-template>
-
+<p-card header="{{value?.name}}">
   <ng-container *ngIf="{ level: (appService.scenarioStore.level$ | async) ?? 0 } as level">
-    <div class="flex flex-row justify-content-between text-m">
-      <div class="flex flex-column">
-        <span class="flex gap-2 flex-row align-items-center">
-          <img class="icon"
-               src="assets/icons/health.png">{{getStatDisplayValue(value?.health?.[level?.level ?? 0]?.[0])}}
+    <div fxLayout="row" fxLayoutAlign="space-between center" class="text-m">
+      <!-- normal stats -->
+      <div fxLayout="column" fxFlex>
+        <span fxLayout="row" fxLayoutAlign="start center">
+          <img class="icon" src="assets/icons/health.png">
+          {{getStatDisplayValue(value?.health?.[level?.level ?? 0]?.[0])}}
         </span>
 
-        <span class="flex gap-2 flex-row align-items-center">
-          <img class="icon"
-               src="assets/icons/move.png">{{getStatDisplayValue(value?.move?.[level?.level ?? 0]?.[0])}}
+        <span fxLayout="row" fxLayoutAlign="start center">
+          <img class="icon" src="assets/icons/move.png">
+          {{getStatDisplayValue(value?.move?.[level?.level ?? 0]?.[0])}}
         </span>
 
-        <span class="flex gap-2 flex-row align-items-center">
-          <img class="icon"
-               src="assets/icons/attack.png">{{getStatDisplayValue(value?.attack?.[level?.level ?? 0]?.[0])}}
+        <span fxLayout="row" fxLayoutAlign="start center">
+          <img class="icon" src="assets/icons/attack.png">
+          {{getStatDisplayValue(value?.attack?.[level?.level ?? 0]?.[0])}}
         </span>
 
-        <span class="flex gap-2 flex-row align-items-center">
-          <img class="icon"
-               src="assets/icons/range.png">{{getStatDisplayValue(value?.range?.[level?.level ?? 0]?.[0])}}
+        <span fxLayout="row" fxLayoutAlign="start center">
+          <img class="icon" src="assets/icons/range.png">
+          {{getStatDisplayValue(value?.range?.[level?.level ?? 0]?.[0])}}
         </span>
 
       </div>
 
-      <p-divider class="flex-none" layout="vertical"></p-divider>
-
-      <div class="flex flex-column align-items-end">
-        <span class="flex gap-2 flex-row align-items-center">
-          <img class="icon"
-               src="assets/icons/health.png">{{getStatDisplayValue(value?.health?.[level?.level ?? 0]?.[1])}}
+      <!-- elite stats -->
+      <div fxLayout="column" fxFlex>
+        <span fxLayout="row" fxLayoutAlign="end center">
+          {{getStatDisplayValue(value?.health?.[level?.level ?? 0]?.[1])}}
+          <img class="icon" src="assets/icons/health.png">
         </span>
 
-        <span class="flex gap-2 flex-row align-items-center">
-          <img class="icon"
-               src="assets/icons/move.png">{{getStatDisplayValue(value?.move?.[level?.level ?? 0]?.[1])}}
+        <span fxLayout="row" fxLayoutAlign="end center">
+          {{getStatDisplayValue(value?.move?.[level?.level ?? 0]?.[1])}}
+          <img class="icon" src="assets/icons/move.png">
         </span>
 
-        <span class="flex gap-2 flex-row align-items-center">
-          <img class="icon"
-               src="assets/icons/attack.png">{{getStatDisplayValue(value?.attack?.[level?.level ?? 0]?.[1])}}
+        <span fxLayout="row" fxLayoutAlign="end center">
+          {{getStatDisplayValue(value?.attack?.[level?.level ?? 0]?.[1])}}
+          <img class="icon"src="assets/icons/attack.png">
         </span>
 
-        <span class="flex gap-2 flex-row align-items-center">
-          <img class="icon"
-               src="assets/icons/range.png">{{getStatDisplayValue(value?.range?.[level?.level ?? 0]?.[1])}}
+        <span fxLayout="row" fxLayoutAlign="end center">
+          {{getStatDisplayValue(value?.range?.[level?.level ?? 0]?.[1])}}
+          <img class="icon" src="assets/icons/range.png">
         </span>
       </div>
     </div>
 
-
     <p-divider></p-divider>
 
     <div class="text-m">
-      <span class="flex-1">Tokens</span>
+      <div>Tokens</div>
 
-      <div class="flex flex-row justify-content-between">
-        <p-scrollPanel [style]="{ maxHeight: '6.7rem' }" class="flex flex-1">
+      <div fxLayout="row" fxLayoutAlign="space-between">
+        <p-scrollPanel [style]="{ height: '11rem' }" fxFlex>
           <p-dataView [value]="(tokens$ | async)?.normals ?? []" layout="list">
             <ng-template let-token pTemplate="listItem">
-              <span class="col-12">{{token.number}} - <span
-                [ngStyle]="{color: 'var(--red-600)' }">{{token.maxHealth}}</span></span>
+              <ng-container [ngTemplateOutlet]="listItemTemplate" [ngTemplateOutletContext]="{ '$implicit': token }"></ng-container>
             </ng-template>
           </p-dataView>
         </p-scrollPanel>
 
-        <p-divider class="flex-none" layout="vertical"></p-divider>
-
-        <p-scrollPanel [style]="{ maxHeight: '6.7rem' }" class="flex flex-1">
-          <p-dataView [value]="(tokens$ | async)?.elites ?? []" layout="list" class="">
+        <p-scrollPanel [style]="{ height: '11rem' }" fxFlex>
+          <p-dataView [value]="(tokens$ | async)?.elites ?? []" layout="list">
             <ng-template let-token pTemplate="listItem">
-              <span class="col-12">{{token.number}} - <span
-                [ngStyle]="{color: 'var(--red-600)' }">{{token.maxHealth}}</span></span>
+              <ng-container [ngTemplateOutlet]="listItemTemplate" [ngTemplateOutletContext]="{ '$implicit': token }"></ng-container>
             </ng-template>
           </p-dataView>
         </p-scrollPanel>
@@ -89,7 +80,30 @@
       type="button"
       (click)="addToken()"
       icon="pi pi-plus"
-      class="p-button-rounded"
-      style="height: 1.5rem; width: 1.5rem;"></button>
+      class="p-button-rounded"></button>
   </ng-template>
 </p-card>
+
+<ng-template #listItemTemplate let-token>
+  <div [id]="'list-item-' + (token.elite ? 'elite' : 'normal')" fxFlexFill fxLayout="row" fxLayoutAlign="space-between center" class="list-item">
+    <div fxFlex>{{token.number}} - <span class="text-red-600">{{token.health ?? token.maxHealth}}</span></div>
+
+    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap=".5rem">
+      <button
+        (click)="tokenService.updateTokenHitPoint$.next([token, 1])"
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-plus"
+        class="p-button-success p-button-rounded"></button>
+
+      <button
+        (click)="tokenService.updateTokenHitPoint$.next([token, -1])"
+        pButton
+        pRipple
+        type="button"
+        icon="pi pi-minus"
+        class="p-button-danger p-button-rounded"></button>
+    </div>
+  </div>
+</ng-template>

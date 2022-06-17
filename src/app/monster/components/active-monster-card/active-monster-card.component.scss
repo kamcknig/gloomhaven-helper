@@ -1,9 +1,36 @@
 :host ::ng-deep {
+  [id^=list-item-elite] {
+    background: linear-gradient(to right, rgba(130, 106, 25, .3), rgba(255, 255, 255, .3));
+  }
+
+  [id^=list-item-normal] {
+    background: linear-gradient(to left, rgba(117, 117, 117, .3), rgba(255, 255, 255, .2));
+  }
+
   .p-card {
-    margin: .25rem;
+    margin: .35rem;
     padding: .25rem;
-    max-width: 18rem;
-    min-width: 13rem;
+
+    background: linear-gradient(to right, white -25%, rgba(117, 117, 117, .5) 50%, rgba(130, 106, 25, .5) 50%, white 125%);
+  }
+
+  .p-dataview.p-dataview-list .p-dataview-content > .p-grid > div {
+    border: unset;
+  }
+
+  .p-dataview {
+    .p-dataview-content {
+      background: unset;
+    }
+  }
+
+  .list-item {
+    padding: 0 .5rem;
+  }
+
+  .p-button {
+    max-width: 20px;
+    max-height: 20px;
   }
 
   .p-divider {
@@ -20,3 +47,5 @@
     padding: .25rem;
   }
 }
+
+

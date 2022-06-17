@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { AddTokenDialogComponent } from './components/active-monster-card/add-token-dialog/add-token-dialog.component';
 import { RippleModule } from 'primeng/ripple';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -26,7 +27,8 @@ import { RippleModule } from 'primeng/ripple';
     DividerModule,
     ButtonModule,
     ScrollPanelModule,
-    RippleModule
+    RippleModule,
+    FlexLayoutModule
   ]
 })
 export class MonsterModule { }
