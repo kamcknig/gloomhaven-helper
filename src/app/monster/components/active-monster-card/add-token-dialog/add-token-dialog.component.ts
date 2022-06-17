@@ -21,8 +21,8 @@ export class AddTokenDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getTokenButtonVisible(index: number, elite: boolean) {
-    return this.value[elite ? 'elites' : 'normals'].find(e => e.number === index) ? 'hidden' : 'visible';
+  getTokenButtonVisible(index: number) {
+    return this.value?.elites?.concat(this.value?.normals ?? []).find(e => e.number === index) ? 'hidden' : 'visible' ?? 'visible';
   }
 
   selectTokenNumber(number: number, elite: boolean = false) {

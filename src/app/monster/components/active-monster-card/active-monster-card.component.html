@@ -64,7 +64,7 @@
           <p-dataView [value]="(tokens$ | async)?.normals ?? []" layout="list">
             <ng-template let-token pTemplate="listItem">
               <span class="col-12">{{token.number}} - <span
-                [ngStyle]="{color: 'var(--red-600)' }">{{token.health}}</span></span>
+                [ngStyle]="{color: 'var(--red-600)' }">{{token.maxHealth}}</span></span>
             </ng-template>
           </p-dataView>
         </p-scrollPanel>
@@ -75,7 +75,7 @@
           <p-dataView [value]="(tokens$ | async)?.elites ?? []" layout="list" class="">
             <ng-template let-token pTemplate="listItem">
               <span class="col-12">{{token.number}} - <span
-                [ngStyle]="{color: 'var(--red-600)' }">{{token.health}}</span></span>
+                [ngStyle]="{color: 'var(--red-600)' }">{{token.maxHealth}}</span></span>
             </ng-template>
           </p-dataView>
         </p-scrollPanel>
