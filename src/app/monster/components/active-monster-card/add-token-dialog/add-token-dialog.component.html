@@ -1,0 +1,11 @@
+<div class="flex flex-wrap flex-row gap-2">
+  <button
+    *ngFor="let number of value"
+    (click)="selectTokenNumber(number)"
+    pButton
+    pRipple
+    type="button"
+    class="p-button-rounded">
+    {{number}}
+  </button>
+</div>
