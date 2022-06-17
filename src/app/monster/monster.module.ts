@@ -6,12 +6,15 @@ import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { ButtonModule } from 'primeng/button';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { AddTokenDialogComponent } from './components/active-monster-card/add-token-dialog/add-token-dialog.component';
+import { RippleModule } from 'primeng/ripple';
 
 
 
 @NgModule({
   declarations: [
-    ActiveMonsterCard
+    ActiveMonsterCard,
+    AddTokenDialogComponent
   ],
   exports: [
     ActiveMonsterCard
@@ -22,7 +25,8 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     CardModule,
     DividerModule,
     ButtonModule,
-    ScrollPanelModule
+    ScrollPanelModule,
+    RippleModule
   ]
 })
 export class MonsterModule { }

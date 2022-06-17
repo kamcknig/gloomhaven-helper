@@ -21,6 +21,7 @@ import { MAX_LEVEL } from './scenario-options/max-level.token';
 import { MonsterModule } from './monster/monster.module';
 import { DataViewModule } from 'primeng/dataview';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 
 const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   actionSanitizer,
@@ -36,6 +37,7 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    DynamicDialogModule,
     DockModule,
     ToolbarModule,
     DividerModule,
@@ -47,7 +49,8 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   ],
   providers: [
     { provide: AdaptCommon, useValue: createStore(enableReduxDevtools) },
-    { provide: MAX_LEVEL, useValue: 7 }
+    { provide: MAX_LEVEL, useValue: 7 },
+    DialogService
   ],
   bootstrap: [AppComponent]
 })
