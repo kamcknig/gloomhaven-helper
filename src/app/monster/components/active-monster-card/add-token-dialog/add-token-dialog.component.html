@@ -1,11 +1,29 @@
-<div class="flex flex-wrap flex-row gap-2">
-  <button
-    *ngFor="let number of value"
-    (click)="selectTokenNumber(number)"
-    pButton
-    pRipple
-    type="button"
-    class="p-button-rounded">
-    {{number}}
-  </button>
+<div class="flex flex-row">
+  <div class="flex flex-wrap flex-row gap-2 justify-content-center">
+    <button
+      *ngFor="let index of defaultNumbers"
+      (click)="selectTokenNumber(index, false)"
+      [ngStyle]="{'visibility': getTokenButtonVisible(index, false)}"
+      pButton
+      pRipple
+      type="button"
+      class="p-button-rounded button-normal">
+      {{index}}
+    </button>
+  </div>
+
+  <p-divider layout="vertical"></p-divider>
+
+  <div class="flex flex-wrap flex-row gap-2 justify-content-center">
+    <button
+      *ngFor="let index of defaultNumbers"
+      (click)="selectTokenNumber(index, true)"
+      [ngStyle]="{'visibility': getTokenButtonVisible(index, true)}"
+      pButton
+      pRipple
+      type="button"
+      class="p-button-rounded button-elite">
+      {{index}}
+    </button>
+  </div>
 </div>

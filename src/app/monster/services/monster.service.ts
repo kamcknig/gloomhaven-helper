@@ -1,15 +1,6 @@
 import { Injectable } from '@angular/core';
-import {
-  AdaptCommon,
-  createAdapter,
-  createSelectors,
-  getHttpSources,
-  MiniStore,
-  Source,
-  toSource
-} from '@state-adapt/core';
+import { AdaptCommon, createAdapter, createSelectors, getHttpSources, Source } from '@state-adapt/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, take } from 'rxjs';
 
 export enum ConditionsAndEffects {
   AddTarget = 'AddTarget',
@@ -32,6 +23,7 @@ export enum ConditionsAndEffects {
 
 export interface MonsterInfo {
   name: string;
+  id: number;
   health: [number, number][],
   attack?: [number, number][];
   conditionsAndEffects?: {
@@ -45,10 +37,14 @@ export interface MonsterInfo {
   target?: [number, number][];
 }
 
+type MonsterNoId = Omit<MonsterInfo, 'id'>;
+
 @Injectable({
   providedIn: 'root'
 })
 export class MonsterService {
+  private static _idIncrementer: number = 0;
+
   activateMonster$: Source<MonsterInfo> = new Source('activateMonster$');
 
   private _activeMonsterAdapter = createAdapter<MonsterInfo[]>()({
@@ -66,19 +62,21 @@ export class MonsterService {
   )
 
   private _monsterAdapter = createAdapter<MonsterInfo[]>()({
-    add: (state, event, initialState) => [...state, ...(Array.isArray(event) ? event : [event])],
+    add: (state, event: MonsterNoId[] | MonsterNoId, initialState) =>
+      [...state, ...(Array.isArray(event) ? event : [event]).map(e => ({ ...e, id: ++MonsterService._idIncrementer }) as MonsterInfo)],
     selectors: createSelectors<MonsterInfo[]>()({
       monsters: s => s
     })
   });
 
-  private _GETMonstersSources$ = getHttpSources('[GET Monsters]', this._http.get('assets/data/monsters.json'), (res: any) => {
-    return [
-      !!res,
-      res.monsters,
-      'fuck no'
-    ]
-  });
+  private _GETMonstersSources$ = getHttpSources(
+    '[GET Monsters]', this._http.get('assets/data/monsters.json'), (res: any) => {
+      return [
+        !!res,
+        res.monsters,
+        'fuck no'
+      ]
+    });
 
   monsterStore = this._adapt.init(
     ['monsters', this._monsterAdapter, []],

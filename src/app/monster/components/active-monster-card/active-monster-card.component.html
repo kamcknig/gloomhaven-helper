@@ -60,8 +60,8 @@
       <span class="flex-1">Tokens</span>
 
       <div class="flex flex-row justify-content-between">
-        <p-scrollPanel [style]="{ maxHeight: '6.7rem' }" class="flex flex-auto">
-          <p-dataView [value]="(tokenService.tokenStore.tokens$ | async) ?? []" layout="list">
+        <p-scrollPanel [style]="{ maxHeight: '6.7rem' }" class="flex flex-1">
+          <p-dataView [value]="(tokens$ | async)?.normals ?? []" layout="list">
             <ng-template let-token pTemplate="listItem">
               <span class="col-12">{{token.number}} - <span
                 [ngStyle]="{color: 'var(--red-600)' }">{{token.health}}</span></span>
@@ -71,8 +71,8 @@
 
         <p-divider class="flex-none" layout="vertical"></p-divider>
 
-        <p-scrollPanel [style]="{ maxHeight: '6.7rem' }" class="flex flex-auto">
-          <p-dataView [value]="(tokenService.tokenStore.tokens$ | async) ?? []" layout="list" class="">
+        <p-scrollPanel [style]="{ maxHeight: '6.7rem' }" class="flex flex-1">
+          <p-dataView [value]="(tokens$ | async)?.elites ?? []" layout="list" class="">
             <ng-template let-token pTemplate="listItem">
               <span class="col-12">{{token.number}} - <span
                 [ngStyle]="{color: 'var(--red-600)' }">{{token.health}}</span></span>
@@ -90,6 +90,6 @@
       (click)="addToken()"
       icon="pi pi-plus"
       class="p-button-rounded"
-      style="height: 2rem; width: 2rem;"></button>
+      style="height: 1.5rem; width: 1.5rem;"></button>
   </ng-template>
 </p-card>

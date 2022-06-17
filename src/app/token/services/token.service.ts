@@ -4,6 +4,8 @@ import { AdaptCommon, createAdapter, createSelectors, Source } from '@state-adap
 export interface TokenInfo {
   maxHealth: number;
   number: number;
+  monsterId: number | undefined;
+  elite?: boolean;
 }
 
 @Injectable({

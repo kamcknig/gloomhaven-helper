@@ -2,11 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AppService } from './app.service';
 import { MonsterInfo, MonsterService } from './monster/services/monster.service';
-import { map, Observable, take } from 'rxjs';
+import { take } from 'rxjs';
 import { DialogService } from 'primeng/dynamicdialog';
-import {
-  AddTokenDialogComponent
-} from './monster/components/active-monster-card/add-token-dialog/add-token-dialog.component';
 
 export type AppMenuItem<T = any> = MenuItem & { metadata?: T };
 
@@ -57,15 +54,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const tokens = Array(Math.floor(Math.random() * 11)).fill(0).map((x, i) => i + 1);
-    this._dialogService.open(AddTokenDialogComponent, {
-      closeOnEscape: true,
-      modal: true,
-      width: '20rem',
-      header: 'Choose a token number',
-      data: tokens
-    }).onClose.subscribe({
-      next: (number) => console.log(number)
-    })
+
   }
 }

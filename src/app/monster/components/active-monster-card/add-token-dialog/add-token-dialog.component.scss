@@ -1,0 +1,13 @@
+:host ::ng-deep {
+  .p-button {
+    &.button-elite {
+      background-color: var(--yellow-500);
+      border-color: var(--yellow-500);
+    }
+
+    &.button-normal {
+      background-color: var(--gray-500);
+      border-color: var(--gray-500);
+    }
+  }
+}
