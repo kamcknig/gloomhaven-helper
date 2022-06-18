@@ -1,4 +1,4 @@
-<p-dock [model]="dockModel">
+<p-dock [model]="dockModel" position="top">
   <ng-template pTemplate="item" let-item>
     <img [src]="item.icon" [alt]="item.label" width="100%"/>
   </ng-template>
@@ -22,7 +22,7 @@
 
 <p-dataView [value]="(monsterService.activeMonsterStore.activeMonsters$ | async) ?? []" layout="grid" [rows]="3">
   <ng-template let-monster pTemplate="gridItem">
-    <div class="col-4">
+    <div class="col-3">
       <app-active-monster-card [value]="monster"></app-active-monster-card>
     </div>
   </ng-template>

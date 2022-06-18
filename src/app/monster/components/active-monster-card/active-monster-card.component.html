@@ -51,11 +51,11 @@
 
     <p-divider></p-divider>
 
-    <div class="text-m">
+    <div class="text-m" fxLayout="column" fxLayoutAlign="start space-between">
       <div>Tokens</div>
 
       <div fxLayout="row" fxLayoutAlign="space-between">
-        <p-scrollPanel [style]="{ height: '11rem' }" fxFlex>
+        <p-scrollPanel fxFlex [style]="{ height: '6rem', width: '100%' }">
           <p-dataView [value]="(tokens$ | async)?.normals ?? []" layout="list">
             <ng-template let-token pTemplate="listItem">
               <ng-container [ngTemplateOutlet]="listItemTemplate" [ngTemplateOutletContext]="{ '$implicit': token }"></ng-container>
@@ -63,7 +63,7 @@
           </p-dataView>
         </p-scrollPanel>
 
-        <p-scrollPanel [style]="{ height: '11rem' }" fxFlex>
+        <p-scrollPanel fxFlex [style]="{ height: '6rem', width: '100%'}">
           <p-dataView [value]="(tokens$ | async)?.elites ?? []" layout="list">
             <ng-template let-token pTemplate="listItem">
               <ng-container [ngTemplateOutlet]="listItemTemplate" [ngTemplateOutletContext]="{ '$implicit': token }"></ng-container>

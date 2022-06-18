@@ -19,8 +19,19 @@ export class TokenService {
   private _tokenAdapter = createAdapter<TokenInfo[]>()({
     addToken: (state, event, initialState) => [...state, event],
     updateTokenHitPoint: (state, event: [TokenInfo, number], initialState) => {
-      console.log(event);
-      return state;
+      const newState = [...state];
+      const idx = newState.findIndex(t => t.monsterId === event[0].monsterId && t.number === event[0].number);
+      if (idx === -1) {
+        return state;
+      }
+      const token = newState[idx];
+      newState.splice(idx, 1, { ...token, health: (token?.health ?? token.maxHealth) + event[1] });
+
+      if ((newState[idx].health ?? 0) < 1) {
+        newState.splice(idx, 1);
+      }
+
+      return newState;
     },
     selectors: createSelectors<TokenInfo[]>()({
       tokens: s => s
