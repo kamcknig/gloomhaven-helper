@@ -23,6 +23,7 @@ import { DataViewModule } from 'primeng/dataview';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SplitButtonModule } from 'primeng/splitbutton';
 
 const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   actionSanitizer,
@@ -47,7 +48,8 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
     ScenarioOptionsModule.forRoot(),
     MonsterModule,
     DataViewModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    SplitButtonModule
   ],
   providers: [
     { provide: AdaptCommon, useValue: createStore(enableReduxDevtools) },
