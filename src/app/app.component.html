@@ -12,7 +12,11 @@
                    [ngModel]="appService.scenarioStore.level$ | async"></p-inputNumber>
   </div>
   <div class="p-toolbar-group-right">
-    <p-splitButton styleClass="p-button-raised mr-2 mb-2"></p-splitButton>
+    <p-splitButton
+      [model]="toolbarButtons"
+      (onClick)="activateMonster($event)"
+      label="Activate Monster"
+      styleClass="p-button-raised mr-2 mb-2"></p-splitButton>
   </div>
 </p-toolbar>
 

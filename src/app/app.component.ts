@@ -15,27 +15,10 @@ export type AppMenuItem<T = any> = MenuItem & { metadata?: T };
 export class AppComponent implements OnInit {
   title = 'gloomhaven-helper';
 
-  dockModel: AppMenuItem<MonsterInfo>[] = [
-    {
-      label: 'Test',
-      tooltipOptions: {
-        tooltipLabel: 'Add monster',
-        tooltipPosition: 'top',
-        showDelay: 300,
-        positionLeft: 20
-      }
-    },
+  toolbarButtons: AppMenuItem<MonsterInfo>[] = [
     {
       label: 'Add monster',
-      icon: 'assets/monster-ability-cards/monster-ability-card-back.jpg',
-      command: (...args: any[]) => {
-        let monster: MonsterInfo = {} as MonsterInfo;
-        this.monsterService.monsterStore['monsters$'].pipe(take(1)).subscribe(
-          (m: MonsterInfo[]) => {
-            monster = m[Math.floor(Math.random() * m.length)];
-          })
-        this.monsterService.activateMonster$.next(monster)
-      },
+      command: this.activateMonster.bind(this),
       tooltipOptions: {
         tooltipLabel: 'Add monster',
         tooltipPosition: 'top',
@@ -44,6 +27,16 @@ export class AppComponent implements OnInit {
       }
     }
   ];
+
+  public activateMonster(...args: any[]): void {
+    let monster: MonsterInfo = {} as MonsterInfo;
+    this.monsterService.monsterStore['monsters$'].pipe(take(1))
+      .subscribe(
+        (m: MonsterInfo[]) => {
+          monster = m[Math.floor(Math.random() * m.length)];
+        })
+    this.monsterService.activateMonster$.next(monster)
+  }
 
   constructor(
     public appService: AppService,
