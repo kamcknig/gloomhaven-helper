@@ -1,0 +1,12 @@
+<p-autoComplete
+  appendTo="body"
+  dataKey="id"
+  [autoHighlight]="true"
+  [(ngModel)]="selected"
+  [dropdown]="true"
+  [forceSelection]="true"
+  [suggestions]="searchResults"
+  field="name"
+  (onSelect)="selectMonster($event)"
+  (completeMethod)="search($event)">
+</p-autoComplete>

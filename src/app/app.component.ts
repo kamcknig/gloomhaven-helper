@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AppService } from './app.service';
 import { MonsterInfo, MonsterService } from './monster/services/monster.service';
-import { take } from 'rxjs';
+import { map, take } from 'rxjs';
 import { DialogService } from 'primeng/dynamicdialog';
+import { ActivateMonsterDialogComponent } from './monster/activate-monster-dialog/activate-monster-dialog.component';
 
 export type AppMenuItem<T = any> = MenuItem & { metadata?: T };
 
@@ -29,13 +30,29 @@ export class AppComponent implements OnInit {
   ];
 
   public activateMonster(...args: any[]): void {
-    let monster: MonsterInfo = {} as MonsterInfo;
-    this.monsterService.monsterStore['monsters$'].pipe(take(1))
-      .subscribe(
-        (m: MonsterInfo[]) => {
-          monster = m[Math.floor(Math.random() * m.length)];
-        })
-    this.monsterService.activateMonster$.next(monster)
+    this._dialogService.open(ActivateMonsterDialogComponent, {
+      modal: true,
+      closeOnEscape: true,
+      header: "Select a monster"
+    }).onClose.subscribe({
+      next: id => {
+        let monster: MonsterInfo | undefined;
+        this.monsterService.monsterStore.monsters$
+          .pipe(
+            map(monsters => monsters.find(m => m.id === id)),
+            take(1)
+          )
+          .subscribe({
+            next: (value) => monster = value
+          });
+
+        if (!monster) {
+          console.warn(`Monster ${id} not found in store`);
+          return;
+        }
+        this.monsterService.activateMonster$.next(monster);
+      }
+    });
   }
 
   constructor(

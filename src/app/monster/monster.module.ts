@@ -9,13 +9,17 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { AddTokenDialogComponent } from './components/active-monster-card/add-token-dialog/add-token-dialog.component';
 import { RippleModule } from 'primeng/ripple';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ActivateMonsterDialogComponent } from './activate-monster-dialog/activate-monster-dialog.component';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
     ActiveMonsterCard,
-    AddTokenDialogComponent
+    AddTokenDialogComponent,
+    ActivateMonsterDialogComponent
   ],
   exports: [
     ActiveMonsterCard
@@ -28,7 +32,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ButtonModule,
     ScrollPanelModule,
     RippleModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    AutoCompleteModule,
+    FormsModule
   ]
 })
 export class MonsterModule { }
