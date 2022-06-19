@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MonsterInfo, MonsterService } from '../services/monster.service';
 import { joinSelectors } from '@state-adapt/core';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { concatMap, of, tap } from 'rxjs';
 
 @Component({
   selector: 'app-activate-monster-dialog',
@@ -9,9 +10,8 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
   styleUrls: ['./activate-monster-dialog.component.scss']
 })
 export class ActivateMonsterDialogComponent implements OnInit {
-  selectedMonster: MonsterInfo | undefined;
   searchResults: MonsterInfo[] = [];
-  selected: string | undefined;
+  selected: MonsterInfo | undefined;
   availableMonsters: MonsterInfo[] = [];
 
   constructor(
@@ -35,9 +35,11 @@ export class ActivateMonsterDialogComponent implements OnInit {
       }
     )
       .state$
+      .pipe(
+        concatMap((value, index) => index === 0 ? of(value).pipe(tap(value => this.selected = value[0])) : of(value))
+      )
       .subscribe({
           next: value => {
-            console.log(value);
             this.availableMonsters = value;
           }
         }
@@ -58,7 +60,7 @@ export class ActivateMonsterDialogComponent implements OnInit {
   }
 
   selectMonster($event: any) {
-    this.selectedMonster = $event;
+    this.selected = $event;
   }
 
   close(value: any) {

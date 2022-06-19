@@ -2,49 +2,25 @@
   <ng-container *ngIf="{ level: (appService.scenarioStore.level$ | async) ?? 0 } as level">
     <div fxLayout="row" fxLayoutAlign="space-between center" class="text-m">
       <!-- normal stats -->
-      <div fxLayout="column" fxFlex>
-        <span fxLayout="row" fxLayoutAlign="start center">
+      <div fxLayout="row" style="align-items: flex-start" [ngStyle]="{ 'place-content': index === 0 ? 'flex-start' : 'flex-end' }" fxFlex *ngFor="let index of [0, 1]">
+        <span fxLayout="column" fxLayoutAlign="start center">
           <img class="icon" src="assets/icons/health.png">
-          {{getStatDisplayValue(value?.health?.[level?.level ?? 0]?.[0])}}
+          {{getStatDisplayValue(value?.health?.[level?.level ?? 0]?.[index])}}
         </span>
 
-        <span fxLayout="row" fxLayoutAlign="start center">
+        <span fxLayout="column" fxLayoutAlign="start center">
           <img class="icon" src="assets/icons/move.png">
-          {{getStatDisplayValue(value?.move?.[level?.level ?? 0]?.[0])}}
+          {{getStatDisplayValue(value?.move?.[level?.level ?? 0]?.[index])}}
         </span>
 
-        <span fxLayout="row" fxLayoutAlign="start center">
+        <span fxLayout="column" fxLayoutAlign="start center">
           <img class="icon" src="assets/icons/attack.png">
-          {{getStatDisplayValue(value?.attack?.[level?.level ?? 0]?.[0])}}
+          {{getStatDisplayValue(value?.attack?.[level?.level ?? 0]?.[index])}}
         </span>
 
-        <span fxLayout="row" fxLayoutAlign="start center">
+        <span fxLayout="column" fxLayoutAlign="start center">
           <img class="icon" src="assets/icons/range.png">
-          {{getStatDisplayValue(value?.range?.[level?.level ?? 0]?.[0])}}
-        </span>
-
-      </div>
-
-      <!-- elite stats -->
-      <div fxLayout="column" fxFlex>
-        <span fxLayout="row" fxLayoutAlign="end center">
-          {{getStatDisplayValue(value?.health?.[level?.level ?? 0]?.[1])}}
-          <img class="icon" src="assets/icons/health.png">
-        </span>
-
-        <span fxLayout="row" fxLayoutAlign="end center">
-          {{getStatDisplayValue(value?.move?.[level?.level ?? 0]?.[1])}}
-          <img class="icon" src="assets/icons/move.png">
-        </span>
-
-        <span fxLayout="row" fxLayoutAlign="end center">
-          {{getStatDisplayValue(value?.attack?.[level?.level ?? 0]?.[1])}}
-          <img class="icon"src="assets/icons/attack.png">
-        </span>
-
-        <span fxLayout="row" fxLayoutAlign="end center">
-          {{getStatDisplayValue(value?.range?.[level?.level ?? 0]?.[1])}}
-          <img class="icon" src="assets/icons/range.png">
+          {{getStatDisplayValue(value?.range?.[level?.level ?? 0]?.[index])}}
         </span>
       </div>
     </div>
