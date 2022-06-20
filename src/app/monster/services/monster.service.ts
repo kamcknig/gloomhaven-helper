@@ -21,6 +21,23 @@ export enum ConditionsAndEffects {
   Wound = 'Wound',
 }
 
+export enum ApplicableConditions {
+  Disarm = 'Disarm',
+  Immobilize = 'Immobilize',
+  Invisibility = 'Invisibility',
+  Muddle = 'Muddle',
+  Poison = 'Poison',
+  Retaliate = 'Retaliate',
+  Shield = 'Shield',
+  Strengthen = 'Strengthen',
+  Stun = 'Stun',
+  Wound = 'Wound'
+}
+
+export type AppliedConditions = {
+  [key in keyof typeof ApplicableConditions]?: number;
+}
+
 export interface MonsterInfo {
   name: string;
   id: number;

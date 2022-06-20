@@ -1,85 +1,109 @@
-<p-card header="{{value?.name}}">
-  <ng-container *ngIf="{ level: (appService.scenarioStore.level$ | async) ?? 0 } as level">
+<div
+  style="z-index: 100; position:absolute; background: black; width: 100%; height: 100%; opacity: .25"
+  [ngStyle]="{ 'visibility': showStatusSelectDialog ? 'visible': 'hidden' }"
+  (click)="showStatusSelectDialog = false">
+</div>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{value?.name}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
     <div fxLayout="row" fxLayoutAlign="space-between center" class="text-m">
       <!-- normal stats -->
-      <div fxLayout="row" style="align-items: flex-start" [ngStyle]="{ 'place-content': index === 0 ? 'flex-start' : 'flex-end' }" fxFlex *ngFor="let index of [0, 1]">
+      <div fxLayout="row" style="align-items: flex-start"
+           [ngStyle]="{ 'place-content': index === 0 ? 'flex-start' : 'flex-end' }" fxFlex
+           *ngFor="let index of [0, 1]">
         <span fxLayout="column" fxLayoutAlign="start center">
           <img class="icon" src="assets/icons/health.png">
-          {{getStatDisplayValue(value?.health?.[level?.level ?? 0]?.[index])}}
+          {{getStatDisplayValue(value?.health?.[scenarioLevel ?? 0]?.[index])}}
         </span>
 
         <span fxLayout="column" fxLayoutAlign="start center">
           <img class="icon" src="assets/icons/move.png">
-          {{getStatDisplayValue(value?.move?.[level?.level ?? 0]?.[index])}}
+          {{getStatDisplayValue(value?.move?.[scenarioLevel ?? 0]?.[index])}}
         </span>
 
         <span fxLayout="column" fxLayoutAlign="start center">
           <img class="icon" src="assets/icons/attack.png">
-          {{getStatDisplayValue(value?.attack?.[level?.level ?? 0]?.[index])}}
+          {{getStatDisplayValue(value?.attack?.[scenarioLevel ?? 0]?.[index])}}
         </span>
 
         <span fxLayout="column" fxLayoutAlign="start center">
           <img class="icon" src="assets/icons/range.png">
-          {{getStatDisplayValue(value?.range?.[level?.level ?? 0]?.[index])}}
+          {{getStatDisplayValue(value?.range?.[scenarioLevel ?? 0]?.[index])}}
         </span>
       </div>
     </div>
 
     <p-divider></p-divider>
 
-    <div class="text-m" fxLayout="column" fxLayoutAlign="start space-between">
-      <div>Tokens</div>
+    <div>Tokens</div>
 
-      <div fxLayout="row" fxLayoutAlign="space-between">
-        <p-scrollPanel fxFlex [style]="{ height: '6rem', width: '100%' }">
-          <p-dataView [value]="(tokens$ | async)?.normals ?? []" layout="list">
-            <ng-template let-token pTemplate="listItem">
-              <ng-container [ngTemplateOutlet]="listItemTemplate" [ngTemplateOutletContext]="{ '$implicit': token }"></ng-container>
-            </ng-template>
-          </p-dataView>
-        </p-scrollPanel>
+    <div fxLayout="row" fxLayoutAlign="space-between">
+      <p-scrollPanel fxFlex="50" [style]="{ height: '6rem' }">
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <div fxFlex *ngFor="let token of (tokens$ | async)?.normals">
+            <ng-container [ngTemplateOutlet]="listItemTemplate"
+                          [ngTemplateOutletContext]="{ '$implicit': token }"></ng-container>
+          </div>
+        </div>
+      </p-scrollPanel>
 
-        <p-scrollPanel fxFlex [style]="{ height: '6rem', width: '100%'}">
-          <p-dataView [value]="(tokens$ | async)?.elites ?? []" layout="list">
-            <ng-template let-token pTemplate="listItem">
-              <ng-container [ngTemplateOutlet]="listItemTemplate" [ngTemplateOutletContext]="{ '$implicit': token }"></ng-container>
-            </ng-template>
-          </p-dataView>
-        </p-scrollPanel>
-      </div>
+      <p-scrollPanel fxFlex="50" [style]="{ height: '6rem' }">
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <div fxFlex *ngFor="let token of (tokens$ | async)?.elites">
+            <ng-container [ngTemplateOutlet]="listItemTemplate"
+                          [ngTemplateOutletContext]="{ '$implicit': token }"></ng-container>
+          </div>
+        </div>
+      </p-scrollPanel>
     </div>
-  </ng-container>
+  </mat-card-content>
 
-  <ng-template pTemplate="footer">
+  <mat-card-footer>
     <button
       pButton
       type="button"
       (click)="addToken()"
-      icon="pi pi-plus"
-      class="p-button-rounded"></button>
-  </ng-template>
-</p-card>
+      icon="pi pi-plus"></button>
+  </mat-card-footer>
+</mat-card>
 
 <ng-template #listItemTemplate let-token>
-  <div [id]="'list-item-' + (token.elite ? 'elite' : 'normal')" fxFlexFill fxLayout="row" fxLayoutAlign="space-between center" class="list-item">
-    <div fxFlex>{{token.number}} - <span class="text-red-600">{{token.health ?? token.maxHealth}}</span></div>
+  <div
+    [id]="'list-item-' + (token.elite ? 'elite' : 'normal')"
+    style="padding: .2rem"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+    fxLayoutGap=".3rem"
+    class="list-item">
+    <div>{{token.number}} - <span class="text-red-600">{{token.health ?? token.maxHealth}}</span></div>
 
-    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap=".5rem">
+    <div fxFlex="58" fxLayout="row wrap" fxLayoutAlign="end center" (click)="showStatusSelectDialog = true">
+      <ng-container *ngFor="let value of ApplicableConditions">
+        <img [src]="'assets/icons/' + value.toLowerCase() + '.png'" style="max-height: 1rem; max-width: 1rem"
+             [ngStyle]="{ 'opacity': token?.conditionsAndEffects?.[value] ? 1 : .25 }">
+      </ng-container>
+    </div>
+
+    <div fxLayout="column" fxLayoutAlign="center end" fxFlex>
       <button
         (click)="tokenService.updateTokenHitPoint$.next([token, 1])"
         pButton
         pRipple
         type="button"
-        icon="pi pi-plus"
-        class="p-button-success p-button-rounded"></button>
+        style="background: unset; border: unset"
+        icon="pi pi-plus"></button>
 
       <button
         (click)="tokenService.updateTokenHitPoint$.next([token, -1])"
         pButton
         pRipple
         type="button"
-        icon="pi pi-minus"
-        class="p-button-danger p-button-rounded"></button>
+        style="background: unset; border: unset"
+        icon="pi pi-minus"></button>
     </div>
   </div>
 </ng-template>

@@ -12,6 +12,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ActivateMonsterDialogComponent } from './activate-monster-dialog/activate-monster-dialog.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormsModule } from '@angular/forms';
+import { DialogModule } from 'primeng/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -34,7 +36,9 @@ import { FormsModule } from '@angular/forms';
     RippleModule,
     FlexLayoutModule,
     AutoCompleteModule,
-    FormsModule
+    FormsModule,
+    DialogModule,
+    MatCardModule
   ]
 })
 export class MonsterModule { }

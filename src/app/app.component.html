@@ -20,12 +20,16 @@
   </div>
 </p-toolbar>
 
-<p-dataView [value]="(monsterService.activeMonsterStore.activeMonsters$ | async) ?? []" layout="grid" [rows]="3">
-  <ng-template let-monster pTemplate="gridItem">
-    <div class="col-3">
-      <app-active-monster-card [value]="monster"></app-active-monster-card>
-    </div>
-  </ng-template>
-</p-dataView>
+<div
+  fxLayout="row wrap"
+  fxLayoutAlign="start start"
+  fxLayoutGap=".7rem"
+>
+  <div
+    *ngFor="let monster of (monsterService.activeMonsterStore.activeMonsters$ | async) ?? []">
+    <app-active-monster-card [value]="monster"></app-active-monster-card>
+  </div>
+
+</div>
 
 

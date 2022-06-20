@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AdaptCommon, createAdapter, createSelectors, Source } from '@state-adapt/core';
+import { AppliedConditions } from '../../monster/services/monster.service';
 
 export interface TokenInfo {
   health?: number;
@@ -7,6 +8,7 @@ export interface TokenInfo {
   number: number;
   monsterId: number | undefined;
   elite?: boolean;
+  appliedConditionsAndEffects?: AppliedConditions
 }
 
 @Injectable({
