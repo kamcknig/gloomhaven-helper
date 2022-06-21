@@ -1,13 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
+@use '@angular/material' as mat;
+
 @font-face {
   font-family: 'gloomhaven';
   src: url('/assets/fonts/PirataOne-Gloomhaven.ttf');
 }
 
-html {
-  font-size: 1.2rem;
-}
+$my-custom-typography: mat.define-typography-config(
+ $font-family: 'gloomhaven'
+);
+
+@include mat.core($my-custom-typography);
 
 .p-component {
   font-family: gloomhaven, "Segoe UI", Roboto, sans-serif;

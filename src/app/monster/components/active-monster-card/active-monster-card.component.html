@@ -1,7 +1,20 @@
-<div
-  style="z-index: 100; position:absolute; background: black; width: 100%; height: 100%; opacity: .25"
-  [ngStyle]="{ 'visibility': showStatusSelectDialog ? 'visible': 'hidden' }"
-  (click)="showStatusSelectDialog = false">
+<div *ngIf="selectedToken"
+     [ngStyle]="{ 'visibility': selectedToken ? 'visible': 'hidden' }"
+     class="status-select-overlay">
+  <button mat-mini-fab
+          (click)="closeStatusSelectOverlay()"
+          style="position: absolute; right: 5px; top: 5px;"><mat-icon>cancel</mat-icon></button>
+
+  <div fxFlexFill
+       fxLayout="row wrap"
+       fxLayoutAlign="center center"
+       fxLayoutGap=".7rem grid">
+    <img *ngFor="let value of ApplicableConditions"
+         [src]="'assets/icons/' + value.toLowerCase() + '.png'"
+         [ngStyle]="{ 'filter': (selectedToken?.appliedConditionsAndEffects?.[value.toString()] ?? 0) > 0 ? 'brightness(100%)' : 'brightness(50%)' }"
+         (click)="tokenService.toggleTokenStatus$.next({ token: selectedToken, condition: value})"
+    >
+  </div>
 </div>
 
 <mat-card>
@@ -41,22 +54,27 @@
 
     <div>Tokens</div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between">
-      <p-scrollPanel fxFlex="50" [style]="{ height: '6rem' }">
-        <div fxLayout="column" fxLayoutAlign="start start">
-          <div fxFlex *ngFor="let token of (tokens$ | async)?.normals">
-            <ng-container [ngTemplateOutlet]="listItemTemplate"
-                          [ngTemplateOutletContext]="{ '$implicit': token }"></ng-container>
-          </div>
+    <div fxLayout="row"
+         fxLayoutAlign="space-between">
+      <p-scrollPanel fxFlex="50"
+                     [style]="{ height: '6rem' }">
+        <div fxLayout="column"
+             fxLayoutAlign="start start">
+          <ng-container *ngFor="let token of (tokens$ | async)?.normals"
+                        [ngTemplateOutlet]="listItemTemplate"
+                        [ngTemplateOutletContext]="{ '$implicit': token }">
+          </ng-container>
         </div>
       </p-scrollPanel>
 
-      <p-scrollPanel fxFlex="50" [style]="{ height: '6rem' }">
-        <div fxLayout="column" fxLayoutAlign="start start">
-          <div fxFlex *ngFor="let token of (tokens$ | async)?.elites">
-            <ng-container [ngTemplateOutlet]="listItemTemplate"
-                          [ngTemplateOutletContext]="{ '$implicit': token }"></ng-container>
-          </div>
+      <p-scrollPanel fxFlex="50"
+                     [style]="{ height: '6rem' }">
+        <div fxLayout="column"
+             fxLayoutAlign="start start">
+          <ng-container *ngFor="let token of (tokens$ | async)?.elites"
+                        [ngTemplateOutlet]="listItemTemplate"
+                        [ngTemplateOutletContext]="{ '$implicit': token }">
+          </ng-container>
         </div>
       </p-scrollPanel>
     </div>
@@ -74,36 +92,45 @@
 <ng-template #listItemTemplate let-token>
   <div
     [id]="'list-item-' + (token.elite ? 'elite' : 'normal')"
-    style="padding: .2rem"
+    fxFlexFill
     fxLayout="row"
     fxLayoutAlign="space-between center"
     fxLayoutGap=".3rem"
     class="list-item">
     <div>{{token.number}} - <span class="text-red-600">{{token.health ?? token.maxHealth}}</span></div>
 
-    <div fxFlex="58" fxLayout="row wrap" fxLayoutAlign="end center" (click)="showStatusSelectDialog = true">
-      <ng-container *ngFor="let value of ApplicableConditions">
-        <img [src]="'assets/icons/' + value.toLowerCase() + '.png'" style="max-height: 1rem; max-width: 1rem"
-             [ngStyle]="{ 'opacity': token?.conditionsAndEffects?.[value] ? 1 : .25 }">
+    <div fxFlex
+         fxLayout="row wrap"
+         fxLayoutAlign="center center"
+         (click)="showStatusSelectOverlay(token)">
+      <ng-container *ngIf="getTokenConditionsAndEffects(token).length > 0; else openApplicableConditions">
+        <ng-container *ngFor="let value of getTokenConditionsAndEffects(token)">
+          <img
+            [src]="'assets/icons/' + value.name.toLowerCase() + '.png'"
+            class="status-icon">
+        </ng-container>
       </ng-container>
+
+      <ng-template #openApplicableConditions>
+        <span style="cursor: pointer" class="material-icons-outlined">more_horiz</span>
+      </ng-template>
     </div>
 
-    <div fxLayout="column" fxLayoutAlign="center end" fxFlex>
-      <button
-        (click)="tokenService.updateTokenHitPoint$.next([token, 1])"
-        pButton
-        pRipple
-        type="button"
-        style="background: unset; border: unset"
-        icon="pi pi-plus"></button>
+    <div fxLayout="column"
+         fxLayoutAlign="center end">
+      <button (click)="tokenService.updateTokenHitPoint$.next([token, 1])"
+              pButton
+              pRipple
+              type="button"
+              style="background: unset; border: unset"
+              icon="pi pi-plus"></button>
 
-      <button
-        (click)="tokenService.updateTokenHitPoint$.next([token, -1])"
-        pButton
-        pRipple
-        type="button"
-        style="background: unset; border: unset"
-        icon="pi pi-minus"></button>
+      <button (click)="tokenService.updateTokenHitPoint$.next([token, -1])"
+              pButton
+              pRipple
+              type="button"
+              style="background: unset; border: unset"
+              icon="pi pi-minus"></button>
     </div>
   </div>
 </ng-template>

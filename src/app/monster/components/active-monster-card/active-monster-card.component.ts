@@ -1,16 +1,10 @@
-import { AfterViewInit, Component, Input, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import {
-  ApplicableConditions,
-  ConditionsAndEffects,
-  MonsterInfo,
-  MonsterService
-} from '../../services/monster.service';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { ApplicableConditions, MonsterInfo, MonsterService } from '../../services/monster.service';
 import { AppService } from '../../../app.service';
 import { TokenInfo, TokenService } from '../../../token/services/token.service';
 import { DialogService } from 'primeng/dynamicdialog';
 import { AddTokenDialogComponent } from './add-token-dialog/add-token-dialog.component';
 import { map, Observable, Subject, takeUntil, tap, withLatestFrom } from 'rxjs';
-import { AdaptCommon } from '@state-adapt/core';
 
 @Component({
   selector: 'app-active-monster-card',
@@ -20,22 +14,12 @@ import { AdaptCommon } from '@state-adapt/core';
 export class ActiveMonsterCard implements OnInit, AfterViewInit {
   @Input() public value: MonsterInfo | undefined;
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
-  public showStatusSelectDialog: boolean | undefined;
+  public selectedToken: TokenInfo | undefined;
   public scenarioLevel: number | undefined;
 
-  ApplicableConditions = Object.keys(ApplicableConditions).filter(v => isNaN(Number(v)));
+  ApplicableConditions = ApplicableConditions;
   private _tokens: { elites: TokenInfo[], normals: TokenInfo[] } | undefined;
   private _destroy$: Subject<void> = new Subject<void>();
-
-  constructor(
-    private _viewContainer: ViewContainerRef,
-    public monsterService: MonsterService,
-    public appService: AppService,
-    public tokenService: TokenService,
-    private _dialogService: DialogService,
-    private _adapt: AdaptCommon<any>
-  ) {
-  }
 
   ngOnInit(): void {
     this.tokens$ = this.tokenService.tokenStore.tokens$.pipe(
@@ -48,6 +32,10 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
       })),
       tap(tokenData => {
         this._tokens = tokenData;
+
+        if (this.selectedToken) {
+          this.selectedToken = this._tokens?.elites?.concat(this._tokens?.normals).find(t => t.number === this.selectedToken?.number && t.elite === this.selectedToken?.elite);
+        }
       }),
       takeUntil(this._destroy$)
     );
@@ -57,6 +45,14 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
 
+  }
+
+  constructor(
+    public monsterService: MonsterService,
+    public appService: AppService,
+    public tokenService: TokenService,
+    private _dialogService: DialogService
+  ) {
   }
 
   getStatDisplayValue(value: number | string | undefined) {
@@ -94,6 +90,23 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
             }
           })
         }
-      })
+      });
+  }
+
+  showStatusSelectOverlay(token: TokenInfo) {
+    this.selectedToken = token;
+  }
+
+  closeStatusSelectOverlay() {
+    this.selectedToken = undefined;
+  }
+
+  getTokenConditionsAndEffects(token: TokenInfo) {
+    return Object.entries(token.appliedConditionsAndEffects ?? {}).reduce((prev, next) => {
+      if (next[1]) {
+        prev.push({ name: next[0], value: next[1] });
+      }
+      return prev;
+    }, [] as { name: string, value: number }[]);
   }
 }

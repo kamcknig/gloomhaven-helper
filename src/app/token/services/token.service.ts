@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AdaptCommon, createAdapter, createSelectors, Source } from '@state-adapt/core';
-import { AppliedConditions } from '../../monster/services/monster.service';
 
 export interface TokenInfo {
   health?: number;
@@ -8,15 +7,19 @@ export interface TokenInfo {
   number: number;
   monsterId: number | undefined;
   elite?: boolean;
-  appliedConditionsAndEffects?: AppliedConditions
+  appliedConditionsAndEffects?: {
+    [key: string]: number;
+  }
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
-  public addToken$: Source<TokenInfo> = new Source<TokenInfo>('addToken$');
-  public updateTokenHitPoint$: Source<[TokenInfo, number]> = new Source<[TokenInfo, number]>('updateTokenHitPoint$');
+  public addToken$: Source<TokenInfo> = new Source('addToken$');
+  public updateTokenHitPoint$: Source<[TokenInfo, number]> = new Source('updateTokenHitPoint$');
+  public toggleTokenStatus$: Source<{ token: TokenInfo, condition: string }> = new Source(
+    'toggleTokenStatus$')
 
   private _tokenAdapter = createAdapter<TokenInfo[]>()({
     addToken: (state, event, initialState) => [...state, event],
@@ -37,15 +40,39 @@ export class TokenService {
     },
     selectors: createSelectors<TokenInfo[]>()({
       tokens: s => s
-    })
+    }),
+    toggleTokenStatus: (state, { token, condition }, initialState) => {
+      const newState = [...state];
+      const idx = newState.findIndex(t => t.monsterId === token.monsterId && t.number === token.number);
+      if (idx === -1) {
+        return state;
+      }
+      const newToken = newState[idx];
+      newState.splice(
+        idx,
+        1,
+        {
+          ...newToken,
+          appliedConditionsAndEffects: {
+            ...newToken.appliedConditionsAndEffects,
+            [condition]: (newToken.appliedConditionsAndEffects?.[condition] ?? 0) > 0 ? 0 : 1
+          }
+        }
+      );
+
+      return newState;
+    }
   });
+
   public tokenStore = this._adapt.init(
     ['tokens', this._tokenAdapter, []],
     {
       addToken: this.addToken$,
-      updateTokenHitPoint: this.updateTokenHitPoint$
+      updateTokenHitPoint: this.updateTokenHitPoint$,
+      toggleTokenStatus: this.toggleTokenStatus$
     }
   )
+
   constructor(private _adapt: AdaptCommon<any>) {
   }
 }

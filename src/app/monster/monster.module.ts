@@ -14,6 +14,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -38,7 +40,9 @@ import { MatCardModule } from '@angular/material/card';
     AutoCompleteModule,
     FormsModule,
     DialogModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class MonsterModule { }
