@@ -9,8 +9,8 @@
     height: 100%;
 
     img {
-      max-height: 4rem;
-      max-width: 4rem;
+      max-height: 5rem;
+      max-width: 5rem;
       cursor: pointer;
     }
   }
@@ -20,33 +20,20 @@
       background: linear-gradient(to right, white -25%, rgba(117, 117, 117, .5) 50%, rgba(130, 106, 25, .5) 50%, white 125%);
 
       .mat-card-content {
-        min-width: 20rem;
-        min-height: 16rem;
+        width: 23rem;
+        height: 18rem;
       }
     }
 
     .list-item {
-      padding: 0 .5rem;
+      width: 100%;
 
       .status-icon {
         max-height: 1.5rem;
         max-width: 1.5rem
       }
-    }
 
-    .p-button {
-      max-width: 20px;
-      max-height: 20px;
-    }
-
-    .p-divider {
-      &.p-divider-vertical {
-        margin: 0 .5rem;
-      }
-
-      &.p-divider-horizontal {
-        margin: .5rem 0;
-      }
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, .1) 100%);
     }
   }
 }

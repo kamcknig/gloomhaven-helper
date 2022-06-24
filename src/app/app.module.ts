@@ -4,26 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DockModule } from 'primeng/dock';
 
-import {
-  createStore,
-  actionSanitizer,
-  stateSanitizer,
-  AdaptCommon,
-} from '@state-adapt/core';
+import { actionSanitizer, AdaptCommon, createStore, stateSanitizer, } from '@state-adapt/core';
 import { ToolbarModule } from 'primeng/toolbar';
-import { DividerModule } from 'primeng/divider';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScenarioOptionsModule } from './scenario-options/scenario-options.module';
 import { MAX_LEVEL } from './scenario-options/max-level.token';
 import { MonsterModule } from './monster/monster.module';
-import { DataViewModule } from 'primeng/dataview';
 import { HttpClientModule } from '@angular/common/http';
-import { DialogService, DynamicDialogModule } from 'primeng/dynamicdialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   actionSanitizer,
@@ -39,22 +33,21 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    DynamicDialogModule,
-    DockModule,
+    MatDialogModule,
     ToolbarModule,
-    DividerModule,
-    InputNumberModule,
     FormsModule,
     ScenarioOptionsModule.forRoot(),
     MonsterModule,
-    DataViewModule,
+    MatDividerModule,
     FlexLayoutModule,
-    SplitButtonModule
+    SplitButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: AdaptCommon, useValue: createStore(enableReduxDevtools) },
-    { provide: MAX_LEVEL, useValue: 7 },
-    DialogService
+    { provide: MAX_LEVEL, useValue: 7 }
   ],
   bootstrap: [AppComponent]
 })

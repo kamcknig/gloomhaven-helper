@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { Component, Inject, OnInit } from '@angular/core';
 import { TokenInfo } from '../../../../token/services/token.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-token-dialog',
@@ -12,13 +12,13 @@ export class AddTokenDialogComponent implements OnInit {
   public defaultNumbers: number[];
 
   constructor(
-    private _dialogRef: DynamicDialogRef,
-    private _dialogConfig: DynamicDialogConfig
+    private _dialogRef: MatDialogRef<any>,
+    @Inject(MAT_DIALOG_DATA) private _data: any
   ) {
     this.defaultNumbers = Array(10)
       .fill(0)
       .map((x, i) => i + 1);
-    this.value = this._dialogConfig.data;
+    this.value = this._data;
   }
 
   ngOnInit(): void {

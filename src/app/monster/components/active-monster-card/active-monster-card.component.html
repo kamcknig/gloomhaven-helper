@@ -3,12 +3,15 @@
      class="status-select-overlay">
   <button mat-mini-fab
           (click)="closeStatusSelectOverlay()"
-          style="position: absolute; right: 5px; top: 5px;"><mat-icon>cancel</mat-icon></button>
+          style="position: absolute; right: 5px; top: 5px;">
+    <mat-icon>cancel</mat-icon>
+  </button>
 
   <div fxFlexFill
        fxLayout="row wrap"
        fxLayoutAlign="center center"
-       fxLayoutGap=".7rem grid">
+       fxLayoutGap=".7rem grid"
+       style="padding: 2rem;">
     <img *ngFor="let value of ApplicableConditions"
          [src]="'assets/icons/' + value.toLowerCase() + '.png'"
          [ngStyle]="{ 'filter': (selectedToken?.appliedConditionsAndEffects?.[value.toString()] ?? 0) > 0 ? 'brightness(100%)' : 'brightness(50%)' }"
@@ -23,8 +26,8 @@
   </mat-card-header>
 
   <mat-card-content>
+    <!-- stats section for both normals and elites -->
     <div fxLayout="row" fxLayoutAlign="space-between center" class="text-m">
-      <!-- normal stats -->
       <div fxLayout="row" style="align-items: flex-start"
            [ngStyle]="{ 'place-content': index === 0 ? 'flex-start' : 'flex-end' }" fxFlex
            *ngFor="let index of [0, 1]">
@@ -50,58 +53,71 @@
       </div>
     </div>
 
-    <p-divider></p-divider>
+    <mat-divider></mat-divider>
 
-    <div>Tokens</div>
+    <div class="mat-subheading-2">Tokens</div>
 
-    <div fxLayout="row"
-         fxLayoutAlign="space-between">
-      <p-scrollPanel fxFlex="50"
-                     [style]="{ height: '6rem' }">
-        <div fxLayout="column"
-             fxLayoutAlign="start start">
-          <ng-container *ngFor="let token of (tokens$ | async)?.normals"
-                        [ngTemplateOutlet]="listItemTemplate"
-                        [ngTemplateOutletContext]="{ '$implicit': token }">
-          </ng-container>
-        </div>
-      </p-scrollPanel>
+    <div fxLayout="row">
+      <div fxFlex="50"
+           style="height: 12rem; overflow-y: auto"
+           fxLayout="column"
+           fxLayoutAlign="start start">
+        <ng-container *ngFor="let token of (tokens$ | async)?.normals"
+                      [ngTemplateOutlet]="listItemTemplate"
+                      [ngTemplateOutletContext]="{ '$implicit': token }">
+        </ng-container>
+      </div>
 
-      <p-scrollPanel fxFlex="50"
-                     [style]="{ height: '6rem' }">
-        <div fxLayout="column"
-             fxLayoutAlign="start start">
-          <ng-container *ngFor="let token of (tokens$ | async)?.elites"
-                        [ngTemplateOutlet]="listItemTemplate"
-                        [ngTemplateOutletContext]="{ '$implicit': token }">
-          </ng-container>
-        </div>
-      </p-scrollPanel>
+      <div fxFlex="50"
+           style="height: 12rem; overflow-y: auto"
+           fxLayout="column"
+           fxLayoutAlign="start start">
+        <ng-container *ngFor="let token of (tokens$ | async)?.elites"
+                      [ngTemplateOutlet]="listItemTemplate"
+                      [ngTemplateOutletContext]="{ '$implicit': token }">
+        </ng-container>
+      </div>
     </div>
   </mat-card-content>
 
   <mat-card-footer>
-    <button
-      pButton
-      type="button"
-      (click)="addToken()"
-      icon="pi pi-plus"></button>
+    <button mat-mini-fab
+            class="my-fab"
+            type="button"
+            (click)="addToken()">
+      <mat-icon>cancel</mat-icon>
+    </button>
   </mat-card-footer>
 </mat-card>
 
 <ng-template #listItemTemplate let-token>
   <div
     [id]="'list-item-' + (token.elite ? 'elite' : 'normal')"
-    fxFlexFill
     fxLayout="row"
-    fxLayoutAlign="space-between center"
+    fxLayoutAlign="start center"
     fxLayoutGap=".3rem"
     class="list-item">
-    <div>{{token.number}} - <span class="text-red-600">{{token.health ?? token.maxHealth}}</span></div>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap=".3rem">
+      <div>{{token.number}} -</div>
+      <div class="text-red-600" type="number">{{token.health ?? token.maxHealth}}</div>
+    </div>
 
+    <div fxLayout="column" fxLayoutAlign="space-between center" fxLayoutGap="-5px">
+      <span style="cursor: pointer"
+            (click)="tokenService.updateTokenHitPoint$.next([token, (token.health ?? token.maxHealth) + 1])"
+            class="material-symbols-outlined">arrow_drop_up</span>
+      <!--<button mat-icon-button><mat-icon>arrow_drop_up</mat-icon></button>-->
+
+      <!--<button mat-icon-button><mat-icon>arrow_drop_down</mat-icon></button>-->
+      <span style="cursor: pointer"
+            (click)="tokenService.updateTokenHitPoint$.next([token, (token.health ?? token.maxHealth) - 1])"
+            class="material-symbols-outlined">arrow_drop_down</span>
+    </div>
+
+    <!-- active statuses -->
     <div fxFlex
          fxLayout="row wrap"
-         fxLayoutAlign="center center"
+         fxLayoutAlign="start center"
          (click)="showStatusSelectOverlay(token)">
       <ng-container *ngIf="getTokenConditionsAndEffects(token).length > 0; else openApplicableConditions">
         <ng-container *ngFor="let value of getTokenConditionsAndEffects(token)">
@@ -114,23 +130,6 @@
       <ng-template #openApplicableConditions>
         <span style="cursor: pointer" class="material-icons-outlined">more_horiz</span>
       </ng-template>
-    </div>
-
-    <div fxLayout="column"
-         fxLayoutAlign="center end">
-      <button (click)="tokenService.updateTokenHitPoint$.next([token, 1])"
-              pButton
-              pRipple
-              type="button"
-              style="background: unset; border: unset"
-              icon="pi pi-plus"></button>
-
-      <button (click)="tokenService.updateTokenHitPoint$.next([token, -1])"
-              pButton
-              pRipple
-              type="button"
-              style="background: unset; border: unset"
-              icon="pi pi-minus"></button>
     </div>
   </div>
 </ng-template>

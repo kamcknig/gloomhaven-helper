@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MonsterInfo, MonsterService } from '../services/monster.service';
 import { joinSelectors } from '@state-adapt/core';
-import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { concatMap, of, tap } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-activate-monster-dialog',
@@ -16,7 +16,7 @@ export class ActivateMonsterDialogComponent implements OnInit {
 
   constructor(
     private _monsterService: MonsterService,
-    private _dialogRef: DynamicDialogRef
+    private _dialogRef: MatDialogRef<any>
   ) {
   }
 

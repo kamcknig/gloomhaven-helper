@@ -1,21 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActiveMonsterCard } from './components/active-monster-card/active-monster-card.component';
-import { DataViewModule } from 'primeng/dataview';
-import { CardModule } from 'primeng/card';
-import { DividerModule } from 'primeng/divider';
-import { ButtonModule } from 'primeng/button';
-import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { AddTokenDialogComponent } from './components/active-monster-card/add-token-dialog/add-token-dialog.component';
-import { RippleModule } from 'primeng/ripple';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ActivateMonsterDialogComponent } from './activate-monster-dialog/activate-monster-dialog.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-import { FormsModule } from '@angular/forms';
-import { DialogModule } from 'primeng/dialog';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -30,19 +26,16 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   imports: [
     CommonModule,
-    DataViewModule,
-    CardModule,
-    DividerModule,
-    ButtonModule,
-    ScrollPanelModule,
-    RippleModule,
     FlexLayoutModule,
     AutoCompleteModule,
     FormsModule,
-    DialogModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDividerModule,
+    MatDialogModule
   ]
 })
 export class MonsterModule { }

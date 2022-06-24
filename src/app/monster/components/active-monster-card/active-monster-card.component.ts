@@ -2,9 +2,9 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ApplicableConditions, MonsterInfo, MonsterService } from '../../services/monster.service';
 import { AppService } from '../../../app.service';
 import { TokenInfo, TokenService } from '../../../token/services/token.service';
-import { DialogService } from 'primeng/dynamicdialog';
 import { AddTokenDialogComponent } from './add-token-dialog/add-token-dialog.component';
 import { map, Observable, Subject, takeUntil, tap, withLatestFrom } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-active-monster-card',
@@ -34,13 +34,15 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
         this._tokens = tokenData;
 
         if (this.selectedToken) {
-          this.selectedToken = this._tokens?.elites?.concat(this._tokens?.normals).find(t => t.number === this.selectedToken?.number && t.elite === this.selectedToken?.elite);
+          this.selectedToken = this._tokens?.elites?.concat(this._tokens?.normals)
+            .find(t => t.number === this.selectedToken?.number && t.elite === this.selectedToken?.elite);
         }
       }),
       takeUntil(this._destroy$)
     );
 
-    this.appService.scenarioStore.level$.pipe(takeUntil(this._destroy$)).subscribe(v => this.scenarioLevel = v);
+    this.appService.scenarioStore.level$.pipe(takeUntil(this._destroy$))
+      .subscribe(v => this.scenarioLevel = v);
   }
 
   ngAfterViewInit() {
@@ -51,7 +53,7 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
     public monsterService: MonsterService,
     public appService: AppService,
     public tokenService: TokenService,
-    private _dialogService: DialogService
+    private _dialogService: MatDialog
   ) {
   }
 
@@ -61,13 +63,16 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
 
   addToken() {
     this._dialogService.open(AddTokenDialogComponent, {
-      closeOnEscape: true,
-      modal: true,
+      /*
+       modal: true,
+       header: 'Choose a token number',
+       */
+      data: this._tokens,
+      disableClose: false,
       width: '20rem',
-      header: 'Choose a token number',
-      data: this._tokens
+
     })
-      .onClose
+      .afterClosed()
       .pipe(
         withLatestFrom(
           this.appService.scenarioStore.level$
@@ -83,11 +88,7 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
             number: tokenNumber,
             elite: elite,
             maxHealth: this.value!.health[scenarioLevel][elite ? 1 : 0],
-            monsterId: this.value!.id,
-            appliedConditionsAndEffects: {
-              Shield: 2,
-              Retaliate: 2
-            }
+            monsterId: this.value!.id
           })
         }
       });
@@ -102,11 +103,16 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
   }
 
   getTokenConditionsAndEffects(token: TokenInfo) {
-    return Object.entries(token.appliedConditionsAndEffects ?? {}).reduce((prev, next) => {
-      if (next[1]) {
-        prev.push({ name: next[0], value: next[1] });
-      }
-      return prev;
-    }, [] as { name: string, value: number }[]);
+    return Object.entries(token.appliedConditionsAndEffects ?? {})
+      .reduce((prev, next) => {
+        if (next[1]) {
+          prev.push({ name: next[0], value: next[1] });
+        }
+        return prev;
+      }, [] as { name: string, value: number }[]);
+  }
+
+  setTokenHp(token: TokenInfo, event: any) {
+    this.tokenService.updateTokenHitPoint$.next([token, event.target?.value ?? 0])
   }
 }

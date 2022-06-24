@@ -1,29 +1,31 @@
-<div class="flex flex-row">
-  <div class="flex flex-wrap flex-row gap-2 justify-content-center">
+<div mat-dialog-title>Choose a token</div>
+
+<div fxLayout="row" fxLayoutAlign="space-around center">
+  <div fxLayout="row wrap" fxLayoutGap=".2rem grid" fxFlex="0">
+    <div fxFlex *ngFor="let index of defaultNumbers">
     <button
-      *ngFor="let index of defaultNumbers"
+      class="button-normal"
       (click)="selectTokenNumber(index, false)"
       [ngStyle]="{'visibility': getTokenButtonVisible(index)}"
-      pButton
-      pRipple
       type="button"
-      class="p-button-rounded button-normal">
+      mat-mini-fab>
       {{index}}
     </button>
+    </div>
   </div>
 
-  <p-divider layout="vertical"></p-divider>
+  <mat-divider fxFlex [vertical]="true"></mat-divider>
 
-  <div class="flex flex-wrap flex-row gap-2 justify-content-center">
+  <div fxLayout="row wrap" fxLayoutGap=".2rem grid" fxFlex="0">
+    <div fxFlex *ngFor="let index of defaultNumbers">
     <button
-      *ngFor="let index of defaultNumbers"
+      class="button-elite"
       (click)="selectTokenNumber(index, true)"
       [ngStyle]="{'visibility': getTokenButtonVisible(index)}"
-      pButton
-      pRipple
       type="button"
-      class="p-button-rounded button-elite">
+      mat-mini-fab>
       {{index}}
     </button>
+    </div>
   </div>
 </div>

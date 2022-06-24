@@ -30,7 +30,7 @@ export class TokenService {
         return state;
       }
       const token = newState[idx];
-      newState.splice(idx, 1, { ...token, health: (token?.health ?? token.maxHealth) + event[1] });
+      newState.splice(idx, 1, { ...token, health: event[1] });
 
       if ((newState[idx].health ?? 0) < 1) {
         newState.splice(idx, 1);

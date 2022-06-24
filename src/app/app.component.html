@@ -2,15 +2,18 @@
   <div class="p-toolbar-group-left">
     <span>Scenario Level</span>
 
-    <p-divider layout="vertical"></p-divider>
+    <mat-divider [vertical]="true"></mat-divider>
 
-    <p-inputNumber [showButtons]="true"
-                   [min]="0"
-                   [max]="7"
-                   [inputStyle]="{ maxWidth: '4rem' }"
-                   (onInput)="appService.scenarioLevel$.next($event.value)"
-                   [ngModel]="appService.scenarioStore.level$ | async"></p-inputNumber>
+    <mat-form-field appearance="outline">
+      <input [formControl]="levelInputControl"
+             [value]="appService.scenarioStore.level$ | async"
+             matInput
+             type="number"
+             [min]="0"
+             [max]="7">
+    </mat-form-field>
   </div>
+
   <div class="p-toolbar-group-right">
     <p-splitButton
       [model]="toolbarButtons"

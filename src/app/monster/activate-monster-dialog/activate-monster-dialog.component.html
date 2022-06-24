@@ -1,4 +1,6 @@
-<div class="p-dialog-content">
+<h1 mat-dialog-title>Activate a monster</h1>
+
+<div mat-dialog-content>
   <p-autoComplete
     [autofocus]="true"
     appendTo="body"
@@ -14,6 +16,12 @@
   </p-autoComplete>
 </div>
 
-<div class="p-dialog-footer">
-  <button [disabled]="!selected" (click)="close(selected!.id)" type="button" pButton>OK</button>
+<div mat-dialog-actions>
+  <button mat-raised-button
+          color="primary"
+          [disabled]="!selected"
+          (click)="close(selected!.id)"
+          type="button">
+    OK
+  </button>
 </div>

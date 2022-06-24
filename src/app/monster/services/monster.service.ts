@@ -4,8 +4,10 @@ import { HttpClient } from '@angular/common/http';
 
 export enum ConditionsAndEffects {
   AddTarget = 'AddTarget',
+  Advantage = 'Advantage',
   Bless = 'Bless',
   Curse = 'Curse',
+  Disadvantage = 'Disadvantage',
   Disarm = 'Disarm',
   Immobilize = 'Immobilize',
   Invisibility = 'Invisibility',
@@ -21,6 +23,9 @@ export enum ConditionsAndEffects {
   Wound = 'Wound',
 }
 
+/**
+ * These are the effects and conditions that can be applied to a monster or a character
+ */
 export const ApplicableConditions = [
   'Disarm',
   'Immobilize',
@@ -40,7 +45,7 @@ export interface MonsterInfo {
   health: [number, number][],
   attack?: [number, number][];
   conditionsAndEffects?: {
-    [key in keyof typeof ConditionsAndEffects]: [number, number][]
+    [key in keyof typeof ConditionsAndEffects]: ([number, number] | [[number, number], [number, number]])[];
   }
   elite?: boolean;
   flying?: [boolean, boolean][];
