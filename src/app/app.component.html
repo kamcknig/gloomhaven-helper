@@ -6,7 +6,7 @@
 
     <mat-form-field appearance="outline">
       <input [formControl]="levelInputControl"
-             [value]="appService.scenarioStore.level$ | async"
+             (change)="this.appService.scenarioLevel$.next(+(levelInputControl?.value ?? 0))"
              matInput
              type="number"
              [min]="0"
