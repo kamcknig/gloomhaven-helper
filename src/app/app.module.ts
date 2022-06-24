@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { actionSanitizer, AdaptCommon, createStore, stateSanitizer, } from '@state-adapt/core';
-import { ToolbarModule } from 'primeng/toolbar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScenarioOptionsModule } from './scenario-options/scenario-options.module';
 import { MAX_LEVEL } from './scenario-options/max-level.token';
@@ -18,6 +17,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   actionSanitizer,
@@ -34,7 +35,6 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
     AppRoutingModule,
     HttpClientModule,
     MatDialogModule,
-    ToolbarModule,
     FormsModule,
     ScenarioOptionsModule.forRoot(),
     MonsterModule,
@@ -43,7 +43,9 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
     SplitButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [
     { provide: AdaptCommon, useValue: createStore(enableReduxDevtools) },

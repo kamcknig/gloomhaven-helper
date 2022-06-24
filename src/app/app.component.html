@@ -1,27 +1,24 @@
-<p-toolbar>
-  <div class="p-toolbar-group-left">
-    <span>Scenario Level</span>
+<mat-toolbar color="primary" style="padding: 3rem;">
+  <mat-form-field color="accent">
+    <mat-label>Scenario Level</mat-label>
+    <input [formControl]="levelInputControl"
+           placeholder="Scenario Level"
+           (change)="this.appService.scenarioLevel$.next(+(levelInputControl?.value ?? 0))"
+           matInput
+           type="number"
+           [min]="0"
+           [max]="7">
+  </mat-form-field>
 
-    <mat-divider [vertical]="true"></mat-divider>
-
-    <mat-form-field appearance="outline">
-      <input [formControl]="levelInputControl"
-             (change)="this.appService.scenarioLevel$.next(+(levelInputControl?.value ?? 0))"
-             matInput
-             type="number"
-             [min]="0"
-             [max]="7">
-    </mat-form-field>
+  <span style="flex: 1 1 auto;"></span>
+  <div>
+    <button
+      type="button"
+      mat-raised-button
+      color="accent"
+      (click)="activateMonster($event)">Activate Monster</button>
   </div>
-
-  <div class="p-toolbar-group-right">
-    <p-splitButton
-      [model]="toolbarButtons"
-      (onClick)="activateMonster($event)"
-      label="Activate Monster"
-      styleClass="p-button-raised mr-2 mb-2"></p-splitButton>
-  </div>
-</p-toolbar>
+</mat-toolbar>
 
 <div
   fxLayout="row wrap"
