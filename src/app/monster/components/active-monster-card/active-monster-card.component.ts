@@ -1,5 +1,10 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { ApplicableConditions, MonsterInfo, MonsterService } from '../../services/monster.service';
+import {
+  ApplicableConditions, ConditionAndEffectsType,
+  ConditionsAndEffects,
+  MonsterInfo,
+  MonsterService
+} from '../../services/monster.service';
 import { AppService } from '../../../app.service';
 import { TokenInfo, TokenService } from '../../../token/services/token.service';
 import { AddTokenDialogComponent } from './add-token-dialog/add-token-dialog.component';
@@ -17,11 +22,14 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
   public selectedToken: TokenInfo | undefined;
   public scenarioLevel: number | undefined;
 
+  ConditionsAndEffects = ConditionsAndEffects;
   ApplicableConditions = ApplicableConditions;
   private _tokens: { elites: TokenInfo[], normals: TokenInfo[] } | undefined;
   private _destroy$: Subject<void> = new Subject<void>();
 
   ngOnInit(): void {
+    console.log(this.value);
+
     this.tokens$ = this.tokenService.tokenStore.tokens$.pipe(
       // gets the tokens that belong to this monster
       map(tokens => tokens.filter(t => t.monsterId === this.value!.id)),
@@ -63,10 +71,6 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
 
   addToken() {
     this._dialogService.open(AddTokenDialogComponent, {
-      /*
-       modal: true,
-       header: 'Choose a token number',
-       */
       data: this._tokens,
       disableClose: false,
       width: '20rem',
@@ -114,5 +118,14 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
 
   setTokenHp(token: TokenInfo, event: any) {
     this.tokenService.updateTokenHitPoint$.next([token, event.target?.value ?? 0])
+  }
+
+  hasCondition(condition: ConditionAndEffectsType, elite: boolean) {
+    const tmp = this.value?.conditionsAndEffects?.[condition]?.[this.scenarioLevel ?? 0]?.[elite ? 1 : 0] ?? 0;
+    if (typeof tmp === 'number') {
+      return tmp > 0;
+    }
+
+    return tmp[0] > 0;
   }
 }

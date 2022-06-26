@@ -2,26 +2,26 @@ import { Injectable } from '@angular/core';
 import { AdaptCommon, createAdapter, createSelectors, getHttpSources, Source } from '@state-adapt/core';
 import { HttpClient } from '@angular/common/http';
 
-export enum ConditionsAndEffects {
-  AddTarget = 'AddTarget',
-  Advantage = 'Advantage',
-  Bless = 'Bless',
-  Curse = 'Curse',
-  Disadvantage = 'Disadvantage',
-  Disarm = 'Disarm',
-  Immobilize = 'Immobilize',
-  Invisibility = 'Invisibility',
-  Muddle = 'Muddle',
-  Pierce = 'Pierce',
-  Poison = 'Poison',
-  Pull = 'Pull',
-  Push = 'Push',
-  Retaliate = 'Retaliate',
-  Shield = 'Shield',
-  Strengthen = 'Strengthen',
-  Stun = 'Stun',
-  Wound = 'Wound',
-}
+export const ConditionsAndEffects = [
+  'AddTarget',
+  'Advantage',
+  'Bless',
+  'Curse',
+  'Disadvantage',
+  'Disarm',
+  'Immobilize',
+  'Invisibility',
+  'Muddle',
+  'Pierce',
+  'Poison',
+  'Pull',
+  'Push',
+  'Retaliate',
+  'Shield',
+  'Strengthen',
+  'Stun',
+  'Wound'
+] as const;
 
 /**
  * These are the effects and conditions that can be applied to a monster or a character
@@ -39,13 +39,15 @@ export const ApplicableConditions = [
   'Wound'
 ]
 
+export type ConditionAndEffectsType = typeof ConditionsAndEffects[number];
+
 export interface MonsterInfo {
   name: string;
   id: number;
   health: [number, number][],
   attack?: [number, number][];
   conditionsAndEffects?: {
-    [key in keyof typeof ConditionsAndEffects]: ([number, number] | [[number, number], [number, number]])[];
+    [key in ConditionAndEffectsType]: ([number, number] | [[number, number], [number, number]])[];
   }
   elite?: boolean;
   flying?: [boolean, boolean][];
@@ -81,7 +83,8 @@ export class MonsterService {
 
   private _monsterAdapter = createAdapter<MonsterInfo[]>()({
     add: (state, event: MonsterNoId[] | MonsterNoId, initialState) =>
-      [...state, ...(Array.isArray(event) ? event : [event]).map(e => ({ ...e, id: ++MonsterService._idIncrementer }) as MonsterInfo)],
+      [...state, ...(Array.isArray(event) ? event : [event]).map(
+        e => ({ ...e, id: ++MonsterService._idIncrementer }) as MonsterInfo)],
     selectors: createSelectors<MonsterInfo[]>()({
       monsters: s => s
     })
