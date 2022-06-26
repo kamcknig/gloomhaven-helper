@@ -22,8 +22,8 @@
 <div mat-dialog-actions>
   <button mat-raised-button
           color="primary"
-          [disabled]="!selected"
-          (click)="close(selected!.id)"
+          [disabled]="!monsterInputControl.value"
+          (click)="close(monsterInputControl.value.id)"
           type="button">
     OK
   </button>

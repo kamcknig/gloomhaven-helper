@@ -12,7 +12,6 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
   styleUrls: ['./activate-monster-dialog.component.scss']
 })
 export class ActivateMonsterDialogComponent implements OnInit {
-  public selected: MonsterInfo | undefined;
   public availableMonsters$: Observable<MonsterInfo[]> | undefined;
   public filteredAvailableMonsters$: Observable<MonsterInfo[]> | undefined;
   public monsterInputControl: FormControl = new FormControl('');
@@ -39,8 +38,10 @@ export class ActivateMonsterDialogComponent implements OnInit {
     )
       .state$
       .pipe(
-        concatMap((value, index) => index === 0 ? of(value)
-          .pipe(tap(value => this.selected = value[0])) : of(value))
+        concatMap((value, index) =>
+          index === 0
+            ? of(value).pipe(tap(value => this.monsterInputControl.setValue(value[0])))
+            : of(value))
       );
 
     this.filteredAvailableMonsters$ = this.monsterInputControl.valueChanges.pipe(
@@ -57,11 +58,11 @@ export class ActivateMonsterDialogComponent implements OnInit {
     this._dialogRef.close(value);
   }
 
-  selectMonster($event: MatAutocompleteSelectedEvent) {
-    this.selected = $event.option.value;
-
-  }
   displayAutocompleteForValue($event: any) {
     return $event.name;
+  }
+
+  selectMonster($event: MatAutocompleteSelectedEvent) {
+    console.log(this.monsterInputControl.value);
   }
 }

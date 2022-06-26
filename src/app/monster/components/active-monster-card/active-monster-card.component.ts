@@ -21,9 +21,9 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
   public selectedToken: TokenInfo | undefined;
   public scenarioLevel: number | undefined;
+  public ConditionsAndEffects = ConditionsAndEffects;
+  public ApplicableConditions = ApplicableConditions;
 
-  ConditionsAndEffects = ConditionsAndEffects;
-  ApplicableConditions = ApplicableConditions;
   private _tokens: { elites: TokenInfo[], normals: TokenInfo[] } | undefined;
   private _destroy$: Subject<void> = new Subject<void>();
 
