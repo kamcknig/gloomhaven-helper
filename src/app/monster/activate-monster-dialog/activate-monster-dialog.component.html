@@ -1,20 +1,23 @@
 <h1 mat-dialog-title>Activate a monster</h1>
 
-<div mat-dialog-content>
-  <p-autoComplete
-    [autofocus]="true"
-    appendTo="body"
-    dataKey="id"
-    [autoHighlight]="true"
-    [(ngModel)]="selected"
-    [dropdown]="true"
-    [forceSelection]="true"
-    [suggestions]="searchResults"
-    field="name"
-    (onSelect)="selectMonster($event)"
-    (completeMethod)="search($event)">
-  </p-autoComplete>
-</div>
+<mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <input type="text"
+           matInput
+           placeholder="Monster"
+           [formControl]="monsterInputControl"
+           [matAutocomplete]="autocompleteTemplateRefId">
+
+    <mat-autocomplete #autocompleteTemplateRefId="matAutocomplete"
+                      [autoActiveFirstOption]="true"
+                      (optionSelected)="selectMonster($event)"
+                      [displayWith]="displayAutocompleteForValue">
+      <mat-option *ngFor="let choice of filteredAvailableMonsters$ | async" [value]="choice">
+        {{choice.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</mat-dialog-content>
 
 <div mat-dialog-actions>
   <button mat-raised-button

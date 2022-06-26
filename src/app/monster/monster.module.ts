@@ -4,7 +4,6 @@ import { ActiveMonsterCard } from './components/active-monster-card/active-monst
 import { AddTokenDialogComponent } from './components/active-monster-card/add-token-dialog/add-token-dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ActivateMonsterDialogComponent } from './activate-monster-dialog/activate-monster-dialog.component';
-import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 
@@ -27,7 +27,6 @@ import { MatDialogModule } from '@angular/material/dialog';
   imports: [
     CommonModule,
     FlexLayoutModule,
-    AutoCompleteModule,
     FormsModule,
     MatCardModule,
     MatButtonModule,
@@ -35,7 +34,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     ReactiveFormsModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatAutocompleteModule
   ]
 })
 export class MonsterModule { }

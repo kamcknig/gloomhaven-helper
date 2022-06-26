@@ -30,9 +30,9 @@
     <!-- stats section for both normals and elites -->
     <div fxLayout="row" fxLayoutAlign="space-between start">
       <div fxLayout="row" fxFlex *ngFor="let index of [0, 1]">
-        <div fxLayout="column">
+        <div fxLayout="column" fxFlex [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'">
           <!-- monster stats on the monster info card -->
-          <div fxLayout="row">
+          <div fxLayout="row" class="monster-status-container mat-title">
             <span fxLayout="column" fxLayoutAlign="start center">
               <img class="icon" src="assets/icons/health.png">
               {{getStatDisplayValue(value?.health?.[scenarioLevel ?? 0]?.[index])}}
@@ -68,28 +68,22 @@
 
     <mat-divider></mat-divider>
 
-    <div class="mat-subheading-2">Tokens</div>
+    <div class="mat-title">Tokens</div>
 
     <div fxLayout="row">
-      <div fxFlex="50"
-           style="height: 12rem; overflow-y: auto"
-           fxLayout="column"
-           fxLayoutAlign="start start">
-        <ng-container *ngFor="let token of (tokens$ | async)?.normals"
-                      [ngTemplateOutlet]="listItemTemplate"
-                      [ngTemplateOutletContext]="{ '$implicit': token }">
+      <ng-container *ngIf="tokens$ | async as tokens">
+        <ng-container *ngFor="let tokenType of ['normals', 'elites']">
+          <div fxFlex="50"
+               fxLayout="column"
+               fxLayoutAlign="start start"
+               class="token-list-container">
+            <ng-container *ngFor="let token of tokens?.[tokenType]"
+                          [ngTemplateOutlet]="listItemTemplate"
+                          [ngTemplateOutletContext]="{ '$implicit': token }">
+            </ng-container>
+          </div>
         </ng-container>
-      </div>
-
-      <div fxFlex="50"
-           style="height: 12rem; overflow-y: auto"
-           fxLayout="column"
-           fxLayoutAlign="start start">
-        <ng-container *ngFor="let token of (tokens$ | async)?.elites"
-                      [ngTemplateOutlet]="listItemTemplate"
-                      [ngTemplateOutletContext]="{ '$implicit': token }">
-        </ng-container>
-      </div>
+      </ng-container>
     </div>
   </mat-card-content>
 

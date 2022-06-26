@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
 import { AppService } from './app.service';
 import { MonsterInfo, MonsterService } from './monster/services/monster.service';
 import { map, Subject, take, takeUntil } from 'rxjs';
 import { ActivateMonsterDialogComponent } from './monster/activate-monster-dialog/activate-monster-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
-
-export type AppMenuItem<T = any> = MenuItem & { metadata?: T };
 
 @Component({
   selector: 'app-root',
@@ -20,24 +17,10 @@ export class AppComponent implements OnInit {
   title = 'gloomhaven-helper';
   levelInputControl = new FormControl('');
 
-  toolbarButtons: AppMenuItem<MonsterInfo>[] = [
-    {
-      label: 'Add monster',
-      command: this.activateMonster.bind(this),
-      tooltipOptions: {
-        tooltipLabel: 'Add monster',
-        tooltipPosition: 'top',
-        showDelay: 300,
-        positionLeft: 20
-      }
-    }
-  ];
-
   public activateMonster(...args: any[]): void {
     this._dialogService.open(ActivateMonsterDialogComponent, {
-      disableClose: false
-      /*modal: true,
-       header: "Select a monster"*/
+      disableClose: false,
+      autoFocus: false
     })
       .afterClosed()
       .subscribe({

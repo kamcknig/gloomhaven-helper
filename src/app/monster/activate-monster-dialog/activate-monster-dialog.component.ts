@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MonsterInfo, MonsterService } from '../services/monster.service';
 import { joinSelectors } from '@state-adapt/core';
-import { concatMap, of, tap } from 'rxjs';
+import { concatMap, map, Observable, of, startWith, tap, withLatestFrom } from 'rxjs';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FormControl } from '@angular/forms';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-activate-monster-dialog',
@@ -10,9 +12,10 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./activate-monster-dialog.component.scss']
 })
 export class ActivateMonsterDialogComponent implements OnInit {
-  searchResults: MonsterInfo[] = [];
-  selected: MonsterInfo | undefined;
-  availableMonsters: MonsterInfo[] = [];
+  public selected: MonsterInfo | undefined;
+  public availableMonsters$: Observable<MonsterInfo[]> | undefined;
+  public filteredAvailableMonsters$: Observable<MonsterInfo[]> | undefined;
+  public monsterInputControl: FormControl = new FormControl('');
 
   constructor(
     private _monsterService: MonsterService,
@@ -21,7 +24,7 @@ export class ActivateMonsterDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    joinSelectors(
+    this.availableMonsters$ = joinSelectors(
       this._monsterService.monsterStore,
       this._monsterService.activeMonsterStore,
       (monsters, activeMonsters) => {
@@ -36,34 +39,29 @@ export class ActivateMonsterDialogComponent implements OnInit {
     )
       .state$
       .pipe(
-        concatMap((value, index) => index === 0 ? of(value).pipe(tap(value => this.selected = value[0])) : of(value))
-      )
-      .subscribe({
-          next: value => {
-            this.availableMonsters = value;
-          }
-        }
+        concatMap((value, index) => index === 0 ? of(value)
+          .pipe(tap(value => this.selected = value[0])) : of(value))
       );
-  }
 
-  search($event: any) {
-    let query = $event.query as string;
-    if (!query) {
-      this.searchResults = this.availableMonsters.concat();
-      return;
-    }
-
-    query = query.replace(/\s/g, '');
-    this.searchResults = this.availableMonsters.filter(
-      e => new RegExp(`${query}`, 'gi').test(e.name.replace(/\s/g, ''))
+    this.filteredAvailableMonsters$ = this.monsterInputControl.valueChanges.pipe(
+      startWith(undefined),
+      map(value => typeof value === 'string' ? value : value?.name ?? ''),
+      withLatestFrom(this.availableMonsters$),
+      map(([value, monsters]) => monsters.filter(m => {
+        return new RegExp(`${value.toLowerCase()}`, 'gi').test(m.name);
+      }))
     );
-  }
-
-  selectMonster($event: any) {
-    this.selected = $event;
   }
 
   close(value: any) {
     this._dialogRef.close(value);
+  }
+
+  selectMonster($event: MatAutocompleteSelectedEvent) {
+    this.selected = $event.option.value;
+
+  }
+  displayAutocompleteForValue($event: any) {
+    return $event.name;
   }
 }

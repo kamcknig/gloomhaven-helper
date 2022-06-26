@@ -12,7 +12,6 @@ import { MAX_LEVEL } from './scenario-options/max-level.token';
 import { MonsterModule } from './monster/monster.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { SplitButtonModule } from 'primeng/splitbutton';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -40,7 +39,6 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
     MonsterModule,
     MatDividerModule,
     FlexLayoutModule,
-    SplitButtonModule,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,

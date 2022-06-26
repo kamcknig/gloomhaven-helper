@@ -20,8 +20,20 @@
       background: linear-gradient(to right, white -25%, rgba(117, 117, 117, .5) 50%, rgba(130, 106, 25, .5) 50%, white 125%);
 
       .mat-card-content {
-        width: 23rem;
-        height: 18rem;
+        width: 28rem;
+        height: 20rem;
+
+        .monster-status-container {
+          .icon {
+            max-height: 2rem;
+            max-width: 2rem;
+          }
+        }
+
+        .token-list-container {
+          height: 14rem;
+          overflow-y: auto
+        }
       }
     }
 

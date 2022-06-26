@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DataViewModule } from 'primeng/dataview';
-import { CardModule } from 'primeng/card';
 
 
 @NgModule({
@@ -12,9 +10,7 @@ import { CardModule } from 'primeng/card';
 
   ],
   imports: [
-    CommonModule,
-    DataViewModule,
-    CardModule
+    CommonModule
   ]
 })
 export class AttackCardModule { }
