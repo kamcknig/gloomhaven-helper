@@ -28,8 +28,6 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
   private _destroy$: Subject<void> = new Subject<void>();
 
   ngOnInit(): void {
-    console.log(this.value);
-
     this.tokens$ = this.tokenService.tokenStore.tokens$.pipe(
       // gets the tokens that belong to this monster
       map(tokens => tokens.filter(t => t.monsterId === this.value!.id)),
@@ -73,8 +71,7 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
     this._dialogService.open(AddTokenDialogComponent, {
       data: this._tokens,
       disableClose: false,
-      width: '20rem',
-
+      width: '20rem'
     })
       .afterClosed()
       .pipe(
