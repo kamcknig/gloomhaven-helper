@@ -16,13 +16,16 @@ export interface TokenInfo {
   providedIn: 'root'
 })
 export class TokenService {
-  public addToken$: Source<TokenInfo> = new Source('addToken$');
+  public addToken$: Source<TokenInfo[] | TokenInfo> = new Source('addToken$');
   public updateTokenHitPoint$: Source<[TokenInfo, number]> = new Source('updateTokenHitPoint$');
   public toggleTokenStatus$: Source<{ token: TokenInfo, condition: string }> = new Source(
     'toggleTokenStatus$')
 
   private _tokenAdapter = createAdapter<TokenInfo[]>()({
-    addToken: (state, event, initialState) => [...state, event],
+    addToken: (state, event, initialState) => {
+      event = Array.isArray(event) ? event : [event];
+      return [...state, ...event];
+    },
     updateTokenHitPoint: (state, event: [TokenInfo, number], initialState) => {
       const newState = [...state];
       const idx = newState.findIndex(t => t.monsterId === event[0].monsterId && t.number === event[0].number);

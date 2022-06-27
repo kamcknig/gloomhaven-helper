@@ -80,17 +80,22 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
         )
       )
       .subscribe({
-        next: ([[tokenNumber, elite] = [NaN], scenarioLevel]) => {
-          if (isNaN(tokenNumber)) {
+        next: ([data, scenarioLevel]: [{ normal: number[], elite: number[] }, number]) => {
+          if (!data) {
             return;
           }
 
-          this.tokenService.addToken$.next({
-            number: tokenNumber,
-            elite: elite,
-            maxHealth: this.value!.health[scenarioLevel][elite ? 1 : 0],
-            monsterId: this.value!.id
-          })
+          this.tokenService.addToken$.next(Object.entries(data)
+            .reduce((prev, [key, numbers]) => {
+              return prev.concat(numbers.reduce((prev, nextTokenNumber) => {
+                return prev.concat({
+                  number: nextTokenNumber,
+                  elite: key === 'elite',
+                  maxHealth: this.value!.health[scenarioLevel][key === 'elite' ? 1 : 0],
+                  monsterId: this.value!.id
+                });
+              }, [] as TokenInfo[]));
+            }, [] as TokenInfo[]))
         }
       });
   }

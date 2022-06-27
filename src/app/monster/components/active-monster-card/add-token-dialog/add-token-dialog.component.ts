@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { TokenInfo } from '../../../../token/services/token.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -10,9 +10,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class AddTokenDialogComponent implements OnInit {
   public value: { normals: TokenInfo[], elites: TokenInfo[] };
   public defaultNumbers: number[];
+  public selectedTokens: { normal: number[], elite: number[] } = { normal: [], elite: [] };
 
   constructor(
     private _dialogRef: MatDialogRef<any>,
+    private _cdr: ChangeDetectorRef,
     @Inject(MAT_DIALOG_DATA) private _data: any
   ) {
     this.defaultNumbers = Array(10)
@@ -26,11 +28,13 @@ export class AddTokenDialogComponent implements OnInit {
 
   /**
    * Checks if the token number is already taken and returns 'hidden' if it does, otherwise 'visible'
+   *
    * @param index
+   * @param elite
    */
-  getTokenButtonVisible(index: number) {
+  getTokenButtonVisible(index: number, elite: false) {
     return this.value?.elites?.concat(this.value?.normals ?? [])
-      ?.find(e => e.number === index)
+      ?.find(e => e.number === index) || (!this.isSelectable(index) && !this.isSelected(index, elite))
       ? 'hidden'
       : 'visible'
       ?? 'visible';
@@ -43,7 +47,39 @@ export class AddTokenDialogComponent implements OnInit {
    * @param number
    * @param elite
    */
-  selectTokenNumber(number: number, elite: boolean = false) {
-    this._dialogRef.close([number, elite]);
+  toggleTokenNumber(number: number, elite: boolean = false) {
+    let src = this.selectedTokens[elite ? 'elite' : 'normal'];
+    let idx = src.findIndex(e => e === number);
+    if (idx > -1) {
+      src.splice(idx, 1);
+    }
+    else {
+      src.push(number);
+    }
+
+    this._cdr.detectChanges();
+  }
+
+  /**
+   * Returns true if the token has been selected and queued to be added.
+   *
+   * @param idx
+   * @param elite
+   */
+  isSelected(idx: number, elite: boolean) {
+    return this.selectedTokens[elite ? 'elite' : 'normal'].find(e => e === idx);
+  }
+
+  /**
+   * Returns true if the token number is selectable.
+   *
+   * @param idx
+   */
+  isSelectable(idx: number) {
+    return !this.selectedTokens.elite.concat(this.selectedTokens.normal).find(e => e === idx);
+  }
+
+  confirmTokens() {
+    this._dialogRef.close(this.selectedTokens);
   }
 }

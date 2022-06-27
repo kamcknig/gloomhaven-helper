@@ -9,5 +9,9 @@
       background-color: gray;
       border-color: gray;
     }
+
+    &.selected {
+      filter: brightness(20%);
+    }
   }
 }

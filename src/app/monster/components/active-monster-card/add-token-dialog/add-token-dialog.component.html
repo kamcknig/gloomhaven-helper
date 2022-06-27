@@ -1,5 +1,6 @@
 <div mat-dialog-title>Choose a token</div>
 
+<mat-dialog-content>
 <div fxLayout="row" fxLayoutAlign="space-around center">
   <div fxLayout="row wrap" fxLayoutGap=".2rem grid" fxFlex="0">
     <div fxFlex *ngFor="let index of defaultNumbers">
@@ -17,12 +18,23 @@
     </div>
   </div>
 </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button
+          (click)="confirmTokens()"
+          color="primary">OK</button>
+</mat-dialog-actions>
 
 <ng-template #buttonTemplate let-index let-elite="elite">
   <button
-    [ngClass]="{ 'button-elite': elite, 'button-normal': !elite }"
-    (click)="selectTokenNumber(index, elite)"
-    [ngStyle]="{'visibility': getTokenButtonVisible(index)}"
+    [ngClass]="{
+      'button-elite': elite,
+      'button-normal': !elite,
+      'selected': isSelected(index, elite)
+    }"
+    (click)="toggleTokenNumber(index, elite)"
+    [ngStyle]="{'visibility': getTokenButtonVisible(index, elite)}"
     type="button"
     mat-mini-fab>
     {{index}}
