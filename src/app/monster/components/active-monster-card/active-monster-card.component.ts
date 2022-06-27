@@ -71,8 +71,7 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
     this._dialogService.open(AddTokenDialogComponent, {
       data: this._tokens,
       disableClose: false,
-      width: '20rem',
-
+      width: '20rem'
     })
       .afterClosed()
       .pipe(
