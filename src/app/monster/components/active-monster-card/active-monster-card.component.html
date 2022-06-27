@@ -105,6 +105,7 @@
   <mat-card-actions align="end">
     <button mat-mini-fab
             type="button"
+            *ngIf="!!value?.health?.[this.scenarioLevel ?? 0]"
             (click)="addToken()">
       <mat-icon>add</mat-icon>
     </button>
