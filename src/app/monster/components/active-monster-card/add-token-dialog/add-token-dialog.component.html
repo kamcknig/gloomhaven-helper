@@ -18,14 +18,28 @@
 
   <div fxLayout="row wrap" fxLayoutGap=".2rem grid" fxFlex="0">
     <div fxFlex *ngFor="let index of defaultNumbers">
-    <button
+      <ng-container [ngTemplateOutlet]="buttonTemplate" [ngTemplateOutletContext]="{ $implicit: index, elite: true }">
+
+      </ng-container>
+    <!--<button
       class="button-elite"
       (click)="selectTokenNumber(index, true)"
       [ngStyle]="{'visibility': getTokenButtonVisible(index)}"
       type="button"
       mat-mini-fab>
       {{index}}
-    </button>
+    </button>-->
     </div>
   </div>
 </div>
+
+<ng-template #buttonTemplate let-index let-elite>
+  <button
+    [ngClass]="{ 'button-elite': elite, 'button-normal': !elite }"
+    (click)="selectTokenNumber(index, elite)"
+    [ngStyle]="{'visibility': getTokenButtonVisible(index)}"
+    type="button"
+    mat-mini-fab>
+    {{index}}
+  </button>
+</ng-template>
