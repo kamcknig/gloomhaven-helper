@@ -1,4 +1,4 @@
-$topSectionHeight: 36%;
+$topSectionHeight: 35%;
 
 :host {
   position: relative;
@@ -24,6 +24,11 @@ $topSectionHeight: 36%;
       .mat-card-content {
         width: 28rem;
         height: 20rem;
+        margin-bottom: 0;
+
+        .mat-title {
+          margin: 0;
+        }
 
         .monster-info-wrapper {
           position: relative;
@@ -56,6 +61,7 @@ $topSectionHeight: 36%;
 
     .list-item {
       width: 100%;
+      padding-left: 1rem;
 
       .status-icon {
         max-height: 1.5rem;

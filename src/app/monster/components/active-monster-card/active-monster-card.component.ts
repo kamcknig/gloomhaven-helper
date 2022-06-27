@@ -130,4 +130,12 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
 
     return tmp[0] > 0;
   }
+
+  showAdditionConditionEffectInfo(condition: string) {
+    return ['Retaliate', 'Pierce', 'Pull', 'Shield'].includes(condition);
+  }
+  monsterHasConditionEffect(condition: string, elite: boolean = false) {
+    return this.value?.conditionsAndEffects?.[condition]?.[this.scenarioLevel ?? 0]?.[elite ? 1 : 0] > 0
+    || this.value?.conditionsAndEffects?.[condition]?.[this.scenarioLevel ?? 0]?.[elite ? 1 : 0]?.[0] > 0;
+  }
 }

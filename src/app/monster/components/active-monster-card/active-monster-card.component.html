@@ -29,8 +29,8 @@
   <mat-card-content>
     <!-- stats section for both normals and elites -->
     <div class="monster-info-wrapper" fxLayout="row" fxLayoutAlign="space-between start">
-      <div fxLayout="row" fxFlex *ngFor="let index of [0, 1]">
-        <div fxLayout="column" fxFlex [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'">
+      <ng-container *ngFor="let index of [0, 1]">
+        <div fxLayout="column" fxFlex [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'" fxLayoutGap=".5rem">
           <!-- monster stats on the monster info card -->
           <div fxLayout="row" class="monster-status-container mat-title">
             <span fxLayout="column" fxLayoutAlign="start center">
@@ -56,22 +56,31 @@
 
           <!-- statuses that the monster has on it's monster info card -->
           <div fxLayout="row">
-            <div *ngFor="let condition of ConditionsAndEffects">
+            <div *ngFor="let condition of ConditionsAndEffects" fxLayout="row" fxLayoutAlign="start center">
               <img *ngIf="hasCondition(condition, index === 1)"
                    [src]="'assets/icons/' + condition.toLowerCase() + '.png'"
                    style="max-width: 2rem; max-height: 2rem;">
+
+              <span *ngIf="showAdditionConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1)"
+                    style="margin-right: .5rem; font-size: 20px;">
+                {{value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[0] ?? value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]}}
+              </span>
             </div>
           </div>
         </div>
-      </div>
+      </ng-container>
     </div>
 
     <mat-divider></mat-divider>
 
-    <div class="token-info-wrapper" fxLayout="column">
+    <div class="token-info-wrapper"
+         fxLayout="column">
       <div class="mat-title">Tokens</div>
 
-      <div class="token-list-wrapper" fxLayout="row" fxFlex>
+      <div class="token-list-wrapper"
+           fxLayoutGap="2rem"
+           fxLayout="row"
+           fxFlex>
         <ng-container *ngIf="tokens$ | async as tokens">
           <ng-container *ngFor="let tokenType of ['normals', 'elites']">
             <div fxFlex="50" class="token-list">
