@@ -61,8 +61,4 @@ export class ActivateMonsterDialogComponent implements OnInit {
   displayAutocompleteForValue($event: any) {
     return $event.name;
   }
-
-  selectMonster($event: MatAutocompleteSelectedEvent) {
-    console.log(this.monsterInputControl.value);
-  }
 }

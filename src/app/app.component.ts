@@ -36,7 +36,6 @@ export class AppComponent implements OnInit {
             });
 
           if (!monster) {
-            console.warn(`Monster ${id} not found in store`);
             return;
           }
           this.monsterService.activateMonster$.next(monster);

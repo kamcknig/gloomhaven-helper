@@ -28,7 +28,7 @@
 
   <mat-card-content>
     <!-- stats section for both normals and elites -->
-    <div fxLayout="row" fxLayoutAlign="space-between start">
+    <div class="monster-info-wrapper" fxLayout="row" fxLayoutAlign="space-between start">
       <div fxLayout="row" fxFlex *ngFor="let index of [0, 1]">
         <div fxLayout="column" fxFlex [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'">
           <!-- monster stats on the monster info card -->
@@ -68,22 +68,26 @@
 
     <mat-divider></mat-divider>
 
-    <div class="mat-title">Tokens</div>
+    <div class="token-info-wrapper" fxLayout="column">
+      <div class="mat-title">Tokens</div>
 
-    <div fxLayout="row">
-      <ng-container *ngIf="tokens$ | async as tokens">
-        <ng-container *ngFor="let tokenType of ['normals', 'elites']">
-          <div fxFlex="50"
-               fxLayout="column"
-               fxLayoutAlign="start start"
-               class="token-list-container">
-            <ng-container *ngFor="let token of tokens?.[tokenType]"
-                          [ngTemplateOutlet]="listItemTemplate"
-                          [ngTemplateOutletContext]="{ '$implicit': token }">
-            </ng-container>
-          </div>
+      <div class="token-list-wrapper" fxLayout="row" fxFlex>
+        <ng-container *ngIf="tokens$ | async as tokens">
+          <ng-container *ngFor="let tokenType of ['normals', 'elites']">
+            <div fxFlex="50">
+              <div fxFlex
+                   fxLayout="column"
+                   fxLayoutAlign="start start"
+                   class="token-list">
+                <ng-container *ngFor="let token of tokens?.[tokenType]"
+                              [ngTemplateOutlet]="listItemTemplate"
+                              [ngTemplateOutletContext]="{ '$implicit': token }">
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
         </ng-container>
-      </ng-container>
+      </div>
     </div>
   </mat-card-content>
 
@@ -96,6 +100,7 @@
   </mat-card-actions>
 </mat-card>
 
+<!-- list item template that displays each token's data -->
 <ng-template #listItemTemplate let-token>
   <div
     [id]="'list-item-' + (token.elite ? 'elite' : 'normal')"

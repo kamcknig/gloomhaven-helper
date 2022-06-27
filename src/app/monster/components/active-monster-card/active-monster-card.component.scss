@@ -1,3 +1,5 @@
+$topSectionHeight: 36%;
+
 :host {
   position: relative;
 
@@ -23,16 +25,30 @@
         width: 28rem;
         height: 20rem;
 
-        .monster-status-container {
-          .icon {
-            max-height: 2rem;
-            max-width: 2rem;
+        .monster-info-wrapper {
+          position: relative;
+          max-height: $topSectionHeight;
+          height: $topSectionHeight;
+
+          .monster-status-container {
+            .icon {
+              max-height: 2rem;
+              max-width: 2rem;
+            }
           }
         }
 
-        .token-list-container {
-          height: 14rem;
-          overflow-y: auto
+        .token-info-wrapper {
+          position: relative;
+          max-height: calc(100% - $topSectionHeight);
+          height: calc(100% - $topSectionHeight);
+
+          .token-list-wrapper {
+            .token-list {
+              max-height: 11rem;
+              overflow-y: auto;
+            }
+          }
         }
       }
     }

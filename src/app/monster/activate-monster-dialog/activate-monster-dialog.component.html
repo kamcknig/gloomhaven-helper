@@ -10,7 +10,6 @@
 
     <mat-autocomplete #autocompleteTemplateRefId="matAutocomplete"
                       [autoActiveFirstOption]="true"
-                      (optionSelected)="selectMonster($event)"
                       [displayWith]="displayAutocompleteForValue">
       <mat-option *ngFor="let choice of filteredAvailableMonsters$ | async" [value]="choice">
         {{choice.name}}
