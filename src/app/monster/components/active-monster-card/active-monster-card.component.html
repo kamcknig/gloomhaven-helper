@@ -74,11 +74,10 @@
       <div class="token-list-wrapper" fxLayout="row" fxFlex>
         <ng-container *ngIf="tokens$ | async as tokens">
           <ng-container *ngFor="let tokenType of ['normals', 'elites']">
-            <div fxFlex="50">
+            <div fxFlex="50" class="token-list">
               <div fxFlex
                    fxLayout="column"
-                   fxLayoutAlign="start start"
-                   class="token-list">
+                   fxLayoutAlign="start start">
                 <ng-container *ngFor="let token of tokens?.[tokenType]"
                               [ngTemplateOutlet]="listItemTemplate"
                               [ngTemplateOutletContext]="{ '$implicit': token }">

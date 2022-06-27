@@ -44,9 +44,10 @@ $topSectionHeight: 36%;
           height: calc(100% - $topSectionHeight);
 
           .token-list-wrapper {
+            overflow: auto;
+
             .token-list {
-              max-height: 11rem;
-              overflow-y: auto;
+              overflow: auto;
             }
           }
         }
