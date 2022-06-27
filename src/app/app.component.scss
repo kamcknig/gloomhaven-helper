@@ -1,0 +1,20 @@
+.element-icon {
+  max-width: 4rem;
+  max-height: 4rem;
+  filter: brightness(40%);
+  &.dark {
+    filter: brightness(150%);
+  }
+
+  &.infused {
+    filter: brightness(100%);
+
+    &.dark {
+      filter: brightness(0%);
+    }
+  }
+
+  &.waning {
+    filter: brightness(70%);
+  }
+}

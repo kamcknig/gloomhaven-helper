@@ -65,7 +65,7 @@ type MonsterNoId = Omit<MonsterInfo, 'id'>;
 export class MonsterService {
   private static _idIncrementer: number = 0;
 
-  activateMonster$: Source<MonsterInfo> = new Source('activateMonster$');
+  public activateMonster$: Source<MonsterInfo> = new Source('activateMonster$');
 
   private _activeMonsterAdapter = createAdapter<MonsterInfo[]>()({
     activateMonster: (state, event, initialState) => ([...state, event]),
@@ -74,7 +74,7 @@ export class MonsterService {
     })
   });
 
-  activeMonsterStore = this._adapt.init(
+  public activeMonsterStore = this._adapt.init(
     ['activeMonsters', this._activeMonsterAdapter, []],
     {
       activateMonster: this.activateMonster$
