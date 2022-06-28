@@ -11,20 +11,27 @@ $my-custom-typography: mat.define-typography-config(
  $font-family: 'gloomhaven'
 );
 
+@mixin app-mat-button() {
+  .mat-raised-button {
+    font-size: 1rem;
+  }
+}
+
+@mixin app-mat-input() {
+  mat-form-field {
+    .mat-form-field-infix > .mat-input-element {
+      font-size: 1rem;
+    }
+  }
+}
+
+@mixin components() {
+  @include app-mat-button();
+  @include app-mat-input();
+}
+
 @include mat.core($my-custom-typography);
+@include components();
 
-.p-component {
-  font-family: gloomhaven, "Segoe UI", Roboto, sans-serif;
-  color: #333;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon {
-  height: auto;
-  max-width: 1.5rem;
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100%; font-size: 18px; }
+body { margin: 0; }
