@@ -8,8 +8,24 @@
 }
 
 $my-custom-typography: mat.define-typography-config(
- $font-family: 'gloomhaven'
+ $font-family: 'gloomhaven',
+ $display-4:     mat.define-typography-level(6.2rem, 6.2rem, 300, $letter-spacing: -0.05em),
+ $display-3:     mat.define-typography-level(3.1rem, 3.1rem, 400, $letter-spacing: -0.02em),
+ $display-2:     mat.define-typography-level(2.5rem, 2.6rem, 400, $letter-spacing: -0.005em),
+ $display-1:     mat.define-typography-level(1.8rem, 2.0rem, 400),
+ $headline:      mat.define-typography-level(1.3rem, 1.6rem, 400),
+ $title:         mat.define-typography-level(1.1rem, 1.7rem, 500),
+ $subheading-2:  mat.define-typography-level(.88rem, 1.5rem, 400),
+ $subheading-1:  mat.define-typography-level(.83rem, 1.3rem, 400),
+ $body-2:        mat.define-typography-level(.77rem, 1.3rem, 500),
+ $body-1:        mat.define-typography-level(.77rem, 1.1rem, 400),
+ $caption:       mat.define-typography-level(.66rem, 1.1rem, 400),
+ $button:        mat.define-typography-level(.77rem, .77rem, 500),
+   // Line-height must be unit-less fraction of the font-size.
+ $input:         mat.define-typography-level(inherit, 1.125, 400)
 );
+
+@include mat.core($my-custom-typography);
 
 @mixin app-mat-button() {
   .mat-raised-button {
@@ -30,7 +46,6 @@ $my-custom-typography: mat.define-typography-config(
   @include app-mat-input();
 }
 
-@include mat.core($my-custom-typography);
 @include components();
 
 html, body { height: 100%; font-size: 18px; }
