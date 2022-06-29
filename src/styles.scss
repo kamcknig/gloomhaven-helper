@@ -41,12 +41,21 @@ $my-custom-typography: mat.define-typography-config(
   }
 }
 
+@mixin app-mat-card() {
+  mat-card {
+    .mat-card-content {
+      font-size: 1.2rem;
+    }
+  }
+}
+
 @mixin components() {
   @include app-mat-button();
   @include app-mat-input();
+  @include app-mat-card();
 }
 
 @include components();
 
-html, body { height: 100%; font-size: 18px; }
+html, body { height: 100%; font-size: 20px; }
 body { margin: 0; }

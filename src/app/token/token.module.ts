@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TokenListItemComponent } from './components/token-list-item/token-list-item.component';
+import { FlexModule } from '@angular/flex-layout';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    TokenListItemComponent
+  ],
+  exports: [
+    TokenListItemComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    FlexModule
   ]
 })
 export class TokenModule { }

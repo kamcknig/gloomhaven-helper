@@ -61,10 +61,12 @@
                    [src]="'assets/icons/' + condition.toLowerCase() + '.png'"
                    style="max-width: 2rem; max-height: 2rem;">
 
-              <span *ngIf="showAdditionConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1)"
-                    style="margin-right: .75rem; font-size: 20px;">
+              <span
+                *ngIf="showAdditionConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1)"
+                style="margin-right: .75rem; font-size: 20px;">
                 {{value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[0] ?? value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]}}
-                <span *ngIf="condition === 'Retaliate' && value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[1] > 0">
+                <span
+                  *ngIf="condition === 'Retaliate' && value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[1] > 0">
                   @{{value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[1]}}
                 </span>
               </span>
@@ -86,14 +88,17 @@
            fxFlex>
         <ng-container *ngIf="tokens$ | async as tokens">
           <ng-container *ngFor="let tokenType of ['normals', 'elites']">
-            <div fxFlex="50" class="token-list">
+            <div fxFlex="50"
+                 class="token-list">
               <div fxFlex
                    fxLayout="column"
                    fxLayoutAlign="start start">
-                <ng-container *ngFor="let token of tokens?.[tokenType]"
-                              [ngTemplateOutlet]="listItemTemplate"
-                              [ngTemplateOutletContext]="{ '$implicit': token }">
-                </ng-container>
+                <app-token-list-item *ngFor="let token of tokens?.[tokenType]"
+                                     style="width: 100%;"
+                                     [value]="token"
+                                     [statuses]="getTokenConditionsAndEffects(token)"
+                                     (statusPress)="showStatusSelectOverlay(token)">
+                </app-token-list-item>
               </div>
             </div>
           </ng-container>
@@ -111,53 +116,3 @@
     </button>
   </mat-card-actions>
 </mat-card>
-
-<!-- list item template that displays each token's data -->
-<ng-template #listItemTemplate let-token>
-  <div
-    [id]="'list-item-' + (token.elite ? 'elite' : 'normal')"
-    fxLayout="row"
-    fxLayoutAlign="start center"
-    fxLayoutGap=".3rem"
-    class="list-item">
-    <div fxLayout="row"
-         fxLayoutAlign="start center"
-         fxLayoutGap=".3rem">
-      <div>{{token.number}} -</div>
-      <div class="text-red-600"
-           type="number">
-        {{token.health ?? token.maxHealth}}
-      </div>
-    </div>
-
-    <div fxLayout="column"
-         fxLayoutAlign="space-between center"
-         fxLayoutGap="-5px">
-      <span style="cursor: pointer"
-            (click)="tokenService.updateTokenHitPoint$.next([token, (token.health ?? token.maxHealth) + 1])"
-            class="material-symbols-outlined">arrow_drop_up</span>
-
-      <span style="cursor: pointer"
-            (click)="tokenService.updateTokenHitPoint$.next([token, (token.health ?? token.maxHealth) - 1])"
-            class="material-symbols-outlined">arrow_drop_down</span>
-    </div>
-
-    <!-- active statuses -->
-    <div fxFlex
-         fxLayout="row wrap"
-         fxLayoutAlign="start center"
-         (click)="showStatusSelectOverlay(token)">
-      <ng-container *ngIf="getTokenConditionsAndEffects(token).length > 0; else openApplicableConditions">
-        <ng-container *ngFor="let value of getTokenConditionsAndEffects(token)">
-          <img
-            [src]="'assets/icons/' + value.name.toLowerCase() + '.png'"
-            class="status-icon">
-        </ng-container>
-      </ng-container>
-
-      <ng-template #openApplicableConditions>
-        <span style="cursor: pointer" class="material-icons-outlined">more_horiz</span>
-      </ng-template>
-    </div>
-  </div>
-</ng-template>

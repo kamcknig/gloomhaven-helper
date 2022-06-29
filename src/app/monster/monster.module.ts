@@ -13,6 +13,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TokenModule } from '../token/token.module';
 
 
 
@@ -37,7 +38,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatDividerModule,
     MatDialogModule,
     MatAutocompleteModule,
-    MatTooltipModule
+    MatTooltipModule,
+    TokenModule
   ]
 })
 export class MonsterModule { }

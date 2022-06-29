@@ -1,0 +1,46 @@
+<div
+  [id]="'list-item-' + (value.elite ? 'elite' : 'normal')"
+  fxLayout="row"
+  fxLayoutAlign="start center"
+  fxLayoutGap=".3rem"
+  class="list-item">
+  <div fxLayout="row"
+       fxLayoutAlign="start center"
+       fxLayoutGap=".3rem">
+    <div>{{value.number}} -</div>
+    <div>
+      {{value.health ?? value.maxHealth}}
+    </div>
+  </div>
+
+  <div fxLayout="column"
+       fxLayoutAlign="space-between center"
+       fxLayoutGap="-5px">
+      <span style="cursor: pointer"
+            (click)="tokenService.updateTokenHitPoint$.next([value, (value.health ?? value.maxHealth) + 1])"
+            class="material-symbols-outlined">arrow_drop_up</span>
+
+    <span style="cursor: pointer"
+          (click)="tokenService.updateTokenHitPoint$.next([value, (value.health ?? value.maxHealth) - 1])"
+          class="material-symbols-outlined">arrow_drop_down</span>
+  </div>
+
+  <span style="flex: 1 0 auto"></span>
+
+  <!-- active statuses -->
+  <div fxLayout="row wrap"
+       fxLayoutAlign="start center"
+       (click)="statusPress.emit()">
+    <ng-container *ngIf="(statuses || []).length > 0; else openApplicableConditions">
+      <ng-container *ngFor="let value of statuses">
+        <img
+          [src]="'assets/icons/' + value.name.toLowerCase() + '.png'"
+          class="status-icon">
+      </ng-container>
+    </ng-container>
+
+    <ng-template #openApplicableConditions>
+      <span style="cursor: pointer" class="material-icons-outlined">more_horiz</span>
+    </ng-template>
+  </div>
+</div>
