@@ -18,6 +18,10 @@ $topSectionHeight: 35%;
   }
 
   ::ng-deep {
+    mat-card mat-card-header {
+      text-decoration: underline;
+    }
+
     .mat-card {
       background: linear-gradient(to right, white -25%, rgba(117, 117, 117, .5) 50%, rgba(130, 106, 25, .5) 50%, white 125%);
 
@@ -28,12 +32,12 @@ $topSectionHeight: 35%;
 
         .mat-title {
           margin: 0;
+          text-decoration: underline;
         }
 
         .monster-info-wrapper {
+          width: 100%;
           position: relative;
-          /*max-height: $topSectionHeight;
-          height: $topSectionHeight;*/
 
           .monster-status-container {
             .icon {
@@ -44,9 +48,8 @@ $topSectionHeight: 35%;
         }
 
         .token-info-wrapper {
+          width: 100%;
           position: relative;
-          /*max-height: calc(100% - #{$topSectionHeight});
-          height: calc(100% - #{$topSectionHeight});*/
           height: 100%;
 
           .token-list-wrapper {

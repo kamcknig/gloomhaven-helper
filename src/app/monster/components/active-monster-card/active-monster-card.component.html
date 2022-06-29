@@ -27,88 +27,93 @@
   </mat-card-header>
 
   <mat-card-content>
-    <!-- stats section for both normals and elites -->
-    <div class="monster-info-wrapper" fxLayout="row" fxLayoutAlign="space-between start">
-      <ng-container *ngFor="let index of [0, 1]">
-        <div fxLayout="column"
-             fxFlex [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'"
-             fxLayoutGap=".5rem">
-          <!-- monster stats on the monster info card -->
-          <div fxLayout="row" class="monster-status-container">
-            <span fxLayout="column" fxLayoutAlign="start center">
-              <img class="icon" src="assets/icons/health.png">
-              {{getStatDisplayValue(value?.health?.[scenarioLevel ?? 0]?.[index])}}
-            </span>
+    <div fxFlex style="width: 100%" fxLayout="column" fxLayoutAlign="start center">
+      <!-- stats section for both normals and elites -->
+      <div class="monster-info-wrapper" fxLayout="row" fxLayoutAlign="space-between start">
+        <ng-container *ngFor="let index of [0, 1]">
+          <div fxLayout="column"
+               fxFlex [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'"
+               fxLayoutGap=".5rem">
+            <!-- monster stats on the monster info card -->
+            <div fxLayout="row" class="monster-status-container">
+              <span fxLayout="column" fxLayoutAlign="start center">
+                <img class="icon" src="assets/icons/health.png">
+                {{getStatDisplayValue(value?.health?.[scenarioLevel ?? 0]?.[index])}}
+              </span>
 
-            <span fxLayout="column" fxLayoutAlign="start center">
-              <img class="icon" src="assets/icons/move.png">
-              {{getStatDisplayValue(value?.move?.[scenarioLevel ?? 0]?.[index])}}
-            </span>
+              <span fxLayout="column" fxLayoutAlign="start center">
+                <img class="icon" src="assets/icons/move.png">
+                {{getStatDisplayValue(value?.move?.[scenarioLevel ?? 0]?.[index])}}
+              </span>
 
-            <span fxLayout="column" fxLayoutAlign="start center">
-              <img class="icon" src="assets/icons/attack.png">
-              {{getStatDisplayValue(value?.attack?.[scenarioLevel ?? 0]?.[index])}}
-            </span>
+              <span fxLayout="column" fxLayoutAlign="start center">
+                <img class="icon" src="assets/icons/attack.png">
+                {{getStatDisplayValue(value?.attack?.[scenarioLevel ?? 0]?.[index])}}
+              </span>
 
-            <span fxLayout="column" fxLayoutAlign="start center">
-              <img class="icon" src="assets/icons/range.png">
-              {{getStatDisplayValue(value?.range?.[scenarioLevel ?? 0]?.[index])}}
-            </span>
-          </div>
-
-          <!-- statuses that the monster has on it's monster info card -->
-          <div fxLayout="row">
-            <div *ngFor="let condition of ConditionsAndEffects" fxLayout="row" fxLayoutAlign="start center">
-              <img *ngIf="hasCondition(condition, index === 1)"
-                   [src]="'assets/icons/' + condition.toLowerCase() + '.png'"
-                   style="max-width: 2rem; max-height: 2rem;">
-
-              <span
-                *ngIf="showAdditionConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1)"
-                style="margin-right: .75rem; font-size: 20px;">
-                {{value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[0] ?? value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]}}
-                <span
-                  *ngIf="condition === 'Retaliate' && value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[1] > 0">
-                  @{{value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[1]}}
-                </span>
+              <span fxLayout="column" fxLayoutAlign="start center">
+                <img class="icon" src="assets/icons/range.png">
+                {{getStatDisplayValue(value?.range?.[scenarioLevel ?? 0]?.[index])}}
               </span>
             </div>
-          </div>
-        </div>
-      </ng-container>
-    </div>
 
-    <mat-divider style="margin: 1rem 0;"></mat-divider>
+            <!-- statuses that the monster has on it's monster info card -->
+            <div fxLayout="row">
+              <div *ngFor="let condition of ConditionsAndEffects" fxLayout="row" fxLayoutAlign="start center">
+                <img *ngIf="hasCondition(condition, index === 1)"
+                     [src]="'assets/icons/' + condition.toLowerCase() + '.png'"
+                     style="max-width: 2rem; max-height: 2rem;">
 
-    <div class="token-info-wrapper"
-         fxLayout="column">
-      <div class="mat-title">Tokens</div>
-
-      <div class="token-list-wrapper"
-           fxLayoutGap="2rem"
-           fxLayout="row"
-           fxFlex>
-        <ng-container *ngIf="tokens$ | async as tokens">
-          <ng-container *ngFor="let tokenType of ['normals', 'elites']">
-            <div fxFlex="50"
-                 class="token-list">
-              <div fxFlex
-                   fxLayout="column"
-                   fxLayoutAlign="start start">
-                <app-token-list-item *ngFor="let token of tokens?.[tokenType]"
-                                     style="width: 100%;"
-                                     [value]="token"
-                                     [statuses]="getTokenConditionsAndEffects(token)"
-                                     (statusPress)="showStatusSelectOverlay(token)">
-                </app-token-list-item>
+                <span
+                  *ngIf="showAdditionConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1)"
+                  style="margin-right: .75rem; font-size: 20px;">
+                  {{value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[0] ?? value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]}}
+                  <span
+                    *ngIf="condition === 'Retaliate' && value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[1] > 0">
+                    @{{value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[1]}}
+                  </span>
+                </span>
               </div>
             </div>
-          </ng-container>
+          </div>
         </ng-container>
+      </div>
+
+      <mat-divider style="width: 100%; margin: 1rem 0;"></mat-divider>
+
+      <div fxFlex class="token-info-wrapper"
+           fxLayout="column">
+        <div class="mat-title">Tokens</div>
+
+        <div class="token-list-wrapper"
+             fxLayoutGap="2rem"
+             fxLayout="row"
+             fxFlex>
+          <ng-container *ngIf="tokens$ | async as tokens">
+            <ng-container *ngFor="let tokenType of ['normals', 'elites']">
+              <div fxFlex="50"
+                   class="token-list">
+                <div fxFlex
+                     fxLayout="column"
+                     fxLayoutAlign="start start">
+                  <app-token-list-item *ngFor="let token of tokens?.[tokenType]"
+                                       style="width: 100%;"
+                                       [value]="token"
+                                       [statuses]="getTokenConditionsAndEffects(token)"
+                                       (statusPress)="showStatusSelectOverlay(token)">
+                  </app-token-list-item>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
       </div>
     </div>
   </mat-card-content>
 
+  <!-- actions for the card.
+    1. open add token dialog button
+  -->
   <mat-card-actions align="end">
     <button mat-mini-fab
             type="button"

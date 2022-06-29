@@ -44,7 +44,7 @@ $my-custom-typography: mat.define-typography-config(
 @mixin app-mat-card() {
   mat-card {
     .mat-card-content {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
     }
   }
 }
