@@ -30,9 +30,11 @@
     <!-- stats section for both normals and elites -->
     <div class="monster-info-wrapper" fxLayout="row" fxLayoutAlign="space-between start">
       <ng-container *ngFor="let index of [0, 1]">
-        <div fxLayout="column" fxFlex [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'" fxLayoutGap=".5rem">
+        <div fxLayout="column"
+             fxFlex [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'"
+             fxLayoutGap=".5rem">
           <!-- monster stats on the monster info card -->
-          <div fxLayout="row" class="monster-status-container mat-title">
+          <div fxLayout="row" class="monster-status-container">
             <span fxLayout="column" fxLayoutAlign="start center">
               <img class="icon" src="assets/icons/health.png">
               {{getStatDisplayValue(value?.health?.[scenarioLevel ?? 0]?.[index])}}
@@ -76,7 +78,7 @@
       </ng-container>
     </div>
 
-    <mat-divider></mat-divider>
+    <mat-divider style="margin: 1rem 0;"></mat-divider>
 
     <div class="token-info-wrapper"
          fxLayout="column">

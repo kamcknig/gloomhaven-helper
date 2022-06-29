@@ -23,8 +23,7 @@ $topSectionHeight: 35%;
 
       .mat-card-content {
         width: 28rem;
-        height: 20rem;
-        max-height: 28rem;
+        height: 25rem;
         margin-bottom: 0;
 
         .mat-title {
@@ -33,23 +32,26 @@ $topSectionHeight: 35%;
 
         .monster-info-wrapper {
           position: relative;
-          max-height: $topSectionHeight;
-          height: $topSectionHeight;
+          /*max-height: $topSectionHeight;
+          height: $topSectionHeight;*/
 
           .monster-status-container {
             .icon {
-              max-height: 2rem;
-              max-width: 2rem;
+              max-height: 2.5rem;
+              max-width: 2.5rem;
             }
           }
         }
 
         .token-info-wrapper {
           position: relative;
-          max-height: calc(100% - #{$topSectionHeight});
-          height: calc(100% - #{$topSectionHeight});
+          /*max-height: calc(100% - #{$topSectionHeight});
+          height: calc(100% - #{$topSectionHeight});*/
+          height: 100%;
 
           .token-list-wrapper {
+            height: 100%;
+            max-height: 17rem;
             overflow: auto;
 
             .token-list {

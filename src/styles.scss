@@ -58,4 +58,4 @@ $my-custom-typography: mat.define-typography-config(
 @include components();
 
 html, body { height: 100%; font-size: 20px; }
-body { margin: 0; }
+body { margin: 0; overflow-y: hidden }
