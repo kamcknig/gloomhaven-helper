@@ -57,5 +57,9 @@ $my-custom-typography: mat.define-typography-config(
 
 @include components();
 
+.button {
+  cursor: pointer;
+}
+
 html, body { height: 100%; font-size: 20px; }
 body { margin: 0; overflow-y: hidden }
