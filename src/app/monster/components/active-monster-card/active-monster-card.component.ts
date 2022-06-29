@@ -33,8 +33,8 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
       map(tokens => tokens.filter(t => t.monsterId === this.value!.id)),
       // separate them out into elites and normals
       map(tokenData => ({
-        elites: tokenData.filter(t => !!t.elite),
-        normals: tokenData.filter(t => !t.elite)
+        elites: tokenData.filter(t => !!t.elite).sort((e1, e2) => e1.number - e2.number),
+        normals: tokenData.filter(t => !t.elite).sort((e1, e2) => e1.number - e2.number)
       })),
       tap(tokenData => {
         this._tokens = tokenData;
