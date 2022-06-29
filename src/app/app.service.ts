@@ -12,13 +12,13 @@ export interface ScenarioInfo {
 export class AppService {
 
   private _scenarioAdapter = createAdapter<ScenarioInfo>()({
-    updateLevel: (state, event, initialState) => ({...state, level: Math.min(event, this.maxLevel) }),
+    updateLevel: (state, event, initialState) => ({...state, level: Math.min(Math.max(typeof event === 'string' ? state.level + Number(event) : event, 0), this.maxLevel) }),
     selectors: createSelectors<ScenarioInfo>()({
       level: s => s.level
     })
   });
 
-  scenarioLevel$ = new Source<number>('scenarioLevel$');
+  scenarioLevel$ = new Source<number | string>('scenarioLevel$');
 
   scenarioStore = this.adapt.init(
     ['scenario', this._scenarioAdapter, { level: 0 }],

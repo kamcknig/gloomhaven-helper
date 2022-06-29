@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AppService } from './app.service';
 import { MonsterInfo, MonsterService } from './monster/services/monster.service';
 import { map, Observable, Subject, take, takeUntil, tap, withLatestFrom } from 'rxjs';
@@ -17,6 +17,19 @@ export class AppComponent implements OnInit {
 
   title = 'gloomhaven-helper';
   levelInputControl = new FormControl('');
+
+  @HostListener('document:keyup', ['$event'])
+  public onKeyUp(event: KeyboardEvent) {
+    if (!event.ctrlKey) {
+      return;
+    }
+
+    if (event.code === 'ArrowUp' || event.key === 'ArrowUp') {
+      this.appService.scenarioLevel$.next('+1');
+    } else if (event.code === 'ArrowDown' || event.key === 'ArrowDown'){
+      this.appService.scenarioLevel$.next('-1');
+    }
+  }
 
   public activateMonster(...args: any[]): void {
     this._dialogService.open(ActivateMonsterDialogComponent, {
