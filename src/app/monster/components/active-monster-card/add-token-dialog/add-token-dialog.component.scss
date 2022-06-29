@@ -1,4 +1,8 @@
 :host ::ng-deep {
+  mat-dialog-content {
+    padding: 1rem 3rem;
+  }
+
   .mat-mini-fab.mat-accent {
     &.button-elite {
       background-color: gold;
