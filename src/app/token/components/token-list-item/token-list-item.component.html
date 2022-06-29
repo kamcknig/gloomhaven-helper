@@ -7,19 +7,23 @@
   <!-- token health display -->
   <div fxLayout="row"
        fxLayoutAlign="start center"
-       fxLayoutGap=".3rem">
+       fxLayoutGap=".5rem">
     <!-- Token and health display -->
     <div>{{value.number}} - <span style="color: #a00707">{{value.health ?? value.maxHealth}}</span></div>
 
     <!-- token health adjustment buttons -->
     <div fxLayout="column"
          fxLayoutAlign="space-between center"
-         fxLayoutGap="-5px">
-      <span (click)="tokenService.updateTokenHitPoint$.next([value, (value.health ?? value.maxHealth) + 1])"
-            class="button material-symbols-outlined">arrow_drop_up</span>
+         fxLayoutGap="-.25rem">
+      <div>
+        <span (click)="tokenService.updateTokenHitPoint$.next([value, (value.health ?? value.maxHealth) + 1])"
+              class="button material-symbols-outlined">arrow_drop_up</span>
+      </div>
 
-      <span (click)="tokenService.updateTokenHitPoint$.next([value, (value.health ?? value.maxHealth) - 1])"
+      <div>
+        <span (click)="tokenService.updateTokenHitPoint$.next([value, (value.health ?? value.maxHealth) - 1])"
             class="button material-symbols-outlined">arrow_drop_down</span>
+      </div>
     </div>
   </div>
 

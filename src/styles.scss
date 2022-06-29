@@ -7,6 +7,8 @@
   src: url('/assets/fonts/PirataOne-Gloomhaven.ttf');
 }
 
+$default-font-size: 1.5rem;
+
 $my-custom-typography: mat.define-typography-config(
  $font-family: 'gloomhaven',
  $display-4:     mat.define-typography-level(6.2rem, 6.2rem, 300, $letter-spacing: -0.05em),
@@ -14,7 +16,7 @@ $my-custom-typography: mat.define-typography-config(
  $display-2:     mat.define-typography-level(2.5rem, 2.6rem, 400, $letter-spacing: -0.005em),
  $display-1:     mat.define-typography-level(1.8rem, 2.0rem, 400),
  $headline:      mat.define-typography-level(1.3rem, 1.6rem, 400),
- $title:         mat.define-typography-level(1.1rem, 1.7rem, 500),
+ $title:         mat.define-typography-level($default-font-size, calc(#{$default-font-size} * .8), 500),
  $subheading-2:  mat.define-typography-level(.88rem, 1.5rem, 400),
  $subheading-1:  mat.define-typography-level(.83rem, 1.3rem, 400),
  $body-2:        mat.define-typography-level(.77rem, 1.3rem, 500),
@@ -29,14 +31,20 @@ $my-custom-typography: mat.define-typography-config(
 
 @mixin app-mat-button() {
   .mat-raised-button, .mat-mini-fab {
-    font-size: 1.5rem;
+    font-size: $default-font-size;
   }
 }
 
 @mixin app-mat-input() {
   mat-form-field {
-    .mat-form-field-infix > .mat-input-element {
-      font-size: 1rem;
+    .mat-form-field-infix {
+      > .mat-input-element {
+        font-size: $default-font-size;
+      }
+
+      .mat-form-field-label-wrapper {
+        font-size: calc(#{$default-font-size} * .8);
+      }
     }
   }
 }
@@ -44,7 +52,7 @@ $my-custom-typography: mat.define-typography-config(
 @mixin app-mat-card() {
   mat-card {
     .mat-card-content {
-      font-size: 1.5rem;
+      font-size: $default-font-size;
     }
   }
 }
@@ -53,6 +61,10 @@ $my-custom-typography: mat.define-typography-config(
   @include app-mat-button();
   @include app-mat-input();
   @include app-mat-card();
+
+  .mat-option {
+    font-size: calc(#{$default-font-size} * .8);
+  }
 }
 
 @include components();
