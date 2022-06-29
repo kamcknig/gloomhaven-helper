@@ -28,8 +28,8 @@ $my-custom-typography: mat.define-typography-config(
 @include mat.core($my-custom-typography);
 
 @mixin app-mat-button() {
-  .mat-raised-button {
-    font-size: 1rem;
+  .mat-raised-button, .mat-mini-fab {
+    font-size: 1.5rem;
   }
 }
 
