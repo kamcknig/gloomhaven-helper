@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TokenListItemComponent } from './components/token-list-item/token-list-item.component';
 import { FlexModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -14,7 +15,8 @@ import { FlexModule } from '@angular/flex-layout';
   ],
   imports: [
     CommonModule,
-    FlexModule
+    FlexModule,
+    MatIconModule
   ]
 })
 export class TokenModule { }

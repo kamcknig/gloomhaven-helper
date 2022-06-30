@@ -15,15 +15,11 @@
     <div fxLayout="column"
          fxLayoutAlign="space-between center"
          fxLayoutGap="-.25rem">
-      <div>
-        <span (click)="tokenService.updateTokenHitPoint$.next([value, (value.health ?? value.maxHealth) + 1])"
-              class="button material-symbols-outlined">arrow_drop_up</span>
-      </div>
+        <mat-icon (click)="tokenService.updateTokenHitPoint$.next([value, (value.health ?? value.maxHealth) + 1])"
+                  class="button">arrow_drop_up</mat-icon>
 
-      <div>
-        <span (click)="tokenService.updateTokenHitPoint$.next([value, (value.health ?? value.maxHealth) - 1])"
-            class="button material-symbols-outlined">arrow_drop_down</span>
-      </div>
+        <mat-icon (click)="tokenService.updateTokenHitPoint$.next([value, (value.health ?? value.maxHealth) - 1])"
+                  class="button">arrow_drop_down</mat-icon>
     </div>
   </div>
 
