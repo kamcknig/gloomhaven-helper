@@ -23,7 +23,7 @@ export class AppComponent {
     } else if (event.code === 'ArrowDown' || event.key === 'ArrowDown'){
       this.appService.scenarioLevel$.next('-1');
     } else if (event.code === 'KeyM' || event.key === 'm') {
-      this.monsterService.activateMonster();
+      this.monsterService.selectMonsterToActivate().subscribe();
     }
   }
 

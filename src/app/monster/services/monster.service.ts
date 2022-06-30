@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AdaptCommon, createAdapter, createSelectors, getHttpSources, Source } from '@state-adapt/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivateMonsterDialogComponent } from '../activate-monster-dialog/activate-monster-dialog.component';
-import { map, take } from 'rxjs';
+import { map, take, tap, withLatestFrom } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
 export const ConditionsAndEffects = [
@@ -109,30 +109,17 @@ export class MonsterService {
     }
   );
 
-  public activateMonster(...args: any[]): void {
-    this._dialogService.open(ActivateMonsterDialogComponent, {
+  public selectMonsterToActivate() {
+    return this._dialogService.open(ActivateMonsterDialogComponent, {
       disableClose: false,
       autoFocus: false
     })
       .afterClosed()
-      .subscribe({
-        next: id => {
-          let monster: MonsterInfo | undefined;
-          this.monsterStore.monsters$
-            .pipe(
-              map(monsters => monsters.find(m => m.id === id)),
-              take(1)
-            )
-            .subscribe({
-              next: (value) => monster = value
-            });
-
-          if (!monster) {
-            return;
-          }
-          this.activateMonster$.next(monster);
-        }
-      });
+      .pipe(
+        withLatestFrom(this.monsterStore.monsters$),
+        map(([id, monsters]) => monsters.find(m => m.id === id)),
+        tap(monster => this.activateMonster$.next(monster))
+      );
   }
 
   constructor(
