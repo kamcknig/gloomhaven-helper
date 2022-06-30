@@ -125,6 +125,7 @@ export class MonsterService {
     )
       .state$
       .pipe(
+        take(1),
         switchMap(monsters => monsters.length
           ? this._dialogService.open<ActivateMonsterDialogComponent, MonsterInfo[]>(
             ActivateMonsterDialogComponent, {
@@ -140,8 +141,7 @@ export class MonsterService {
               tap(monster => this.activateMonster$.next(monster))
             )
           : of(null)
-        ),
-        take(1)
+        )
       );
   }
 
