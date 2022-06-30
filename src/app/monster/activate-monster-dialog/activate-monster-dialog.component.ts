@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MonsterInfo, MonsterService } from '../services/monster.service';
-import { joinSelectors } from '@state-adapt/core';
-import { concatMap, map, Observable, of, startWith, tap, withLatestFrom } from 'rxjs';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MonsterInfo } from '../services/monster.service';
+import { map, Observable, startWith } from 'rxjs';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -11,43 +10,22 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./activate-monster-dialog.component.scss']
 })
 export class ActivateMonsterDialogComponent implements OnInit {
-  public availableMonsters$: Observable<MonsterInfo[]> | undefined;
   public filteredAvailableMonsters$: Observable<MonsterInfo[]> | undefined;
   public monsterInputControl: FormControl = new FormControl('');
 
   constructor(
-    private _monsterService: MonsterService,
-    private _dialogRef: MatDialogRef<any>
+    private _dialogRef: MatDialogRef<any>,
+    @Inject(MAT_DIALOG_DATA) private _data: MonsterInfo[]
   ) {
   }
 
   ngOnInit(): void {
-    this.availableMonsters$ = joinSelectors(
-      this._monsterService.monsterStore,
-      this._monsterService.activeMonsterStore,
-      (monsters, activeMonsters) => {
-        return monsters.reduce((prev, next) => {
-          if (activeMonsters.find(a => a.id === next.id)) {
-            return prev;
-          }
-          prev.push(next);
-          return prev;
-        }, [] as MonsterInfo []);
-      }
-    )
-      .state$
-      .pipe(
-        concatMap((value, index) =>
-          index === 0
-            ? of(value).pipe(tap(value => this.monsterInputControl.setValue(value[0])))
-            : of(value))
-      );
+    this.monsterInputControl.setValue(this._data[0]);
 
     this.filteredAvailableMonsters$ = this.monsterInputControl.valueChanges.pipe(
       startWith(undefined),
       map(value => typeof value === 'string' ? value : value?.name ?? ''),
-      withLatestFrom(this.availableMonsters$),
-      map(([value, monsters]) => monsters.filter(m => {
+      map(value => this._data.filter(m => {
         return new RegExp(`${value.toLowerCase()}`, 'gi').test(m.name);
       }))
     );
@@ -58,6 +36,6 @@ export class ActivateMonsterDialogComponent implements OnInit {
   }
 
   displayAutocompleteForValue($event: any) {
-    return $event.name;
+    return $event?.name ?? '';
   }
 }

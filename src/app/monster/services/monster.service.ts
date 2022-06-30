@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
-import { AdaptCommon, createAdapter, createSelectors, getHttpSources, Source } from '@state-adapt/core';
+import {
+  AdaptCommon,
+  createAdapter,
+  createSelectors,
+  getHttpSources,
+  joinSelectors,
+  Source,
+  toSource
+} from '@state-adapt/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivateMonsterDialogComponent } from '../activate-monster-dialog/activate-monster-dialog.component';
-import { map, take, tap, withLatestFrom } from 'rxjs';
+import { filter, map, share, switchMap, take, tap, using, withLatestFrom } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
 export const ConditionsAndEffects = [
@@ -93,32 +101,46 @@ export class MonsterService {
     })
   });
 
-  private _GETMonstersSources$ = getHttpSources(
-    '[GET Monsters]', this._http.get('assets/data/monsters.json'), (res: any) => {
-      return [
-        !!res,
-        res.monsters,
-        'fuck no'
-      ]
-    });
+  // request to retrieve the monsters.json file
+  private _monsterGet = this._http.get('assets/data/monsters.json')
+    .pipe(
+      map(res => res['monsters']),
+      toSource('[GET Monsters]'),
+      share()
+    );
 
   monsterStore = this._adapt.init(
     ['monsters', this._monsterAdapter, []],
     {
-      add: this._GETMonstersSources$.success$
+      add: this._monsterGet
     }
   );
 
   public selectMonsterToActivate() {
-    return this._dialogService.open(ActivateMonsterDialogComponent, {
-      disableClose: false,
-      autoFocus: false
-    })
-      .afterClosed()
+    return joinSelectors(
+      this.monsterStore,
+      this.activeMonsterStore,
+      (monsters, activeMonsters) => monsters.reduce(
+        (prev, next) => activeMonsters.find(a => a.id === next.id) ? prev : prev.concat(next), [] as MonsterInfo [])
+    )
+      .state$
       .pipe(
-        withLatestFrom(this.monsterStore.monsters$),
-        map(([id, monsters]) => monsters.find(m => m.id === id)),
-        tap(monster => this.activateMonster$.next(monster))
+        filter(monsters => !!monsters?.length),
+        take(1),
+        switchMap(monsters => this._dialogService.open<ActivateMonsterDialogComponent, MonsterInfo[]>(
+          ActivateMonsterDialogComponent, {
+            disableClose: false,
+            autoFocus: false,
+            data: monsters
+          })
+          .afterClosed()
+          .pipe(
+            withLatestFrom(this.monsterStore.monsters$),
+            map(([id, monsters]) => monsters.find(m => m.id === id)),
+            filter(monster => !!monster),
+            tap(monster => this.activateMonster$.next(monster))
+          )
+        )
       );
   }
 
