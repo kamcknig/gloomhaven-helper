@@ -1,38 +1,4 @@
-<mat-toolbar color="primary" style="padding: 3rem; position: fixed; z-index: 100; top:0">
-  <mat-form-field color="accent">
-    <mat-label>Scenario Level</mat-label>
-    <input [formControl]="levelInputControl"
-           placeholder="Scenario Level"
-           (change)="this.appService.scenarioLevel$.next(+(levelInputControl?.value ?? 0))"
-           matInput
-           type="number"
-           [min]="0"
-           [max]="7">
-  </mat-form-field>
-
-  <span style="flex: 1 1 auto;"></span>
-
-  <ng-container *ngFor="let element of ['Dark', 'Earth', 'Fire', 'Ice', 'Sun', 'Wind']">
-    <img [src]="'assets/icons/element-' + element.toLowerCase() + '.png'"
-         (click)="updateElement(element)"
-         [ngClass]="{
-          'infused': isInfused(element) | async,
-          'waning': isWaning(element) | async,
-          'dark': element.toString() === 'Dark'
-         }"
-         class="element-icon">
-  </ng-container>
-
-  <span style="flex: 1 1 auto;"></span>
-
-  <div>
-    <button
-      type="button"
-      mat-raised-button
-      color="accent"
-      (click)="activateMonster($event)">Activate Monster</button>
-  </div>
-</mat-toolbar>
+<app-header></app-header>
 
 <div
   fxLayout="row"

@@ -1,0 +1,43 @@
+<mat-toolbar color="primary">
+  <mat-form-field color="accent"
+                  style="margin-right: 1rem">
+    <mat-label>Scenario Level</mat-label>
+    <input [formControl]="levelInputControl"
+           placeholder="Scenario Level"
+           (change)="this.appService.scenarioLevel$.next(+(levelInputControl?.value ?? 0))"
+           matInput
+           type="number"
+           [min]="0"
+           [max]="7">
+  </mat-form-field>
+
+  <div fxLayout="column" fxLayoutGap="-.15rem">
+    <div>Shortcuts:</div>
+    <div class="mat-subheading-2">Ctrl + up or down: change scenario level</div>
+    <div class="mat-subheading-2">Ctrl + m: activate monster</div>
+  </div>
+
+  <span style="flex: 1 1 auto;"></span>
+
+  <ng-container *ngFor="let element of ['Dark', 'Earth', 'Fire', 'Ice', 'Sun', 'Wind']">
+    <img [src]="'assets/icons/element-' + element.toLowerCase() + '.png'"
+         (click)="updateElement(element)"
+         [ngClass]="{
+          'infused': isInfused(element) | async,
+          'waning': isWaning(element) | async,
+          'dark': element.toString() === 'Dark'
+         }"
+         class="element-icon">
+  </ng-container>
+
+  <span style="flex: 1 1 auto;"></span>
+
+  <div>
+    <button
+      type="button"
+      mat-raised-button
+      color="accent"
+      (click)="monsterService.activateMonster()">Activate Monster
+    </button>
+  </div>
+</mat-toolbar>

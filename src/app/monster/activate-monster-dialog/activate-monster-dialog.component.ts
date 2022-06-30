@@ -4,7 +4,6 @@ import { joinSelectors } from '@state-adapt/core';
 import { concatMap, map, Observable, of, startWith, tap, withLatestFrom } from 'rxjs';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-activate-monster-dialog',
