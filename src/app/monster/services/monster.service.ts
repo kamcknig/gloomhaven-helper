@@ -10,7 +10,7 @@ import {
 } from '@state-adapt/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivateMonsterDialogComponent } from '../activate-monster-dialog/activate-monster-dialog.component';
-import { filter, map, share, switchMap, take, tap, using, withLatestFrom } from 'rxjs';
+import { filter, map, of, share, switchMap, take, tap, using, withLatestFrom } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
 export const ConditionsAndEffects = [
@@ -125,22 +125,23 @@ export class MonsterService {
     )
       .state$
       .pipe(
-        filter(monsters => !!monsters?.length),
-        take(1),
-        switchMap(monsters => this._dialogService.open<ActivateMonsterDialogComponent, MonsterInfo[]>(
-          ActivateMonsterDialogComponent, {
-            disableClose: false,
-            autoFocus: false,
-            data: monsters
-          })
-          .afterClosed()
-          .pipe(
-            withLatestFrom(this.monsterStore.monsters$),
-            map(([id, monsters]) => monsters.find(m => m.id === id)),
-            filter(monster => !!monster),
-            tap(monster => this.activateMonster$.next(monster))
-          )
-        )
+        switchMap(monsters => monsters.length
+          ? this._dialogService.open<ActivateMonsterDialogComponent, MonsterInfo[]>(
+            ActivateMonsterDialogComponent, {
+              disableClose: false,
+              autoFocus: false,
+              data: monsters
+            })
+            .afterClosed()
+            .pipe(
+              withLatestFrom(this.monsterStore.monsters$),
+              map(([id, monsters]) => monsters.find(m => m.id === id)),
+              filter(monster => !!monster),
+              tap(monster => this.activateMonster$.next(monster))
+            )
+          : of(null)
+        ),
+        take(1)
       );
   }
 
