@@ -1,16 +1,8 @@
 import { Injectable } from '@angular/core';
-import {
-  AdaptCommon,
-  createAdapter,
-  createSelectors,
-  getHttpSources,
-  joinSelectors,
-  Source,
-  toSource
-} from '@state-adapt/core';
+import { AdaptCommon, createAdapter, createSelectors, joinSelectors, Source, toSource } from '@state-adapt/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivateMonsterDialogComponent } from '../activate-monster-dialog/activate-monster-dialog.component';
-import { filter, map, of, share, switchMap, take, tap, using, withLatestFrom } from 'rxjs';
+import { filter, map, of, share, switchMap, take, tap, withLatestFrom } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
 export const ConditionsAndEffects = [
@@ -66,6 +58,7 @@ export interface MonsterInfo {
   range?: [number, number][];
   retaliate?: [number, number][];
   target?: [number, number][];
+  abilityCards: { initiative: number, imgPath: string }[];
 }
 
 type MonsterNoId = Omit<MonsterInfo, 'id'>;
@@ -95,7 +88,14 @@ export class MonsterService {
   private _monsterAdapter = createAdapter<MonsterInfo[]>()({
     add: (state, event: MonsterNoId[] | MonsterNoId, initialState) =>
       [...state, ...(Array.isArray(event) ? event : [event]).map(
-        e => ({ ...e, id: ++MonsterService._idIncrementer }) as MonsterInfo)],
+        e => ({
+          ...e,
+          id: ++MonsterService._idIncrementer,
+          abilityCards: new Array(7).fill(0).map((e, idx) => ({
+            initiative: 5 + Math.floor(Math.random() * 30),
+            imgPath: ''
+          }))
+        }) as MonsterInfo)],
     selectors: createSelectors<MonsterInfo[]>()({
       monsters: s => s
     })
