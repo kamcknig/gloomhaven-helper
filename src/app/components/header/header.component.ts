@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { map, take, tap, withLatestFrom } from 'rxjs';
 import { ElementInfo, ElementService } from '../../elements/element.service';
 import { MonsterService } from '../../monster/services/monster.service';

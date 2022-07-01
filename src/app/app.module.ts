@@ -20,6 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from './components/header/header.component';
 import { ScenarioLevelInputComponent } from './components/scenario-level-input/scenario-level-input.component';
+import { ScenarioRoundComponent } from './components/scenario-round/scenario-round.component';
 
 const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   actionSanitizer,
@@ -30,7 +31,8 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ScenarioLevelInputComponent
+    ScenarioLevelInputComponent,
+    ScenarioRoundComponent
   ],
   imports: [
     BrowserModule,

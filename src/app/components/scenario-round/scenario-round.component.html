@@ -1,0 +1,10 @@
+<mat-form-field color="accent"
+                style="margin-right: 1rem">
+  <mat-label>Round</mat-label>
+  <input type="number"
+         placeholder="Round"
+         matInput
+         [formControl]="roundInputControl"
+         (change)="appService.updateRound$.next(+(roundInputControl?.value ?? 0))"
+         [min]="0">
+</mat-form-field>

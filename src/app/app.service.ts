@@ -4,6 +4,7 @@ import { MAX_LEVEL } from './scenario-options/max-level.token';
 
 export interface ScenarioInfo {
   level: number;
+  round: number;
 }
 
 @Injectable({
@@ -12,18 +13,22 @@ export interface ScenarioInfo {
 export class AppService {
 
   private _scenarioAdapter = createAdapter<ScenarioInfo>()({
-    updateLevel: (state, event, initialState) => ({...state, level: Math.min(Math.max(typeof event === 'string' ? state.level + Number(event) : event, 0), this.maxLevel) }),
+    updateLevel: (state, event, initialState) => ({ ...state, level: Math.min(Math.max(typeof event === 'string' ? state.level + Number(event) : event, 0), this.maxLevel) }),
+    updateRound: (state, event, initialState) => ({ ...state, round: event }),
     selectors: createSelectors<ScenarioInfo>()({
-      level: s => s.level
+      level: s => s.level,
+      round: s => s.round
     })
   });
 
-  scenarioLevel$ = new Source<number | string>('scenarioLevel$');
+  updateScenarioLevel$ = new Source<number | string>('updateScenarioLevel$');
+  updateRound$ = new Source<number | string>('updateRound$');
 
   scenarioStore = this.adapt.init(
-    ['scenario', this._scenarioAdapter, { level: 0 }],
+    ['scenario', this._scenarioAdapter, { level: 0, round: 0 }],
     {
-      updateLevel: this.scenarioLevel$
+      updateLevel: this.updateScenarioLevel$,
+      updateRound: this.updateRound$
     }
   )
 

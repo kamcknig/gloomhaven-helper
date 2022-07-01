@@ -19,9 +19,9 @@ export class AppComponent {
     }
 
     if (event.code === 'ArrowUp' || event.key === 'ArrowUp') {
-      this.appService.scenarioLevel$.next('+1');
+      this.appService.updateScenarioLevel$.next('+1');
     } else if (event.code === 'ArrowDown' || event.key === 'ArrowDown'){
-      this.appService.scenarioLevel$.next('-1');
+      this.appService.updateScenarioLevel$.next('-1');
     } else if (event.code === 'KeyM' || event.key === 'm') {
       this.monsterService.selectMonsterToActivate().subscribe();
     }
