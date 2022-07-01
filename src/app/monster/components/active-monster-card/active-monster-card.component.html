@@ -27,7 +27,10 @@
   </mat-card-header>
 
   <mat-card-content>
-    <div fxFlex style="width: 100%" fxLayout="column" fxLayoutAlign="start center">
+    <div class="mat-card-content-wrapper"
+         fxFlex
+         fxLayout="column"
+         fxLayoutAlign="start center">
       <!-- stats section for both normals and elites -->
       <div class="monster-info-wrapper" fxLayout="row" fxLayoutAlign="space-between start">
         <ng-container *ngFor="let index of [0, 1]">
