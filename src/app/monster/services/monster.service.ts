@@ -58,7 +58,7 @@ export interface MonsterInfo {
   range?: [number, number][];
   retaliate?: [number, number][];
   target?: [number, number][];
-  abilityCards: { initiative: number, imgPath: string }[];
+  abilityCards: { initiative: number, shuffle: boolean, imgPath: string }[];
 }
 
 type MonsterNoId = Omit<MonsterInfo, 'id'>;
