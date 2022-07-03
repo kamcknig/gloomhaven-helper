@@ -58,7 +58,7 @@ export interface Monster {
   range?: [number, number][];
   retaliate?: [number, number][];
   target?: [number, number][];
-  abilityCards: { initiative: number, shuffle: boolean, imgPath: string }[];
+  abilities: { initiative: number, shuffle: boolean, imgPath: string }[];
   active: boolean;
 }
 

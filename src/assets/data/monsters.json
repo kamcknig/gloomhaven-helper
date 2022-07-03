@@ -147,6 +147,38 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 46,
+          "imgName": "ancient-artillery-attack-card-1"
+        },
+        {
+          "initiative": 37,
+          "imgName": "ancient-artillery-attack-card-2"
+        },
+        {
+          "initiative": 95,
+          "imgName": "ancient-artillery-attack-card-3"
+        },
+        {
+          "initiative": 71,
+          "imgName": "ancient-artillery-attack-card-4",
+          "count": 2,
+          "shuffle": true
+        },
+        {
+          "initiative": 17,
+          "imgName": "ancient-artillery-attack-card-5"
+        },
+        {
+          "initiative": 37,
+          "imgName": "ancient-artillery-attack-card-6"
+        },
+        {
+          "initiative": 46,
+          "imgName": "ancient-artillery-attack-card-7"
+        }
       ]
     },
     {
@@ -296,6 +328,42 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 44,
+          "imgName": "archer-1"
+        },
+        {
+          "initiative": 56,
+          "imgName": "archer-2"
+        },
+        {
+          "initiative": 68,
+          "imgName": "archer-3",
+          "shuffle": true
+        },
+        {
+          "initiative": 29,
+          "shuffle": true,
+          "imgName": "archer-4"
+        },
+        {
+          "initiative": 16,
+          "imgName": "archer-5"
+        },
+        {
+          "initiative": 32,
+          "imgName": "archer-6"
+        },
+        {
+          "initiative": 31,
+          "imgName": "archer-7"
+        },
+        {
+          "initiative": 14,
+          "imgName": "archer-8"
+        }
       ]
     },
     {
@@ -445,6 +513,42 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 85,
+          "imgName": "boss-1",
+          "shuffle": true
+        },
+        {
+          "initiative": 14,
+          "imgName": "boss-2"
+        },
+        {
+          "initiative": 52,
+          "imgName": "boss-3"
+        },
+        {
+          "initiative": 17,
+          "imgName": "boss-4",
+          "shuffle": true
+        },
+        {
+          "initiative": 11,
+          "imgName": "boss-5"
+        },
+        {
+          "initiative": 79,
+          "imgName": "boss-6"
+        },
+        {
+          "initiative": 36,
+          "imgName": "boss-7"
+        },
+        {
+          "initiative": 73,
+          "imgName": "boss-8"
+        }
       ]
     },
     {
@@ -594,6 +698,39 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 42,
+          "imgName": "imp-1"
+        },
+        {
+          "initiative": 43,
+          "imgName": "imp-2",
+          "shuffle": true
+        },
+        {
+          "initiative": 76,
+          "imgName": "imp-3"
+        },
+        {
+          "initiative": 24,
+          "imgName": "imp-4"
+        },
+        {
+          "initiative": 5,
+          "imgName": "imp-5"
+        },
+        {
+          "initiative": 37,
+          "imgName": "imp-6",
+          "count": 2
+        },
+        {
+          "initiative": 43,
+          "imgName": "imp-7",
+          "shuffle": true
+        }
       ]
     },
     {
@@ -743,6 +880,42 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 13,
+          "imgName": "cave-bear-1"
+        },
+        {
+          "initiative": 60,
+          "imgName": "cave-bear-2"
+        },
+        {
+          "initiative": 3,
+          "imgName": "cave-bear-3"
+        },
+        {
+          "initiative": 14,
+          "imgName": "cave-bear-4"
+        },
+        {
+          "initiative": 61,
+          "imgName": "cave-bear-5"
+        },
+        {
+          "initiative": 80,
+          "imgName": "cave-bear-6",
+          "shuffle": true
+        },
+        {
+          "initiative": 34,
+          "imgName": "cave-bear-7",
+          "shuffle": true
+        },
+        {
+          "initiative": 41,
+          "imgName": "cave-bear-8"
+        }
       ]
     },
     {
@@ -892,6 +1065,40 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 1,
+          "imgName": ""
+        },
+        {
+          "initiative": 1,
+          "imgName": ""
+        },
+        {
+          "initiative": 1,
+          "imgName": ""
+        },
+        {
+          "initiative": 1,
+          "imgName": ""
+        },
+        {
+          "initiative": 1,
+          "imgName": ""
+        },
+        {
+          "initiative": 1,
+          "imgName": ""
+        },
+        {
+          "initiative": 1,
+          "imgName": ""
+        },
+        {
+          "initiative": 1,
+          "imgName": ""
+        }
       ]
     },
     {
@@ -1041,6 +1248,38 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 39,
+          "imgName": "cultist-1"
+        },
+        {
+          "initiative": 31,
+          "imgName": "cultist-2"
+        },
+        {
+          "initiative": 27,
+          "imgName": "cultist-3"
+        },
+        {
+          "initiative": 63,
+          "imgName": "cultist-4",
+          "count": 2,
+          "shuffle": true
+        },
+        {
+          "initiative": 10,
+          "imgName": "cultist-5"
+        },
+        {
+          "initiative": 27,
+          "imgName": "cultist-6"
+        },
+        {
+          "initiative": 10,
+          "imgName": "cultist-7"
+        }
       ]
     },
     {
@@ -1190,6 +1429,38 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 54,
+          "imgName": "deep-terror-1"
+        },
+        {
+          "initiative": 75,
+          "imgName": "deep-terror-2"
+        },
+        {
+          "initiative": 60,
+          "imgName": "deep-terror-3",
+          "count": 2,
+          "shuffle": true
+        },
+        {
+          "initiative": 75,
+          "imgName": "deep-terror-4"
+        },
+        {
+          "initiative": 65,
+          "imgName": "deep-terror-5"
+        },
+        {
+          "initiative": 84,
+          "imgName": "deep-terror-6"
+        },
+        {
+          "initiative": 96,
+          "imgName": "deep-terror-7"
+        }
       ]
     },
     {
@@ -1339,6 +1610,42 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 87,
+          "imgName": "earth-demon-1"
+        },
+        {
+          "initiative": 40,
+          "imgName": "earth-demon-2",
+          "shuffle": true
+        },
+        {
+          "initiative": 79,
+          "imgName": "earth-demon-3"
+        },
+        {
+          "initiative": 93,
+          "imgName": "earth-demon-4"
+        },
+        {
+          "initiative": 71,
+          "imgName": "earth-demon-5"
+        },
+        {
+          "initiative": 62,
+          "imgName": "earth-demon-6"
+        },
+        {
+          "initiative": 83,
+          "imgName": "earth-demon-7"
+        },
+        {
+          "initiative": 42,
+          "imgName": "earth-demon-8",
+          "shuffle": true
+        }
       ]
     },
     {
@@ -1488,6 +1795,42 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 46,
+          "imgName": "flame-demon-1",
+          "shuffle": true
+        },
+        {
+          "initiative": 8,
+          "imgName": "flame-demon-2"
+        },
+        {
+          "initiative": 24,
+          "imgName": "flame-demon-3"
+        },
+        {
+          "initiative": 3,
+          "imgName": "flame-demon-4"
+        },
+        {
+          "initiative": 77,
+          "imgName": "flame-demon-5"
+        },
+        {
+          "initiative": 49,
+          "imgName": "flame-demon-6"
+        },
+        {
+          "initiative": 67,
+          "imgName": "flame-demon-7"
+        },
+        {
+          "initiative": 30,
+          "imgName": "flame-demon-8",
+          "shuffle": true
+        }
       ]
     },
     {
@@ -1637,6 +1980,39 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 42,
+          "imgName": "imp-1"
+        },
+        {
+          "initiative": 43,
+          "imgName": "imp-2",
+          "shuffle": true
+        },
+        {
+          "initiative": 76,
+          "imgName": "imp-3"
+        },
+        {
+          "initiative": 24,
+          "imgName": "imp-4"
+        },
+        {
+          "initiative": 5,
+          "imgName": "imp-5"
+        },
+        {
+          "initiative": 37,
+          "imgName": "imp-6",
+          "count": 2
+        },
+        {
+          "initiative": 43,
+          "imgName": "imp-7",
+          "shuffle": true
+        }
       ]
     },
     {
@@ -1786,6 +2162,38 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 18,
+          "imgName": "frost-demon-1"
+        },
+        {
+          "initiative": 18,
+          "imgName": "frost-demon-2"
+        },
+        {
+          "initiative": 58,
+          "imgName": "frost-demon-3"
+        },
+        {
+          "initiative": 78,
+          "count": 2,
+          "shuffle": true,
+          "imgName": "frost-demon-4"
+        },
+        {
+          "initiative": 38,
+          "imgName": "frost-demon-5"
+        },
+        {
+          "initiative": 58,
+          "imgName": "frost-demon-6"
+        },
+        {
+          "initiative": 58,
+          "imgName": "frost-demon-7"
+        }
       ]
     },
     {
@@ -1935,6 +2343,42 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 1,
+          "imgName": "giant-viper-1"
+        },
+        {
+          "initiative": 1,
+          "imgName": "giant-viper-2"
+        },
+        {
+          "initiative": 1,
+          "imgName": "giant-viper-3"
+        },
+        {
+          "initiative": 1,
+          "imgName": "giant-viper-4"
+        },
+        {
+          "initiative": 1,
+          "imgName": "giant-viper-5"
+        },
+        {
+          "initiative": 1,
+          "imgName": "giant-viper-6",
+          "shuffle": true
+        },
+        {
+          "initiative": 1,
+          "imgName": "giant-viper-7"
+        },
+        {
+          "initiative": 1,
+          "imgName": "giant-viper-8",
+          "shuffle": true
+        }
       ]
     },
     {
@@ -2084,6 +2528,42 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 38,
+          "imgName": "harrower-infester-1"
+        },
+        {
+          "initiative": 7,
+          "shuffle": true,
+          "imgName": "harrower-infester-2"
+        },
+        {
+          "initiative": 16,
+          "imgName": "harrower-infester-3"
+        },
+        {
+          "initiative": 16,
+          "imgName": "harrower-infester-4"
+        },
+        {
+          "initiative": 38,
+          "imgName": "harrower-infester-5"
+        },
+        {
+          "initiative": 2,
+          "shuffle": true,
+          "imgName": "harrower-infester-6"
+        },
+        {
+          "initiative": 7,
+          "imgName": "harrower-infester-7"
+        },
+        {
+          "initiative": 30,
+          "imgName": "harrower-infester-8"
+        }
       ]
     },
     {
@@ -2233,6 +2713,35 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 7,
+          "imgName": "hound-1"
+        },
+        {
+          "initiative": 83,
+          "imgName": "hound-2"
+        },
+        {
+          "initiative": 26,
+          "imgName": "hound-3",
+          "count": 2
+        },
+        {
+          "initiative": 72,
+          "imgName": "hound-4"
+        },
+        {
+          "initiative": 6,
+          "imgName": "hound-5"
+        },
+        {
+          "initiative": 19,
+          "shuffle": true,
+          "count": 2,
+          "imgName": "hound-6"
+        }
       ]
     },
     {
@@ -2382,6 +2891,42 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 44,
+          "imgName": "archer-1"
+        },
+        {
+          "initiative": 56,
+          "imgName": "archer-2"
+        },
+        {
+          "initiative": 68,
+          "imgName": "archer-3",
+          "shuffle": true
+        },
+        {
+          "initiative": 29,
+          "shuffle": true,
+          "imgName": "archer-4"
+        },
+        {
+          "initiative": 16,
+          "imgName": "archer-5"
+        },
+        {
+          "initiative": 32,
+          "imgName": "archer-6"
+        },
+        {
+          "initiative": 31,
+          "imgName": "archer-7"
+        },
+        {
+          "initiative": 14,
+          "imgName": "archer-8"
+        }
       ]
     },
     {
@@ -2531,6 +3076,39 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 55,
+          "imgName": "guard-1"
+        },
+        {
+          "initiative": 15,
+          "imgName": "guard-2",
+          "shuffle": true
+        },
+        {
+          "initiative": 30,
+          "imgName": "guard-3"
+        },
+        {
+          "initiative": 50,
+          "count": 2,
+          "imgName": "guard-4"
+        },
+        {
+          "initiative": 35,
+          "imgName": "guard-5"
+        },
+        {
+          "initiative": 15,
+          "imgName": "guard-6",
+          "shuffle": true
+        },
+        {
+          "initiative": 70,
+          "imgName": "guard-7"
+        }
       ]
     },
     {
@@ -2680,6 +3258,38 @@
         [0, 0],
         [0, 0],
         [0, 0]
+      ],
+      "abilities": [
+        {
+          "initiative": 23,
+          "shuffle": true,
+          "count": 2,
+          "imgName": "shaman-1"
+        },
+        {
+          "initiative": 8,
+          "imgName": "shaman-2"
+        },
+        {
+          "initiative": 62,
+          "imgName": "shaman-3"
+        },
+        {
+          "initiative": 89,
+          "imgName": "shaman-4"
+        },
+        {
+          "initiative": 9,
+          "imgName": "shaman-5"
+        },
+        {
+          "initiative": 74,
+          "imgName": "shaman-6"
+        },
+        {
+          "initiative": 8,
+          "imgName": "shaman-7"
+        }
       ]
     },
     {
@@ -2829,6 +3439,39 @@
         [false, false],
         [false, false],
         [false, false]
+      ],
+      "abilities": [
+        {
+          "initiative": 25,
+          "imgName": "living-bones-1"
+        },
+        {
+          "initiative": 64,
+          "imgName": "living-bones-2"
+        },
+        {
+          "initiative": 45,
+          "imgName": "living-bones-3",
+          "count": 2
+        },
+        {
+          "initiative": 20,
+          "shuffle": true,
+          "imgName": "living-bones-4"
+        },
+        {
+          "initiative": 12,
+          "shuffle": true,
+          "imgName": "living-bones-5"
+        },
+        {
+          "initiative": 81,
+          "imgName": "living-bones-6"
+        },
+        {
+          "initiative": 74,
+          "imgName": "living-bones-7"
+        }
       ]
     },
     {
@@ -2978,6 +3621,38 @@
         [false, false],
         [false, false],
         [false, false]
+      ],
+      "abilities": [
+        {
+          "initiative": 47,
+          "imgName": "living-corpse-1"
+        },
+        {
+          "initiative": 66,
+          "imgName": "living-corpse-2",
+          "shuffle": true,
+          "count": 2
+        },
+        {
+          "initiative": 21,
+          "imgName": "living-corpse-3"
+        },
+        {
+          "initiative": 32,
+          "imgName": "living-corpse-4"
+        },
+        {
+          "initiative": 71,
+          "imgName": "living-corpse-5"
+        },
+        {
+          "initiative": 82,
+          "imgName": "living-corpse-6"
+        },
+        {
+          "initiative": 91,
+          "imgName": "living-corpse-7"
+        }
       ]
     },
     {
@@ -3127,6 +3802,39 @@
         [true, true],
         [true, true],
         [true, true]
+      ],
+      "abilities": [
+        {
+          "initiative": 48,
+          "count": 2,
+          "imgName": "living-spirit-1"
+        },
+        {
+          "initiative": 67,
+          "imgName": "living-spirit-2"
+        },
+        {
+          "initiative": 75,
+          "imgName": "living-spirit-3"
+        },
+        {
+          "initiative": 61,
+          "imgName": "living-spirit-4"
+        },
+        {
+          "initiative": 55,
+          "imgName": "living-spirit-5"
+        },
+        {
+          "initiative": 22,
+          "shuffle": true,
+          "imgName": "living-spirit-6"
+        },
+        {
+          "initiative": 33,
+          "shuffle": true,
+          "imgName": "living-spirit-7"
+        }
       ]
     },
     {
@@ -3276,6 +3984,42 @@
         [false, false],
         [false, false],
         [false, false]
+      ],
+      "abilities": [
+        {
+          "initiative": 23,
+          "shuffle": true,
+          "imgName": "lurker-1"
+        },
+        {
+          "initiative": 61,
+          "imgName": "lurker-2"
+        },
+        {
+          "initiative": 38,
+          "imgName": "lurker-3"
+        },
+        {
+          "initiative": 28,
+          "imgName": "lurker-4"
+        },
+        {
+          "initiative": 38,
+          "imgName": "lurker-5"
+        },
+        {
+          "initiative": 64,
+          "imgName": "lurker-6"
+        },
+        {
+          "initiative": 11,
+          "shuffle": true,
+          "imgName": "lurker-7"
+        },
+        {
+          "initiative": 41,
+          "imgName": "lurker-8"
+        }
       ]
     },
     {
@@ -3425,6 +4169,38 @@
         [false, false],
         [false, false],
         [false, false]
+      ],
+      "abilities": [
+        {
+          "initiative": 66,
+          "imgName": "ooze-1"
+        },
+        {
+          "initiative": 94,
+          "shuffle": true,
+          "count": 2,
+          "imgName": "ooze-2"
+        },
+        {
+          "initiative": 66,
+          "imgName": "ooze-3"
+        },
+        {
+          "initiative": 85,
+          "imgName": "ooze-4"
+        },
+        {
+          "initiative": 59,
+          "imgName": "ooze-5"
+        },
+        {
+          "initiative": 36,
+          "imgName": "ooze-6"
+        },
+        {
+          "initiative": 57,
+          "imgName": "ooze-7"
+        }
       ]
     },
     {
@@ -3574,6 +4350,39 @@
         [false, false],
         [false, false],
         [false, false]
+      ],
+      "abilities": [
+        {
+          "initiative": 46,
+          "shuffle": true,
+          "count": 2,
+          "imgName": "night-demon-1"
+        },
+        {
+          "initiative": 15,
+          "imgName": "night-demon-2"
+        },
+        {
+          "initiative": 41,
+          "shuffle": true,
+          "imgName": "night-demon-3"
+        },
+        {
+          "initiative": 22,
+          "imgName": "night-demon-4"
+        },
+        {
+          "initiative": 35,
+          "imgName": "night-demon-5"
+        },
+        {
+          "initiative": 26,
+          "imgName": "night-demon-6"
+        },
+        {
+          "initiative": 4,
+          "imgName": "night-demon-7"
+        }
       ]
     },
     {
@@ -3723,6 +4532,42 @@
         [false, false],
         [false, false],
         [false, false]
+      ],
+      "abilities": [
+        {
+          "initiative": 12,
+          "imgName": "rending-drake-1"
+        },
+        {
+          "initiative": 72,
+          "shuffle": true,
+          "imgName": "rending-drake-2"
+        },
+        {
+          "initiative": 6,
+          "imgName": "rending-drake-3"
+        },
+        {
+          "initiative": 39,
+          "imgName": "rending-drake-4"
+        },
+        {
+          "initiative": 54,
+          "imgName": "rending-drake-5"
+        },
+        {
+          "initiative": 25,
+          "imgName": "rending-drake-6"
+        },
+        {
+          "initiative": 59,
+          "imgName": "rending-drake-7"
+        },
+        {
+          "initiative": 13,
+          "shuffle": true,
+          "imgName": "rending-drake-8"
+        }
       ]
     },
     {
@@ -3872,6 +4717,39 @@
         [false, false],
         [false, false],
         [false, false]
+      ],
+      "abilities": [
+        {
+          "initiative": 35,
+          "shuffle": true,
+          "imgName": "savvas-icestorm-1"
+        },
+        {
+          "initiative": 47,
+          "shuffle": true,
+          "imgName": "savvas-icestorm-2"
+        },
+        {
+          "initiative": 14,
+          "imgName": "savvas-icestorm-3"
+        },
+        {
+          "initiative": 14,
+          "imgName": "savvas-icestorm-4"
+        },
+        {
+          "initiative": 19,
+          "imgName": "savvas-icestorm-5"
+        },
+        {
+          "initiative": 98,
+          "count": 2,
+          "imgName": "savvas-icestorm-6"
+        },
+        {
+          "initiative": 98,
+          "imgName": "savvas-icestorm-7"
+        }
       ]
     },
     {
@@ -4021,6 +4899,42 @@
         [false, false],
         [false, false],
         [false, false]
+      ],
+      "abilities": [
+        {
+          "initiative": 68,
+          "shuffle": true,
+          "imgName": "savvas-lavaflow-1"
+        },
+        {
+          "initiative": 31,
+          "imgName": "savvas-lavaflow-2"
+        },
+        {
+          "initiative": 51,
+          "imgName": "savvas-lavaflow-3"
+        },
+        {
+          "initiative": 41,
+          "imgName": "savvas-lavaflow-4"
+        },
+        {
+          "initiative": 68,
+          "shuffle": true,
+          "imgName": "savvas-lavaflow-5"
+        },
+        {
+          "initiative": 22,
+          "imgName": "savvas-lavaflow-6"
+        },
+        {
+          "initiative": 97,
+          "imgName": "savvas-lavaflow-7"
+        },
+        {
+          "initiative": 97,
+          "imgName": "savvas-lavaflow-8"
+        }
       ]
     },
     {
@@ -4170,6 +5084,42 @@
         [true, true],
         [true, true],
         [true, true]
+      ],
+      "abilities": [
+        {
+          "initiative": 27,
+          "imgName": "spitting-drake-1"
+        },
+        {
+          "initiative": 87,
+          "imgName": "spitting-drake-2"
+        },
+        {
+          "initiative": 89,
+          "imgName": "spitting-drake-3"
+        },
+        {
+          "initiative": 57,
+          "shuffle": true,
+          "imgName": "spitting-drake-4"
+        },
+        {
+          "initiative": 6,
+          "imgName": "spitting-drake-5"
+        },
+        {
+          "initiative": 89,
+          "shuffle": true,
+          "imgName": "spitting-drake-6"
+        },
+        {
+          "initiative": 52,
+          "imgName": "spitting-drake-7"
+        },
+        {
+          "initiative": 32,
+          "imgName": "spitting-drake-8"
+        }
       ]
     },
     {
@@ -4319,6 +5269,42 @@
         [false, false],
         [false, false],
         [false, false]
+      ],
+      "abilities": [
+        {
+          "initiative": 51,
+          "shuffle": true,
+          "imgName": "stone-golem-1"
+        },
+        {
+          "initiative": 72,
+          "imgName": "stone-golem-2"
+        },
+        {
+          "initiative": 11,
+          "imgName": "stone-golem-3"
+        },
+        {
+          "initiative": 28,
+          "imgName": "stone-golem-4"
+        },
+        {
+          "initiative": 83,
+          "imgName": "stone-golem-5"
+        },
+        {
+          "initiative": 90,
+          "shuffle": true,
+          "imgName": "stone-golem-6"
+        },
+        {
+          "initiative": 65,
+          "imgName": "stone-golem-7"
+        },
+        {
+          "initiative": 28,
+          "imgName": "stone-golem-8"
+        }
       ]
     },
     {
@@ -4468,6 +5454,38 @@
         [true, true],
         [true, true],
         [true, true]
+      ],
+      "abilities": [
+        {
+          "initiative": 50,
+          "imgName": "sun-demon-1"
+        },
+        {
+          "initiative": 88,
+          "imgName": "sun-demon-2"
+        },
+        {
+          "initiative": 73,
+          "shuffle": true,
+          "imgName": "sun-demon-3"
+        },
+        {
+          "initiative": 95,
+          "imgName": "sun-demon-4"
+        },
+        {
+          "initiative": 68,
+          "imgName": "sun-demon-5"
+        },
+        {
+          "initiative": 17,
+          "shuffle": true,
+          "imgName": "sun-demon-6"
+        },
+        {
+          "initiative": 36,
+          "imgName": "sun-demon-7"
+        }
       ]
     },
     {
@@ -4617,6 +5635,42 @@
         [false, false],
         [false, false],
         [false, false]
+      ],
+      "abilities": [
+        {
+          "initiative": 40,
+          "imgName": "scout-1"
+        },
+        {
+          "initiative": 29,
+          "imgName": "scout-2"
+        },
+        {
+          "initiative": 53,
+          "imgName": "scout-3"
+        },
+        {
+          "initiative": 69,
+          "imgName": "scout-4"
+        },
+        {
+          "initiative": 79,
+          "imgName": "scout-5"
+        },
+        {
+          "initiative": 54,
+          "imgName": "scout-6"
+        },
+        {
+          "initiative": 92,
+          "shuffle": true,
+          "imgName": "scout-7"
+        },
+        {
+          "initiative": 35,
+          "shuffle": true,
+          "imgName": "scout-8"
+        }
       ]
     },
     {
@@ -4766,6 +5820,38 @@
         [false, false],
         [false, false],
         [false, false]
+      ],
+      "abilities": [
+        {
+          "initiative": 23,
+          "shuffle": true,
+          "count": 2,
+          "imgName": "shaman-1"
+        },
+        {
+          "initiative": 8,
+          "imgName": "shaman-2"
+        },
+        {
+          "initiative": 62,
+          "imgName": "shaman-3"
+        },
+        {
+          "initiative": 89,
+          "imgName": "shaman-4"
+        },
+        {
+          "initiative": 9,
+          "imgName": "shaman-5"
+        },
+        {
+          "initiative": 74,
+          "imgName": "shaman-6"
+        },
+        {
+          "initiative": 8,
+          "imgName": "shaman-7"
+        }
       ]
     },
     {
@@ -4915,6 +6001,38 @@
         [true, true],
         [true, true],
         [true, true]
+      ],
+      "abilities": [
+        {
+          "initiative": 2,
+          "imgName": "wind-demon-1"
+        },
+        {
+          "initiative": 43,
+          "imgName": "wind-demon-2"
+        },
+        {
+          "initiative": 29,
+          "imgName": "wind-demon-3"
+        },
+        {
+          "initiative": 9,
+          "imgName": "wind-demon-4"
+        },
+        {
+          "initiative": 37,
+          "imgName": "wind-demon-5"
+        },
+        {
+          "initiative": 43,
+          "imgName": "wind-demon-6"
+        },
+        {
+          "initiative": 21,
+          "count": 2,
+          "shuffle": true,
+          "imgName": "wind-demon-7"
+        }
       ]
     }
   ]
