@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MonsterInfo } from '../services/monster.service';
+import { Monster } from '../services/monster.service';
 import { map, Observable, startWith } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
@@ -10,12 +10,12 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./activate-monster-dialog.component.scss']
 })
 export class ActivateMonsterDialogComponent implements OnInit {
-  public filteredAvailableMonsters$: Observable<MonsterInfo[]> | undefined;
+  public filteredAvailableMonsters$: Observable<Monster[]> | undefined;
   public monsterInputControl: FormControl = new FormControl('');
 
   constructor(
     private _dialogRef: MatDialogRef<any>,
-    @Inject(MAT_DIALOG_DATA) private _data: MonsterInfo[]
+    @Inject(MAT_DIALOG_DATA) private _data: Monster[]
   ) {
   }
 

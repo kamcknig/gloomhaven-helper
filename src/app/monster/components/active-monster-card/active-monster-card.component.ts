@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import {
   ApplicableConditions, ConditionAndEffectsType,
   ConditionsAndEffects,
-  MonsterInfo,
+  Monster,
   MonsterService
 } from '../../services/monster.service';
 import { AppService } from '../../../app.service';
@@ -17,7 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./active-monster-card.component.scss']
 })
 export class ActiveMonsterCard implements OnInit, AfterViewInit {
-  @Input() public value: MonsterInfo | undefined;
+  @Input() public value: Monster | undefined;
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
   public selectedToken: TokenInfo | undefined;
   public scenarioLevel: number | undefined;

@@ -31,6 +31,5 @@ export class AppComponent {
     public monsterService: MonsterService,
     public appService: AppService
   ) {
-
   }
 }
