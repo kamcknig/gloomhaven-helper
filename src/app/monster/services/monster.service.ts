@@ -58,8 +58,16 @@ export interface Monster {
   range?: [number, number][];
   retaliate?: [number, number][];
   target?: [number, number][];
-  abilities: { initiative: number, shuffle?: boolean, imgName: string, count?: number }[];
+  abilities: MonsterAbilityCard[];
   active?: boolean;
+}
+
+export type MonsterAbilityCard = {
+  initiative: number,
+  shuffle?: boolean,
+  imgName: string,
+  count?: number,
+  drawn?: boolean;
 }
 
 type MonsterNoId = Omit<Monster, 'id'>;
@@ -74,27 +82,22 @@ type MonsterState = {
 export class MonsterService {
   private static _idIncrementer: number = 0;
 
-  private _monsterAdapter = createAdapter<MonsterState>()({
+  public monsterAdapter = createAdapter<MonsterState>()({
     add: (state, event: MonsterNoId[] | MonsterNoId, initialState) => ({
       ...state,
       ...(Array.isArray(event) ? event : [event]).reduce((prev, next) => {
         const id = ++MonsterService._idIncrementer;
         prev[id] = {
           ...next,
-          id,
-          abilityCards: new Array(7).fill(0)
-            .map((e, idx) => ({
-              initiative: 5 + Math.floor(Math.random() * 30),
-              imgPath: ''
-            }))
+          id
         }
         return prev;
       }, {})
     }),
     activateMonster: (state, event, initialState) => ({
       ...state,
-      [event]: {
-        ...state[event],
+      [event.id]: {
+        ...state[event.id],
         active: true
       }
     }),
@@ -111,199 +114,20 @@ export class MonsterService {
   private _monsterGet = this._http.get('assets/data/monsters.json')
     .pipe(
       map(res => res['monsters']),
-      toSource('[GET Monsters]'),
-      share()
+      share(),
+      toSource('[GET Monsters]')
     );
 
-  public activateMonster$: Source<number> = new Source('activateMonster$');
+  //------ sources
+
+  // trigger activate monster action, pass Monster instance
+  public activateMonster$: Source<Monster> = new Source('activateMonster$');
+
+  // trigger draw action, pass monster ID
+  public drawAbilityCard$: Source<number> = new Source('drawAbilityCard$');
 
   public monsterStore = this._adapt.init(
-    ['monsters', this._monsterAdapter, {
-      // TODO: remove testing code
-      '12345': {
-        'active': true,
-        'id': 12345,
-        "name": "Ancient Artillery",
-        "health": [
-          [4, 7],
-          [6, 9],
-          [7, 11],
-          [8, 13]
-        ],
-        "move": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
-        ],
-        "attack": [
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4]
-        ],
-        "range": [
-          [4, 5],
-          [4, 5],
-          [5, 6],
-          [5, 6]
-        ],
-        "conditionsAndEffects": {
-          "AddTarget": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Advantage": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Bless": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Curse": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Disadvantage": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Disarm": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Immobilize": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Invisibility": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Muddle": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Pierce": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Poison": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Pull": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Push": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Retaliate": [
-            [[0, 0], [0, 0]],
-            [[0, 0], [0, 0]],
-            [[0, 0], [0, 0]],
-            [[0, 0], [0, 0]]
-          ],
-          "Shield": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Strengthen": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Stun": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ],
-          "Wound": [
-            [0, 0],
-            [0, 0],
-            [0, 0],
-            [0, 0]
-          ]
-        },
-        "flying": [
-          [false, false],
-          [false, false],
-          [false, false],
-          [false, false]
-        ],
-        "target": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
-        ],
-        "abilities": [
-          {
-            "initiative": 46,
-            "imgName": "ancient-artillery-attack-card-1"
-          },
-          {
-            "initiative": 37,
-            "imgName": "ancient-artillery-attack-card-2"
-          },
-          {
-            "initiative": 95,
-            "imgName": "ancient-artillery-attack-card-3"
-          },
-          {
-            "initiative": 71,
-            "imgName": "ancient-artillery-attack-card-4",
-            "count": 2,
-            "shuffle": true
-          },
-          {
-            "initiative": 17,
-            "imgName": "ancient-artillery-attack-card-5"
-          },
-          {
-            "initiative": 37,
-            "imgName": "ancient-artillery-attack-card-6"
-          },
-          {
-            "initiative": 46,
-            "imgName": "ancient-artillery-attack-card-7"
-          }
-        ]
-      }
-    }],
+    ['monsters', this.monsterAdapter, {}],
     {
       add: this._monsterGet,
       activateMonster: this.activateMonster$
@@ -326,7 +150,7 @@ export class MonsterService {
               withLatestFrom(this.monsterStore.monsters$),
               map(([id, monsters]) => monsters.find(m => m.id === id)),
               filter(monster => !!monster),
-              tap(monster => this.activateMonster$.next(monster.id))
+              tap(monster => this.activateMonster$.next(monster))
             )
           : of(null))
       );

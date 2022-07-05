@@ -2,6 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { MonsterService } from './monster/services/monster.service';
 import { FormControl } from '@angular/forms';
 import { AppService } from './app.service';
+import { CombatService } from './combat/services/combat.service';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,10 @@ export class AppComponent {
 
   constructor(
     public monsterService: MonsterService,
-    public appService: AppService
+    public appService: AppService,
+    public combatService: CombatService
   ) {
+
+    this.combatService.store.state$.subscribe()
   }
 }

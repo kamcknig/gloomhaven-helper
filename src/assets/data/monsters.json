@@ -151,33 +151,33 @@
       "abilities": [
         {
           "initiative": 46,
-          "imgName": "ancient-artillery-attack-card-1"
+          "imgName": "ancient-artillery-1"
         },
         {
           "initiative": 37,
-          "imgName": "ancient-artillery-attack-card-2"
+          "imgName": "ancient-artillery-2"
         },
         {
           "initiative": 95,
-          "imgName": "ancient-artillery-attack-card-3"
+          "imgName": "ancient-artillery-3"
         },
         {
           "initiative": 71,
-          "imgName": "ancient-artillery-attack-card-4",
+          "imgName": "ancient-artillery-4",
           "count": 2,
           "shuffle": true
         },
         {
           "initiative": 17,
-          "imgName": "ancient-artillery-attack-card-5"
+          "imgName": "ancient-artillery-5"
         },
         {
           "initiative": 37,
-          "imgName": "ancient-artillery-attack-card-6"
+          "imgName": "ancient-artillery-6"
         },
         {
           "initiative": 46,
-          "imgName": "ancient-artillery-attack-card-7"
+          "imgName": "ancient-artillery-7"
         }
       ]
     },
@@ -516,38 +516,35 @@
       ],
       "abilities": [
         {
-          "initiative": 85,
-          "imgName": "boss-1",
+          "initiative": 55,
+          "imgName": "guard-1"
+        },
+        {
+          "initiative": 15,
+          "imgName": "guard-2",
           "shuffle": true
         },
         {
-          "initiative": 14,
-          "imgName": "boss-2"
+          "initiative": 30,
+          "imgName": "guard-3"
         },
         {
-          "initiative": 52,
-          "imgName": "boss-3"
+          "initiative": 50,
+          "count": 2,
+          "imgName": "guard-4"
         },
         {
-          "initiative": 17,
-          "imgName": "boss-4",
+          "initiative": 35,
+          "imgName": "guard-5"
+        },
+        {
+          "initiative": 15,
+          "imgName": "guard-6",
           "shuffle": true
         },
         {
-          "initiative": 11,
-          "imgName": "boss-5"
-        },
-        {
-          "initiative": 79,
-          "imgName": "boss-6"
-        },
-        {
-          "initiative": 36,
-          "imgName": "boss-7"
-        },
-        {
-          "initiative": 73,
-          "imgName": "boss-8"
+          "initiative": 70,
+          "imgName": "guard-7"
         }
       ]
     },
@@ -1068,36 +1065,38 @@
       ],
       "abilities": [
         {
-          "initiative": 1,
-          "imgName": ""
+          "initiative": 44,
+          "imgName": "archer-1"
         },
         {
-          "initiative": 1,
-          "imgName": ""
+          "initiative": 56,
+          "imgName": "archer-2"
         },
         {
-          "initiative": 1,
-          "imgName": ""
+          "initiative": 68,
+          "imgName": "archer-3",
+          "shuffle": true
         },
         {
-          "initiative": 1,
-          "imgName": ""
+          "initiative": 29,
+          "shuffle": true,
+          "imgName": "archer-4"
         },
         {
-          "initiative": 1,
-          "imgName": ""
+          "initiative": 16,
+          "imgName": "archer-5"
         },
         {
-          "initiative": 1,
-          "imgName": ""
+          "initiative": 32,
+          "imgName": "archer-6"
         },
         {
-          "initiative": 1,
-          "imgName": ""
+          "initiative": 31,
+          "imgName": "archer-7"
         },
         {
-          "initiative": 1,
-          "imgName": ""
+          "initiative": 14,
+          "imgName": "archer-8"
         }
       ]
     },

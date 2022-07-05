@@ -1,1 +1,1 @@
-<img src="/assets/monster-ability-cards/monster-ability-card-back.jpg">
+<img [src]="'/assets/monster-ability-cards/' + ((activeCard$ | async)?.imgName ?? 'monster-ability-card-back') + '.jpg'">
