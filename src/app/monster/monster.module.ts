@@ -14,6 +14,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TokenModule } from '../token/token.module';
+import { MonsterAbilityDeckComponent } from './components/monster-ability-deck/monster-ability-deck.component';
 
 
 
@@ -21,7 +22,8 @@ import { TokenModule } from '../token/token.module';
   declarations: [
     ActiveMonsterCard,
     AddTokenDialogComponent,
-    ActivateMonsterDialogComponent
+    ActivateMonsterDialogComponent,
+    MonsterAbilityDeckComponent
   ],
   exports: [
     ActiveMonsterCard
