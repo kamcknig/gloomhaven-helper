@@ -127,7 +127,7 @@ export class MonsterService {
   // trigger draw action, pass monster ID
   public drawAbilityCard$: Source<number> = new Source('drawAbilityCard$');
 
-  public monsterStore = this._adapt.init((
+  public monsterStore = this._adapt.init(
     ['monsters', {}, this.monsterAdapter],
     {
       add: this._monsterGet,
