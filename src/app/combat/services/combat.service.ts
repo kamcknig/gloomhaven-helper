@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AdaptCommon, createAdapter, createSelectors } from '@state-adapt/core';
+import { AdaptCommon, createAdapter } from '@state-adapt/core';
 import { MonsterAbilityCard, MonsterService } from '../../monster/services/monster.service';
 
 export type CombatState = {
@@ -58,8 +58,8 @@ export class CombatService {
   public store = this._adapt.init(
     [
       'combat',
-      this._adapter,
-      {}
+      {},
+      this._adapter
     ],
     {
       drawAbilityCard: this._monsterService.drawAbilityCard$,

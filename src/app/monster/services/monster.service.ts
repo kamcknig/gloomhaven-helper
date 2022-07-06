@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { AdaptCommon, createAdapter, createSelectors, Source, toSource } from '@state-adapt/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivateMonsterDialogComponent } from '../activate-monster-dialog/activate-monster-dialog.component';
-import { filter, map, of, share, switchMap, take, tap, withLatestFrom } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { filter, map, share, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 export const ConditionsAndEffects = [
   'AddTarget',
@@ -126,8 +127,8 @@ export class MonsterService {
   // trigger draw action, pass monster ID
   public drawAbilityCard$: Source<number> = new Source('drawAbilityCard$');
 
-  public monsterStore = this._adapt.init(
-    ['monsters', this.monsterAdapter, {}],
+  public monsterStore = this._adapt.init((
+    ['monsters', {}, this.monsterAdapter],
     {
       add: this._monsterGet,
       activateMonster: this.activateMonster$

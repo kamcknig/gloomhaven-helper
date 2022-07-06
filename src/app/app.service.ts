@@ -25,7 +25,7 @@ export class AppService {
   updateRound$ = new Source<number | string>('updateRound$');
 
   scenarioStore = this.adapt.init(
-    ['scenario', this._scenarioAdapter, { level: 0, round: 0 }],
+    ['scenario', { level: 0, round: 0 }, this._scenarioAdapter],
     {
       updateLevel: this.updateScenarioLevel$,
       updateRound: this.updateRound$

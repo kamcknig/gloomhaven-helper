@@ -30,7 +30,8 @@ export class ElementService {
     infuseElement: (state, event, initialState) => ({
       ...state,
       infused: [
-        ...state.infused.filter(e => e !== event).concat(event)
+        ...state.infused.filter(e => e !== event)
+          .concat(event)
       ],
       inert: [
         ...state.inert.filter(e => e !== event)
@@ -48,7 +49,8 @@ export class ElementService {
         ...state.inert.filter(e => e !== event)
       ],
       waning: [
-        ...state.waning.filter(e => e !== event).concat(event)
+        ...state.waning.filter(e => e !== event)
+          .concat(event)
       ]
     }),
     inertElement: (state, event, initialState) => ({
@@ -57,7 +59,8 @@ export class ElementService {
         ...state.infused.filter(e => e !== event)
       ],
       inert: [
-        ...state.inert.filter(e => e !== event).concat(event)
+        ...state.inert.filter(e => e !== event)
+          .concat(event)
       ],
       waning: [
         ...state.waning.filter(e => e !== event)
@@ -70,16 +73,23 @@ export class ElementService {
     })
   });
 
-  public elementStore = this._adapt.init([
-    'elements',
-    this._elementAdapter,
-    { infused: [], inert: Object.keys(Elements).filter(key => Elements[key]) as ElementInfo[], waning: [] }
-  ],
+  public elementStore = this._adapt.init(
+    [
+      'elements',
+      {
+        infused: [],
+        inert: Object.keys(Elements)
+          .filter(key => Elements[key]) as ElementInfo[],
+        waning: []
+      },
+      this._elementAdapter
+    ],
     {
       inertElement: this.inertElement$,
       waneElement: this.waneElement$,
       infuseElement: this.infuseElement$
-    })
+    }
+  )
 
   constructor(
     private _adapt: AdaptCommon<any>
