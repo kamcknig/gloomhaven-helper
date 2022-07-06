@@ -67,8 +67,8 @@ export class TokenService {
     }
   });
 
-  public tokenStore = this._adapt.init((
-    ['tokens', this._tokenAdapter, []],
+  public tokenStore = this._adapt.init(
+    ['tokens', [], this._tokenAdapter],
     {
       addToken: this.addToken$,
       updateTokenHitPoint: this.updateTokenHitPoint$,
