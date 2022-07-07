@@ -1,17 +1,13 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import {
-  ApplicableConditions,
-  ConditionAndEffectsType,
-  ConditionsAndEffects,
-  Monster,
-  MonsterService
-} from '../../services/monster.service';
+import { MonsterService } from '../../services/monster.service';
 import { AppService } from '../../../app.service';
-import { TokenInfo, TokenService } from '../../../token/services/token.service';
+import { TokenService } from '../../../token/services/token.service';
 import { AddTokenDialogComponent } from './add-token-dialog/add-token-dialog.component';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
+import { ApplicableConditions, ConditionAndEffectsType, ConditionsAndEffects, Monster } from '../../services/model';
+import { TokenInfo } from '../../../token/services/model';
 
 @Component({
   selector: 'app-active-monster-card',

@@ -1,10 +1,10 @@
-<mat-form-field color="accent"
-                style="margin-right: 1rem">
-  <mat-label>Round</mat-label>
-  <input type="number"
-         placeholder="Round"
-         matInput
-         [formControl]="roundInputControl"
-         (change)="appService.updateRound$.next(+(roundInputControl?.value ?? 0))"
-         [min]="0">
-</mat-form-field>
+<div fxLayout="column"
+     fxLayoutAlign="center start"
+     fxLayoutGap="1rem">
+  <div>Round {{appService.scenarioStore.round$ | async}}</div>
+  <button mat-raised-button
+          color="accent"
+          [disabled]="(monsterService.monsterStore.activeMonsters$ | async).length === 0"
+          (click)="combatService.roundComplete$.next()">Next
+  </button>
+</div>

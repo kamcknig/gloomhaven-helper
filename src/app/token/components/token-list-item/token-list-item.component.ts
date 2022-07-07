@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TokenInfo, TokenService } from '../../services/token.service';
+import { TokenService } from '../../services/token.service';
+import { TokenInfo } from '../../services/model';
 
 @Component({
   selector: 'app-token-list-item',

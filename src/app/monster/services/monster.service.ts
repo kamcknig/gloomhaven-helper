@@ -6,77 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { filter, map, share, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { adapt } from '@state-adapt/angular';
-
-export const ConditionsAndEffects = [
-  'AddTarget',
-  'Advantage',
-  'Bless',
-  'Curse',
-  'Disadvantage',
-  'Disarm',
-  'Immobilize',
-  'Invisibility',
-  'Muddle',
-  'Pierce',
-  'Poison',
-  'Pull',
-  'Push',
-  'Retaliate',
-  'Shield',
-  'Strengthen',
-  'Stun',
-  'Wound'
-] as const;
-
-/**
- * These are the effects and conditions that can be applied to a monster or a character
- */
-export const ApplicableConditions = [
-  'Disarm',
-  'Immobilize',
-  'Invisibility',
-  'Muddle',
-  'Poison',
-  'Retaliate',
-  'Shield',
-  'Strengthen',
-  'Stun',
-  'Wound'
-]
-
-export type ConditionAndEffectsType = typeof ConditionsAndEffects[number];
-
-export interface Monster {
-  name: string;
-  id: number;
-  health: [number, number][],
-  attack?: [number, number][];
-  conditionsAndEffects?: {
-    [key in ConditionAndEffectsType]: ([number, number] | [[number, number], [number, number]])[];
-  }
-  elite?: boolean;
-  flying?: [boolean, boolean][];
-  move?: [number, number][];
-  range?: [number, number][];
-  retaliate?: [number, number][];
-  target?: [number, number][];
-  abilities: MonsterAbilityCard[];
-  active?: boolean;
-}
-
-export type MonsterAbilityCard = {
-  initiative: number,
-  shuffle?: boolean,
-  imgName: string,
-  count?: number,
-  drawn?: boolean;
-}
-
-type MonsterNoId = Omit<Monster, 'id'>;
-
-type MonsterState = {
-  [id: string]: Monster;
-}
+import { Monster, MonsterNoId, MonsterState } from './model';
 
 @Injectable({
   providedIn: 'root'
@@ -123,16 +53,18 @@ export class MonsterService {
   //------ sources
 
   // trigger activate monster action, pass Monster instance
-  public activateMonster$: Source<Monster> = new Source('activateMonster$');
+  public monsterActivate$: Source<Monster> = new Source('activateMonster$');
 
   // trigger draw action, pass monster ID
-  public drawAbilityCard$: Source<number> = new Source('drawAbilityCard$');
+  public monsterAbilityCardDraw$: Source<number> = new Source('drawAbilityCard$');
 
   public monsterStore = adapt(
-    ['monsters', {}, this.monsterAdapter],
+    'monsters',
+    {},
+    this.monsterAdapter,
     {
       add: this._monsterGet,
-      activateMonster: this.activateMonster$
+      activateMonster: this.monsterActivate$
     }
   );
 
@@ -152,7 +84,7 @@ export class MonsterService {
               withLatestFrom(this.monsterStore.monsters$),
               map(([id, monsters]) => monsters.find(m => m.id === id)),
               filter(monster => !!monster),
-              tap(monster => this.activateMonster$.next(monster))
+              tap(monster => this.monsterActivate$.next(monster))
             )
           : of(null))
       );

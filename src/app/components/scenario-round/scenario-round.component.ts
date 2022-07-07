@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { AppService } from '../../app.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { CombatService } from '../../combat/services/combat.service';
+import { MonsterService } from '../../monster/services/monster.service';
 
 @Component({
   selector: 'app-scenario-round',
@@ -14,12 +16,18 @@ export class ScenarioRoundComponent implements OnInit, OnDestroy {
 
   public roundInputControl: FormControl = new FormControl<any>('');
 
-  constructor(public appService: AppService) { }
+  constructor(
+    public appService: AppService,
+    public combatService: CombatService,
+    public monsterService: MonsterService
+  ) {
+  }
 
   ngOnInit(): void {
-    this.appService.scenarioStore.round$.pipe(takeUntil(this._destroy$)).subscribe({
-      next: round => this.roundInputControl.setValue(round.toString())
-    });
+    this.appService.scenarioStore.round$.pipe(takeUntil(this._destroy$))
+      .subscribe({
+        next: round => this.roundInputControl.setValue(round.toString())
+      });
 
     this.roundInputControl.disable();
   }

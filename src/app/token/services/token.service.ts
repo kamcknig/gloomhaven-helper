@@ -1,17 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createAdapter, createSelectors, Source } from '@state-adapt/core';
 import { adapt } from '@state-adapt/angular';
-
-export interface TokenInfo {
-  health?: number;
-  maxHealth: number;
-  number: number;
-  monsterId: number | undefined;
-  elite?: boolean;
-  appliedConditionsAndEffects?: {
-    [key: string]: number;
-  }
-}
+import { TokenInfo } from './model';
 
 @Injectable({
   providedIn: 'root'

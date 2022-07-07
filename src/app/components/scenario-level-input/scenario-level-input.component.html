@@ -4,7 +4,7 @@
 
   <input [formControl]="levelInputControl"
          placeholder="Scenario Level"
-         (change)="this.appService.updateScenarioLevel$.next(+(levelInputControl?.value ?? 0))"
+         (change)="this.appService.scenarioLevelUpdate$.next(+(levelInputControl?.value ?? 0))"
          matInput
          type="number"
          [min]="0"

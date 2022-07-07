@@ -1,98 +1,54 @@
 import { Injectable } from '@angular/core';
 import { createAdapter, createSelectors, Source } from '@state-adapt/core';
+import { ElementNames, Elements, ElementState } from './model';
 import { adapt } from '@state-adapt/angular';
-
-export enum Elements {
-  Dark = 'Dark',
-  Earth = 'Earth',
-  Fire = 'Fire',
-  Ice = 'Ice',
-  Sun = 'Sun',
-  Wind = 'Wind'
-}
-
-export type ElementInfo = keyof typeof Elements;
-
-export interface ElementState {
-  infused: ElementInfo[],
-  waning: ElementInfo[],
-  inert: ElementInfo[]
-}
+import { CombatService } from '../combat/services/combat.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ElementService {
-  public infuseElement$: Source<ElementInfo> = new Source<ElementInfo>('infuseElement$');
-  public waneElement$: Source<ElementInfo> = new Source<ElementInfo>('waneElement$');
-  public inertElement$: Source<ElementInfo> = new Source<ElementInfo>('inertElement$');
+  public infuseElement$: Source<ElementNames> = new Source<ElementNames>('infuseElement$');
+  public waneElement$: Source<ElementNames> = new Source<ElementNames>('waneElement$');
+  public inertElement$: Source<ElementNames> = new Source<ElementNames>('inertElement$');
 
   private _elementAdapter = createAdapter<ElementState>()({
     infuseElement: (state, event, initialState) => ({
       ...state,
-      infused: [
-        ...state.infused.filter(e => e !== event)
-          .concat(event)
-      ],
-      inert: [
-        ...state.inert.filter(e => e !== event)
-      ],
-      waning: [
-        ...state.waning.filter(e => e !== event)
-      ]
+      [event]: {
+        ...state[event],
+        level: Math.min(2, ++state[event].level)
+      }
     }),
     waneElement: (state, event, initialState) => ({
       ...state,
-      infused: [
-        ...state.infused.filter(e => e !== event)
-      ],
-      inert: [
-        ...state.inert.filter(e => e !== event)
-      ],
-      waning: [
-        ...state.waning.filter(e => e !== event)
-          .concat(event)
-      ]
-    }),
-    inertElement: (state, event, initialState) => ({
-      ...state,
-      infused: [
-        ...state.infused.filter(e => e !== event)
-      ],
-      inert: [
-        ...state.inert.filter(e => e !== event)
-          .concat(event)
-      ],
-      waning: [
-        ...state.waning.filter(e => e !== event)
-      ]
+      [event]: {
+        ...state[event],
+        level: Math.max(0, --state[event].level)
+      }
     }),
     selectors: createSelectors<ElementState>()({
-      inertElements: s => s.inert,
-      waningElements: s => s.waning,
-      infusedElements: s => s.infused
+      inertElements: s => Object.values(s).filter(e => e.level === 1),
+      waningElements: s => Object.values(s).filter(e => e.level === 2),
+      infusedElements: s => Object.values(s).filter(e => e.level === 3),
+      elements: s => Object.values(s)
     })
   });
 
   public elementStore = adapt(
-    [
-      'elements',
-      {
-        infused: [],
-        inert: Object.keys(Elements)
-          .filter(key => Elements[key]) as ElementInfo[],
-        waning: []
-      },
-      this._elementAdapter
-    ],
+    'elements',
+    Object.keys(Elements).reduce((prev, key) => {
+      prev[key] = { name: key, level: 0 }
+      return prev;
+    }, {} as ElementState),
+    this._elementAdapter,
     {
-      inertElement: this.inertElement$,
       waneElement: this.waneElement$,
       infuseElement: this.infuseElement$
     }
   )
 
-  constructor() {
+  constructor(private _combatService: CombatService) {
   }
 
 

@@ -1,9 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Monster } from '../services/monster.service';
 import { Observable } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { filter, map, startWith } from 'rxjs/operators';
+import { Monster } from '../services/model';
 
 @Component({
   selector: 'app-activate-monster-dialog',

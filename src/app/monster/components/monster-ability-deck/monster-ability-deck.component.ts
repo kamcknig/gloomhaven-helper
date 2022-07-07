@@ -1,8 +1,9 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { Monster, MonsterAbilityCard, MonsterService } from '../../services/monster.service';
+import { MonsterService } from '../../services/monster.service';
 import { CombatService } from '../../../combat/services/combat.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Monster, MonsterAbilityCard } from '../../services/model';
 
 @Component({
   selector: 'app-monster-ability-deck',
@@ -14,12 +15,7 @@ export class MonsterAbilityDeckComponent implements OnInit {
 
   public activeCard$: Observable<MonsterAbilityCard>;
 
-  @HostListener('click') public clickListener() {
-    this._monsterService.drawAbilityCard$.next(this.value.id);
-  }
-
   constructor(
-    private _monsterService: MonsterService,
     private _combatService: CombatService
   ) { }
 
