@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import {
-  ApplicableConditions, ConditionAndEffectsType,
+  ApplicableConditions,
+  ConditionAndEffectsType,
   ConditionsAndEffects,
   Monster,
   MonsterService
@@ -8,7 +9,8 @@ import {
 import { AppService } from '../../../app.service';
 import { TokenInfo, TokenService } from '../../../token/services/token.service';
 import { AddTokenDialogComponent } from './add-token-dialog/add-token-dialog.component';
-import { map, Observable, Subject, takeUntil, tap, withLatestFrom } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -33,8 +35,10 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
       map(tokens => tokens.filter(t => t.monsterId === this.value!.id)),
       // separate them out into elites and normals
       map(tokenData => ({
-        elites: tokenData.filter(t => !!t.elite).sort((e1, e2) => e1.number - e2.number),
-        normals: tokenData.filter(t => !t.elite).sort((e1, e2) => e1.number - e2.number)
+        elites: tokenData.filter(t => !!t.elite)
+          .sort((e1, e2) => e1.number - e2.number),
+        normals: tokenData.filter(t => !t.elite)
+          .sort((e1, e2) => e1.number - e2.number)
       })),
       tap(tokenData => {
         this._tokens = tokenData;
@@ -48,7 +52,9 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
     );
 
     this.appService.scenarioStore.level$.pipe(takeUntil(this._destroy$))
-      .subscribe(v => this.scenarioLevel = v);
+      .subscribe({
+        next: v => this.scenarioLevel = v
+      });
   }
 
   ngAfterViewInit() {
@@ -134,8 +140,9 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
   showAdditionConditionEffectInfo(condition: string) {
     return ['Retaliate', 'Pierce', 'Pull', 'Shield'].includes(condition);
   }
+
   monsterHasConditionEffect(condition: string, elite: boolean = false) {
     return this.value?.conditionsAndEffects?.[condition]?.[this.scenarioLevel ?? 0]?.[elite ? 1 : 0] > 0
-    || this.value?.conditionsAndEffects?.[condition]?.[this.scenarioLevel ?? 0]?.[elite ? 1 : 0]?.[0] > 0;
+      || this.value?.conditionsAndEffects?.[condition]?.[this.scenarioLevel ?? 0]?.[elite ? 1 : 0]?.[0] > 0;
   }
 }

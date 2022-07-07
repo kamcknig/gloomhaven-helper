@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AdaptCommon, createAdapter, createSelectors, Source, toSource } from '@state-adapt/core';
+import { createAdapter, createSelectors, Source, toSource } from '@state-adapt/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivateMonsterDialogComponent } from '../activate-monster-dialog/activate-monster-dialog.component';
 import { MatDialog } from '@angular/material/dialog';

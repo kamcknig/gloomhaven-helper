@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
 import { AppService } from '../../app.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-scenario-level-input',

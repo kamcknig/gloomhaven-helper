@@ -1,7 +1,8 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Monster, MonsterAbilityCard, MonsterService } from '../../services/monster.service';
 import { CombatService } from '../../../combat/services/combat.service';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-monster-ability-deck',

@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Monster } from '../services/monster.service';
-import { map, Observable, startWith } from 'rxjs';
+import { Observable } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
+import { filter, map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-activate-monster-dialog',
@@ -24,7 +25,8 @@ export class ActivateMonsterDialogComponent implements OnInit {
 
     this.filteredAvailableMonsters$ = this.monsterInputControl.valueChanges.pipe(
       startWith(undefined),
-      map(value => typeof value === 'string' ? value : value?.name ?? ''),
+      filter(value => typeof value === 'string'),
+      map(value => value?.name ?? ''),
       map(value => this._data.filter(m => new RegExp(`${value.toLowerCase()}`, 'gi').test(m.name)))
     );
   }

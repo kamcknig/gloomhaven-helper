@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { map, take, tap, withLatestFrom } from 'rxjs';
+import { map, take, tap, withLatestFrom } from 'rxjs/operators';
 import { ElementInfo, ElementService } from '../../elements/element.service';
 import { MonsterService } from '../../monster/services/monster.service';
 import { MatDialog } from '@angular/material/dialog';
