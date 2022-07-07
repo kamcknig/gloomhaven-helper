@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AdaptCommon, createAdapter, createSelectors, Source } from '@state-adapt/core';
+import { createAdapter, createSelectors, Source } from '@state-adapt/core';
+import { adapt } from '@state-adapt/angular';
 
 export interface TokenInfo {
   health?: number;
@@ -67,7 +68,7 @@ export class TokenService {
     }
   });
 
-  public tokenStore = this._adapt.init(
+  public tokenStore = adapt(
     ['tokens', [], this._tokenAdapter],
     {
       addToken: this.addToken$,
@@ -76,6 +77,6 @@ export class TokenService {
     }
   )
 
-  constructor(private _adapt: AdaptCommon<any>) {
+  constructor() {
   }
 }

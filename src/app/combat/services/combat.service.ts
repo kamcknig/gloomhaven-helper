@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AdaptCommon, createAdapter } from '@state-adapt/core';
+import { createAdapter } from '@state-adapt/core';
 import { MonsterAbilityCard, MonsterService } from '../../monster/services/monster.service';
+import { adapt } from '@state-adapt/angular';
 
 export type CombatState = {
   [monsterId: string]: MonsterAbilityCard[]
@@ -55,7 +56,7 @@ export class CombatService {
     }
   });
 
-  public store = this._adapt.init(
+  public store = adapt(
     [
       'combat',
       {},
@@ -68,7 +69,6 @@ export class CombatService {
   )
 
   constructor(
-    private _adapt: AdaptCommon<any>,
     private _monsterService: MonsterService
   ) {
   }

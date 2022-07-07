@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { AdaptCommon, createAdapter, createSelectors, Source } from '@state-adapt/core';
+import { createAdapter, createSelectors, Source } from '@state-adapt/core';
+import { adapt } from '@state-adapt/angular';
 
 export enum Elements {
   Dark = 'Dark',
@@ -73,7 +74,7 @@ export class ElementService {
     })
   });
 
-  public elementStore = this._adapt.init(
+  public elementStore = adapt(
     [
       'elements',
       {
@@ -91,9 +92,7 @@ export class ElementService {
     }
   )
 
-  constructor(
-    private _adapt: AdaptCommon<any>
-  ) {
+  constructor() {
   }
 
 

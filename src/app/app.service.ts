@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
-import { AdaptCommon, createAdapter, createSelectors, Source } from '@state-adapt/core';
+import { createAdapter, createSelectors, Source } from '@state-adapt/core';
 import { MAX_LEVEL } from './scenario-options/max-level.token';
+import { adapt } from '@state-adapt/angular';
 
 export interface ScenarioInfo {
   level: number;
@@ -13,7 +14,10 @@ export interface ScenarioInfo {
 export class AppService {
 
   private _scenarioAdapter = createAdapter<ScenarioInfo>()({
-    updateLevel: (state, event, initialState) => ({ ...state, level: Math.min(Math.max(typeof event === 'string' ? state.level + Number(event) : event, 0), this.maxLevel) }),
+    updateLevel: (state, event, initialState) => ({
+      ...state,
+      level: Math.min(Math.max(typeof event === 'string' ? state.level + Number(event) : event, 0), this.maxLevel)
+    }),
     updateRound: (state, event, initialState) => ({ ...state, round: event }),
     selectors: createSelectors<ScenarioInfo>()({
       level: s => s.level,
@@ -24,7 +28,7 @@ export class AppService {
   updateScenarioLevel$ = new Source<number | string>('updateScenarioLevel$');
   updateRound$ = new Source<number | string>('updateRound$');
 
-  scenarioStore = this.adapt.init(
+  scenarioStore = adapt(
     ['scenario', { level: 0, round: 0 }, this._scenarioAdapter],
     {
       updateLevel: this.updateScenarioLevel$,
@@ -33,7 +37,7 @@ export class AppService {
   )
 
   constructor(
-    public adapt: AdaptCommon<any>,
     @Inject(MAX_LEVEL) public maxLevel: number
-  ) { }
+  ) {
+  }
 }

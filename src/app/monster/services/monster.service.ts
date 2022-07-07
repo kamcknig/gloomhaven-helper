@@ -5,6 +5,7 @@ import { ActivateMonsterDialogComponent } from '../activate-monster-dialog/activ
 import { MatDialog } from '@angular/material/dialog';
 import { filter, map, share, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { adapt } from '@state-adapt/angular';
 
 export const ConditionsAndEffects = [
   'AddTarget',
@@ -127,7 +128,7 @@ export class MonsterService {
   // trigger draw action, pass monster ID
   public drawAbilityCard$: Source<number> = new Source('drawAbilityCard$');
 
-  public monsterStore = this._adapt.init(
+  public monsterStore = adapt(
     ['monsters', {}, this.monsterAdapter],
     {
       add: this._monsterGet,
@@ -159,7 +160,6 @@ export class MonsterService {
 
   constructor(
     private _dialogService: MatDialog,
-    private _adapt: AdaptCommon<any>,
     private _http: HttpClient
   ) {
     this.monsterStore.monsters$.subscribe();
