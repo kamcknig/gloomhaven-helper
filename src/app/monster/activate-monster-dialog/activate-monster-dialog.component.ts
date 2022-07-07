@@ -25,9 +25,7 @@ export class ActivateMonsterDialogComponent implements OnInit {
     this.filteredAvailableMonsters$ = this.monsterInputControl.valueChanges.pipe(
       startWith(undefined),
       map(value => typeof value === 'string' ? value : value?.name ?? ''),
-      map(value => this._data.filter(m => {
-        return new RegExp(`${value.toLowerCase()}`, 'gi').test(m.name);
-      }))
+      map(value => this._data.filter(m => new RegExp(`${value.toLowerCase()}`, 'gi').test(m.name)))
     );
   }
 
