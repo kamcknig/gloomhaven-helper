@@ -9,7 +9,6 @@ import { CombatService } from '../combat/services/combat.service';
 })
 export class ElementService {
   public infuseElement$: Source<ElementNames> = new Source<ElementNames>('infuseElement$');
-  public waneElement$: Source<ElementNames> = new Source<ElementNames>('waneElement$');
   public inertElement$: Source<ElementNames> = new Source<ElementNames>('inertElement$');
 
   private _elementAdapter = createAdapter<ElementState>()({
@@ -18,13 +17,6 @@ export class ElementService {
       [event]: {
         ...state[event],
         queued: true
-      }
-    }),
-    waneElement: (state, event, initialState) => ({
-      ...state,
-      [event]: {
-        ...state[event],
-        level: Math.max(0, --state[event].level)
       }
     }),
     roundComplete: (state) => Object.entries(state).reduce((prev, [id, element]) => {
@@ -51,7 +43,6 @@ export class ElementService {
     }, {} as ElementState),
     this._elementAdapter,
     {
-      waneElement: this.waneElement$,
       infuseElement: this.infuseElement$,
       roundComplete: this._combatService.roundComplete$
     }
