@@ -25,12 +25,11 @@
 
   <span style="flex: 1 1 auto;"></span>
 
-  <div>
-    <button
-      type="button"
-      mat-raised-button
-      color="accent"
-      (click)="monsterService.selectMonsterToActivate().subscribe()">Activate Monster
-    </button>
-  </div>
+  <button
+    class="activate-monster"
+    type="button"
+    mat-fab
+    color="accent"
+    (click)="monsterService.selectMonsterToActivate().subscribe()">M
+  </button>
 </mat-toolbar>
