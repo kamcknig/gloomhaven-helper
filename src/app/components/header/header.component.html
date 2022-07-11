@@ -1,35 +1,43 @@
-<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="2rem">
+<mat-toolbar color="primary"
+             fxLayout="row"
+             fxLayoutAlign="start center"
+             fxLayoutGap="2rem">
   <app-scenario-level-input></app-scenario-level-input>
 
   <app-scenario-round></app-scenario-round>
 
-  <div fxLayout="column" fxLayoutGap="-.15rem">
+  <div fxLayout="column"
+       fxLayoutGap="-.15rem">
     <div>Shortcuts:</div>
+
     <div class="mat-body-2">Ctrl + up or down: change scenario level</div>
+
     <div class="mat-body-2">Ctrl + m: activate monster</div>
   </div>
 
   <span style="flex: 1 1 auto;"></span>
 
-  <div>
-    <ng-container *ngFor="let element of elementService.elementStore.elements$ | async">
+  <div fxLayout="row" *ngIf="(monsterService.monsterStore.activeMonsters$ | async)?.length > 0">
+    <div *ngFor="let element of elementService.elementStore.elements$ | async"
+         class="element-wrapper">
       <img [src]="'assets/icons/element-' + element.name.toLowerCase() + '.png'"
            [ngClass]="{
-            'infused': element.level === 2,
-            'waning': element.level === 1,
-            'dark': element.name.toLowerCase() === 'dark'
-           }"
-           class="element-icon">
-    </ng-container>
+              'infused': element.level === ElementPhases.infused,
+              'waning': element.level === ElementPhases.waning,
+              'dark': element.name.toLowerCase() === 'dark'
+             }"
+           class="element-icon"
+           (click)="elementService.infuseElement$.next(element.name)">
+
+      <mat-icon *ngIf="element.queued">check</mat-icon>
+    </div>
   </div>
-
-  <span style="flex: 1 1 auto;"></span>
-
-  <button
-    class="activate-monster"
-    type="button"
-    mat-fab
-    color="accent"
-    (click)="monsterService.selectMonsterToActivate().subscribe()">M
-  </button>
 </mat-toolbar>
+
+<button
+  class="activate-monster"
+  type="button"
+  mat-fab
+  color="accent"
+  (click)="monsterService.selectMonsterToActivate().subscribe()">M
+</button>

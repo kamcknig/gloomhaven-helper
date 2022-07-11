@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { createAdapter, createSelectors, Source } from '@state-adapt/core';
-import { ElementNames, Elements, ElementState } from './model';
+import { ElementNames, ElementPhases, Elements, ElementState } from './model';
 import { adapt } from '@state-adapt/angular';
 import { CombatService } from '../combat/services/combat.service';
 
@@ -17,7 +17,7 @@ export class ElementService {
       ...state,
       [event]: {
         ...state[event],
-        level: Math.min(2, ++state[event].level)
+        queued: true
       }
     }),
     waneElement: (state, event, initialState) => ({
@@ -27,6 +27,14 @@ export class ElementService {
         level: Math.max(0, --state[event].level)
       }
     }),
+    roundComplete: (state) => Object.entries(state).reduce((prev, [id, element]) => {
+      prev[id] = {
+        ...element,
+        level: state[id].queued ? ElementPhases.infused : Math.max(0, --state[id].level),
+        queued: false
+      }
+      return prev;
+    }, {} as ElementState),
     selectors: createSelectors<ElementState>()({
       inertElements: s => Object.values(s).filter(e => e.level === 1),
       waningElements: s => Object.values(s).filter(e => e.level === 2),
@@ -44,7 +52,8 @@ export class ElementService {
     this._elementAdapter,
     {
       waneElement: this.waneElement$,
-      infuseElement: this.infuseElement$
+      infuseElement: this.infuseElement$,
+      roundComplete: this._combatService.roundComplete$
     }
   )
 

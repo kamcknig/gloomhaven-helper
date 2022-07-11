@@ -21,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from './components/header/header.component';
 import { ScenarioLevelInputComponent } from './components/scenario-level-input/scenario-level-input.component';
 import { ScenarioRoundComponent } from './components/scenario-round/scenario-round.component';
+import { MatIconModule } from '@angular/material/icon';
 
 const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   actionSanitizer,
@@ -49,7 +50,8 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
     MatInputModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [
     { provide: AdaptCommon, useValue: createStore(enableReduxDevtools) },
