@@ -83,7 +83,7 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
       )
       .subscribe({
         next: ([data, scenarioLevel]: [{ normal: number[], elite: number[] }, number]) => {
-          if (!data) {
+          if (!data.normal?.length && !data.elite?.length) {
             return;
           }
 
