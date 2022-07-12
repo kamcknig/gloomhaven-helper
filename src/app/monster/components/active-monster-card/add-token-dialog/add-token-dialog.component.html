@@ -22,6 +22,7 @@
 <mat-dialog-actions>
   <button mat-raised-button
           (click)="confirmTokens()"
+          [disabled]="!selectedTokens.normal.length && !selectedTokens.elite.length"
           color="primary">OK
   </button>
 </mat-dialog-actions>
