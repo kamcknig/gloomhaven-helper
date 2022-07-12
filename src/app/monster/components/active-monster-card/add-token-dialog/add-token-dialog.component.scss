@@ -4,14 +4,12 @@
   }
 
   .mat-mini-fab.mat-accent {
+    background-color: gray;
+    border-color: gray;
+
     &.button-elite {
       background-color: gold;
       border-color: gold;
-    }
-
-    &.button-normal {
-      background-color: gray;
-      border-color: gray;
     }
 
     &.selected {

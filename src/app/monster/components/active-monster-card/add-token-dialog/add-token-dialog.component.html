@@ -31,7 +31,6 @@
   <button
     [ngClass]="{
       'button-elite': elite,
-      'button-normal': !elite,
       'selected': isSelected(index, elite)
     }"
     (click)="toggleTokenNumber(index, elite)"
