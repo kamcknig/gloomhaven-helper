@@ -7,12 +7,12 @@
     padding: 3rem;
 
     .element-wrapper {
-      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       mat-icon {
         position: absolute;
-        top: 0;
-        left: 0;
       }
 
       .element-icon {
