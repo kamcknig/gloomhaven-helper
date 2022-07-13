@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { createAdapter, Source } from '@state-adapt/core';
+import { createAdapter, createSelectors, Source } from '@state-adapt/core';
 import { MonsterService } from '../../monster/services/monster.service';
 import { adapt } from '@state-adapt/angular';
 import { MonsterAbilityCard } from '../../monster/services/model';
@@ -57,26 +57,37 @@ export class CombatService {
         [event]: abilities
       }
     },
-    roundComplete: (state) => {
-      return Object.entries(state).reduce((prev, [id, cards]) => {
-        for (let i = cards.length - 1; i >= 0; i--) {
-          if (cards[i].drawn && cards[i].shuffle) {
-            this.shuffleArray(cards);
-            cards.forEach(c => c.drawn = false);
-            break;
+    roundComplete: (state) => ({
+      round: ++state.round,
+      ...Object.entries(state)
+        .reduce((prev, [id, cards]) => {
+          if (!Array.isArray(cards)) {
+            return prev;
           }
-        }
-        this.drawCard(cards);
 
-        prev[id] = cards;
-        return prev;
-      }, {} as CombatState);
-    }
+          for (let i = cards.length - 1; i >= 0; i--) {
+            if (cards[i].drawn && cards[i].shuffle) {
+              this.shuffleArray(cards);
+              cards.forEach(c => c.drawn = false);
+              break;
+            }
+          }
+          this.drawCard(cards);
+
+          prev[id] = cards;
+          return prev;
+        }, {} as CombatState)
+    }),
+    selectors: createSelectors<CombatState>()({
+      round: state => state.round
+    })
   });
 
   public store = adapt(
     'combat',
-    {},
+    {
+      round: 0
+    } as CombatState,
     this._adapter,
     {
       monsterAbilityCardDraw: this._monsterService.monsterAbilityCardDraw$,

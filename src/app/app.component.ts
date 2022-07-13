@@ -2,6 +2,8 @@ import { Component, HostListener } from '@angular/core';
 import { MonsterService } from './monster/services/monster.service';
 import { AppService } from './app.service';
 import { CombatService } from './combat/services/combat.service';
+import { Subject } from 'rxjs';
+import { filter, switchMap, withLatestFrom } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -10,20 +12,26 @@ import { CombatService } from './combat/services/combat.service';
 })
 export class AppComponent {
   public title = 'gloomhaven-helper';
+  private _roundComplete$ = new Subject();
 
-  @HostListener('document:keyup', ['$event'])
-  public onKeyUp(event: KeyboardEvent) {
-    if (!event.ctrlKey) {
-      return;
-    }
+  @HostListener('document:keyup.control.m')
+  public activateMonster() {
+    this.monsterService.selectMonsterToActivate().subscribe();
+  }
 
-    if (event.code === 'ArrowUp' || event.key === 'ArrowUp') {
-      this.appService.scenarioLevelUpdate$.next('+1');
-    } else if (event.code === 'ArrowDown' || event.key === 'ArrowDown'){
-      this.appService.scenarioLevelUpdate$.next('-1');
-    } else if (event.code === 'KeyM' || event.key === 'm') {
-      this.monsterService.selectMonsterToActivate().subscribe();
-    }
+  @HostListener('document:keyup.control.arrowup')
+  public scenarioLevelUp() {
+    this.appService.scenarioLevelUpdate$.next('+1');
+  }
+
+  @HostListener('document:keyup.control.arrowdown')
+  public scenarioLevelDown() {
+    this.appService.scenarioLevelUpdate$.next('-1');
+  }
+
+  @HostListener('document:keyup.control.arrowright')
+  public roundComplete() {
+    this._roundComplete$.next();
   }
 
   constructor(
@@ -31,7 +39,13 @@ export class AppComponent {
     public appService: AppService,
     public combatService: CombatService
   ) {
-    debugger;
-    this.combatService.store.state$.subscribe()
+    this.combatService.store.state$.subscribe();
+
+    this._roundComplete$.pipe(
+      switchMap(() => monsterService.monsterStore.activeMonsters$),
+      filter(monsters => !!monsters.length)
+    ).subscribe({
+      next: value => combatService.roundComplete$.next()
+    })
   }
 }

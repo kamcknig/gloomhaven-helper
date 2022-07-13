@@ -24,7 +24,7 @@ export class ScenarioRoundComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.appService.scenarioStore.round$.pipe(takeUntil(this._destroy$))
+    this.combatService.store.round$.pipe(takeUntil(this._destroy$))
       .subscribe({
         next: round => this.roundInputControl.setValue(round.toString())
       });

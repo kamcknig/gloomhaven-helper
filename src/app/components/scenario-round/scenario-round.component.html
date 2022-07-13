@@ -1,7 +1,7 @@
 <div fxLayout="column"
      fxLayoutAlign="center start"
      fxLayoutGap="1rem">
-  <div>Round {{appService.scenarioStore.round$ | async}}</div>
+  <div>Round {{combatService.store.round$ | async}}</div>
   <button mat-raised-button
           color="accent"
           [disabled]="(monsterService.monsterStore.activeMonsters$ | async).length === 0"

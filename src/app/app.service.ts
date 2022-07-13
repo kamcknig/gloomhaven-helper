@@ -16,23 +16,19 @@ export class AppService {
       ...state,
       level: Math.min(Math.max(typeof event === 'string' ? state.level + Number(event) : event, 0), this.maxLevel)
     }),
-    roundCompleted: (state) => ({ ...state, round: ++state.round }),
     selectors: createSelectors<ScenarioInfo>()({
-      level: s => s.level,
-      round: s => s.round
+      level: s => s.level
     })
   });
 
   scenarioStore = adapt(
     'scenario',
     {
-      level: 0,
-      round: 0
+      level: 0
     },
     this._scenarioAdapter,
     {
-      scenarioLevelUpdate: this.scenarioLevelUpdate$,
-      roundCompleted: this._combatService.roundComplete$
+      scenarioLevelUpdate: this.scenarioLevelUpdate$
     }
   )
 
