@@ -120,10 +120,6 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
       }, [] as { name: string, value: number }[]);
   }
 
-  setTokenHp(token: TokenInfo, event: any) {
-    this.tokenService.updateTokenHitPoint$.next([token, event.target?.value ?? 0])
-  }
-
   hasCondition(condition: ConditionAndEffectsType, elite: boolean) {
     const tmp = this.value?.conditionsAndEffects?.[condition]?.[this.scenarioLevel ?? 0]?.[elite ? 1 : 0] ?? 0;
     if (typeof tmp === 'number') {
