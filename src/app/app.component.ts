@@ -3,7 +3,7 @@ import { MonsterService } from './monster/services/monster.service';
 import { AppService } from './app.service';
 import { CombatService } from './combat/services/combat.service';
 import { Subject } from 'rxjs';
-import { filter, switchMap, withLatestFrom } from 'rxjs/operators';
+import { filter, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -39,13 +39,11 @@ export class AppComponent {
     public appService: AppService,
     public combatService: CombatService
   ) {
-    this.combatService.store.state$.subscribe();
-
     this._roundComplete$.pipe(
       switchMap(() => monsterService.monsterStore.activeMonsters$),
       filter(monsters => !!monsters.length)
     ).subscribe({
-      next: value => combatService.roundComplete$.next()
+      next: () => combatService.roundComplete$.next()
     })
   }
 }
