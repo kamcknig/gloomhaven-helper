@@ -991,14 +991,14 @@
           [4, 5],
           [4, 5],
           [4, 5]
+        ],
+        "Flying": [
+          [true, true],
+          [true, true],
+          [true, true],
+          [true, true]
         ]
       },
-      "flying": [
-        [true, true],
-        [true, true],
-        [true, true],
-        [true, true]
-      ],
       "abilities": [
         {
           "initiative": 46,
@@ -1098,14 +1098,14 @@
           [2, 2],
           [2, 2],
           [2, 2]
+        ],
+        "Flying": [
+          [true, true],
+          [true, true],
+          [true, true],
+          [true, true]
         ]
       },
-      "flying": [
-        [true, true],
-        [true, true],
-        [true, true],
-        [true, true]
-      ],
       "abilities": [
         {
           "initiative": 42,
@@ -1984,14 +1984,14 @@
           [3, 4],
           [3, 4],
           [3, 4]
+        ],
+        "Flying": [
+          [true, true],
+          [true, true],
+          [true, true],
+          [true, true]
         ]
       },
-      "flying": [
-        [true, true],
-        [true, true],
-        [true, true],
-        [true, true]
-      ],
       "abilities": [
         {
           "initiative": 48,
@@ -2664,14 +2664,14 @@
           [1, 1],
           [1, 1],
           [1, 1]
+        ],
+        "Flying": [
+          [true, true],
+          [true, true],
+          [true, true],
+          [true, true]
         ]
       },
-      "flying": [
-        [true, true],
-        [true, true],
-        [true, true],
-        [true, true]
-      ],
       "abilities": [
         {
           "initiative": 27,
@@ -2862,14 +2862,14 @@
           [2, 2],
           [2, 2],
           [2, 2]
+        ],
+        "Flying": [
+          [true, true],
+          [true, true],
+          [true, true],
+          [true, true]
         ]
       },
-      "flying": [
-        [true, true],
-        [true, true],
-        [true, true],
-        [true, true]
-      ],
       "abilities": [
         {
           "initiative": 50,
@@ -3141,14 +3141,14 @@
           [2, 2],
           [3, 3],
           [3, 3]
+        ],
+        "Flying": [
+          [true, true],
+          [true, true],
+          [true, true],
+          [true, true]
         ]
       },
-      "flying": [
-        [true, true],
-        [true, true],
-        [true, true],
-        [true, true]
-      ],
       "abilities": [
         {
           "initiative": 2,

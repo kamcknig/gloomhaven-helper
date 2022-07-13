@@ -5,6 +5,7 @@ export const ConditionsAndEffects = [
   'Curse',
   'Disadvantage',
   'Disarm',
+  'Flying',
   'Immobilize',
   'Invisibility',
   'Muddle',
