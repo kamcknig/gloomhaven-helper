@@ -1,6 +1,5 @@
 import { Component, HostListener } from '@angular/core';
 import { MonsterService } from './monster/services/monster.service';
-import { FormControl } from '@angular/forms';
 import { AppService } from './app.service';
 import { CombatService } from './combat/services/combat.service';
 
@@ -11,7 +10,6 @@ import { CombatService } from './combat/services/combat.service';
 })
 export class AppComponent {
   public title = 'gloomhaven-helper';
-  public levelInputControl = new FormControl('');
 
   @HostListener('document:keyup', ['$event'])
   public onKeyUp(event: KeyboardEvent) {
@@ -33,7 +31,7 @@ export class AppComponent {
     public appService: AppService,
     public combatService: CombatService
   ) {
-
+    debugger;
     this.combatService.store.state$.subscribe()
   }
 }
