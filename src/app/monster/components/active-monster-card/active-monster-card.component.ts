@@ -125,7 +125,6 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
   }
 
   hasCondition(condition: ConditionAndEffectsType, elite: boolean) {
-    console.log(condition);
     const tmp = this.value?.conditionsAndEffects?.[condition]?.[this.scenarioLevel ?? 0]?.[elite ? 1 : 0] ?? 0;
     if (typeof tmp === 'number') {
       return tmp > 0;
