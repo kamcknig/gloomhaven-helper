@@ -68,8 +68,8 @@
                      style="max-width: 2rem; max-height: 2rem;">
 
                 <span
-                  *ngIf="showAdditionConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1)"
-                  style="margin-right: .75rem; font-size: 20px;">
+                  *ngIf="showAdditionalConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1)"
+                  style="margin: 0 .35rem; font-size: 1.5rem;">
                   {{value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[0] ?? value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]}}
                   <span
                     *ngIf="condition === 'Retaliate' && value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[1] > 0">

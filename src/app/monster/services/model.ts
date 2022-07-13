@@ -1,5 +1,5 @@
 export const ConditionsAndEffects = [
-  'AddTarget',
+  'Target',
   'Advantage',
   'Bless',
   'Curse',

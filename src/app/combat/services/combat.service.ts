@@ -38,14 +38,13 @@ export class CombatService {
     monsterActivate: (state, event) => {
       return {
         ...state,
-        [event.id]: event.abilities.reduce((prev: any[], next: MonsterAbilityCard) => {
+        [event.id]: event.abilities?.reduce((prev: any[], next: MonsterAbilityCard) => {
           const count = next?.count ?? 1;
           for (let i = 0; i < count; i++) {
             prev.push({ ...next });
           }
           return prev;
-        }, [])
-          .map((a: any) => ({ ...a }))
+        }, [])?.map((a: any) => ({ ...a })) ?? []
       }
     },
     monsterAbilityCardDraw: (state, event) => {
