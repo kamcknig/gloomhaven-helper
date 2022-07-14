@@ -6,7 +6,7 @@ import { AddTokenDialogComponent } from './add-token-dialog/add-token-dialog.com
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
-import { ApplicableConditions, ConditionAndEffectsType, ConditionsAndEffects, Monster } from '../../services/model';
+import { ApplicableConditions, ConditionAndEffectTypes, ConditionsAndEffects, Monster } from '../../services/model';
 import { TokenInfo } from '../../../token/services/model';
 
 @Component({
@@ -120,7 +120,7 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
       }, [] as { name: string, value: number }[]);
   }
 
-  hasCondition(condition: ConditionAndEffectsType, elite: boolean) {
+  hasCondition(condition: ConditionAndEffectTypes, elite: boolean) {
     const tmp = this.value?.conditionsAndEffects?.[condition]?.[this.scenarioLevel ?? 0]?.[elite ? 1 : 0] ?? 0;
     if (typeof tmp === 'number') {
       return tmp > 0;

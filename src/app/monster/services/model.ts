@@ -36,7 +36,7 @@ export const ApplicableConditions = [
   'Wound'
 ]
 
-export type ConditionAndEffectsType = typeof ConditionsAndEffects[number];
+export type ConditionAndEffectTypes = typeof ConditionsAndEffects[number];
 
 export interface Monster {
   name: string;
@@ -44,7 +44,7 @@ export interface Monster {
   health: [number, number][],
   attack?: [number, number][];
   conditionsAndEffects?: {
-    [key in ConditionAndEffectsType]: ([number, number] | [[number, number], [number, number]])[];
+    [key in ConditionAndEffectTypes]: ([number, number] | [[number, number], [number, number]])[];
   }
   elite?: boolean;
   flying?: [boolean, boolean][];
