@@ -7,7 +7,7 @@ export const ConditionsAndEffects = [
   'Disarm',
   'Flying',
   'Immobilize',
-  'Invisibility',
+  'Invisible',
   'Muddle',
   'Pierce',
   'Poison',
@@ -26,7 +26,7 @@ export const ConditionsAndEffects = [
 export const ApplicableConditions = [
   'Disarm',
   'Immobilize',
-  'Invisibility',
+  'Invisible',
   'Muddle',
   'Poison',
   'Retaliate',
