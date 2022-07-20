@@ -1015,7 +1015,10 @@
         },
         {
           "initiative": 3,
-          "imgName": "flame-demon-4"
+          "imgName": "flame-demon-4",
+          "infusions": [
+            "fire"
+          ]
         },
         {
           "initiative": 77,
@@ -1027,7 +1030,10 @@
         },
         {
           "initiative": 67,
-          "imgName": "flame-demon-7"
+          "imgName": "flame-demon-7",
+          "infusions": [
+            "fire"
+          ]
         },
         {
           "initiative": 30,
@@ -1211,7 +1217,10 @@
           "initiative": 78,
           "count": 2,
           "shuffle": true,
-          "imgName": "frost-demon-4"
+          "imgName": "frost-demon-4",
+          "infusions": [
+            "ice"
+          ]
         },
         {
           "initiative": 38,
@@ -2306,7 +2315,10 @@
         },
         {
           "initiative": 22,
-          "imgName": "night-demon-4"
+          "imgName": "night-demon-4",
+          "infusions": [
+            "dark"
+          ]
         },
         {
           "initiative": 35,
@@ -2481,12 +2493,18 @@
         {
           "initiative": 35,
           "shuffle": true,
-          "imgName": "savvas-icestorm-1"
+          "imgName": "savvas-icestorm-1",
+          "infusions": [
+            "wind"
+          ]
         },
         {
           "initiative": 47,
           "shuffle": true,
-          "imgName": "savvas-icestorm-2"
+          "imgName": "savvas-icestorm-2",
+          "infusions": [
+            "wind"
+          ]
         },
         {
           "initiative": 14,
@@ -2494,20 +2512,32 @@
         },
         {
           "initiative": 14,
-          "imgName": "savvas-icestorm-4"
+          "imgName": "savvas-icestorm-4",
+          "infusions": [
+            "wind"
+          ]
         },
         {
           "initiative": 19,
-          "imgName": "savvas-icestorm-5"
+          "imgName": "savvas-icestorm-5",
+          "infusions": [
+            "ice"
+          ]
         },
         {
           "initiative": 98,
           "count": 2,
-          "imgName": "savvas-icestorm-6"
+          "imgName": "savvas-icestorm-6",
+          "infusions": [
+            "ice"
+          ]
         },
         {
           "initiative": 98,
-          "imgName": "savvas-icestorm-7"
+          "imgName": "savvas-icestorm-7",
+          "infusions": [
+            "wind"
+          ]
         }
       ]
     },
@@ -2579,7 +2609,10 @@
         {
           "initiative": 68,
           "shuffle": true,
-          "imgName": "savvas-lavaflow-1"
+          "imgName": "savvas-lavaflow-1",
+          "infusions": [
+            "fire"
+          ]
         },
         {
           "initiative": 31,
@@ -2596,7 +2629,10 @@
         {
           "initiative": 68,
           "shuffle": true,
-          "imgName": "savvas-lavaflow-5"
+          "imgName": "savvas-lavaflow-5",
+          "infusions": [
+            "earth"
+          ]
         },
         {
           "initiative": 22,
@@ -2604,11 +2640,17 @@
         },
         {
           "initiative": 97,
-          "imgName": "savvas-lavaflow-7"
+          "imgName": "savvas-lavaflow-7",
+          "infusions": [
+            "earth"
+          ]
         },
         {
           "initiative": 97,
-          "imgName": "savvas-lavaflow-8"
+          "imgName": "savvas-lavaflow-8",
+          "infusions": [
+            "fire"
+          ]
         }
       ]
     },
@@ -2890,7 +2932,10 @@
         },
         {
           "initiative": 68,
-          "imgName": "sun-demon-5"
+          "imgName": "sun-demon-5",
+          "infusions": [
+            "sun"
+          ]
         },
         {
           "initiative": 17,
@@ -2899,7 +2944,10 @@
         },
         {
           "initiative": 36,
-          "imgName": "sun-demon-7"
+          "imgName": "sun-demon-7",
+          "infusions": [
+            "sun"
+          ]
         }
       ]
     },
@@ -3178,7 +3226,10 @@
           "initiative": 21,
           "count": 2,
           "shuffle": true,
-          "imgName": "wind-demon-7"
+          "imgName": "wind-demon-7",
+          "infusions": [
+            "wind"
+          ]
         }
       ]
     }

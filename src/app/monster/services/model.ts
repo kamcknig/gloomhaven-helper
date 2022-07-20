@@ -1,3 +1,5 @@
+import { ElementNames } from '../../elements/model';
+
 export const ConditionsAndEffects = [
   'Target',
   'Advantage',
@@ -54,6 +56,7 @@ export interface Monster {
   target?: [number, number][];
   abilities: MonsterAbilityCard[];
   active?: boolean;
+  infusions?: Lowercase<ElementNames>[];
 }
 
 export type MonsterAbilityCard = {
