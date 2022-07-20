@@ -35,18 +35,16 @@ export class CombatService {
   }
 
   private _adapter = createAdapter<CombatState>()({
-    monsterActivate: (state, event) => {
-      return {
-        ...state,
-        [event.id]: event.abilities?.reduce((prev: any[], next: MonsterAbilityCard) => {
-          const count = next?.count ?? 1;
-          for (let i = 0; i < count; i++) {
-            prev.push({ ...next });
-          }
-          return prev;
-        }, [])?.map((a: any) => ({ ...a })) ?? []
-      }
-    },
+    monsterActivate: (state, event) => ({
+      ...state,
+      [event.id]: event.abilities?.reduce((prev: any[], next: MonsterAbilityCard) => {
+        const count = next?.count ?? 1;
+        for (let i = 0; i < count; i++) {
+          prev.push({ ...next });
+        }
+        return prev;
+      }, [])?.map((a: any) => ({ ...a })) ?? []
+    }),
     monsterAbilityCardDraw: (state, event) => {
       let abilities = [...state[event]];
       this.drawCard(abilities);
