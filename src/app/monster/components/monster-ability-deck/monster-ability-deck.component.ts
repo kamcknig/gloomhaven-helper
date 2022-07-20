@@ -1,9 +1,9 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
-import { MonsterService } from '../../services/monster.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { CombatService } from '../../../combat/services/combat.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Monster, MonsterAbilityCard } from '../../services/model';
+import { MonsterService } from '../../services/monster.service';
 
 @Component({
   selector: 'app-monster-ability-deck',
@@ -16,7 +16,8 @@ export class MonsterAbilityDeckComponent implements OnInit {
   public activeCard$: Observable<MonsterAbilityCard>;
 
   constructor(
-    private _combatService: CombatService
+    private _combatService: CombatService,
+    public monsterService: MonsterService
   ) { }
 
   ngOnInit(): void {

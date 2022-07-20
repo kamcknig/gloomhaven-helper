@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { MonsterService } from '../../services/monster.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { AppService } from '../../../app.service';
 import { TokenService } from '../../../token/services/token.service';
 import { AddTokenDialogComponent } from './add-token-dialog/add-token-dialog.component';
@@ -14,7 +13,7 @@ import { TokenInfo } from '../../../token/services/model';
   templateUrl: './active-monster-card.component.html',
   styleUrls: ['./active-monster-card.component.scss']
 })
-export class ActiveMonsterCard implements OnInit, AfterViewInit {
+export class ActiveMonsterCard implements OnInit {
   @Input() public value: Monster | undefined;
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
   public selectedToken: TokenInfo | undefined;
@@ -24,6 +23,13 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
 
   private _tokens: { elites: TokenInfo[], normals: TokenInfo[] } | undefined;
   private _destroy$: Subject<void> = new Subject<void>();
+
+  constructor(
+    public appService: AppService,
+    public tokenService: TokenService,
+    private _dialogService: MatDialog
+  ) {
+  }
 
   ngOnInit(): void {
     this.tokens$ = this.tokenService.tokenStore.tokens$.pipe(
@@ -51,18 +57,6 @@ export class ActiveMonsterCard implements OnInit, AfterViewInit {
       .subscribe({
         next: v => this.scenarioLevel = v
       });
-  }
-
-  ngAfterViewInit() {
-
-  }
-
-  constructor(
-    public monsterService: MonsterService,
-    public appService: AppService,
-    public tokenService: TokenService,
-    private _dialogService: MatDialog
-  ) {
   }
 
   getStatDisplayValue(value: number | string | undefined) {
