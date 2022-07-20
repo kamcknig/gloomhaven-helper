@@ -27,7 +27,7 @@
               'dark': element.name.toLowerCase() === 'dark'
              }"
            class="element-icon"
-           (click)="elementService.infuseElement$.next(element.name)">
+           (click)="elementService.cycleElement$.next(element.name)">
 
       <mat-icon *ngIf="element.queued">check</mat-icon>
     </div>
