@@ -16,7 +16,7 @@
     <img *ngFor="let value of ApplicableConditions"
          [src]="'assets/icons/' + value.toLowerCase() + '.png'"
          [ngStyle]="{ 'filter': (selectedToken?.appliedConditionsAndEffects?.[value.toString()] ?? 0) > 0 ? 'brightness(100%)' : 'brightness(50%)' }"
-         (click)="tokenService.toggleTokenStatus$.next({ token: selectedToken, condition: value})"
+         (click)="tokenService.toggleTokenCondition$.next({ token: selectedToken, condition: value})"
     >
   </div>
 </div>

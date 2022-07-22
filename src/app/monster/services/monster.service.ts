@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { createAdapter, createSelectors, Source, toSource } from '@state-adapt/core';
+import { createAdapter, Source, toSource } from '@state-adapt/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivateMonsterDialogComponent } from '../activate-monster-dialog/activate-monster-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -33,13 +33,13 @@ export class MonsterService {
         active: true
       }
     }),
-    selectors: createSelectors<MonsterState>()({
+    selectors: {
       monsters: s => Object.values(s),
       activeMonsters: s => Object.values(s)
         .filter(m => !!m.active),
       inactiveMonsters: s => Object.values(s)
         .filter(m => !m.active)
-    })
+    }
   });
 
   // request to retrieve the monsters.json file

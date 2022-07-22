@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { createAdapter, createSelectors, Source } from '@state-adapt/core';
+import { createAdapter, Source } from '@state-adapt/core';
 import { Element, ElementNames, ElementPhases, Elements, ElementState } from './model';
 import { adapt } from '@state-adapt/angular';
 import { CombatService } from '../combat/services/combat.service';
@@ -42,12 +42,12 @@ export class ElementService {
       }
       return prev;
     }, {} as ElementState),
-    selectors: createSelectors<ElementState>()({
+    selectors: {
       inertElements: s => Object.values(s).filter(e => e.level === 1),
       waningElements: s => Object.values(s).filter(e => e.level === 2),
       infusedElements: s => Object.values(s).filter(e => e.level === 3),
       elements: s => Object.values(s)
-    })
+    }
   });
 
   public elementStore = adapt(

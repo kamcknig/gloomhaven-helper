@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { createAdapter, createSelectors, Source } from '@state-adapt/core';
+import { createAdapter, Source } from '@state-adapt/core';
 import { adapt } from '@state-adapt/angular';
 import { TokenInfo } from './model';
 
@@ -9,15 +9,15 @@ import { TokenInfo } from './model';
 export class TokenService {
   public addToken$: Source<TokenInfo[] | TokenInfo> = new Source('addToken$');
   public updateTokenHitPoint$: Source<[TokenInfo, number]> = new Source('updateTokenHitPoint$');
-  public toggleTokenStatus$: Source<{ token: TokenInfo, condition: string }> = new Source(
-    'toggleTokenStatus$')
+  public toggleTokenCondition$: Source<{ token: TokenInfo, condition: string }> = new Source(
+    'toggleTokenCondition$')
 
   private _tokenAdapter = createAdapter<TokenInfo[]>()({
-    addToken: (state, event, initialState) => {
+    addToken: (state, event) => {
       event = Array.isArray(event) ? event : [event];
       return [...state, ...event];
     },
-    updateTokenHitPoint: (state, event: [TokenInfo, number], initialState) => {
+    updateTokenHitPoint: (state, event: [TokenInfo, number]) => {
       const newState = [...state];
       const idx = newState.findIndex(t => t.monsterId === event[0].monsterId && t.number === event[0].number);
       if (idx === -1) {
@@ -32,10 +32,10 @@ export class TokenService {
 
       return newState;
     },
-    selectors: createSelectors<TokenInfo[]>()({
+    selectors: {
       tokens: s => s
-    }),
-    toggleTokenStatus: (state, { token, condition }, initialState) => {
+    },
+    toggleTokenCondition: (state, { token, condition }) => {
       const newState = [...state];
       const idx = newState.findIndex(t => t.monsterId === token.monsterId && t.number === token.number);
       if (idx === -1) {
@@ -59,11 +59,13 @@ export class TokenService {
   });
 
   public tokenStore = adapt(
-    ['tokens', [], this._tokenAdapter],
+    'tokens',
+    [],
+    this._tokenAdapter,
     {
       addToken: this.addToken$,
       updateTokenHitPoint: this.updateTokenHitPoint$,
-      toggleTokenStatus: this.toggleTokenStatus$
+      toggleTokenCondition: this.toggleTokenCondition$
     }
   )
 

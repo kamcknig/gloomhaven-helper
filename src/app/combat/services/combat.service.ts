@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { createAdapter, createSelectors, Source } from '@state-adapt/core';
+import { createAdapter, Source } from '@state-adapt/core';
 import { MonsterService } from '../../monster/services/monster.service';
 import { adapt } from '@state-adapt/angular';
 import { MonsterAbilityCard } from '../../monster/services/model';
@@ -75,9 +75,9 @@ export class CombatService {
           return prev;
         }, {} as CombatState)
     }),
-    selectors: createSelectors<CombatState>()({
+    selectors: {
       round: state => state.round
-    })
+    }
   });
 
   public store = adapt(

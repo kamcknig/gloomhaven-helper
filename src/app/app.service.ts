@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { createAdapter, createSelectors, Source } from '@state-adapt/core';
+import { createAdapter, Source } from '@state-adapt/core';
 import { MAX_LEVEL } from './scenario-options/max-level.token';
 import { adapt } from '@state-adapt/angular';
 import { CombatService } from './combat/services/combat.service';
@@ -16,9 +16,9 @@ export class AppService {
       ...state,
       level: Math.min(Math.max(typeof event === 'string' ? state.level + Number(event) : event, 0), this.maxLevel)
     }),
-    selectors: createSelectors<ScenarioInfo>()({
+    selectors: {
       level: s => s.level
-    })
+    }
   });
 
   scenarioStore = adapt(
