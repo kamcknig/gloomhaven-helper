@@ -57,7 +57,7 @@ export class CombatService {
     roundComplete: (state) => ({
       round: ++state.round,
       ...Object.entries(state)
-        .reduce((prev, [id, cards]) => {
+        .reduce((prev, [monsterId, cards]) => {
           if (!Array.isArray(cards)) {
             return prev;
           }
@@ -71,7 +71,7 @@ export class CombatService {
           }
           this.drawCard(cards);
 
-          prev[id] = cards;
+          prev[monsterId] = cards;
           return prev;
         }, {} as CombatState)
     }),
