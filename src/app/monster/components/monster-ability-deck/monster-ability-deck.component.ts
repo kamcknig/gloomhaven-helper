@@ -21,7 +21,7 @@ export class MonsterAbilityDeckComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const deck$ = this._combatService.store.state$.pipe(
+    const deck$ = this._combatService.store.activeMonsters$.pipe(
       map(value => value[this.value.id])
     );
 

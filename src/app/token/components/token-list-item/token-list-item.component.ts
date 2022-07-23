@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TokenService } from '../../services/token.service';
-import { TokenInfo } from '../../services/model';
+import { TokenInfo } from '../../../combat/services/model';
+import { CombatService } from '../../../combat/services/combat.service';
 
 @Component({
   selector: 'app-token-list-item',
@@ -13,7 +13,7 @@ export class TokenListItemComponent implements OnInit {
 
   @Output() public statusPress: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(public tokenService: TokenService) { }
+  constructor(public combatService: CombatService) { }
 
   ngOnInit(): void {
   }

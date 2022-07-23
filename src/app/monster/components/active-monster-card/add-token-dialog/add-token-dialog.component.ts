@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { TokenInfo } from '../../../../token/services/model';
+import { TokenInfo } from '../../../../combat/services/model';
 
 @Component({
   selector: 'app-add-token-dialog',

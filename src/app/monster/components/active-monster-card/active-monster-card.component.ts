@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppService } from '../../../app.service';
-import { TokenService } from '../../../token/services/token.service';
 import { AddTokenDialogComponent } from './add-token-dialog/add-token-dialog.component';
 import { Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ApplicableConditions, ConditionAndEffectTypes, ConditionsAndEffects, Monster } from '../../services/model';
-import { TokenInfo } from '../../../token/services/model';
+import { TokenInfo } from '../../../combat/services/model';
+import { CombatService } from '../../../combat/services/combat.service';
 
 @Component({
   selector: 'app-active-monster-card',
@@ -26,13 +26,13 @@ export class ActiveMonsterCard implements OnInit {
 
   constructor(
     public appService: AppService,
-    public tokenService: TokenService,
+    public combatService: CombatService,
     private _dialogService: MatDialog
   ) {
   }
 
   ngOnInit(): void {
-    this.tokens$ = this.tokenService.tokenStore.tokens$.pipe(
+    this.tokens$ = this.combatService.store.tokens$.pipe(
       // gets the tokens that belong to this monster
       map(tokens => tokens.filter(t => t.monsterId === this.value!.id)),
       // separate them out into elites and normals
@@ -81,7 +81,7 @@ export class ActiveMonsterCard implements OnInit {
             return;
           }
 
-          this.tokenService.addToken$.next(Object.entries(data)
+          this.combatService.addToken$.next(Object.entries(data)
             .reduce((prev, [key, numbers]) => {
               return prev.concat(numbers.reduce((prev, nextTokenNumber) => {
                 return prev.concat({

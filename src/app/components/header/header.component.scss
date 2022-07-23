@@ -28,7 +28,7 @@
 
         &.infused {
           opacity: 1;
-          filter: brightness(100%) drop-shadow(8px 8px 2px rgba(25, 25, 25, .5));
+          filter: brightness(120%) drop-shadow(8px 8px 2px rgba(25, 25, 25, .5));
 
           &.dark {
             filter: brightness(30%) drop-shadow(8px 8px 2px rgba(25, 25, 25, .5));
@@ -37,7 +37,7 @@
 
         &.waning {
           opacity: 1;
-          filter: brightness(90%) drop-shadow(3px 3px 2px rgba(25, 25, 25, .5));
+          filter: brightness(90%) drop-shadow(2px 2px 1px rgba(25, 25, 25, .5));
         }
       }
     }
