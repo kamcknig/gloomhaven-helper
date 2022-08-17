@@ -44,6 +44,7 @@ export class CombatService {
       return {
         ...state,
         tokens: [
+          ...state.tokens,
           ...event
         ]
       };

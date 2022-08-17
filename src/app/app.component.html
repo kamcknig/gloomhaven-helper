@@ -8,7 +8,7 @@
 >
   <div
     *ngFor="let monster of (monsterService.monsterStore.activeMonsters$ | async) ?? []">
-    <app-active-monster-card [value]="monster"></app-active-monster-card>
+    <app-active-monster-card [monsterId]="(monster.id)"></app-active-monster-card>
   </div>
 
 </div>

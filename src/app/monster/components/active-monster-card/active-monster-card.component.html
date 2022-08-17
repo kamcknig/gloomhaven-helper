@@ -23,7 +23,7 @@
 
 <mat-card>
   <mat-card-header>
-    <mat-card-title>{{value?.name}}</mat-card-title>
+    <mat-card-title>{{(monster$ | async)?.name}}</mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
@@ -34,51 +34,56 @@
       <!-- stats section for both normals and elites -->
       <div class="monster-info-wrapper" fxLayout="row" fxLayoutAlign="space-between start">
         <ng-container *ngFor="let index of [0, 1]">
-          <div fxLayout="column"
-               fxFlex [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'"
-               fxLayoutGap=".5rem">
-            <!-- monster stats on the monster info card -->
-            <div fxLayout="row" class="monster-status-container">
-              <span fxLayout="column" fxLayoutAlign="start center">
-                <img class="icon" src="assets/icons/health.png">
-                {{getStatDisplayValue(value?.health?.[scenarioLevel ?? 0]?.[index])}}
-              </span>
+          <ng-container *ngIf="monster$ | async as monster">
+            <ng-container *ngIf="scenarioLevel$ | async as level">
+              <div fxLayout="column"
+                   fxFlex [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'"
+                   fxLayoutGap=".5rem">
+                <!-- monster stats on the monster info card -->
 
-              <span fxLayout="column" fxLayoutAlign="start center">
-                <img class="icon" src="assets/icons/move.png">
-                {{getStatDisplayValue(value?.move?.[scenarioLevel ?? 0]?.[index])}}
-              </span>
+                <div fxLayout="row" class="monster-status-container">
+                  <span fxLayout="column" fxLayoutAlign="start center">
+                    <img class="icon" src="assets/icons/health.png">
+                    {{getStatDisplayValue(monster.health?.[level ?? 0]?.[index])}}
+                    </span>
 
-              <span fxLayout="column" fxLayoutAlign="start center">
-                <img class="icon" src="assets/icons/attack.png">
-                {{getStatDisplayValue(value?.attack?.[scenarioLevel ?? 0]?.[index])}}
-              </span>
+                  <span fxLayout="column" fxLayoutAlign="start center">
+                    <img class="icon" src="assets/icons/move.png">
+                    {{getStatDisplayValue(monster.move?.[level ?? 0]?.[index])}}
+                  </span>
 
-              <span fxLayout="column" fxLayoutAlign="start center">
-                <img class="icon" src="assets/icons/range.png">
-                {{getStatDisplayValue(value?.range?.[scenarioLevel ?? 0]?.[index])}}
-              </span>
-            </div>
+                  <span fxLayout="column" fxLayoutAlign="start center">
+                    <img class="icon" src="assets/icons/attack.png">
+                    {{getStatDisplayValue(monster.attack?.[level ?? 0]?.[index])}}
+                  </span>
 
-            <!-- statuses that the monster has on it's monster info card -->
-            <div fxLayout="row">
-              <div *ngFor="let condition of ConditionsAndEffects" fxLayout="row" fxLayoutAlign="start center">
-                <img *ngIf="hasCondition(condition, index === 1)"
-                     [src]="'assets/icons/' + condition.toLowerCase() + '.png'"
-                     style="max-width: 2rem; max-height: 2rem;">
+                  <span fxLayout="column" fxLayoutAlign="start center">
+                    <img class="icon" src="assets/icons/range.png">
+                    {{getStatDisplayValue(monster.range?.[level ?? 0]?.[index])}}
+                  </span>
+                </div>
 
-                <span
-                  *ngIf="showAdditionalConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1)"
-                  style="margin: 0 .35rem; font-size: 1.5rem;">
-                  {{value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[0] ?? value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]}}
-                  <span
-                    *ngIf="condition === 'Retaliate' && value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[1] > 0">
-                    @{{value?.conditionsAndEffects?.[condition]?.[scenarioLevel ?? 0]?.[index]?.[1]}}
+                <!-- statuses that the monster has on it's monster info card -->
+                <div fxLayout="row">
+                  <div *ngFor="let condition of ConditionsAndEffects" fxLayout="row" fxLayoutAlign="start center">
+                    <img *ngIf="hasCondition(condition, index === 1) | async"
+                         [src]="'assets/icons/' + condition.toLowerCase() + '.png'"
+                         style="max-width: 2rem; max-height: 2rem;">
+
+                    <span
+                      *ngIf="showAdditionalConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1) | async"
+                      style="margin: 0 .35rem; font-size: 1.5rem;">
+                  {{monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]?.[0] ?? monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]}}
+                      <span
+                        *ngIf="condition === 'Retaliate' && monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]?.[1] > 0">
+                    @{{monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]?.[1]}}
                   </span>
                 </span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </ng-container>
+          </ng-container>
         </ng-container>
       </div>
 
@@ -120,11 +125,11 @@
   <mat-card-actions align="end">
     <button mat-mini-fab
             type="button"
-            *ngIf="!!value?.health?.[this.scenarioLevel ?? 0]"
+            *ngIf="!!(monster$ | async)?.health?.[(scenarioLevel$ | async) ?? 0]"
             (click)="addToken()">
       <mat-icon>add</mat-icon>
     </button>
   </mat-card-actions>
 </mat-card>
 
-<app-monster-ability-deck [value]="value"></app-monster-ability-deck>
+<app-monster-ability-deck [monsterId]="(monster$ | async).id"></app-monster-ability-deck>

@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ApplicableConditions, ConditionAndEffectTypes, ConditionsAndEffects, Monster } from '../../services/model';
 import { TokenInfo } from '../../../combat/services/model';
 import { CombatService } from '../../../combat/services/combat.service';
+import { MonsterService } from '../../services/monster.service';
 
 @Component({
   selector: 'app-active-monster-card',
@@ -14,10 +15,11 @@ import { CombatService } from '../../../combat/services/combat.service';
   styleUrls: ['./active-monster-card.component.scss']
 })
 export class ActiveMonsterCard implements OnInit {
-  @Input() public value: Monster | undefined;
+  @Input() public monsterId: number;
+  public monster$: Observable<Monster>;
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
   public selectedToken: TokenInfo | undefined;
-  public scenarioLevel: number | undefined;
+  public scenarioLevel$: Observable<number | undefined>;
   public ConditionsAndEffects = ConditionsAndEffects;
   public ApplicableConditions = ApplicableConditions;
 
@@ -27,14 +29,18 @@ export class ActiveMonsterCard implements OnInit {
   constructor(
     public appService: AppService,
     public combatService: CombatService,
-    private _dialogService: MatDialog
+    private _dialogService: MatDialog,
+    private _monsterService: MonsterService
   ) {
   }
 
   ngOnInit(): void {
+    this.monster$ = this._monsterService.monsterStore.monsters$.pipe(map(m => m.find(m => m.id === this.monsterId)));
+
     this.tokens$ = this.combatService.store.tokens$.pipe(
+      withLatestFrom(this.monster$),
       // gets the tokens that belong to this monster
-      map(tokens => tokens.filter(t => t.monsterId === this.value!.id)),
+      map(([tokens, monster]) => tokens.filter(t => t.monsterId === monster.id)),
       // separate them out into elites and normals
       map(tokenData => ({
         elites: tokenData.filter(t => !!t.elite)
@@ -53,10 +59,7 @@ export class ActiveMonsterCard implements OnInit {
       takeUntil(this._destroy$)
     );
 
-    this.appService.scenarioStore.level$.pipe(takeUntil(this._destroy$))
-      .subscribe({
-        next: v => this.scenarioLevel = v
-      });
+    this.scenarioLevel$ = this.appService.scenarioStore.level$.pipe(takeUntil(this._destroy$));
   }
 
   getStatDisplayValue(value: number | string | undefined) {
@@ -72,11 +75,12 @@ export class ActiveMonsterCard implements OnInit {
       .afterClosed()
       .pipe(
         withLatestFrom(
-          this.appService.scenarioStore.level$
+          this.appService.scenarioStore.level$,
+          this.monster$
         )
       )
       .subscribe({
-        next: ([data, scenarioLevel]: [{ normal: number[], elite: number[] }, number]) => {
+        next: ([data, scenarioLevel, monster]: [{ normal: number[], elite: number[] }, number, Monster]) => {
           if (!data.normal?.length && !data.elite?.length) {
             return;
           }
@@ -87,8 +91,8 @@ export class ActiveMonsterCard implements OnInit {
                 return prev.concat({
                   number: nextTokenNumber,
                   elite: key === 'elite',
-                  maxHealth: this.value!.health[scenarioLevel][key === 'elite' ? 1 : 0],
-                  monsterId: this.value!.id
+                  maxHealth: monster.health[scenarioLevel][key === 'elite' ? 1 : 0],
+                  monsterId: monster.id
                 });
               }, [] as TokenInfo[]));
             }, [] as TokenInfo[]))
@@ -114,23 +118,35 @@ export class ActiveMonsterCard implements OnInit {
       }, [] as { name: string, value: number }[]);
   }
 
-  hasCondition(condition: ConditionAndEffectTypes, elite: boolean) {
-    const tmp = this.value?.conditionsAndEffects?.[condition]?.[this.scenarioLevel ?? 0]?.[elite ? 1 : 0] ?? 0;
-    if (typeof tmp === 'number') {
-      return tmp > 0;
-    } else if(typeof tmp[0] === 'number') {
-      return tmp[0] > 0;
-    }
+  hasCondition(condition: ConditionAndEffectTypes, elite: boolean): Observable<boolean | [number, number]> {
+    return this.monster$.pipe(
+      withLatestFrom(this.scenarioLevel$),
+      map(([monster, level]) => {
+        const tmp = monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0] ?? 0;
+        if (typeof tmp === 'number') {
+          return tmp > 0;
+        } else if(typeof tmp[0] === 'number') {
+          return tmp[0] > 0;
+        }
 
-    return tmp;
+        return tmp;
+      }),
+      takeUntil(this._destroy$)
+    );
   }
 
   showAdditionalConditionEffectInfo(condition: string) {
     return ['Retaliate', 'Pierce', 'Pull', 'Shield', 'Target'].includes(condition);
   }
 
-  monsterHasConditionEffect(condition: string, elite: boolean = false) {
-    return this.value?.conditionsAndEffects?.[condition]?.[this.scenarioLevel ?? 0]?.[elite ? 1 : 0] > 0
-      || this.value?.conditionsAndEffects?.[condition]?.[this.scenarioLevel ?? 0]?.[elite ? 1 : 0]?.[0] > 0;
+  monsterHasConditionEffect(condition: string, elite: boolean = false): Observable<boolean> {
+    return this.monster$.pipe(
+      withLatestFrom(this.scenarioLevel$),
+      map(([monster, level]) => {
+        return monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0] > 0
+          || monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0]?.[0] > 0;
+      }),
+      takeUntil(this._destroy$)
+    )
   }
 }
