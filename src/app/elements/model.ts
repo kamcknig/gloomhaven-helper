@@ -12,7 +12,6 @@ export type ElementNames = keyof typeof Elements
 export type Element = {
   name: keyof typeof Elements;
   level: number;
-  queued: boolean;
 }
 
 export type ElementState = {

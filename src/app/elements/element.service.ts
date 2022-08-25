@@ -13,18 +13,11 @@ export class ElementService {
   private _elementAdapter = createAdapter<ElementState>()({
     cycleElement: (state, event) => {
       const element: Element = state[event];
-
-      /**
-       * If the element is currently queued, then infuse it, if it's not infused or waning, then queue it,
-       * and if it's already infused/waning, then cycle it to the next lower level
-       */
-      if (element.queued) {
-        element.queued = false;
+      if (element.level === ElementPhases.off) {
         element.level = ElementPhases.infused;
-      } else if (element.level === ElementPhases.off) {
-        element.queued = true;
-      } else {
-        element.level = Math.max(ElementPhases.off, --element.level);
+      }
+      else {
+        Math.max(ElementPhases.off, --element.level)
       }
 
       return {
@@ -37,8 +30,7 @@ export class ElementService {
     roundComplete: (state) => Object.entries(state).reduce((prev, [id, element]) => {
       prev[id] = {
         ...element,
-        level: state[id].queued ? ElementPhases.infused : Math.max(0, --state[id].level),
-        queued: false
+        level: Math.max(0, --state[id].level)
       }
       return prev;
     }, {} as ElementState),
