@@ -20,6 +20,7 @@ export class ActiveMonsterCard implements OnInit {
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
   public selectedToken: TokenInfo | undefined;
   public monsterLevel$: Observable<number | undefined>;
+  public scenarioLevel$: Observable<number | undefined>;
   public ConditionsAndEffects = ConditionsAndEffects;
   public ApplicableConditions = ApplicableConditions;
 
@@ -36,6 +37,8 @@ export class ActiveMonsterCard implements OnInit {
 
   ngOnInit(): void {
     this.monster$ = this.monsterService.monsterStore.monsters$.pipe(map(m => m.find(m => m.id === this.monsterId)));
+
+    this.scenarioLevel$ = this.appService.scenarioStore.level$;
 
     this.tokens$ = this.combatService.store.tokens$.pipe(
       withLatestFrom(this.monster$),

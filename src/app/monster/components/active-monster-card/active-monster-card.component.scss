@@ -18,8 +18,14 @@ $topSectionHeight: 35%;
   }
 
   ::ng-deep {
-    mat-card mat-card-header .main {
-      text-decoration: underline;
+    mat-card mat-card-header {
+      .main {
+        text-decoration: underline;
+      }
+
+      .override {
+        color: darkred;
+      }
     }
 
     .mat-card {

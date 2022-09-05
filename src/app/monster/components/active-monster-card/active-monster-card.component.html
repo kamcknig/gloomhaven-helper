@@ -25,7 +25,9 @@
   <mat-card-header>
     <mat-card-title>
       <span class="main">{{(monster$ | async)?.name}}</span>
-      <span class="button" (click)="monsterService.overrideMonsterLevel(monsterId)"> ({{monsterLevel$ | async}})
+      <span class="button"
+            [ngClass]="{override: (monsterLevel$ | async) !== (scenarioLevel$ | async)}"
+            (click)="monsterService.overrideMonsterLevel(monsterId)"> ( {{monsterLevel$ | async}} )
       </span>
     </mat-card-title>
   </mat-card-header>
