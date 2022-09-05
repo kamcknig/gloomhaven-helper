@@ -128,14 +128,21 @@
   <!-- actions for the card.
     1. open add token dialog button
   -->
-  <mat-card-actions align="end">
+  <!--<mat-card-actions align="end">
     <button mat-mini-fab
             type="button"
             *ngIf="!!(monster$ | async)?.health?.[(monsterLevel$ | async) ?? 0]"
             (click)="addToken()">
       <mat-icon>add</mat-icon>
     </button>
-  </mat-card-actions>
+  </mat-card-actions>-->
+  <button mat-mini-fab
+          id="add-token"
+          type="button"
+          *ngIf="!!(monster$ | async)?.health?.[(monsterLevel$ | async) ?? 0]"
+          (click)="addToken()">
+    <mat-icon>add</mat-icon>
+  </button>
 </mat-card>
 
 <app-monster-ability-deck [monsterId]="(monster$ | async).id"></app-monster-ability-deck>

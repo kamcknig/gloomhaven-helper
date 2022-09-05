@@ -1,8 +1,9 @@
-$topSectionHeight: 35%;
-
 :host {
-  position: relative;
-
+  #add-token {
+    right: 5px;
+    bottom: 5px;
+    position: absolute;
+  }
   .status-select-overlay {
     z-index: 100;
     position: absolute;
