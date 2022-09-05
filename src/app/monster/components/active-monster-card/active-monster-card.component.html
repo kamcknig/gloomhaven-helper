@@ -23,7 +23,11 @@
 
 <mat-card>
   <mat-card-header>
-    <mat-card-title>{{(monster$ | async)?.name}}</mat-card-title>
+    <mat-card-title>
+      <span class="main">{{(monster$ | async)?.name}}</span>
+      <span (click)="monsterService.overrideMonsterLevel$.next(monsterId)"> ({{monsterLevel$ | async}})
+      </span>
+    </mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
@@ -35,7 +39,7 @@
       <div class="monster-info-wrapper" fxLayout="row" fxLayoutAlign="space-between start">
         <ng-container *ngFor="let index of [0, 1]">
           <ng-container *ngIf="monster$ | async as monster">
-            <ng-container *ngIf="scenarioLevel$ | async as level">
+            <ng-container *ngIf="monsterLevel$ | async as level">
               <div fxLayout="column"
                    fxFlex [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'"
                    fxLayoutGap=".5rem">
@@ -125,7 +129,7 @@
   <mat-card-actions align="end">
     <button mat-mini-fab
             type="button"
-            *ngIf="!!(monster$ | async)?.health?.[(scenarioLevel$ | async) ?? 0]"
+            *ngIf="!!(monster$ | async)?.health?.[(monsterLevel$ | async) ?? 0]"
             (click)="addToken()">
       <mat-icon>add</mat-icon>
     </button>

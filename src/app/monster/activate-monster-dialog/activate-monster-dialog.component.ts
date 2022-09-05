@@ -1,16 +1,21 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import { Observable } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormControl } from '@angular/forms';
 import { filter, map, startWith } from 'rxjs/operators';
 import { Monster } from '../services/model';
+import {MatAutocompleteTrigger} from "@angular/material/autocomplete";
 
 @Component({
   selector: 'app-activate-monster-dialog',
   templateUrl: './activate-monster-dialog.component.html',
   styleUrls: ['./activate-monster-dialog.component.scss']
 })
-export class ActivateMonsterDialogComponent implements OnInit {
+export class ActivateMonsterDialogComponent implements OnInit, AfterViewInit {
+  @ViewChild('monsterAutoComplete') public monsterAutoComplete: ElementRef;
+  @ViewChild(MatAutocompleteTrigger) monsterAutoCompleteTrigger: MatAutocompleteTrigger;
+
+
   public filteredAvailableMonsters$: Observable<Monster[]> | undefined;
   public monsterInputControl: FormControl = new FormControl('');
 
@@ -28,6 +33,14 @@ export class ActivateMonsterDialogComponent implements OnInit {
       map(value => value?.name ?? value),
       map(value => this._data.filter(m => new RegExp(`${value?.toLowerCase() ?? ''}`, 'gi').test(m.name)))
     );
+  }
+
+  ngAfterViewInit(): void {
+    this.monsterAutoComplete.nativeElement.focus();
+    this.monsterAutoCompleteTrigger.closePanel();
+    setTimeout(() => {
+      this.monsterAutoComplete.nativeElement.select();
+    }, 0);
   }
 
   close(value: any) {

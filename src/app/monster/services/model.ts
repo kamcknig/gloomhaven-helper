@@ -57,6 +57,9 @@ export interface Monster {
   abilities: MonsterAbilityCard[];
   active?: boolean;
   infusions?: Lowercase<ElementNames>[];
+
+  // can be used as an override to the scenario level
+  level?: number;
 }
 
 export type MonsterAbilityCard = {

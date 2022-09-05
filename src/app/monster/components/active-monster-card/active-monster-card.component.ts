@@ -19,7 +19,7 @@ export class ActiveMonsterCard implements OnInit {
   public monster$: Observable<Monster>;
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
   public selectedToken: TokenInfo | undefined;
-  public scenarioLevel$: Observable<number | undefined>;
+  public monsterLevel$: Observable<number | undefined>;
   public ConditionsAndEffects = ConditionsAndEffects;
   public ApplicableConditions = ApplicableConditions;
 
@@ -30,12 +30,12 @@ export class ActiveMonsterCard implements OnInit {
     public appService: AppService,
     public combatService: CombatService,
     private _dialogService: MatDialog,
-    private _monsterService: MonsterService
+    public monsterService: MonsterService
   ) {
   }
 
   ngOnInit(): void {
-    this.monster$ = this._monsterService.monsterStore.monsters$.pipe(map(m => m.find(m => m.id === this.monsterId)));
+    this.monster$ = this.monsterService.monsterStore.monsters$.pipe(map(m => m.find(m => m.id === this.monsterId)));
 
     this.tokens$ = this.combatService.store.tokens$.pipe(
       withLatestFrom(this.monster$),
@@ -59,7 +59,7 @@ export class ActiveMonsterCard implements OnInit {
       takeUntil(this._destroy$)
     );
 
-    this.scenarioLevel$ = this.appService.scenarioStore.level$.pipe(takeUntil(this._destroy$));
+    this.monsterLevel$ = this.appService.monsterLevel(this.monsterId);// this.appService.scenarioStore.level$.pipe(takeUntil(this._destroy$));
   }
 
   getStatDisplayValue(value: number | string | undefined) {
@@ -120,7 +120,7 @@ export class ActiveMonsterCard implements OnInit {
 
   hasCondition(condition: ConditionAndEffectTypes, elite: boolean): Observable<boolean | [number, number]> {
     return this.monster$.pipe(
-      withLatestFrom(this.scenarioLevel$),
+      withLatestFrom(this.monsterLevel$),
       map(([monster, level]) => {
         const tmp = monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0] ?? 0;
         if (typeof tmp === 'number') {
@@ -141,7 +141,7 @@ export class ActiveMonsterCard implements OnInit {
 
   monsterHasConditionEffect(condition: string, elite: boolean = false): Observable<boolean> {
     return this.monster$.pipe(
-      withLatestFrom(this.scenarioLevel$),
+      withLatestFrom(this.monsterLevel$),
       map(([monster, level]) => {
         return monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0] > 0
           || monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0]?.[0] > 0;

@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
-import { createAdapter, Source, toSource } from '@state-adapt/core';
-import { HttpClient } from '@angular/common/http';
-import { ActivateMonsterDialogComponent } from '../activate-monster-dialog/activate-monster-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
-import { filter, map, share, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
-import { of } from 'rxjs';
-import { adapt } from '@state-adapt/angular';
-import { Monster, MonsterNoId, MonsterState } from './model';
+import {Injectable} from '@angular/core';
+import {Action, createAdapter, joinSelectors, Source, toSource} from '@state-adapt/core';
+import {HttpClient} from '@angular/common/http';
+import {ActivateMonsterDialogComponent} from '../activate-monster-dialog/activate-monster-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {filter, map, share, switchMap, take, tap, withLatestFrom} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {adapt} from '@state-adapt/angular';
+import {Monster, MonsterNoId, MonsterState} from './model';
+import {AppService} from "../../app.service";
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,13 @@ export class MonsterService {
       [event.id]: {
         ...state[event.id],
         active: true
+      }
+    }),
+    overrideLevel: (state, event) => ({
+      ...state,
+      [event.monsterId]: {
+        ...state[event.monsterId],
+        level: event.level
       }
     }),
     selectors: {
@@ -58,15 +66,26 @@ export class MonsterService {
   // trigger draw action, pass monster ID
   public monsterAbilityCardDraw$: Source<number> = new Source('drawAbilityCard$');
 
+  public  overrideMonsterLevel$: Source<number> = new Source('overrideMonsterLevel$');
+
   public monsterStore = adapt(
     'monsters',
     {},
     this.monsterAdapter,
     {
       add: this._monsterGet,
-      activateMonster: this.monsterActivate$
+      activateMonster: this.monsterActivate$,
+      overrideLevel: this.overrideMonsterLevel$.pipe(map(this.overrideMonsterLevel))
     }
   );
+
+  private overrideMonsterLevel(action: Action<any, string>): Action<any> {
+    action.payload = {
+      monsterId: action.payload,
+      level: 1
+    };
+    return action;
+  }
 
   public selectMonsterToActivate() {
     return this.monsterStore.inactiveMonsters$
