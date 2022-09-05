@@ -1,0 +1,26 @@
+<mat-card-title>Monster Level</mat-card-title>
+
+<ng-container [formGroup]="formGroup">
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput
+             [min]="0"
+             [max]="7"
+             formControlName="level"
+             type="number">
+      <mat-hint>Number should different than the current</mat-hint>
+    </mat-form-field>
+  </mat-card-content>
+</ng-container>
+
+<mat-card-actions>
+  <button mat-raised-button
+          color="primary"
+          [disabled]="formGroup.get('level').value === (monsterLevel$ | async)"
+          (click)="matDialog.close(this.formGroup.get('level').value)">OK
+  </button>
+
+  <button mat-raised-button
+          color="accent"
+          (click)="matDialog.close(null)">CLEAR</button>
+</mat-card-actions>

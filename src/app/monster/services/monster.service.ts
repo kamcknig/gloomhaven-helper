@@ -8,6 +8,9 @@ import {Observable, of} from 'rxjs';
 import {adapt} from '@state-adapt/angular';
 import {Monster, MonsterNoId, MonsterState} from './model';
 import {AppService} from "../../app.service";
+import {
+  SelectMonsterLevelOverrideComponent
+} from "../components/select-monster-level-ovrerride/select-monster-level-override.component";
 
 @Injectable({
   providedIn: 'root'
@@ -66,7 +69,7 @@ export class MonsterService {
   // trigger draw action, pass monster ID
   public monsterAbilityCardDraw$: Source<number> = new Source('drawAbilityCard$');
 
-  public  overrideMonsterLevel$: Source<number> = new Source('overrideMonsterLevel$');
+  public overrideMonsterLevel$: Source<{ monsterId: number; level: number }> = new Source('overrideMonsterLevel$');
 
   public monsterStore = adapt(
     'monsters',
@@ -75,16 +78,20 @@ export class MonsterService {
     {
       add: this._monsterGet,
       activateMonster: this.monsterActivate$,
-      overrideLevel: this.overrideMonsterLevel$.pipe(map(this.overrideMonsterLevel))
+      overrideLevel: this.overrideMonsterLevel$
     }
   );
 
-  private overrideMonsterLevel(action: Action<any, string>): Action<any> {
-    action.payload = {
-      monsterId: action.payload,
-      level: 1
-    };
-    return action;
+  public overrideMonsterLevel(monsterId: number): void {
+    this._dialogService.open(SelectMonsterLevelOverrideComponent, {data: {monsterId}}).afterClosed().pipe(
+      filter(v => v !== undefined),
+      map(result => ({
+          monsterId,
+          level: result
+      }))
+    ).subscribe({
+      next: value => this.overrideMonsterLevel$.next(value)
+    });
   }
 
   public selectMonsterToActivate() {

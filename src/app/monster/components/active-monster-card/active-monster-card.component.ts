@@ -59,7 +59,7 @@ export class ActiveMonsterCard implements OnInit {
       takeUntil(this._destroy$)
     );
 
-    this.monsterLevel$ = this.appService.monsterLevel(this.monsterId);// this.appService.scenarioStore.level$.pipe(takeUntil(this._destroy$));
+    this.monsterLevel$ = this.appService.monsterLevel(this.monsterId);
   }
 
   getStatDisplayValue(value: number | string | undefined) {

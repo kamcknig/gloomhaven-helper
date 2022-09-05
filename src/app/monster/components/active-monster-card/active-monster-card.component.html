@@ -25,7 +25,7 @@
   <mat-card-header>
     <mat-card-title>
       <span class="main">{{(monster$ | async)?.name}}</span>
-      <span (click)="monsterService.overrideMonsterLevel$.next(monsterId)"> ({{monsterLevel$ | async}})
+      <span class="button" (click)="monsterService.overrideMonsterLevel(monsterId)"> ({{monsterLevel$ | async}})
       </span>
     </mat-card-title>
   </mat-card-header>

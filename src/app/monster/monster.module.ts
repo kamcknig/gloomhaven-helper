@@ -15,6 +15,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TokenModule } from '../token/token.module';
 import { MonsterAbilityDeckComponent } from './components/monster-ability-deck/monster-ability-deck.component';
+import { SelectMonsterLevelOverrideComponent } from './components/select-monster-level-ovrerride/select-monster-level-override.component';
 
 
 
@@ -23,7 +24,8 @@ import { MonsterAbilityDeckComponent } from './components/monster-ability-deck/m
     ActiveMonsterCard,
     AddTokenDialogComponent,
     ActivateMonsterDialogComponent,
-    MonsterAbilityDeckComponent
+    MonsterAbilityDeckComponent,
+    SelectMonsterLevelOverrideComponent
   ],
   exports: [
     ActiveMonsterCard
