@@ -1,9 +1,12 @@
 :host {
+  /** The mini fab button to trigger adding a token for the monster */
   #add-token {
     right: 5px;
     bottom: 5px;
     position: absolute;
   }
+
+  /** The overlay that appears when adding a status effect or condition to a token */
   .status-select-overlay {
     z-index: 100;
     position: absolute;
@@ -19,17 +22,17 @@
   }
 
   ::ng-deep {
-    mat-card mat-card-header {
-      .main {
-        text-decoration: underline;
-      }
-
-      .override {
-        color: darkred;
-      }
-    }
-
     .mat-card {
+      mat-card-header {
+        .main {
+          text-decoration: underline;
+        }
+
+        .override {
+          color: darkred;
+        }
+      }
+
       background: linear-gradient(to right, white -25%, rgba(117, 117, 117, .5) 50%, rgba(130, 106, 25, .5) 50%, white 125%);
 
       .mat-card-content {
