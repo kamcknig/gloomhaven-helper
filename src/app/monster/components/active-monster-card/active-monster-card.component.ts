@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppService } from '../../../app.service';
 import { AddTokenDialogComponent } from './add-token-dialog/add-token-dialog.component';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ApplicableConditions, ConditionAndEffectTypes, ConditionsAndEffects, Monster } from '../../services/model';
@@ -15,8 +15,11 @@ import { MonsterService } from '../../services/monster.service';
   styleUrls: ['./active-monster-card.component.scss']
 })
 export class ActiveMonsterCard implements OnInit {
+  private _monster$: BehaviorSubject<Monster> = new BehaviorSubject<Monster>(undefined);
+
   @Input() public monsterId: number;
-  public monster$: Observable<Monster>;
+
+  public monster$: Observable<Monster> = this._monster$.asObservable();
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
   public selectedToken: TokenInfo | undefined;
   public monsterLevel$: Observable<number | undefined>;
@@ -36,7 +39,7 @@ export class ActiveMonsterCard implements OnInit {
   }
 
   ngOnInit(): void {
-    this.monster$ = this.monsterService.monsterStore.monsters$.pipe(map(m => m.find(m => m.id === this.monsterId)));
+    this.monsterService.monsterStore.monsters$.pipe(map(m => m.find(m => m.id === this.monsterId))).subscribe(this._monster$);
 
     this.scenarioLevel$ = this.appService.scenarioStore.level$;
 
@@ -67,6 +70,10 @@ export class ActiveMonsterCard implements OnInit {
 
   getStatDisplayValue(value: number | string | undefined) {
     return value || '-';
+  }
+
+  removeMonster() {
+    this.monsterService.deactivateMonster$.next(this._monster$.value);
   }
 
   addToken() {

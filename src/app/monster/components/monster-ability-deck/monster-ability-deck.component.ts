@@ -36,6 +36,10 @@ export class MonsterAbilityDeckComponent implements OnInit {
 
     this.activeCard$ = deck$.pipe(
       map(value => {
+        if (!value?.length) {
+          return undefined;
+        }
+
         for (let i = value.length - 1; i >= 0; i--) {
           if (value[i].drawn) {
             return value[i];

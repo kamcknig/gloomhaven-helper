@@ -30,7 +30,14 @@ export class MonsterService {
         return prev;
       }, {})
     }),
-    activateMonster: (state, event, initialState) => ({
+    deactivateMonster: (state, monster: Monster) => ({
+      ...state,
+      [monster.id]: {
+        ...state[monster.id],
+        active: false
+      }
+    }),
+    activateMonster: (state, event) => ({
       ...state,
       [event.id]: {
         ...state[event.id],
@@ -64,7 +71,9 @@ export class MonsterService {
   //------ sources
 
   // trigger activate monster action, pass Monster instance
-  public monsterActivate$: Source<Monster> = new Source('activateMonster$');
+  public activateMonster$: Source<Monster> = new Source('activateMonster$');
+
+  public deactivateMonster$: Source<Monster> = new Source('deactivateMonster$')
 
   // trigger draw action, pass monster ID
   public monsterAbilityCardDraw$: Source<number> = new Source('drawAbilityCard$');
@@ -77,7 +86,8 @@ export class MonsterService {
     this.monsterAdapter,
     {
       add: this._monsterGet as Observable<any>,
-      activateMonster: this.monsterActivate$,
+      activateMonster: this.activateMonster$,
+      deactivateMonster: this.deactivateMonster$,
       overrideLevel: this.overrideMonsterLevel$
     }
   );
@@ -110,7 +120,7 @@ export class MonsterService {
               withLatestFrom(this.monsterStore.monsters$),
               map(([id, monsters]) => monsters.find(m => m.id === id)),
               filter(monster => !!monster),
-              tap(monster => this.monsterActivate$.next(monster))
+              tap(monster => this.activateMonster$.next(monster))
             )
           : of(null))
       );
