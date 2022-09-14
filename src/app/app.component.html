@@ -1,14 +1,11 @@
 <app-header></app-header>
 
 <div
+  class="content"
   fxLayout="row"
   fxLayoutAlign="start start"
-  fxLayoutGap=".7rem"
-  style="padding: .7rem; margin-top: 120px;"
+  fxLayoutGap="10px"
 >
-  <ng-container
-    *ngFor="let monster of (monsterService.monsterStore.activeMonsters$ | async) ?? []">
-    <app-active-monster-card [monsterId]="(monster.id)"></app-active-monster-card>
-  </ng-container>
-
+  <app-active-monster-card *ngFor="let monster of monsterService.monsterStore.activeMonsters$ | async"
+                           [monsterId]="monster.id"></app-active-monster-card>
 </div>

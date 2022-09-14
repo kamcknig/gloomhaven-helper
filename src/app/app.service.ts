@@ -25,7 +25,7 @@ export class AppService {
   scenarioStore = adapt(
     'scenario',
     {
-      level: 0
+      level: 1
     },
     this._scenarioAdapter,
     {
