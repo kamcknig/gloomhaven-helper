@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { createAdapter } from '@state-adapt/core';
 import { MonsterService } from '../../monster/services/monster.service';
 import { adapt } from '@state-adapt/angular';
-import { MonsterAbilityCard } from '../../monster/services/model';
+import { Monster, MonsterAbilityCard } from '../../monster/services/model';
 import { CombatState, TokenInfo } from './model';
 import { Source } from '@state-adapt/rxjs';
 
@@ -92,7 +92,14 @@ export class CombatService {
         tokens: [...tokens]
       };
     },
-    monsterActivate: (state, event) => ({
+    deactivateMonster: (state, monster: Monster) => {
+      const { [monster.id]: removed, ...activeMonsters } = state.activeMonsters;
+      return {
+        ...state,
+        activeMonsters
+      }
+    },
+    activateMonster: (state, event: Monster) => ({
       ...state,
       activeMonsters: {
         ...state.activeMonsters,
@@ -161,7 +168,8 @@ export class CombatService {
     this._adapter,
     {
       monsterAbilityCardDraw: this._monsterService.monsterAbilityCardDraw$,
-      monsterActivate: this._monsterService.monsterActivate$,
+      activateMonster: this._monsterService.activateMonster$,
+      deactivateMonster: this._monsterService.deactivateMonster$,
       roundComplete: this.roundComplete$,
       addToken: this.addToken$,
       updateTokenHitPoint: this.updateTokenHitPoint$,
