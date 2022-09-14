@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { createAdapter, Source } from '@state-adapt/core';
+import { createAdapter } from '@state-adapt/core';
 import { MonsterService } from '../../monster/services/monster.service';
 import { adapt } from '@state-adapt/angular';
 import { MonsterAbilityCard } from '../../monster/services/model';
 import { CombatState, TokenInfo } from './model';
+import { Source } from '@state-adapt/rxjs';
 
 @Injectable({
   providedIn: 'root'

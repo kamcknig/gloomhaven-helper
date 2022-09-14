@@ -1,10 +1,11 @@
 import { Inject, Injectable } from '@angular/core';
-import {createAdapter, joinSelectors, Source} from '@state-adapt/core';
+import { createAdapter } from '@state-adapt/core';
 import { MAX_LEVEL } from './scenario-options/max-level.token';
 import { adapt } from '@state-adapt/angular';
 import { CombatService } from './combat/services/combat.service';
 import { ScenarioInfo } from './model';
-import {MonsterService} from "./monster/services/monster.service";
+import { MonsterService } from "./monster/services/monster.service";
+import { joinSelectors, Source } from '@state-adapt/rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -48,3 +49,4 @@ export class AppService {
   ) {
   }
 }
+

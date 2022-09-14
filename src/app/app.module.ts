@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { actionSanitizer, AdaptCommon, createStore, stateSanitizer, } from '@state-adapt/core';
+import { actionSanitizer, stateSanitizer, } from '@state-adapt/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScenarioOptionsModule } from './scenario-options/scenario-options.module';
 import { MAX_LEVEL } from './scenario-options/max-level.token';
@@ -22,6 +22,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ScenarioLevelInputComponent } from './components/scenario-level-input/scenario-level-input.component';
 import { ScenarioRoundComponent } from './components/scenario-round/scenario-round.component';
 import { MatIconModule } from '@angular/material/icon';
+import { defaultStoreProvider } from '@state-adapt/angular';
 
 const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   actionSanitizer,
@@ -54,7 +55,7 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
     MatIconModule
   ],
   providers: [
-    { provide: AdaptCommon, useValue: createStore(enableReduxDevtools) },
+    defaultStoreProvider,
     { provide: MAX_LEVEL, useValue: 7 }
   ],
   bootstrap: [AppComponent]
