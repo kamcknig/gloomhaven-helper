@@ -1,7 +1,6 @@
 <mat-card>
   <!-- overlay for choosing a token's applied statuses -->
-  <div *ngIf="selectedToken"
-       [ngStyle]="{ 'visibility': selectedToken ? 'visible': 'hidden' }"
+  <div [ngStyle]="{ 'visibility': selectedToken ? 'visible': 'hidden' }"
        class="status-select-overlay">
     <button mat-mini-fab
             (click)="closeStatusSelectOverlay()"
@@ -128,7 +127,6 @@
   <button mat-mini-fab
           id="add-token"
           type="button"
-          *ngIf="!!(monster$ | async)?.health?.[(monsterLevel$ | async) ?? 0]"
           (click)="addToken()">
     <mat-icon>add</mat-icon>
   </button>
