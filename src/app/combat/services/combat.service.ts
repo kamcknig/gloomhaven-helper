@@ -96,6 +96,7 @@ export class CombatService {
       const { [monster.id]: removed, ...activeMonsters } = state.activeMonsters;
       return {
         ...state,
+        tokens: [...state.tokens.filter(t => t.monsterId !== monster.id)],
         activeMonsters
       }
     },
