@@ -14,6 +14,9 @@ export interface TokenInfo {
 export type CombatState = {
   round: number;
   tokens: TokenInfo[];
+  /**
+   * A dictionary of monsterId: {@link MonsterAbilityCard}[]
+   */
   activeMonsters: {
     [monsterId: number]: MonsterAbilityCard[];
   }
