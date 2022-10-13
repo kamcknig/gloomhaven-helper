@@ -101,6 +101,7 @@
         <div class="token-list-wrapper"
              fxLayoutGap="2rem"
              fxLayout="row"
+             cdkDropListGroup
              fxFlex>
           <ng-container *ngIf="tokens$ | async as tokens">
             <ng-container *ngFor="let tokenType of ['normals', 'elites']">
@@ -108,8 +109,13 @@
                    class="token-list">
                 <div fxFlex
                      fxLayout="column"
-                     fxLayoutAlign="start start">
+                     fxLayoutAlign="start start"
+                     cdkDropList
+                     [cdkDropListData]="tokenType"
+                     (cdkDropListDropped)="combatService.toggleTokenElite$.next($event.item.data)">
                   <app-token-list-item *ngFor="let token of tokens?.[tokenType]"
+                                       cdkDrag
+                                       [cdkDragData]="token"
                                        style="width: 100%;"
                                        [value]="token"
                                        [statuses]="getTokenConditionsAndEffects(token)"

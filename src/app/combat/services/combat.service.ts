@@ -10,6 +10,7 @@ import { Source } from '@state-adapt/rxjs';
   providedIn: 'root'
 })
 export class CombatService {
+  public toggleTokenElite$ = new Source<TokenInfo[] | TokenInfo>('toggleTokenElite$');
   public roundComplete$ = new Source<void>('roundCompleted$');
   public addToken$: Source<TokenInfo[] | TokenInfo> = new Source('addToken$');
   public updateTokenHitPoint$: Source<[TokenInfo, number]> = new Source('updateTokenHitPoint$');
@@ -40,6 +41,19 @@ export class CombatService {
   }
 
   private _adapter = createAdapter<CombatState>()({
+    toggleTokenElite: (state, event: TokenInfo | TokenInfo[]) => {
+      const toggleTokens = Array.isArray(event) ? event : [event];
+
+      return {
+        ...state,
+        tokens: [
+          ...state.tokens.map(t => ({
+            ...t,
+            elite: toggleTokens.find(tt => tt.monsterId === t.monsterId && tt.number === t.number) ? !t.elite : t.elite
+          }))
+        ]
+      };
+    },
     addToken: (state, event: TokenInfo | TokenInfo[]) => {
       event = Array.isArray(event) ? event : [event];
       return {
@@ -174,7 +188,8 @@ export class CombatService {
       roundComplete: this.roundComplete$,
       addToken: this.addToken$,
       updateTokenHitPoint: this.updateTokenHitPoint$,
-      toggleTokenCondition: this.toggleTokenCondition$
+      toggleTokenCondition: this.toggleTokenCondition$,
+      toggleTokenElite: this.toggleTokenElite$
     }
   )
 
