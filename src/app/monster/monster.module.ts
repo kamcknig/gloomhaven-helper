@@ -16,6 +16,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { TokenModule } from '../token/token.module';
 import { MonsterAbilityDeckComponent } from './components/monster-ability-deck/monster-ability-deck.component';
 import { SelectMonsterLevelOverrideComponent } from './components/select-monster-level-ovrerride/select-monster-level-override.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 
@@ -32,6 +33,7 @@ import { SelectMonsterLevelOverrideComponent } from './components/select-monster
   ],
   imports: [
     CommonModule,
+    DragDropModule,
     FlexLayoutModule,
     FormsModule,
     MatCardModule,
