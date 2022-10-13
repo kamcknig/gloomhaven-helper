@@ -112,7 +112,7 @@
                      fxLayoutAlign="start start"
                      cdkDropList
                      [cdkDropListData]="tokenType"
-                     (cdkDropListDropped)="combatService.toggleTokenElite$.next($event.item.data)">
+                     (cdkDropListDropped)="$event.previousContainer !== $event.container ? combatService.toggleTokenElite$.next($event.item.data) : undefined">
                   <app-token-list-item *ngFor="let token of tokens?.[tokenType]"
                                        cdkDrag
                                        [cdkDragData]="token"
