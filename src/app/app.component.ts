@@ -12,6 +12,7 @@ import { filter, map, switchMap } from 'rxjs/operators';
 })
 export class AppComponent {
   public title = 'gloomhaven-helper';
+  public viewMode = 'normal';
   private _roundComplete$ = new Subject();
 
   @HostListener('document:keyup.control.m')
