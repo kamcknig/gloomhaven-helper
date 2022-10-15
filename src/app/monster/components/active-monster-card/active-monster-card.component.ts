@@ -8,7 +8,6 @@ import { ApplicableConditions, ConditionAndEffectTypes, ConditionsAndEffects, Mo
 import { TokenInfo } from '../../../combat/services/model';
 import { CombatService } from '../../../combat/services/combat.service';
 import { MonsterService } from '../../services/monster.service';
-import { CdkDrag, CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-active-monster-card',
@@ -109,13 +108,6 @@ export class ActiveMonsterCard implements OnInit {
             }, [] as TokenInfo[]))
         }
       });
-  }
-
-  public tokenDropped(event: CdkDragDrop<any>): void {
-    console.log(event);
-    if (event.previousContainer === event.container) {
-      // moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    }
   }
 
   showStatusSelectOverlay(token: TokenInfo) {

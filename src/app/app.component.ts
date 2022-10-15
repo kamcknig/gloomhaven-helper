@@ -2,8 +2,8 @@ import { Component, HostListener } from '@angular/core';
 import { MonsterService } from './monster/services/monster.service';
 import { AppService } from './app.service';
 import { CombatService } from './combat/services/combat.service';
-import { Subject } from 'rxjs';
-import { filter, switchMap } from 'rxjs/operators';
+import { combineLatest, Observable, Subject } from 'rxjs';
+import { filter, map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +16,8 @@ export class AppComponent {
 
   @HostListener('document:keyup.control.m')
   public activateMonster() {
-    this.monsterService.selectMonsterToActivate().subscribe();
+    this.monsterService.selectMonsterToActivate()
+      .subscribe();
   }
 
   @HostListener('document:keyup.control.arrowup')
@@ -34,16 +35,61 @@ export class AppComponent {
     this._roundComplete$.next();
   }
 
+  /**
+   * Emits an array of numbers whose elements are the IDs of the active monsters in combat ordered by the
+   * initiative of their currently drawn ability card
+   */
+  public sortedMonsters$: Observable<number[]>;
+
   constructor(
     public monsterService: MonsterService,
     public appService: AppService,
     public combatService: CombatService
   ) {
     this._roundComplete$.pipe(
-      switchMap(() => monsterService.monsterStore.activeMonsters$),
-      filter(monsters => !!monsters.length)
-    ).subscribe({
-      next: () => combatService.roundComplete$.next()
-    })
+      switchMap(() => combatService.store.activeMonsters$),
+      filter(monsters => !!Object.keys(monsters)?.length)
+    )
+      .subscribe({
+        next: () => combatService.roundComplete$.next()
+      });
+
+    this.sortedMonsters$ = combineLatest([
+      this.combatService.store.activeMonsters$,
+      this.monsterService.monsterStore.activeMonsters$
+    ])
+      .pipe(
+        map(([combatMonsters, monsters]) =>
+          Object.entries(combatMonsters)
+            .sort(([id1, m1], [id2, m2]) => {
+              const m1Initiative = m1.reduce(
+                (initiative, nextCard) => nextCard.drawn ? nextCard.initiative : initiative, undefined as number)
+              const m2Initiative = m2.reduce(
+                (initiative, nextCard) => nextCard.drawn ? nextCard.initiative : initiative, undefined as number)
+
+              if (m1Initiative === undefined && m2Initiative === undefined) {
+                const name1 = monsters.find(m => m.id === +id1)?.name;
+                const name2 = monsters.find(m => m.id === +id2)?.name;
+                if (name1 < name2) {
+                  return -1;
+                } else if (name2 > name1) {
+                  return 1;
+                } else {
+                  return 0;
+                }
+              }
+
+              if (m1Initiative === undefined) {
+                return 1;
+              }
+
+              if (m2Initiative === undefined) {
+                return -1;
+              }
+
+              return m1Initiative - m2Initiative;
+            })
+            .map(m => +m[0]))
+      );
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { createAdapter } from '@state-adapt/core';
 import { MonsterService } from '../../monster/services/monster.service';
 import { adapt } from '@state-adapt/angular';
-import { Monster, MonsterAbilityCard } from '../../monster/services/model';
+import { Monster, MonsterAbility } from '../../monster/services/model';
 import { CombatState, TokenInfo } from './model';
 import { Source } from '@state-adapt/rxjs';
 
@@ -26,7 +26,7 @@ export class CombatService {
     }
   }
 
-  private drawCard(abilities: MonsterAbilityCard[]) {
+  private drawCard(abilities: MonsterAbility[]) {
     let ability = abilities.find(a => !a.drawn);
 
     // if we couldn't find an ability that hasn't been drawn, shuffle the deck and
@@ -118,7 +118,7 @@ export class CombatService {
       ...state,
       activeMonsters: {
         ...state.activeMonsters,
-        [event.id]: event.abilities?.reduce((prev: any[], next: MonsterAbilityCard) => {
+        [event.id]: event.abilities?.reduce((prev: any[], next: MonsterAbility) => {
           const count = next?.count ?? 1;
           for (let i = 0; i < count; i++) {
             prev.push({ ...next });
