@@ -14,7 +14,7 @@ import { MonsterService } from '../../services/monster.service';
   templateUrl: './active-monster-card.component.html',
   styleUrls: ['./active-monster-card.component.scss']
 })
-export class ActiveMonsterCard implements OnInit {
+export class ActiveMonsterCardComponent implements OnInit {
   private _monster$: BehaviorSubject<Monster> = new BehaviorSubject<Monster>(undefined);
 
   @Input() public monsterId: number;

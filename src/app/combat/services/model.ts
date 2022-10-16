@@ -18,6 +18,9 @@ export type CombatState = {
    * A dictionary of monsterId: {@link MonsterAbility}[]
    */
   activeMonsters: {
-    [monsterId: number]: MonsterAbility[];
+    [monsterId: number]: {
+      abilities: MonsterAbility[];
+      initiative?: number | undefined;
+    };
   }
 };

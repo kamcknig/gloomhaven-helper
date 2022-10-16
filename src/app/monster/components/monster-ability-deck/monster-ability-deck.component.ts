@@ -31,7 +31,7 @@ export class MonsterAbilityDeckComponent implements OnInit {
 
     const deck$ = this._combatService.store.activeMonsters$.pipe(
       withLatestFrom(this.monster$),
-      map(([value, monster]) => value[monster.id])
+      map(([value, monster]) => value[monster.id].abilities)
     );
 
     this.activeCard$ = deck$.pipe(

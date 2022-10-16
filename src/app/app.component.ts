@@ -62,10 +62,10 @@ export class AppComponent {
       .pipe(
         map(([combatMonsters, monsters]) =>
           Object.entries(combatMonsters)
-            .sort(([id1, m1], [id2, m2]) => {
-              const m1Initiative = m1?.reduce(
+            .sort(([id1, { abilities: abilities1 }], [id2, { abilities: abilities2 }]) => {
+              const m1Initiative = abilities1?.reduce(
                 (initiative, nextCard) => (nextCard.drawn && nextCard.initiative) || initiative, undefined as number)
-              const m2Initiative = m2?.reduce(
+              const m2Initiative = abilities2?.reduce(
                 (initiative, nextCard) => (nextCard.drawn && nextCard.initiative) || initiative, undefined as number)
 
               if (m1Initiative === undefined && m2Initiative === undefined) {
