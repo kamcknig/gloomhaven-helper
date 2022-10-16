@@ -54,7 +54,7 @@ export interface Monster {
   range?: [number, number][];
   retaliate?: [number, number][];
   target?: [number, number][];
-  abilities: MonsterAbilityCard[];
+  abilities: MonsterAbility[];
   active?: boolean;
   infusions?: Lowercase<ElementNames>[];
 
@@ -62,7 +62,7 @@ export interface Monster {
   level?: number;
 }
 
-export type MonsterAbilityCard = {
+export type MonsterAbility = {
   initiative: number,
   shuffle?: boolean,
   imgName: string,

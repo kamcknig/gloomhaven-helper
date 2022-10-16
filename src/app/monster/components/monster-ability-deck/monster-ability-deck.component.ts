@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CombatService } from '../../../combat/services/combat.service';
 import { Observable } from 'rxjs';
-import { map, startWith, withLatestFrom } from 'rxjs/operators';
-import { Monster, MonsterAbilityCard } from '../../services/model';
+import { map, withLatestFrom } from 'rxjs/operators';
+import { Monster, MonsterAbility } from '../../services/model';
 import { MonsterService } from '../../services/monster.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class MonsterAbilityDeckComponent implements OnInit {
   public monster$: Observable<Monster>;
 
   public disabled$: Observable<boolean>;
-  public activeCard$: Observable<MonsterAbilityCard>;
+  public activeCard$: Observable<MonsterAbility>;
 
   constructor(
     private _combatService: CombatService,
@@ -31,7 +31,7 @@ export class MonsterAbilityDeckComponent implements OnInit {
 
     const deck$ = this._combatService.store.activeMonsters$.pipe(
       withLatestFrom(this.monster$),
-      map(([value, monster]) => value[monster.id])
+      map(([value, monster]) => value[monster.id].abilities)
     );
 
     this.activeCard$ = deck$.pipe(
