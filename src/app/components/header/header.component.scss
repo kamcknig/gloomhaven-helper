@@ -7,15 +7,6 @@
     padding: 3rem;
 
     .element-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      mat-icon {
-        position: absolute;
-        pointer-events: none;
-      }
-
       .element-icon {
         max-width: 4rem;
         max-height: 4rem;
