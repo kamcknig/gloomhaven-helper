@@ -1,30 +1,29 @@
 <app-header></app-header>
 
-<div class="content"
+<div *ngIf="(appService.scenarioStore.viewMode$ | async) === 'normal'; else listView"
+     class="content"
      fxLayout="row"
      fxLayoutAlign="start start"
      fxLayoutGap="10px"
 >
-  <ng-container *ngFor="let monsterId of sortedMonsters$ | async">
-    <ng-container [ngTemplateOutlet]="activeMonsterDisplay"
-                  [ngTemplateOutletContext]="{ $implicit: monsterId }">
-
-    </ng-container>
-  </ng-container>
-
-  <button mat-fab
-          class="list-style-button"
-          (click)="appService.toggleViewMode$.next()">
-    <mat-icon>list</mat-icon>
-  </button>
+  <app-active-monster-card *ngFor="let monsterId of sortedMonsters$ | async"
+                           [monsterId]="monsterId">
+  </app-active-monster-card>
 </div>
 
-<ng-template #activeMonsterDisplay let-monsterId>
-  <ng-container *ngIf="(appService.scenarioStore.viewMode$ | async) ==='normal'; else list">
-    <app-active-monster-card [monsterId]="monsterId"></app-active-monster-card>
-  </ng-container>
+<ng-template #listView>
+  <div class="content"
+       fxLayout="column"
+       fxLayoutGap="10px">
+    <app-active-monster-list-item *ngFor="let monsterId of sortedMonsters$ | async"
+                                  [monsterId]="monsterId">
 
-  <ng-template #list>
-    <app-active-monster-list-item [monsterId]="monsterId"></app-active-monster-list-item>
-  </ng-template>
+    </app-active-monster-list-item>
+  </div>
 </ng-template>
+
+<button mat-fab
+        class="list-style-button"
+        (click)="appService.toggleViewMode$.next()">
+  <mat-icon>list</mat-icon>
+</button>
