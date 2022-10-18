@@ -14,6 +14,7 @@
 <ng-template #listView>
   <div class="content"
        fxLayout="column"
+       fxLayoutAlign="start start"
        fxLayoutGap="10px">
     <app-active-monster-list-item *ngFor="let monsterId of sortedMonsters$ | async"
                                   [monsterId]="monsterId">

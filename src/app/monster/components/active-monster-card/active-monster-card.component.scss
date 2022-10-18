@@ -52,7 +52,7 @@
         }
       }
 
-      background: linear-gradient(to right, white -25%, rgba(117, 117, 117, .5) 50%, rgba(130, 106, 25, .5) 50%, white 125%);
+      background: linear-gradient(to right, white -25%, rgba(var(--gray), .5) 50%, rgba(var(--gold), .5) 50%, white 125%);
 
       .mat-card-content {
         width: 26rem;

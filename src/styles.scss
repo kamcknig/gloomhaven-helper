@@ -2,6 +2,8 @@
 
 @use '@angular/material' as mat;
 
+@import 'src/css/colors';
+
 @font-face {
   font-family: 'gloomhaven';
   src: url('/assets/fonts/PirataOne-Gloomhaven.ttf');
