@@ -2,9 +2,9 @@
      fxLayoutAlign="center start"
      fxLayoutGap="1rem">
   <div>Round {{combatService.store.round$ | async}}</div>
+
   <button mat-raised-button
           color="accent"
-          [disabled]="(monsterService.monsterStore.activeMonsters$ | async).length === 0"
           (click)="combatService.roundComplete$.next()">Next
   </button>
 </div>
