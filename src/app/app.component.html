@@ -6,9 +6,9 @@
      fxLayoutAlign="start start"
      fxLayoutGap="10px"
 >
-  <app-active-monster-card *ngFor="let monsterId of sortedMonsters$ | async"
+  <monster-detail *ngFor="let monsterId of sortedMonsters$ | async"
                            [monsterId]="monsterId">
-  </app-active-monster-card>
+  </monster-detail>
 </div>
 
 <ng-template #listView>
@@ -16,9 +16,9 @@
        fxLayout="column"
        fxLayoutAlign="start start"
        fxLayoutGap="10px">
-    <app-active-monster-list-item *ngFor="let monsterId of sortedMonsters$ | async"
+    <monster-list-item *ngFor="let monsterId of sortedMonsters$ | async"
                                   [monsterId]="monsterId">
-    </app-active-monster-list-item>
+    </monster-list-item>
   </div>
 </ng-template>
 

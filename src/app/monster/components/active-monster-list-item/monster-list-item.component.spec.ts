@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ActiveMonsterListItemComponent } from './active-monster-list-item.component';
+import { MonsterListItemComponent } from './monster-list-item.component';
 
 describe('ActiveMonsterListItemComponent', () => {
-  let component: ActiveMonsterListItemComponent;
-  let fixture: ComponentFixture<ActiveMonsterListItemComponent>;
+  let component: MonsterListItemComponent;
+  let fixture: ComponentFixture<MonsterListItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ActiveMonsterListItemComponent ]
+      declarations: [ MonsterListItemComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ActiveMonsterListItemComponent);
+    fixture = TestBed.createComponent(MonsterListItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,12 @@
+<div fxLayout="row"
+     fxLayoutAlign="start center">
+  <div fxFlex="80"
+       class="mat-title monster-name">{{ (monster$ | async)?.name }}</div>
+
+  <div fxLayout="row wrap"
+       fxFlex="20">
+    <div *ngFor="let i of [0, 1, 2, 3]">
+      {{i}}
+    </div>
+  </div>
+</div>

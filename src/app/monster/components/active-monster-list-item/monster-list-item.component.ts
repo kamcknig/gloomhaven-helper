@@ -5,11 +5,11 @@ import {Observable} from "rxjs";
 import {Monster} from "../../services/model";
 
 @Component({
-  selector: 'app-active-monster-list-item',
-  templateUrl: './active-monster-list-item.component.html',
-  styleUrls: ['./active-monster-list-item.component.scss']
+  selector: 'monster-list-item',
+  templateUrl: './monster-list-item.component.html',
+  styleUrls: ['./monster-list-item.component.scss']
 })
-export class ActiveMonsterListItemComponent implements OnInit {
+export class MonsterListItemComponent implements OnInit {
   @Input() public monsterId: number;
 
   public monster$: Observable<Monster>;

@@ -1,0 +1,148 @@
+<mat-card>
+  <!-- overlay for choosing a token's applied statuses -->
+  <div [ngStyle]="{ 'visibility': selectedToken ? 'visible': 'hidden' }"
+       class="status-select-overlay">
+    <button mat-mini-fab
+            (click)="closeStatusSelectOverlay()"
+            style="position: absolute; right: 5px; top: 5px;">
+      <mat-icon>cancel</mat-icon>
+    </button>
+
+    <div fxFlexFill
+         fxLayout="row wrap"
+         fxLayoutAlign="center center"
+         fxLayoutGap=".7rem grid"
+         style="padding: 2rem;">
+      <img *ngFor="let value of ApplicableConditions"
+           [src]="'assets/icons/' + value.toLowerCase() + '.png'"
+           [ngStyle]="{ 'filter': (selectedToken?.appliedConditionsAndEffects?.[value.toString()] ?? 0) > 0 ? 'brightness(100%)' : 'brightness(50%)' }"
+           (click)="combatService.toggleTokenCondition$.next({ token: selectedToken, condition: value})"
+      >
+    </div>
+  </div>
+
+  <mat-card-header>
+    <mat-card-title>
+      <span class="main">{{(monster$ | async)?.name}}</span>
+      <span class="button"
+            [ngClass]="{override: (monsterLevel$ | async) !== (scenarioLevel$ | async)}"
+            (click)="monsterService.overrideMonsterLevel(monsterId)"> ( {{monsterLevel$ | async}} )
+      </span>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="mat-card-content-wrapper"
+         fxFlex
+         fxLayout="column"
+         fxLayoutAlign="start center">
+      <!-- stats section for both normals and elites -->
+      <div class="monster-info-wrapper" fxLayout="row" fxLayoutAlign="space-between start">
+        <ng-container *ngFor="let index of [0, 1]">
+          <ng-container *ngIf="monster$ | async as monster">
+            <ng-container *ngIf="monsterLevel$ | async as level">
+              <div fxLayout="column"
+                   fxFlex [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'"
+                   fxLayoutGap=".5rem">
+                <!-- monster stats on the monster info card -->
+
+                <div fxLayout="row" class="monster-status-container">
+                  <span fxLayout="column" fxLayoutAlign="start center">
+                    <img class="icon" src="assets/icons/health.png">
+                    {{getStatDisplayValue(monster.health?.[level ?? 0]?.[index])}}
+                    </span>
+
+                  <span fxLayout="column" fxLayoutAlign="start center">
+                    <img class="icon" src="assets/icons/move.png">
+                    {{getStatDisplayValue(monster.move?.[level ?? 0]?.[index])}}
+                  </span>
+
+                  <span fxLayout="column" fxLayoutAlign="start center">
+                    <img class="icon" src="assets/icons/attack.png">
+                    {{getStatDisplayValue(monster.attack?.[level ?? 0]?.[index])}}
+                  </span>
+
+                  <span fxLayout="column" fxLayoutAlign="start center">
+                    <img class="icon" src="assets/icons/range.png">
+                    {{getStatDisplayValue(monster.range?.[level ?? 0]?.[index])}}
+                  </span>
+                </div>
+
+                <!-- statuses that the monster has on it's monster info card -->
+                <div fxLayout="row">
+                  <div *ngFor="let condition of ConditionsAndEffects" fxLayout="row" fxLayoutAlign="start center">
+                    <img *ngIf="hasCondition(condition, index === 1) | async"
+                         [src]="'assets/icons/' + condition.toLowerCase() + '.png'"
+                         style="max-width: 2rem; max-height: 2rem;">
+
+                    <span
+                      *ngIf="showAdditionalConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1) | async"
+                      style="margin: 0 .35rem; font-size: 1.5rem;">
+                  {{monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]?.[0] ?? monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]}}
+                      <span
+                        *ngIf="condition === 'Retaliate' && monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]?.[1] > 0">
+                    @{{monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]?.[1]}}
+                  </span>
+                </span>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+
+      <mat-divider style="width: 100%; margin: 1rem 0;"></mat-divider>
+
+      <div fxFlex class="token-info-wrapper"
+           fxLayout="column">
+        <div class="mat-title">Tokens</div>
+
+        <div class="token-list-wrapper"
+             fxLayoutGap="2rem"
+             fxLayout="row"
+             cdkDropListGroup
+             fxFlex>
+          <ng-container *ngIf="tokens$ | async as tokens">
+            <ng-container *ngFor="let tokenType of ['normals', 'elites']">
+              <div fxFlex="50"
+                   class="token-list">
+                <div fxFlex
+                     fxLayout="column"
+                     fxLayoutAlign="start start"
+                     cdkDropList
+                     [cdkDropListData]="tokenType"
+                     (cdkDropListDropped)="$event.previousContainer !== $event.container ? combatService.toggleTokenElite$.next($event.item.data) : undefined">
+                  <app-token-list-item *ngFor="let token of tokens?.[tokenType]"
+                                       cdkDrag
+                                       [cdkDragData]="token"
+                                       style="width: 100%;"
+                                       [value]="token"
+                                       [statuses]="getTokenConditionsAndEffects(token)"
+                                       (statusPress)="showStatusSelectOverlay(token)">
+                  </app-token-list-item>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <button mat-mini-fab
+          id="add-token"
+          type="button"
+          (click)="addToken()">
+    <mat-icon>add</mat-icon>
+  </button>
+
+  <button mat-mini-fab
+          id="remove-monster"
+          type="button"
+          (click)="removeMonster()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</mat-card>
+
+<app-monster-ability-deck [monsterId]="(monster$ | async).id"></app-monster-ability-deck>
