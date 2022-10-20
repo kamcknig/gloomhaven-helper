@@ -1292,36 +1292,36 @@
       },
       "abilities": [
         {
-          "initiative": 1,
+          "initiative": 11,
           "imgName": "giant-viper-1"
         },
         {
-          "initiative": 1,
+          "initiative": 23,
           "imgName": "giant-viper-2"
         },
         {
-          "initiative": 1,
+          "initiative": 58,
           "imgName": "giant-viper-3"
         },
         {
-          "initiative": 1,
+          "initiative": 58,
           "imgName": "giant-viper-4"
         },
         {
-          "initiative": 1,
+          "initiative": 43,
           "imgName": "giant-viper-5"
         },
         {
-          "initiative": 1,
+          "initiative": 32,
           "imgName": "giant-viper-6",
           "shuffle": true
         },
         {
-          "initiative": 1,
+          "initiative": 43,
           "imgName": "giant-viper-7"
         },
         {
-          "initiative": 1,
+          "initiative": 32,
           "imgName": "giant-viper-8",
           "shuffle": true
         }
