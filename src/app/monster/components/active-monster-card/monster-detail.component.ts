@@ -8,11 +8,32 @@ import { ApplicableConditions, ConditionAndEffectTypes, ConditionsAndEffects, Mo
 import { TokenInfo } from '../../../combat/services/model';
 import { CombatService } from '../../../combat/services/combat.service';
 import { MonsterService } from '../../services/monster.service';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MonsterAbilityDeckComponent } from '../monster-ability-deck/monster-ability-deck.component';
+import { TokenListItemComponent } from '../../../token/components/token-list-item/token-list-item.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'monster-detail',
   templateUrl: './monster-detail.component.html',
-  styleUrls: ['./monster-detail.component.scss']
+  styleUrls: ['./monster-detail.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatIconModule,
+    FlexLayoutModule,
+    MatCardModule,
+    MatButtonModule,
+    MatDividerModule,
+    MonsterAbilityDeckComponent,
+    TokenListItemComponent,
+    DragDropModule
+  ]
 })
 export class MonsterDetailComponent implements OnInit {
   private _monster$: BehaviorSubject<Monster> = new BehaviorSubject<Monster>(undefined);

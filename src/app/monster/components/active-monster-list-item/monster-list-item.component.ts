@@ -3,11 +3,18 @@ import {MonsterService} from "../../services/monster.service";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
 import {Monster} from "../../services/model";
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'monster-list-item',
   templateUrl: './monster-list-item.component.html',
-  styleUrls: ['./monster-list-item.component.scss']
+  styleUrls: ['./monster-list-item.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FlexLayoutModule
+  ]
 })
 export class MonsterListItemComponent implements OnInit {
   @Input() public monsterId: number;

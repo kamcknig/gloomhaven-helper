@@ -1,10 +1,10 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MonsterService } from './monster/services/monster.service';
 import { AppService } from './app.service';
 import { CombatService } from './combat/services/combat.service';
 import { combineLatest, Observable, Subject } from 'rxjs';
-import {filter, map, switchMap, takeUntil, tap} from 'rxjs/operators';
-import {ActivatedRoute} from "@angular/router";
+import { filter, map, switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class AppComponent implements OnInit {
   public title = 'gloomhaven-helper';
-  public viewMode = 'normal';
+
   private _roundComplete$ = new Subject();
 
   @HostListener('document:keyup.control.m')

@@ -1,12 +1,20 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AppService} from "../../../app.service";
 
 @Component({
   selector: 'app-select-monster-level-override',
   templateUrl: './select-monster-level-override.component.html',
-  styleUrls: ['./select-monster-level-override.component.scss']
+  styleUrls: ['./select-monster-level-override.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule
+  ]
 })
 export class SelectMonsterLevelOverrideComponent implements OnInit {
   public formGroup: FormGroup;
@@ -38,3 +46,7 @@ export class SelectMonsterLevelOverrideComponent implements OnInit {
 
 import {Observable} from "rxjs";
 import {take} from "rxjs/operators";
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';

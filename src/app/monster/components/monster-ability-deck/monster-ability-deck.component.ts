@@ -4,11 +4,16 @@ import { Observable } from 'rxjs';
 import { map, withLatestFrom } from 'rxjs/operators';
 import { Monster, MonsterAbility } from '../../services/model';
 import { MonsterService } from '../../services/monster.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-monster-ability-deck',
   templateUrl: './monster-ability-deck.component.html',
-  styleUrls: ['./monster-ability-deck.component.scss']
+  styleUrls: ['./monster-ability-deck.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule
+  ]
 })
 export class MonsterAbilityDeckComponent implements OnInit {
   @Input() public monsterId: number;

@@ -1,11 +1,21 @@
 import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { TokenInfo } from '../../../../combat/services/model';
+import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-token-dialog',
   templateUrl: './add-token-dialog.component.html',
-  styleUrls: ['./add-token-dialog.component.scss']
+  styleUrls: ['./add-token-dialog.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FlexLayoutModule,
+    MatDialogModule,
+    MatButtonModule
+  ]
 })
 export class AddTokenDialogComponent implements OnInit {
   public value: { normals: TokenInfo[], elites: TokenInfo[] };
