@@ -1,16 +1,22 @@
 .header {
+  font-size: 1.5rem;
   position: relative;
-  min-width: 16rem;
+  min-width: 20rem;
   background: linear-gradient(to right, white -25%, rgba(var(--gray), .5) 50%, rgba(var(--gold), .5) 50%, white 125%);
   padding: 1rem;
 
-  .status-effect-button {
+  .header-button-container {
+    :not(:last-child) {
+      margin-right: 10px;
+    }
+
     position: absolute;
     right: 10px;
   }
 }
 
 .monster-name {
+  text-decoration: underline;
   margin: 0;
 }
 

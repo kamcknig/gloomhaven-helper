@@ -18,6 +18,7 @@ import { MonsterAbilityDeckComponent } from '../monster-ability-deck/monster-abi
 import { TokenListItemComponent } from '../../../token/components/token-list-item/token-list-item.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MonsterStatsComponent } from '../monster-stats-component/monster-stats.component';
+import { TokenService } from '../../../combat/services/token.service';
 
 @Component({
   selector: 'monster-detail',
@@ -54,6 +55,7 @@ export class MonsterDetailComponent implements OnInit {
   private _destroy$: Subject<void> = new Subject<void>();
 
   constructor(
+    private _tokenService: TokenService,
     public appService: AppService,
     public combatService: CombatService,
     private _dialogService: MatDialog,
@@ -81,7 +83,7 @@ export class MonsterDetailComponent implements OnInit {
         this._tokens = tokenData;
 
         if (this.selectedToken) {
-          this.selectedToken = this._tokens?.elites?.concat(this._tokens?.normals)
+          this.selectedToken = tokenData?.elites?.concat(tokenData?.normals)
             .find(t => t.number === this.selectedToken?.number && t.elite === this.selectedToken?.elite);
         }
       }),
@@ -96,37 +98,7 @@ export class MonsterDetailComponent implements OnInit {
   }
 
   addToken() {
-    this._dialogService.open(AddTokenDialogComponent, {
-      data: this._tokens,
-      disableClose: false,
-      width: '20rem'
-    })
-      .afterClosed()
-      .pipe(
-        withLatestFrom(
-          this.appService.scenarioStore.level$,
-          this.monster$
-        )
-      )
-      .subscribe({
-        next: ([data, scenarioLevel, monster]: [{ normal: number[], elite: number[] }, number, Monster]) => {
-          if (!data.normal?.length && !data.elite?.length) {
-            return;
-          }
-
-          this.combatService.addToken$.next(Object.entries(data)
-            .reduce((prev, [key, numbers]) => {
-              return prev.concat(numbers.reduce((prev, nextTokenNumber) => {
-                return prev.concat({
-                  number: nextTokenNumber,
-                  elite: key === 'elite',
-                  maxHealth: monster.health[scenarioLevel][key === 'elite' ? 1 : 0],
-                  monsterId: monster.id
-                });
-              }, [] as TokenInfo[]));
-            }, [] as TokenInfo[]))
-        }
-      });
+    this._tokenService.addToken(this.monster$, this._tokens);
   }
 
   showStatusSelectOverlay(token: TokenInfo) {

@@ -3,12 +3,17 @@
        fxLayoutAlign="start center"
        class="header">
     <!-- the name and level -->
-    <div class="mat-title monster-name">{{ (monster$ | async)?.name }} ({{ monsterLevel$ | async }})</div>
+    <span class="monster-name">{{ (monster$ | async)?.name }}</span>&nbsp;<span>({{ monsterLevel$ | async }})</span>
 
-    <button class="status-effect-button"
-            mat-mini-fab>
-      <mat-icon>notes</mat-icon>
-    </button>
+    <div class="header-button-container">
+      <button mat-mini-fab
+              id="add-token"
+              type="button">T</button>
+
+      <button mat-mini-fab>
+        <mat-icon>notes</mat-icon>
+      </button>
+    </div>
   </div>
 
   <div class="stats-container"

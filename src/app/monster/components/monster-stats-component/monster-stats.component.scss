@@ -16,4 +16,15 @@
   &.elite .container {
     background: rgba(var(--gold), .5);
   }
+
+  &.large {
+    .container {
+      font-size: 1.5rem;
+
+      .icon {
+        max-height: 2.5rem;
+        max-width: 2.5rem;
+      }
+    }
+  }
 }
