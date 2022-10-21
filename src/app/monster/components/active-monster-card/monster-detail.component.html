@@ -49,36 +49,10 @@
                    [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'"
                    fxLayoutGap=".5rem">
                 <!-- monster stats on the monster info card -->
-                <div fxLayout="row"
-                     class="monster-status-container">
-                  <span fxLayout="column"
-                        fxLayoutAlign="start center">
-                    <img class="icon"
-                         src="assets/icons/health.png">
-                    {{getStatDisplayValue(monster.health?.[level ?? 0]?.[index])}}
-                    </span>
-
-                  <span fxLayout="column"
-                        fxLayoutAlign="start center">
-                    <img class="icon"
-                         src="assets/icons/move.png">
-                    {{getStatDisplayValue(monster.move?.[level ?? 0]?.[index])}}
-                  </span>
-
-                  <span fxLayout="column"
-                        fxLayoutAlign="start center">
-                    <img class="icon"
-                         src="assets/icons/attack.png">
-                    {{getStatDisplayValue(monster.attack?.[level ?? 0]?.[index])}}
-                  </span>
-
-                  <span fxLayout="column"
-                        fxLayoutAlign="start center">
-                    <img class="icon"
-                         src="assets/icons/range.png">
-                    {{getStatDisplayValue(monster.range?.[level ?? 0]?.[index])}}
-                  </span>
-                </div>
+                <app-monster-stats [monster]="monster"
+                                   [level]="level"
+                                   [index]="index">
+                </app-monster-stats>
 
                 <!-- statuses that the monster has on it's monster info card -->
                 <div fxLayout="row">

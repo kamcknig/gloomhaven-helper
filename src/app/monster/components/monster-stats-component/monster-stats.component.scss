@@ -1,0 +1,18 @@
+.container {
+  font-size: 1rem;
+
+  .icon {
+    max-height: 1.5rem;
+    max-width: 1.5rem;
+  }
+}
+
+:host {
+  &.normal .container {
+    background: rgba(var(--gray), .5);
+  }
+
+  &.elite .container {
+    background: rgba(var(--gold), .5);
+  }
+}

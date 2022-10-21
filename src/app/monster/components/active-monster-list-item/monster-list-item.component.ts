@@ -6,6 +6,7 @@ import {Monster} from "../../services/model";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
 import { AppService } from '../../../app.service';
+import { MonsterStatsComponent } from '../monster-stats-component/monster-stats.component';
 
 @Component({
   selector: 'monster-list-item',
@@ -14,7 +15,8 @@ import { AppService } from '../../../app.service';
   standalone: true,
   imports: [
     CommonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MonsterStatsComponent
   ]
 })
 export class MonsterListItemComponent implements OnInit {

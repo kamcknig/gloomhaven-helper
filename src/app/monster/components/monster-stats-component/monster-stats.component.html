@@ -1,0 +1,31 @@
+<div fxLayout="row"
+     fxLayoutAlign="space-around"
+     class="container">
+  <span fxLayout="column"
+        fxLayoutAlign="start center">
+    <img class="icon"
+         src="../../../../assets/icons/health.png">
+    {{monster.health?.[level ?? 0]?.[index] | monsterStat }}
+  </span>
+
+  <span fxLayout="column"
+        fxLayoutAlign="start center">
+    <img class="icon"
+         src="../../../../assets/icons/move.png">
+    {{monster.move?.[level ?? 0]?.[index] | monsterStat}}
+  </span>
+
+  <span fxLayout="column"
+        fxLayoutAlign="start center">
+    <img class="icon"
+         src="../../../../assets/icons/attack.png">
+    {{monster.attack?.[level ?? 0]?.[index] | monsterStat}}
+  </span>
+
+  <span fxLayout="column"
+        fxLayoutAlign="start center">
+    <img class="icon"
+         src="../../../../assets/icons/range.png">
+    {{monster.range?.[level ?? 0]?.[index] | monsterStat}}
+  </span>
+</div>

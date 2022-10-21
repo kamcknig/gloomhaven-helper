@@ -1,12 +1,20 @@
 <div fxLayout="column">
   <div fxLayout="row"
-       fxLayoutAlign="start center">
+       fxLayoutAlign="start center"
+       class="header">
+    <!-- the name and level -->
     <div class="mat-title monster-name">{{ (monster$ | async)?.name }} ({{ monsterLevel$ | async }})</div>
-
-    <div fxLayout="row wrap">
-      <div *ngFor="let i of [0, 1, 2, 3]">
-        {{i}}
-      </div>
-    </div>
   </div>
+
+  <div class="stats-container"
+  fxLayout="row">
+    <app-monster-stats *ngFor="let idx of [0, 1]"
+                       fxFlex
+                       [monster]="monster$ | async"
+                       [index]="idx"
+                       [level]="monsterLevel$ | async"
+                       [class]="idx === 0 ? 'normal' : 'elite'">
+    </app-monster-stats>
+  </div>
+
 </div>

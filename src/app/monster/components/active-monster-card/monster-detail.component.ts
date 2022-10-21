@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppService } from '../../../app.service';
-import { AddTokenDialogComponent } from './add-token-dialog/add-token-dialog.component';
+import { AddTokenDialogComponent } from '../add-token-dialog/add-token-dialog.component';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,6 +17,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MonsterAbilityDeckComponent } from '../monster-ability-deck/monster-ability-deck.component';
 import { TokenListItemComponent } from '../../../token/components/token-list-item/token-list-item.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MonsterStatsComponent } from '../monster-stats-component/monster-stats.component';
 
 @Component({
   selector: 'monster-detail',
@@ -32,7 +33,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatDividerModule,
     MonsterAbilityDeckComponent,
     TokenListItemComponent,
-    DragDropModule
+    DragDropModule,
+    MonsterStatsComponent
   ]
 })
 export class MonsterDetailComponent implements OnInit {
@@ -87,10 +89,6 @@ export class MonsterDetailComponent implements OnInit {
     );
 
     this.monsterLevel$ = this.appService.monsterLevel(this.monsterId);
-  }
-
-  getStatDisplayValue(value: number | string | undefined) {
-    return value || '-';
   }
 
   removeMonster() {

@@ -1,10 +1,13 @@
-:host {
-  min-width: 12rem;
-  max-width: 12rem;
+.header {
+  min-width: 16rem;
   background: linear-gradient(to right, white -25%, rgba(var(--gray), .5) 50%, rgba(var(--gold), .5) 50%, white 125%);
   padding: 1rem;
 }
 
 .monster-name {
   margin: 0;
+}
+
+.stats-container {
+  width: 100%;
 }
