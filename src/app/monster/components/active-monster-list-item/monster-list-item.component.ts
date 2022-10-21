@@ -9,6 +9,7 @@ import { AppService } from '../../../app.service';
 import { MonsterStatsComponent } from '../monster-stats-component/monster-stats.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import {TokenService} from "../../../combat/services/token.service";
 
 @Component({
   selector: 'monster-list-item',
@@ -31,7 +32,8 @@ export class MonsterListItemComponent implements OnInit {
 
   constructor(
     private _monsterService: MonsterService,
-    private _appService: AppService
+    private _appService: AppService,
+    public tokenService: TokenService
   ) {
   }
 

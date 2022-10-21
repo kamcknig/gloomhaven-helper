@@ -55,7 +55,7 @@ export class MonsterDetailComponent implements OnInit {
   private _destroy$: Subject<void> = new Subject<void>();
 
   constructor(
-    private _tokenService: TokenService,
+    public tokenService: TokenService,
     public appService: AppService,
     public combatService: CombatService,
     private _dialogService: MatDialog,
@@ -95,10 +95,6 @@ export class MonsterDetailComponent implements OnInit {
 
   removeMonster() {
     this.monsterService.deactivateMonster$.next(this._monster$.value);
-  }
-
-  addToken() {
-    this._tokenService.addToken(this.monster$, this._tokens);
   }
 
   showStatusSelectOverlay(token: TokenInfo) {

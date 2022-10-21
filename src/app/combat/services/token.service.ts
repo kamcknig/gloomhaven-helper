@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { AddTokenDialogComponent } from '../../monster/components/add-token-dialog/add-token-dialog.component';
-import { switchMap, withLatestFrom } from 'rxjs/operators';
-import { Monster } from '../../monster/services/model';
-import { TokenInfo } from './model';
-import { MatDialog } from '@angular/material/dialog';
-import { AppService } from '../../app.service';
-import { CombatService } from './combat.service';
-import { Observable, Subject } from 'rxjs';
-import { MonsterService } from '../../monster/services/monster.service';
+import {Injectable} from '@angular/core';
+import {AddTokenDialogComponent} from '../../monster/components/add-token-dialog/add-token-dialog.component';
+import {filter, map, switchMap, withLatestFrom} from 'rxjs/operators';
+import {Monster} from '../../monster/services/model';
+import {TokenInfo} from './model';
+import {MatDialog} from '@angular/material/dialog';
+import {AppService} from '../../app.service';
+import {CombatService} from './combat.service';
+import {Observable, Subject} from 'rxjs';
+import {MonsterService} from '../../monster/services/monster.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,17 +31,27 @@ export class TokenService {
         const monsterTokens = tokens.filter(t => t.monsterId === monsterId);
 
         return this._dialogService.open(AddTokenDialogComponent, {
-          data: tokens,
+          data: monsterTokens,
           disableClose: false,
           width: '20rem'
         })
-          .afterClosed();
-      })
+          .afterClosed().pipe(map(result => [result, monster]));
+      }),
+      filter(([result,]) => !!result?.normal?.length && !!result?.elite?.length),
+      withLatestFrom(this._appService.scenarioStore.level$)
     ).subscribe({
-      next: ([monsterId, monsters, tokens]) => {
-
-
-        this._combatService.addToken$.next({} as TokenInfo);
+      next: ([[data, monster], scenarioLevel]) => {
+        this._combatService.addToken$.next(Object.entries(data)
+          .reduce((prev, [key, numbers]) => {
+            return prev.concat((numbers as number[]).reduce((prev, nextTokenNumber) => {
+              return prev.concat({
+                number: nextTokenNumber,
+                elite: key === 'elite',
+                maxHealth: monster.health[scenarioLevel][key === 'elite' ? 1 : 0],
+                monsterId: monster.id
+              });
+            }, [] as TokenInfo[]));
+          }, [] as TokenInfo[]));
       }
     });
   }
@@ -61,21 +71,7 @@ export class TokenService {
       )
       .subscribe({
         next: ([data, scenarioLevel, monster]: [{ normal: number[], elite: number[] }, number, Monster]) => {
-          if (!data.normal?.length && !data.elite?.length) {
-            return;
-          }
 
-          this._combatService.addToken$.next(Object.entries(data)
-            .reduce((prev, [key, numbers]) => {
-              return prev.concat(numbers.reduce((prev, nextTokenNumber) => {
-                return prev.concat({
-                  number: nextTokenNumber,
-                  elite: key === 'elite',
-                  maxHealth: monster.health[scenarioLevel][key === 'elite' ? 1 : 0],
-                  monsterId: monster.id
-                });
-              }, [] as TokenInfo[]));
-            }, [] as TokenInfo[]))
         }
       });
   }

@@ -1,9 +1,10 @@
-import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { TokenInfo } from '../../../combat/services/model';
-import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule } from '@angular/material/button';
+import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {TokenInfo} from '../../../combat/services/model';
+import {CommonModule} from '@angular/common';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatButtonModule} from '@angular/material/button';
+import {Token} from "@angular/compiler";
 
 @Component({
   selector: 'app-add-token-dialog',
@@ -18,19 +19,22 @@ import { MatButtonModule } from '@angular/material/button';
   ]
 })
 export class AddTokenDialogComponent implements OnInit {
-  public value: { normals: TokenInfo[], elites: TokenInfo[] };
+  public value: { normal: TokenInfo[], elite: TokenInfo[] };
   public defaultNumbers: number[];
-  public selectedTokens: { normal: number[], elite: number[] } = { normal: [], elite: [] };
+  public selectedTokens: { normal: number[], elite: number[] } = {normal: [], elite: []};
 
   constructor(
     private _dialogRef: MatDialogRef<any>,
     private _cdr: ChangeDetectorRef,
-    @Inject(MAT_DIALOG_DATA) private _data: any
+    @Inject(MAT_DIALOG_DATA) private _data: TokenInfo[]
   ) {
     this.defaultNumbers = Array(10)
       .fill(0)
       .map((x, i) => i + 1);
-    this.value = this._data;
+    this.value = this._data.reduce((prev, next) => {
+      prev[next.elite ? 'elite' : 'normal'].push(next);
+      return prev;
+    }, {elite: [] as TokenInfo[], normal: [] as TokenInfo[]});
   }
 
   ngOnInit(): void {
@@ -43,7 +47,7 @@ export class AddTokenDialogComponent implements OnInit {
    * @param elite
    */
   getTokenButtonVisible(index: number, elite: false) {
-    return this.value?.elites?.concat(this.value?.normals ?? [])
+    return this.value?.elite?.concat(this.value?.normal ?? [])
       ?.find(e => e.number === index) || (!this.isSelectable(index) && !this.isSelected(index, elite))
       ? 'hidden'
       : 'visible'
@@ -62,8 +66,7 @@ export class AddTokenDialogComponent implements OnInit {
     let idx = src.findIndex(e => e === number);
     if (idx > -1) {
       src.splice(idx, 1);
-    }
-    else {
+    } else {
       src.push(number);
     }
 

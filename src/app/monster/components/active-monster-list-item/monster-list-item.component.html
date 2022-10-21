@@ -8,7 +8,9 @@
     <div class="header-button-container">
       <button mat-mini-fab
               id="add-token"
-              type="button">T</button>
+              type="button"
+              (click)="tokenService.addToken$.next(monsterId)">T
+      </button>
 
       <button mat-mini-fab>
         <mat-icon>notes</mat-icon>

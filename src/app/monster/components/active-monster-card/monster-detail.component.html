@@ -122,7 +122,8 @@
   <button mat-mini-fab
           id="add-token"
           type="button"
-          (click)="addToken()">T</button>
+          (click)="tokenService.addToken$.next(monsterId)">T
+  </button>
 
   <button mat-mini-fab
           id="remove-monster"
