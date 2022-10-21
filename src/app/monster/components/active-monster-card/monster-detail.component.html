@@ -37,44 +37,57 @@
          fxLayout="column"
          fxLayoutAlign="start center">
       <!-- stats section for both normals and elites -->
-      <div class="monster-info-wrapper" fxLayout="row" fxLayoutAlign="space-between start">
+      <div class="monster-info-wrapper"
+           fxLayout="row"
+           fxLayoutAlign="space-between start">
+        <!-- loop for normal vs elite monsters -->
         <ng-container *ngFor="let index of [0, 1]">
           <ng-container *ngIf="monster$ | async as monster">
             <ng-container *ngIf="monsterLevel$ | async as level">
               <div fxLayout="column"
-                   fxFlex [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'"
+                   fxFlex
+                   [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'"
                    fxLayoutGap=".5rem">
                 <!-- monster stats on the monster info card -->
-
-                <div fxLayout="row" class="monster-status-container">
-                  <span fxLayout="column" fxLayoutAlign="start center">
-                    <img class="icon" src="assets/icons/health.png">
+                <div fxLayout="row"
+                     class="monster-status-container">
+                  <span fxLayout="column"
+                        fxLayoutAlign="start center">
+                    <img class="icon"
+                         src="assets/icons/health.png">
                     {{getStatDisplayValue(monster.health?.[level ?? 0]?.[index])}}
                     </span>
 
-                  <span fxLayout="column" fxLayoutAlign="start center">
-                    <img class="icon" src="assets/icons/move.png">
+                  <span fxLayout="column"
+                        fxLayoutAlign="start center">
+                    <img class="icon"
+                         src="assets/icons/move.png">
                     {{getStatDisplayValue(monster.move?.[level ?? 0]?.[index])}}
                   </span>
 
-                  <span fxLayout="column" fxLayoutAlign="start center">
-                    <img class="icon" src="assets/icons/attack.png">
+                  <span fxLayout="column"
+                        fxLayoutAlign="start center">
+                    <img class="icon"
+                         src="assets/icons/attack.png">
                     {{getStatDisplayValue(monster.attack?.[level ?? 0]?.[index])}}
                   </span>
 
-                  <span fxLayout="column" fxLayoutAlign="start center">
-                    <img class="icon" src="assets/icons/range.png">
+                  <span fxLayout="column"
+                        fxLayoutAlign="start center">
+                    <img class="icon"
+                         src="assets/icons/range.png">
                     {{getStatDisplayValue(monster.range?.[level ?? 0]?.[index])}}
                   </span>
                 </div>
 
                 <!-- statuses that the monster has on it's monster info card -->
                 <div fxLayout="row">
-                  <div *ngFor="let condition of ConditionsAndEffects" fxLayout="row" fxLayoutAlign="start center">
+                  <div *ngFor="let condition of ConditionsAndEffects"
+                       fxLayout="row"
+                       fxLayoutAlign="start center">
                     <img *ngIf="hasCondition(condition, index === 1) | async"
                          [src]="'assets/icons/' + condition.toLowerCase() + '.png'"
                          style="max-width: 2rem; max-height: 2rem;">
-
                     <span
                       *ngIf="showAdditionalConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1) | async"
                       style="margin: 0 .35rem; font-size: 1.5rem;">
@@ -94,7 +107,8 @@
 
       <mat-divider style="width: 100%; margin: 1rem 0;"></mat-divider>
 
-      <div fxFlex class="token-info-wrapper"
+      <div fxFlex
+           class="token-info-wrapper"
            fxLayout="column">
         <div class="mat-title">Tokens</div>
 

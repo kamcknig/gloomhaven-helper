@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {Monster} from "../../services/model";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
+import { AppService } from '../../../app.service';
 
 @Component({
   selector: 'monster-list-item',
@@ -20,9 +21,11 @@ export class MonsterListItemComponent implements OnInit {
   @Input() public monsterId: number;
 
   public monster$: Observable<Monster>;
+  public monsterLevel$: Observable<number>;
 
   constructor(
-    private _monsterService: MonsterService
+    private _monsterService: MonsterService,
+    private _appService: AppService
   ) {
   }
 
@@ -30,5 +33,7 @@ export class MonsterListItemComponent implements OnInit {
     this.monster$ = this._monsterService.monsterStore.activeMonsters$.pipe(
       map(monsters => monsters.find(m => m.id === this.monsterId))
     );
+
+    this.monsterLevel$ = this._appService.monsterLevel(this.monsterId);
   }
 }
