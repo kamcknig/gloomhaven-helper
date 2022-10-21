@@ -7,6 +7,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
 import { AppService } from '../../../app.service';
 import { MonsterStatsComponent } from '../monster-stats-component/monster-stats.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'monster-list-item',
@@ -16,7 +18,9 @@ import { MonsterStatsComponent } from '../monster-stats-component/monster-stats.
   imports: [
     CommonModule,
     FlexLayoutModule,
-    MonsterStatsComponent
+    MonsterStatsComponent,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class MonsterListItemComponent implements OnInit {
