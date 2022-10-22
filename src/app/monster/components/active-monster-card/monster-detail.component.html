@@ -1,26 +1,4 @@
 <mat-card>
-  <!-- overlay for choosing a token's applied statuses -->
-  <div [ngStyle]="{ 'visibility': selectedToken ? 'visible': 'hidden' }"
-       class="status-select-overlay">
-    <button mat-mini-fab
-            (click)="closeStatusSelectOverlay()"
-            style="position: absolute; right: 5px; top: 5px;">
-      <mat-icon>cancel</mat-icon>
-    </button>
-
-    <div fxFlexFill
-         fxLayout="row wrap"
-         fxLayoutAlign="center center"
-         fxLayoutGap=".7rem grid"
-         style="padding: 2rem;">
-      <img *ngFor="let value of ApplicableConditions"
-           [src]="'assets/icons/' + value.toLowerCase() + '.png'"
-           [ngStyle]="{ 'filter': (selectedToken?.appliedConditionsAndEffects?.[value.toString()] ?? 0) > 0 ? 'brightness(100%)' : 'brightness(50%)' }"
-           (click)="combatService.toggleTokenCondition$.next({ token: selectedToken, condition: value})"
-      >
-    </div>
-  </div>
-
   <mat-card-header>
     <mat-card-title>
       <span class="main">{{(monster$ | async)?.name}}</span>
@@ -108,7 +86,7 @@
                                        style="width: 100%;"
                                        [value]="token"
                                        [statuses]="getTokenConditionsAndEffects(token)"
-                                       (statusPress)="showStatusSelectOverlay(token)">
+                                       (statusPress)="tokenService.toggleTokenStatusEffect$.next(token)">
                   </app-token-list-item>
                 </div>
               </div>

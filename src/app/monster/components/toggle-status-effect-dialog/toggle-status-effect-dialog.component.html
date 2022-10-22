@@ -1,0 +1,16 @@
+<div mat-dialog-title>Toggle statuses and effects</div>
+
+<div class="status-select-overlay"
+     mat-dialog-content>
+  <div fxFlexFill
+       fxLayout="row wrap"
+       fxLayoutAlign="center center"
+       fxLayoutGap=".7rem grid"
+       style="padding: 1rem; overflow: hidden">
+    <img *ngFor="let value of ApplicableConditions"
+         [src]="'assets/icons/' + value.toLowerCase() + '.png'"
+         [ngStyle]="{ 'filter': ((token$ | async)?.appliedConditionsAndEffects?.[value.toString()] ?? 0) > 0 ? 'brightness(100%)' : 'brightness(35%)' }"
+         (click)="combatService.toggleTokenCondition$.next({ token: data, condition: value})"
+    >
+  </div>
+</div>

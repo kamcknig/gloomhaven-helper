@@ -1,24 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { AppService } from '../../../app.service';
-import { AddTokenDialogComponent } from '../add-token-dialog/add-token-dialog.component';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { map, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
-import { MatDialog } from '@angular/material/dialog';
-import { ApplicableConditions, ConditionAndEffectTypes, ConditionsAndEffects, Monster } from '../../services/model';
-import { TokenInfo } from '../../../combat/services/model';
-import { CombatService } from '../../../combat/services/combat.service';
-import { MonsterService } from '../../services/monster.service';
-import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
-import { MonsterAbilityDeckComponent } from '../monster-ability-deck/monster-ability-deck.component';
-import { TokenListItemComponent } from '../../../token/components/token-list-item/token-list-item.component';
-import { DragDropModule } from '@angular/cdk/drag-drop';
-import { MonsterStatsComponent } from '../monster-stats-component/monster-stats.component';
-import { TokenService } from '../../../combat/services/token.service';
+import {Component, Input, OnInit} from '@angular/core';
+import {AppService} from '../../../app.service';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {map, takeUntil, tap, withLatestFrom} from 'rxjs/operators';
+import {MatDialog} from '@angular/material/dialog';
+import {ConditionAndEffectTypes, ConditionsAndEffects, Monster} from '../../services/model';
+import {TokenInfo} from '../../../combat/services/model';
+import {CombatService} from '../../../combat/services/combat.service';
+import {MonsterService} from '../../services/monster.service';
+import {CommonModule} from '@angular/common';
+import {MatIconModule} from '@angular/material/icon';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
+import {MonsterAbilityDeckComponent} from '../monster-ability-deck/monster-ability-deck.component';
+import {TokenListItemComponent} from '../../../token/components/token-list-item/token-list-item.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {MonsterStatsComponent} from '../monster-stats-component/monster-stats.component';
+import {TokenService} from '../../../combat/services/token.service';
 
 @Component({
   selector: 'monster-detail',
@@ -45,13 +44,10 @@ export class MonsterDetailComponent implements OnInit {
 
   public monster$: Observable<Monster> = this._monster$.asObservable();
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
-  public selectedToken: TokenInfo | undefined;
   public monsterLevel$: Observable<number | undefined>;
   public scenarioLevel$: Observable<number | undefined>;
   public ConditionsAndEffects = ConditionsAndEffects;
-  public ApplicableConditions = ApplicableConditions;
 
-  private _tokens: { elites: TokenInfo[], normals: TokenInfo[] } | undefined;
   private _destroy$: Subject<void> = new Subject<void>();
 
   constructor(
@@ -79,14 +75,6 @@ export class MonsterDetailComponent implements OnInit {
         normals: tokenData.filter(t => !t.elite)
           .sort((e1, e2) => e1.number - e2.number)
       })),
-      tap(tokenData => {
-        this._tokens = tokenData;
-
-        if (this.selectedToken) {
-          this.selectedToken = tokenData?.elites?.concat(tokenData?.normals)
-            .find(t => t.number === this.selectedToken?.number && t.elite === this.selectedToken?.elite);
-        }
-      }),
       takeUntil(this._destroy$)
     );
 
@@ -95,14 +83,6 @@ export class MonsterDetailComponent implements OnInit {
 
   removeMonster() {
     this.monsterService.deactivateMonster$.next(this._monster$.value);
-  }
-
-  showStatusSelectOverlay(token: TokenInfo) {
-    this.selectedToken = token;
-  }
-
-  closeStatusSelectOverlay() {
-    this.selectedToken = undefined;
   }
 
   getTokenConditionsAndEffects(token: TokenInfo) {

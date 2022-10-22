@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {AddTokenDialogComponent} from '../../monster/components/add-token-dialog/add-token-dialog.component';
 import {filter, map, switchMap, withLatestFrom} from 'rxjs/operators';
 import {Monster} from '../../monster/services/model';
@@ -8,12 +8,16 @@ import {AppService} from '../../app.service';
 import {CombatService} from './combat.service';
 import {Observable, Subject} from 'rxjs';
 import {MonsterService} from '../../monster/services/monster.service';
+import {
+  ToggleStatusEffectDialogComponent
+} from "../../monster/components/toggle-status-effect-dialog/toggle-status-effect-dialog.component";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
   public addToken$: Subject<number> = new Subject<number>();
+  public toggleTokenStatusEffect$: Subject<TokenInfo> = new Subject<TokenInfo>();
 
   constructor(
     private _monsterService: MonsterService,
@@ -21,6 +25,15 @@ export class TokenService {
     private _appService: AppService,
     private _combatService: CombatService
   ) {
+    this.toggleTokenStatusEffect$.pipe(
+      switchMap(token => {
+        return this._dialogService.open(ToggleStatusEffectDialogComponent, {
+          disableClose: false,
+          data: token
+        }).afterClosed()
+      })
+    ).subscribe();
+
     this.addToken$.pipe(
       withLatestFrom(
         this._monsterService.monsterStore.activeMonsters$,
@@ -37,7 +50,7 @@ export class TokenService {
         })
           .afterClosed().pipe(map(result => [result, monster]));
       }),
-      filter(([result,]) => !!result?.normal?.length && !!result?.elite?.length),
+      filter(([result,]) => !!result?.normal?.length || !!result?.elite?.length),
       withLatestFrom(this._appService.scenarioStore.level$)
     ).subscribe({
       next: ([[data, monster], scenarioLevel]) => {
@@ -54,25 +67,5 @@ export class TokenService {
           }, [] as TokenInfo[]));
       }
     });
-  }
-
-  addToken(monster: Observable<Monster>, tokens: { elites: TokenInfo[], normals: TokenInfo[] } | undefined) {
-    this._dialogService.open(AddTokenDialogComponent, {
-      data: tokens,
-      disableClose: false,
-      width: '20rem'
-    })
-      .afterClosed()
-      .pipe(
-        withLatestFrom(
-          this._appService.scenarioStore.level$,
-          monster
-        )
-      )
-      .subscribe({
-        next: ([data, scenarioLevel, monster]: [{ normal: number[], elite: number[] }, number, Monster]) => {
-
-        }
-      });
   }
 }

@@ -1,0 +1,8 @@
+/** The overlay that appears when adding a status effect or condition to a token */
+.status-select-overlay {
+  img {
+    max-height: 5rem;
+    max-width: 5rem;
+    cursor: pointer;
+  }
+}
