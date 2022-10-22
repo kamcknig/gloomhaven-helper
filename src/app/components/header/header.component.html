@@ -2,9 +2,16 @@
              fxLayout="row"
              fxLayoutAlign="start center"
              fxLayoutGap="2rem">
+
   <app-scenario-level-input></app-scenario-level-input>
 
-  <app-scenario-round></app-scenario-round>
+  <div fxLayout="column"
+       fxLayoutAlign="start center"
+       fxLayoutGap="1rem">
+    <app-scenario-round></app-scenario-round>
+
+    <app-turn-selector></app-turn-selector>
+  </div>
 
   <div fxLayout="column"
        fxLayoutGap="-.15rem">

@@ -10,6 +10,8 @@ import {Source} from '@state-adapt/rxjs';
   providedIn: 'root'
 })
 export class CombatService {
+  public nextTurn$: Source<void> = new Source<void>('nextTurn$');
+  public previousTurn$: Source<void> = new Source<void>('previousTurn$');
   public toggleTokenElite$ = new Source<TokenInfo[] | TokenInfo>('toggleTokenElite$');
   public roundComplete$ = new Source<void>('roundCompleted$');
   public addToken$: Source<TokenInfo[] | TokenInfo> = new Source('addToken$');
@@ -154,6 +156,7 @@ export class CombatService {
     },
     roundComplete: (state) => ({
       ...state,
+      turn: 1,
       round: ++state.round,
       activeMonsters: {
         ...state.activeMonsters,
@@ -183,10 +186,23 @@ export class CombatService {
           }, {} as typeof state.activeMonsters)
       }
     }),
+    nextTurn: (state, event) => {
+      return {
+        ...state,
+        turn: ++state.turn
+      };
+    },
+    previousTurn: (state, event) => {
+      return {
+        ...state,
+        turn: Math.max(--state.turn, 0)
+      };
+    },
     selectors: {
       round: state => state.round,
       tokens: state => state.tokens,
-      activeMonsters: state => state.activeMonsters
+      activeMonsters: state => state.activeMonsters,
+      turn: state => state.turn
     }
   });
 
@@ -194,6 +210,7 @@ export class CombatService {
     'combat',
     {
       round: 0,
+      turn: 0,
       tokens: [],
       activeMonsters: {}
     } as CombatState,
@@ -206,7 +223,9 @@ export class CombatService {
       addToken: this.addToken$,
       updateTokenHitPoint: this.updateTokenHitPoint$,
       toggleTokenCondition: this.toggleTokenCondition$,
-      toggleTokenElite: this.toggleTokenElite$
+      toggleTokenElite: this.toggleTokenElite$,
+      nextTurn: this.nextTurn$,
+      previousTurn: this.previousTurn$
     }
   )
 

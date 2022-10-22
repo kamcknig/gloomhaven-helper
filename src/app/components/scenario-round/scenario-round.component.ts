@@ -8,6 +8,7 @@ import { MonsterService } from '../../monster/services/monster.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import {MatIconModule} from "@angular/material/icon";
 
 @Component({
   selector: 'app-scenario-round',
@@ -17,7 +18,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     FlexLayoutModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class ScenarioRoundComponent implements OnInit, OnDestroy {
