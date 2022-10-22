@@ -15,13 +15,17 @@
 
   <div class="stats-container"
        fxLayout="row">
-    <app-monster-stats *ngFor="let idx of [0, 1]"
-                       fxFlex
-                       [monster]="monster$ | async"
-                       [index]="idx"
-                       [level]="monsterLevel$ | async"
-                       [class]="idx === 0 ? 'normal' : 'elite'">
-    </app-monster-stats>
+    <ng-container *ngFor="let idx of [0, 1]">
+      <app-monster-stats fxFlex
+                         [monster]="monster$ | async"
+                         [index]="idx"
+                         [level]="monsterLevel$ | async"
+                         [class]="idx === 0 ? 'normal' : 'elite'">
+      </app-monster-stats>
+
+      <mat-divider *ngIf="idx === 0" style="border-right-color: rgba(var(--gold), .5); border-right-width: 2px"
+                   [vertical]="true"></mat-divider>
+    </ng-container>
   </div>
 
 </div>

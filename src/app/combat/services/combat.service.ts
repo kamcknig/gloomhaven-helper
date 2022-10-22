@@ -195,7 +195,7 @@ export class CombatService {
     previousTurn: (state, event) => {
       return {
         ...state,
-        turn: Math.max(--state.turn, 0)
+        turn: Math.max(--state.turn, 1)
       };
     },
     selectors: {
