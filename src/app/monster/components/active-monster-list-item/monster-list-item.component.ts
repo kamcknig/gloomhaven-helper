@@ -10,6 +10,7 @@ import { MonsterStatsComponent } from '../monster-stats-component/monster-stats.
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {TokenService} from "../../../combat/services/token.service";
+import {MonsterLevelComponent} from "../monster-level/monster-level.component";
 
 @Component({
   selector: 'monster-list-item',
@@ -21,7 +22,8 @@ import {TokenService} from "../../../combat/services/token.service";
     FlexLayoutModule,
     MonsterStatsComponent,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MonsterLevelComponent
   ]
 })
 export class MonsterListItemComponent implements OnInit {

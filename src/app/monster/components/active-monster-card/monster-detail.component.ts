@@ -18,6 +18,7 @@ import {TokenListItemComponent} from '../../../token/components/token-list-item/
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MonsterStatsComponent} from '../monster-stats-component/monster-stats.component';
 import {TokenService} from '../../../combat/services/token.service';
+import {MonsterLevelComponent} from "../monster-level/monster-level.component";
 
 @Component({
   selector: 'monster-detail',
@@ -34,7 +35,8 @@ import {TokenService} from '../../../combat/services/token.service';
     MonsterAbilityDeckComponent,
     TokenListItemComponent,
     DragDropModule,
-    MonsterStatsComponent
+    MonsterStatsComponent,
+    MonsterLevelComponent
   ]
 })
 export class MonsterDetailComponent implements OnInit {

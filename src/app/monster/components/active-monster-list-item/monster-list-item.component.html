@@ -1,9 +1,8 @@
 <div fxLayout="column">
-  <div fxLayout="row"
-       fxLayoutAlign="start center"
-       class="header">
+  <div class="header">
     <!-- the name and level -->
-    <span class="monster-name">{{ (monster$ | async)?.name }}</span>&nbsp;<span>({{ monsterLevel$ | async }})</span>
+    <span class="monster-name">{{ (monster$ | async)?.name }}</span>
+    <app-monster-level [monsterId]="monsterId"></app-monster-level>
 
     <div class="header-button-container">
       <button mat-mini-fab

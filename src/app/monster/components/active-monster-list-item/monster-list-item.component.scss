@@ -6,12 +6,9 @@
   padding: 1rem;
 
   .header-button-container {
-    :not(:last-child) {
-      margin-right: 10px;
-    }
-
     position: absolute;
     right: 10px;
+    top: 10px;
   }
 }
 
