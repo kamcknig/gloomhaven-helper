@@ -156,7 +156,7 @@ export class CombatService {
     },
     roundComplete: (state) => ({
       ...state,
-      turn: 1,
+      turn: state.tokens.length ? 1 : 0,
       round: ++state.round,
       activeMonsters: {
         ...state.activeMonsters,
