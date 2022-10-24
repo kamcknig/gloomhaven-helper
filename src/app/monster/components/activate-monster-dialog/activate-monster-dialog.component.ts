@@ -1,8 +1,8 @@
-import {AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { filter, map, startWith } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { Monster } from '../../services/model';
 import { MatAutocompleteModule, MatAutocompleteTrigger } from "@angular/material/autocomplete";
 import { MatInputModule } from '@angular/material/input';

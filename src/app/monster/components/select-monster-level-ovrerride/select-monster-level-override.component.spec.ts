@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectMonsterLevelOverrideComponent } from './select-monster-level-override.component';
 
-describe('SelectMonsterLevelOvrerrideComponent', () => {
+describe('SelectMonsterLevelOverrideComponent', () => {
   let component: SelectMonsterLevelOverrideComponent;
   let fixture: ComponentFixture<SelectMonsterLevelOverrideComponent>;
 

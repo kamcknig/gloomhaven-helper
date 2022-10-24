@@ -1,7 +1,13 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {AppService} from "../../../app.service";
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { AppService } from "../../../app.service";
+import { Observable } from "rxjs";
+import { take } from "rxjs/operators";
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-select-monster-level-override',
@@ -44,9 +50,3 @@ export class SelectMonsterLevelOverrideComponent implements OnInit {
   }
 }
 
-import {Observable} from "rxjs";
-import {take} from "rxjs/operators";
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { CommonModule } from '@angular/common';

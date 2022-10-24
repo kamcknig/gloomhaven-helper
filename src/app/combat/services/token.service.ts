@@ -1,13 +1,12 @@
-import {Injectable, OnInit} from '@angular/core';
-import {AddTokenDialogComponent} from '../../monster/components/add-token-dialog/add-token-dialog.component';
-import {filter, map, switchMap, withLatestFrom} from 'rxjs/operators';
-import {Monster} from '../../monster/services/model';
-import {TokenInfo} from './model';
-import {MatDialog} from '@angular/material/dialog';
-import {AppService} from '../../app.service';
-import {CombatService} from './combat.service';
-import {Observable, Subject} from 'rxjs';
-import {MonsterService} from '../../monster/services/monster.service';
+import { Injectable } from '@angular/core';
+import { AddTokenDialogComponent } from '../../monster/components/add-token-dialog/add-token-dialog.component';
+import { filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
+import { TokenInfo } from './model';
+import { MatDialog } from '@angular/material/dialog';
+import { AppService } from '../../app.service';
+import { CombatService } from './combat.service';
+import { Subject } from 'rxjs';
+import { MonsterService } from '../../monster/services/monster.service';
 import {
   ToggleStatusEffectDialogComponent
 } from "../../monster/components/toggle-status-effect-dialog/toggle-status-effect-dialog.component";

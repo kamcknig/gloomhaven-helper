@@ -186,13 +186,13 @@ export class CombatService {
           }, {} as typeof state.activeMonsters)
       }
     }),
-    nextTurn: (state, event) => {
+    nextTurn: (state) => {
       return {
         ...state,
         turn: ++state.turn
       };
     },
-    previousTurn: (state, event) => {
+    previousTurn: (state) => {
       return {
         ...state,
         turn: Math.max(--state.turn, 1)

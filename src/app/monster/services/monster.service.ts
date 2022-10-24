@@ -19,7 +19,7 @@ export class MonsterService {
   private static _idIncrementer: number = 0;
 
   public monsterAdapter = createAdapter<MonsterState>()({
-    add: (state, event: MonsterNoId[] | MonsterNoId, initialState) => ({
+    add: (state, event: MonsterNoId[] | MonsterNoId) => ({
       ...state,
       ...(Array.isArray(event) ? event : [event]).reduce((prev, next) => {
         const id = ++MonsterService._idIncrementer;

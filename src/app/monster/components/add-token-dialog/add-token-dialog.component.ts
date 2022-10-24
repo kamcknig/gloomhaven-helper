@@ -1,10 +1,9 @@
-import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {TokenInfo} from '../../../combat/services/model';
-import {CommonModule} from '@angular/common';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {MatButtonModule} from '@angular/material/button';
-import {Token} from "@angular/compiler";
+import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { TokenInfo } from '../../../combat/services/model';
+import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-token-dialog',
