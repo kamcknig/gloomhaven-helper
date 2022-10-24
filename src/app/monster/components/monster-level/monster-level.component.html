@@ -1,4 +1,4 @@
 <span [ngClass]="{override: (monsterLevel$ | async) !== (scenarioLevel$ | async)}"
-      (click)="monsterService.overrideMonsterLevel(monsterId)">
+      (click)="monsterService.overrideMonsterLevel(monster.id)">
   ( {{monsterLevel$ | async}} )
 </span>

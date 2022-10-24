@@ -10,7 +10,7 @@
       <!-- the name and level -->
       <span class="monster-name">{{ monster?.name }}</span>
 
-      <app-monster-level [monsterId]="monster.id"></app-monster-level>
+      <app-monster-level [monster]="monster"></app-monster-level>
 
       <div class="header-button-container">
         <button mat-mini-fab

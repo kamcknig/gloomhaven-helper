@@ -1,18 +1,18 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { MonsterService } from "../../services/monster.service";
-import { Observable } from "rxjs";
-import { Monster } from "../../services/model";
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { CommonModule } from '@angular/common';
-import { AppService } from '../../../app.service';
-import { MonsterStatsComponent } from '../monster-stats-component/monster-stats.component';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { TokenService } from "../../../combat/services/token.service";
-import { MonsterLevelComponent } from "../monster-level/monster-level.component";
-import { MatDividerModule } from "@angular/material/divider";
-import { MonsterAbilityDeckComponent } from '../monster-ability-deck/monster-ability-deck.component';
-import { CombatService } from '../../../combat/services/combat.service';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {MonsterService} from "../../services/monster.service";
+import {Observable} from "rxjs";
+import {Monster} from "../../services/model";
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {CommonModule} from '@angular/common';
+import {AppService} from '../../../app.service';
+import {MonsterStatsComponent} from '../monster-stats-component/monster-stats.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {TokenService} from "../../../combat/services/token.service";
+import {MonsterLevelComponent} from "../monster-level/monster-level.component";
+import {MatDividerModule} from "@angular/material/divider";
+import {MonsterAbilityDeckComponent} from '../monster-ability-deck/monster-ability-deck.component';
+import {CombatService} from '../../../combat/services/combat.service';
 
 @Component({
   selector: 'monster-list-item',
