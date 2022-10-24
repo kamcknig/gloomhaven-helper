@@ -31,6 +31,11 @@
         .main {
           text-decoration: underline;
         }
+
+        .flying-icon {
+          max-height: 2rem;
+          max-width: 2rem;
+        }
       }
 
       background: linear-gradient(to right, white -25%, rgba(var(--gray), .5) 50%, rgba(var(--gold), .5) 50%, white 125%);

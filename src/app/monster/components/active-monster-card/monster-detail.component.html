@@ -4,6 +4,11 @@
       <span class="main">{{monster.name}}</span>
 
       <app-monster-level [monster]="monster"></app-monster-level>
+
+      <span *ngIf="monster.flying">
+        <img class="flying-icon"
+             src="assets/icons/flying.png">
+      </span>
     </mat-card-title>
   </mat-card-header>
 

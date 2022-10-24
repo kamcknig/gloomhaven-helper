@@ -12,6 +12,11 @@
 
       <app-monster-level [monster]="monster"></app-monster-level>
 
+      <span *ngIf="monster.flying">
+        <img class="flying-icon"
+             src="assets/icons/flying.png">
+      </span>
+
       <div class="header-button-container">
         <button mat-mini-fab
                 id="add-token"

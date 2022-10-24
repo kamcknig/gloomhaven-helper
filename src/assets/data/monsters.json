@@ -991,12 +991,6 @@
           [4, 5],
           [4, 5],
           [4, 5]
-        ],
-        "Flying": [
-          [true, true],
-          [true, true],
-          [true, true],
-          [true, true]
         ]
       },
       "abilities": [
@@ -1040,7 +1034,8 @@
           "imgName": "flame-demon-8",
           "shuffle": true
         }
-      ]
+      ],
+      "flying": true
     },
     {
       "name": "Forest Imp",
@@ -1104,12 +1099,6 @@
           [2, 2],
           [2, 2],
           [2, 2]
-        ],
-        "Flying": [
-          [true, true],
-          [true, true],
-          [true, true],
-          [true, true]
         ]
       },
       "abilities": [
@@ -1144,7 +1133,8 @@
           "imgName": "imp-7",
           "shuffle": true
         }
-      ]
+      ],
+      "flying": true
     },
     {
       "name": "Frost Demon",
@@ -1993,12 +1983,6 @@
           [3, 4],
           [3, 4],
           [3, 4]
-        ],
-        "Flying": [
-          [true, true],
-          [true, true],
-          [true, true],
-          [true, true]
         ]
       },
       "abilities": [
@@ -2033,7 +2017,8 @@
           "shuffle": true,
           "imgName": "living-spirit-7"
         }
-      ]
+      ],
+      "flying": true
     },
     {
       "name": "Lurker",
@@ -2706,12 +2691,6 @@
           [1, 1],
           [1, 1],
           [1, 1]
-        ],
-        "Flying": [
-          [true, true],
-          [true, true],
-          [true, true],
-          [true, true]
         ]
       },
       "abilities": [
@@ -2749,7 +2728,8 @@
           "initiative": 32,
           "imgName": "spitting-drake-8"
         }
-      ]
+      ],
+      "flying": true
     },
     {
       "name": "Stone Golem",
@@ -2904,12 +2884,6 @@
           [2, 2],
           [2, 2],
           [2, 2]
-        ],
-        "Flying": [
-          [true, true],
-          [true, true],
-          [true, true],
-          [true, true]
         ]
       },
       "abilities": [
@@ -2949,7 +2923,8 @@
             "sun"
           ]
         }
-      ]
+      ],
+      "flying": true
     },
     {
       "name": "Vermling Scout",
@@ -3189,12 +3164,6 @@
           [2, 2],
           [3, 3],
           [3, 3]
-        ],
-        "Flying": [
-          [true, true],
-          [true, true],
-          [true, true],
-          [true, true]
         ]
       },
       "abilities": [
@@ -3231,7 +3200,8 @@
             "wind"
           ]
         }
-      ]
+      ],
+      "flying": true
     }
   ]
 }
