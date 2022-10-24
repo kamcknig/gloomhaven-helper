@@ -1,1 +1,3 @@
 Highlight the monster whose turn it is in normal view mode.
+
+Add the flying icon to the monster list component and update where it shows in the monster detail component

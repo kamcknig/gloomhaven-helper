@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class MonsterAbilityDeckComponent implements OnInit {
-  @Input() public monsterId: number;
+  @Input() public monster: Monster;
   public monster$: Observable<Monster>;
 
   public disabled$: Observable<boolean>;
@@ -28,10 +28,10 @@ export class MonsterAbilityDeckComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.monster$ = this.monsterService.monsterStore.monsters$.pipe(map(m => m.find(m => m.id === this.monsterId)));
+    this.monster$ = this.monsterService.monsterStore.monsters$.pipe(map(m => m.find(m => m.id === this.monster.id)));
 
     this.disabled$ = this._combatService.store.tokens$.pipe(
-      map(tokens => !tokens.some(t => t.monsterId === this.monsterId))
+      map(tokens => !tokens.some(t => t.monsterId === this.monster.id))
     );
 
     const deck$ = this._combatService.store.activeMonsters$.pipe(
