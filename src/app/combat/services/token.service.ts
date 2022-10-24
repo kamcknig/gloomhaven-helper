@@ -27,6 +27,7 @@ export class TokenService {
     this.toggleTokenStatusEffect$.pipe(
       switchMap(token => {
         return this._dialogService.open(ToggleStatusEffectDialogComponent, {
+          width: '450px',
           disableClose: false,
           data: token
         }).afterClosed()
