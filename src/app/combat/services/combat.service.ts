@@ -189,7 +189,7 @@ export class CombatService {
     nextTurn: (state) => {
       return {
         ...state,
-        turn: ++state.turn
+        turn: Math.min(++state.turn, Object.keys(state.activeMonsters ?? {}).length)
       };
     },
     previousTurn: (state) => {
