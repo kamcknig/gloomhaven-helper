@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppService } from '../../../app.service';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { map, takeUntil, withLatestFrom } from 'rxjs/operators';
+import { Observable, of, Subject } from 'rxjs';
+import { map, take, takeUntil, withLatestFrom } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ConditionAndEffectTypes, ConditionsAndEffects, Monster } from '../../services/model';
 import { TokenInfo } from '../../../combat/services/model';
@@ -40,11 +40,8 @@ import { MonsterLevelComponent } from "../monster-level/monster-level.component"
   ]
 })
 export class MonsterDetailComponent implements OnInit {
-  private _monster$: BehaviorSubject<Monster> = new BehaviorSubject<Monster>(undefined);
+  @Input() public monster: Monster;
 
-  @Input() public monsterId: number;
-
-  public monster$: Observable<Monster> = this._monster$.asObservable();
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
   public monsterLevel$: Observable<number | undefined>;
   public scenarioLevel$: Observable<number | undefined>;
@@ -62,14 +59,11 @@ export class MonsterDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.monsterService.monsterStore.monsters$.pipe(map(m => m.find(m => m.id === this.monsterId))).subscribe(this._monster$);
-
     this.scenarioLevel$ = this.appService.scenarioStore.level$;
 
     this.tokens$ = this.combatService.store.tokens$.pipe(
-      withLatestFrom(this.monster$),
       // gets the tokens that belong to this monster
-      map(([tokens, monster]) => tokens.filter(t => t.monsterId === monster.id)),
+      map(tokens => tokens.filter(t => t.monsterId === this.monster.id)),
       // separate them out into elites and normals
       map(tokenData => ({
         elites: tokenData.filter(t => !!t.elite)
@@ -80,11 +74,11 @@ export class MonsterDetailComponent implements OnInit {
       takeUntil(this._destroy$)
     );
 
-    this.monsterLevel$ = this.appService.monsterLevel(this.monsterId);
+    this.monsterLevel$ = this.appService.monsterLevel(this.monster.id);
   }
 
   removeMonster() {
-    this.monsterService.deactivateMonster$.next(this._monster$.value);
+    this.monsterService.deactivateMonster$.next(this.monster);
   }
 
   getTokenConditionsAndEffects(token: TokenInfo) {
@@ -97,8 +91,9 @@ export class MonsterDetailComponent implements OnInit {
       }, [] as { name: string, value: number }[]);
   }
 
-  hasCondition(condition: ConditionAndEffectTypes, elite: boolean): Observable<boolean | [number, number]> {
-    return this.monster$.pipe(
+  hasCondition(condition: ConditionAndEffectTypes, elite: boolean): boolean | [number, number] {
+    let out;
+    of(this.monster).pipe(
       withLatestFrom(this.monsterLevel$),
       map(([monster, level]) => {
         const tmp = monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0] ?? 0;
@@ -110,22 +105,31 @@ export class MonsterDetailComponent implements OnInit {
 
         return tmp;
       }),
-      takeUntil(this._destroy$)
-    );
+      take(1)
+    ).subscribe({
+      next: result => { out = result; }
+    });
+
+    return out;
   }
 
   showAdditionalConditionEffectInfo(condition: string) {
     return ['Retaliate', 'Pierce', 'Pull', 'Shield', 'Target'].includes(condition);
   }
 
-  monsterHasConditionEffect(condition: string, elite: boolean = false): Observable<boolean> {
-    return this.monster$.pipe(
+  monsterHasConditionEffect(condition: string, elite: boolean = false): boolean {
+    let out;
+    of(this.monster).pipe(
       withLatestFrom(this.monsterLevel$),
       map(([monster, level]) => {
         return monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0] > 0
           || monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0]?.[0] > 0;
       }),
-      takeUntil(this._destroy$)
-    )
+      take(1)
+    ).subscribe({
+      next: result => { out = result; }
+    });
+
+    return out;
   }
 }

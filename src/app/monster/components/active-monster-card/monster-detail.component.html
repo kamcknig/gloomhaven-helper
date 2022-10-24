@@ -1,8 +1,9 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>
-      <span class="main">{{(monster$ | async)?.name}}</span>
-      <app-monster-level [monsterId]="monsterId"></app-monster-level>
+      <span class="main">{{monster.name}}</span>
+
+      <app-monster-level [monsterId]="monster.id"></app-monster-level>
     </mat-card-title>
   </mat-card-header>
 
@@ -17,7 +18,7 @@
            fxLayoutAlign="space-between start">
         <!-- loop for normal vs elite monsters -->
         <ng-container *ngFor="let index of [0, 1]">
-          <ng-container *ngIf="monster$ | async as monster">
+          <ng-container *ngIf="monster">
             <ng-container *ngIf="monsterLevel$ | async as level">
               <div fxLayout="column"
                    fxFlex
@@ -35,11 +36,11 @@
                   <div *ngFor="let condition of ConditionsAndEffects"
                        fxLayout="row"
                        fxLayoutAlign="start center">
-                    <img *ngIf="hasCondition(condition, index === 1) | async"
+                    <img *ngIf="hasCondition(condition, index === 1)"
                          [src]="'assets/icons/' + condition.toLowerCase() + '.png'"
                          style="max-width: 2rem; max-height: 2rem;">
                     <span
-                      *ngIf="showAdditionalConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1) | async"
+                      *ngIf="showAdditionalConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1)"
                       style="margin: 0 .35rem; font-size: 1.5rem;">
                   {{monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]?.[0] ?? monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]}}
                       <span
@@ -97,7 +98,7 @@
   <button mat-mini-fab
           id="add-token"
           type="button"
-          (click)="tokenService.addToken$.next(monsterId)">T
+          (click)="tokenService.addToken$.next(monster.id)">T
   </button>
 
   <button mat-mini-fab
@@ -108,4 +109,4 @@
   </button>
 </mat-card>
 
-<app-monster-ability-deck [monsterId]="(monster$ | async).id"></app-monster-ability-deck>
+<app-monster-ability-deck [monsterId]="monster.id"></app-monster-ability-deck>

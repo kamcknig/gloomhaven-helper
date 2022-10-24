@@ -5,6 +5,7 @@ import { CombatService } from './combat/services/combat.service';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { ActivatedRoute } from "@angular/router";
+import { Monster } from './monster/services/model';
 
 @Component({
   selector: 'app-root',
@@ -41,7 +42,7 @@ export class AppComponent implements OnInit {
    * Emits an array of numbers whose elements are the IDs of the active monsters in combat ordered by the
    * initiative of their currently drawn ability card
    */
-  public sortedMonsters$: Observable<number[]>;
+  public sortedMonsters$: Observable<Monster[]>;
 
   constructor(
     public monsterService: MonsterService,
@@ -102,7 +103,8 @@ export class AppComponent implements OnInit {
 
               return m1Initiative - m2Initiative;
             })
-            .map(m => +m[0]))
+            .map(combatMonster => monsters.find(m => m.id === +combatMonster[0]))
+        )
       );
   }
 }

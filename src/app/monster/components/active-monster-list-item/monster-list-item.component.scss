@@ -1,3 +1,6 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
 .header {
   font-size: 1.5rem;
   position: relative;
@@ -23,4 +26,8 @@
 
 app-monster-ability-deck {
   max-width: 9.9rem;
+}
+
+.active-indicator {
+  background: map.get(mat.$deep-purple-palette, 500);;
 }

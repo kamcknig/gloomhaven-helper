@@ -3,6 +3,7 @@ $header-height: 120px;
 .content {
   padding: 5px;
   margin-top: $header-height;
+  height: calc(100% - 120px);
 }
 
 .list-style-button {

@@ -1,5 +1,7 @@
 :host {
+  display: inline-block;
   position: relative;
+  width: fit-content;
 
   /** The mini fab button to trigger adding a token for the monster */
   #add-token, #remove-monster {

@@ -1,18 +1,22 @@
 <div fxLayout="row"
      fxLayoutGap="5px">
+  <div class="active-indicator"
+       style="width: 20px; margin-right: 0"
+       [ngStyle]="{'visibility': active ? 'visible' : 'hidden'}"></div>
+
   <section fxLayout="column"
            #leftSection>
     <div class="header">
       <!-- the name and level -->
-      <span class="monster-name">{{ (monster$ | async)?.name }}</span>
+      <span class="monster-name">{{ monster?.name }}</span>
 
-      <app-monster-level [monsterId]="monsterId"></app-monster-level>
+      <app-monster-level [monsterId]="monster.id"></app-monster-level>
 
       <div class="header-button-container">
         <button mat-mini-fab
                 id="add-token"
                 type="button"
-                (click)="tokenService.addToken$.next(monsterId)">T
+                (click)="tokenService.addToken$.next(monster.id)">T
         </button>
       </div>
     </div>
@@ -21,7 +25,7 @@
          fxLayout="row">
       <ng-container *ngFor="let idx of [0, 1]">
         <app-monster-stats fxFlex
-                           [monster]="monster$ | async"
+                           [monster]="monster"
                            [index]="idx"
                            [level]="monsterLevel$ | async"
                            [class]="idx === 0 ? 'normal' : 'elite'">
@@ -34,6 +38,7 @@
   </section>
 
   <section #rightSection>
-    <app-monster-ability-deck [monsterId]="monsterId"></app-monster-ability-deck>
+    <app-monster-ability-deck [ngStyle]="{'visibility': active ? 'visible' : 'hidden'}"
+                              [monsterId]="monster?.id"></app-monster-ability-deck>
   </section>
 </div>

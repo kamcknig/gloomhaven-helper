@@ -4,21 +4,31 @@
      class="content"
      fxLayout="row"
      fxLayoutAlign="start start"
-     fxLayoutGap="10px"
->
-  <monster-detail *ngFor="let monsterId of sortedMonsters$ | async"
-                           [monsterId]="monsterId">
+     fxLayoutGap="10px">
+  <monster-detail *ngFor="let monster of sortedMonsters$ | async"
+                  [monster]="monster">
   </monster-detail>
 </div>
 
 <ng-template #listView>
   <div class="content"
-       fxLayout="column"
-       fxLayoutAlign="start start"
-       fxLayoutGap="10px">
-    <monster-list-item *ngFor="let monsterId of sortedMonsters$ | async"
-                                  [monsterId]="monsterId">
-    </monster-list-item>
+       fxLayout="row">
+    <div fxLayout="column"
+         fxLayoutAlign="start start"
+         fxLayoutGap="10px">
+      <monster-list-item *ngFor="let monster of sortedMonsters$ | async; index as i"
+                         [monster]="monster"
+                         [active]="(combatService.store.turn$ | async) === i + 1">
+      </monster-list-item>
+    </div>
+
+    <div fxFlex
+         style="align-self: center; text-align: center">
+      <monster-detail
+        *ngIf="!!(combatService.store.turn$ | async) && (sortedMonsters$ | async)?.[(combatService.store.turn$ | async) - 1] as monster"
+        fxFlexAlign="center"
+        [monster]="monster"></monster-detail>
+    </div>
   </div>
 </ng-template>
 
