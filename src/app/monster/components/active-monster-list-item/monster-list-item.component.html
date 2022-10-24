@@ -38,7 +38,7 @@
   </section>
 
   <section #rightSection>
-    <app-monster-ability-deck [ngStyle]="{'visibility': active ? 'visible' : 'hidden'}"
+    <app-monster-ability-deck [ngStyle]="{'visibility': !active ? 'visible' : 'hidden'}"
                               [monsterId]="monster?.id"></app-monster-ability-deck>
   </section>
 </div>
