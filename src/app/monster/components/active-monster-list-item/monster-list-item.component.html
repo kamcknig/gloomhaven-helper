@@ -1,31 +1,39 @@
-<div fxLayout="column">
-  <div class="header">
-    <!-- the name and level -->
-    <span class="monster-name">{{ (monster$ | async)?.name }}</span>
-    <app-monster-level [monsterId]="monsterId"></app-monster-level>
+<div fxLayout="row"
+     fxLayoutGap="5px">
+  <section fxLayout="column"
+           #leftSection>
+    <div class="header">
+      <!-- the name and level -->
+      <span class="monster-name">{{ (monster$ | async)?.name }}</span>
 
-    <div class="header-button-container">
-      <button mat-mini-fab
-              id="add-token"
-              type="button"
-              (click)="tokenService.addToken$.next(monsterId)">T
-      </button>
+      <app-monster-level [monsterId]="monsterId"></app-monster-level>
+
+      <div class="header-button-container">
+        <button mat-mini-fab
+                id="add-token"
+                type="button"
+                (click)="tokenService.addToken$.next(monsterId)">T
+        </button>
+      </div>
     </div>
-  </div>
 
-  <div class="stats-container"
-       fxLayout="row">
-    <ng-container *ngFor="let idx of [0, 1]">
-      <app-monster-stats fxFlex
-                         [monster]="monster$ | async"
-                         [index]="idx"
-                         [level]="monsterLevel$ | async"
-                         [class]="idx === 0 ? 'normal' : 'elite'">
-      </app-monster-stats>
+    <div class="stats-container"
+         fxLayout="row">
+      <ng-container *ngFor="let idx of [0, 1]">
+        <app-monster-stats fxFlex
+                           [monster]="monster$ | async"
+                           [index]="idx"
+                           [level]="monsterLevel$ | async"
+                           [class]="idx === 0 ? 'normal' : 'elite'">
+        </app-monster-stats>
 
-      <mat-divider *ngIf="idx === 0" style="border-right-color: rgba(var(--gold), .5); border-right-width: 2px"
-                   [vertical]="true"></mat-divider>
-    </ng-container>
-  </div>
+        <mat-divider *ngIf="idx === 0" style="border-right-color: rgba(var(--gold), .5); border-right-width: 2px"
+                     [vertical]="true"></mat-divider>
+      </ng-container>
+    </div>
+  </section>
 
+  <section #rightSection>
+    <app-monster-ability-deck [monsterId]="monsterId"></app-monster-ability-deck>
+  </section>
 </div>

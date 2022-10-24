@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import {MonsterService} from "../../services/monster.service";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {TokenService} from "../../../combat/services/token.service";
 import {MonsterLevelComponent} from "../monster-level/monster-level.component";
 import {MatDividerModule} from "@angular/material/divider";
+import { MonsterAbilityDeckComponent } from '../monster-ability-deck/monster-ability-deck.component';
 
 @Component({
   selector: 'monster-list-item',
@@ -25,27 +26,36 @@ import {MatDividerModule} from "@angular/material/divider";
     MatButtonModule,
     MatIconModule,
     MonsterLevelComponent,
-    MatDividerModule
+    MatDividerModule,
+    MonsterAbilityDeckComponent
   ]
 })
-export class MonsterListItemComponent implements OnInit {
+export class MonsterListItemComponent implements OnInit, AfterViewInit {
+  @ViewChild('leftSection') leftSection: HTMLElement;
+  @ViewChild('rightSection') rightSection: HTMLElement;
   @Input() public monsterId: number;
 
   public monster$: Observable<Monster>;
   public monsterLevel$: Observable<number>;
 
   constructor(
+    private _renderer: Renderer2,
     private _monsterService: MonsterService,
     private _appService: AppService,
     public tokenService: TokenService
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.monster$ = this._monsterService.monsterStore.activeMonsters$.pipe(
       map(monsters => monsters.find(m => m.id === this.monsterId))
     );
 
     this.monsterLevel$ = this._appService.monsterLevel(this.monsterId);
+  }
+
+  public ngAfterViewInit(): void {
+    console.log(this.leftSection, this.rightSection);
+    this._renderer.setStyle(this.rightSection, 'max-height', this.leftSection.clientHeight);
   }
 }
