@@ -48,14 +48,18 @@
     margin: 0 6px 6px 0;
     gap: 17px 4px;
 
+    > .token-wrapper {
+      padding: 0 -2px -2px 0
+    }
+
     app-token-health {
       background: rgba(var(--gray), .2);
       border-radius: 5px;
       padding: 3px;
     }
 
-    > .token-wrapper {
-      padding: 0 -2px -2px 0
+    .token-wrapper {
+      cursor: pointer;
     }
   }
 }
@@ -66,6 +70,7 @@ app-monster-ability-deck {
 
 .active-indicator {
   background: map.get(mat.$deep-purple-palette, 500);
+  margin-right: 0;
 }
 
 .token-info {

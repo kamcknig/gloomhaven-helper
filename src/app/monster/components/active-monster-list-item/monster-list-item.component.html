@@ -2,8 +2,8 @@
      fxLayoutGap="5px"
      fxLayoutAlign="start center">
   <div class="active-indicator"
-       style="width: 20px; margin-right: 0"
-       [ngStyle]="{'display': active ? 'initial' : 'none'}"></div>
+       fxFlex="20px"
+       [ngStyle]="{'display': active ? 'block' : 'none'}"></div>
 
   <section fxLayout="column"
            fxFlex
@@ -42,7 +42,8 @@
 
           <div class="token-container">
             <div class="token-wrapper"
-                 *ngFor="let token of (tokens$ | async)?.[idx === 0 ? 'normal' : 'elite']">
+                 *ngFor="let token of (tokens$ | async)?.[idx === 0 ? 'normal' : 'elite']"
+                 (click)="tokenService.toggleTokenStatusEffect$.next(token)">
               <app-token-health class="token-info"
                                 [token]="token"></app-token-health>
             </div>
