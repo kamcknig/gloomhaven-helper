@@ -72,6 +72,6 @@ export class MonsterListItemComponent implements OnInit, AfterViewInit {
   }
 
   public ngAfterViewInit(): void {
-    this._renderer.setStyle(this.rightSection.nativeElement, 'max-height', this.leftSection.nativeElement.clientHeight);
+    //this._renderer.setStyle(this.rightSection.nativeElement, 'max-height', this.leftSection.nativeElement.clientHeight);
   }
 }

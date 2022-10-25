@@ -2,7 +2,7 @@
 @use '@angular/material' as mat;
 
 :host {
-  width: 28rem;
+  max-width: 30rem;
 }
 
 .header {

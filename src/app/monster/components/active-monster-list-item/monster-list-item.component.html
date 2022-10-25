@@ -6,7 +6,7 @@
        [ngStyle]="{'display': active ? 'block' : 'none'}"></div>
 
   <section fxLayout="column"
-           fxFlex="1 0 0"
+           fxFlex="1 0 18rem"
            #leftSection>
     <div class="header">
       <!-- the name and level -->
@@ -30,7 +30,6 @@
     </div>
 
     <div class="stats-token-container"
-         fxFlex="0 1 0"
          fxLayout="row">
       <ng-container *ngFor="let idx of [0, 1]">
         <div fxLayout="column"
