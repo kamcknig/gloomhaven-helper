@@ -14,7 +14,8 @@
 <ng-template #listView>
   <div class="content"
        fxLayout="row">
-    <div fxLayout="column"
+    <div class="list-content"
+         fxLayout="column"
          fxLayoutAlign="start start"
          fxLayoutGap="10px">
       <monster-list-item *ngFor="let monster of sortedMonsters$ | async; index as i"
