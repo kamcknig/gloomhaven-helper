@@ -4,6 +4,7 @@ $header-height: 120px;
   padding: 5px;
   margin-top: $header-height;
   height: calc(100% - 120px);
+  overflow: auto;
 }
 
 .list-style-button {
