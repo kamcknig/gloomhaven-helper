@@ -105,6 +105,7 @@
   <button mat-mini-fab
           id="add-token"
           type="button"
+          [disabled]="(tokenCount$ | async) === 10"
           (click)="tokenService.addToken$.next(monster.id)">T
   </button>
 

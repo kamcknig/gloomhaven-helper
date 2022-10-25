@@ -45,6 +45,7 @@ export class MonsterDetailComponent implements OnInit {
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
   public monsterLevel$: Observable<number | undefined>;
   public scenarioLevel$: Observable<number | undefined>;
+  public tokenCount$: Observable<number>;
   public ConditionsAndEffects = ConditionsAndEffects;
 
   private _destroy$: Subject<void> = new Subject<void>();
@@ -61,9 +62,14 @@ export class MonsterDetailComponent implements OnInit {
   ngOnInit(): void {
     this.scenarioLevel$ = this.appService.scenarioStore.level$;
 
-    this.tokens$ = this.combatService.store.tokens$.pipe(
+    const tokens = this.combatService.store.tokens$.pipe(
       // gets the tokens that belong to this monster
-      map(tokens => tokens.filter(t => t.monsterId === this.monster.id)),
+      map(tokens => tokens.filter(t => t.monsterId === this.monster.id))
+    );
+
+    this.tokenCount$ = tokens.pipe(map(tokens => tokens?.length ?? 0));
+
+    this.tokens$ = tokens.pipe(
       // separate them out into elites and normals
       map(tokenData => ({
         elites: tokenData.filter(t => !!t.elite)
