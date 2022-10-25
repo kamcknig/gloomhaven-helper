@@ -1,11 +1,22 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TokenInfo } from '../../../combat/services/model';
 import { CombatService } from '../../../combat/services/combat.service';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { TokenHealthComponent } from '../../../combat/components/token-health/token-health.component';
 
 @Component({
   selector: 'app-token-list-item',
   templateUrl: './token-list-item.component.html',
-  styleUrls: ['./token-list-item.component.scss']
+  styleUrls: ['./token-list-item.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FlexLayoutModule,
+    MatIconModule,
+    TokenHealthComponent
+  ]
 })
 export class TokenListItemComponent implements OnInit {
   @Input() public value: TokenInfo | undefined;

@@ -1,21 +1,13 @@
 :host {
   position: fixed;
   top: 0;
+  left:0;
   width: 100%;
 
   .mat-toolbar {
     padding: 3rem;
 
     .element-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      mat-icon {
-        position: absolute;
-        pointer-events: none;
-      }
-
       .element-icon {
         max-width: 4rem;
         max-height: 4rem;

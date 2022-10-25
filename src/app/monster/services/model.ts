@@ -7,7 +7,6 @@ export const ConditionsAndEffects = [
   'Curse',
   'Disadvantage',
   'Disarm',
-  'Flying',
   'Immobilize',
   'Invisible',
   'Muddle',
@@ -46,10 +45,10 @@ export interface Monster {
   health: [number, number][],
   attack?: [number, number][];
   conditionsAndEffects?: {
-    [key in ConditionAndEffectTypes]: ([number, number] | [[number, number], [number, number]])[];
+    [key in ConditionAndEffectTypes]: (boolean | [number, number] | [[number, number], [number, number]])[];
   }
+  flying?: boolean;
   elite?: boolean;
-  flying?: [boolean, boolean][];
   move?: [number, number][];
   range?: [number, number][];
   retaliate?: [number, number][];

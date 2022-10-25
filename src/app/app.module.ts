@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { actionSanitizer, stateSanitizer, } from '@state-adapt/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScenarioOptionsModule } from './scenario-options/scenario-options.module';
@@ -19,10 +17,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from './components/header/header.component';
-import { ScenarioLevelInputComponent } from './components/scenario-level-input/scenario-level-input.component';
-import { ScenarioRoundComponent } from './components/scenario-round/scenario-round.component';
 import { MatIconModule } from '@angular/material/icon';
 import { defaultStoreProvider } from '@state-adapt/angular';
+import { MonsterDetailComponent } from './monster/components/active-monster-card/monster-detail.component';
+import { MonsterListItemComponent } from './monster/components/active-monster-list-item/monster-list-item.component';
 
 const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   actionSanitizer,
@@ -31,12 +29,12 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent,
-    ScenarioLevelInputComponent,
-    ScenarioRoundComponent
+    AppComponent
   ],
   imports: [
+    HeaderComponent,
+    MonsterDetailComponent,
+    MonsterListItemComponent,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

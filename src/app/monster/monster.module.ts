@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActiveMonsterCardComponent } from './components/active-monster-card/active-monster-card.component';
-import { AddTokenDialogComponent } from './components/active-monster-card/add-token-dialog/add-token-dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ActivateMonsterDialogComponent } from './activate-monster-dialog/activate-monster-dialog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -14,26 +11,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TokenModule } from '../token/token.module';
-import { MonsterAbilityDeckComponent } from './components/monster-ability-deck/monster-ability-deck.component';
-import { SelectMonsterLevelOverrideComponent } from './components/select-monster-level-ovrerride/select-monster-level-override.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { ActiveMonsterListItemComponent } from './components/active-monster-list-item/active-monster-list-item.component';
-
 
 
 @NgModule({
-  declarations: [
-    ActiveMonsterCardComponent,
-    AddTokenDialogComponent,
-    ActivateMonsterDialogComponent,
-    MonsterAbilityDeckComponent,
-    SelectMonsterLevelOverrideComponent,
-    ActiveMonsterListItemComponent
-  ],
-    exports: [
-        ActiveMonsterCardComponent,
-        ActiveMonsterListItemComponent
-    ],
   imports: [
     CommonModule,
     DragDropModule,
@@ -51,4 +32,5 @@ import { ActiveMonsterListItemComponent } from './components/active-monster-list
     TokenModule
   ]
 })
-export class MonsterModule { }
+export class MonsterModule {
+}

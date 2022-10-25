@@ -2,9 +2,16 @@
              fxLayout="row"
              fxLayoutAlign="start center"
              fxLayoutGap="2rem">
+
   <app-scenario-level-input></app-scenario-level-input>
 
-  <app-scenario-round></app-scenario-round>
+  <div fxLayout="column"
+       fxLayoutAlign="start end"
+       fxLayoutGap="1rem">
+    <app-scenario-round></app-scenario-round>
+
+    <app-turn-selector></app-turn-selector>
+  </div>
 
   <div fxLayout="column"
        fxLayoutGap="-.15rem">
@@ -17,18 +24,18 @@
 
   <span style="flex: 1 1 auto;"></span>
 
-  <div fxLayout="row" *ngIf="(monsterService.monsterStore.activeMonsters$ | async)?.length > 0">
-    <div *ngFor="let element of elementService.elementStore.elements$ | async"
-         class="element-wrapper">
-      <img [src]="'assets/icons/element-' + element.name.toLowerCase() + '.png'"
-           [ngClass]="{
+  <div fxLayout="row"
+       fxLayoutGap="10px"
+       class="element-wrapper">
+    <img *ngFor="let element of elementService.elementStore.elements$ | async"
+         [src]="'assets/icons/element-' + element.name.toLowerCase() + '.png'"
+         [ngClass]="{
               'infused': element.level === ElementPhases.infused,
               'waning': element.level === ElementPhases.waning,
               'dark': element.name.toLowerCase() === 'dark'
              }"
-           class="element-icon"
-           (click)="elementService.cycleElement$.next(element.name)">
-    </div>
+         class="element-icon"
+         (click)="elementService.cycleElement$.next(element.name)">
   </div>
 </mat-toolbar>
 

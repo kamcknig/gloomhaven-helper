@@ -1,30 +1,40 @@
 <app-header></app-header>
 
-<div class="content"
+<div *ngIf="(appService.scenarioStore.viewMode$ | async) === 'normal'; else listView"
+     class="content"
      fxLayout="row"
      fxLayoutAlign="start start"
-     fxLayoutGap="10px"
->
-  <ng-container *ngFor="let monsterId of sortedMonsters$ | async">
-    <ng-container [ngTemplateOutlet]="activeMonsterDisplay"
-                  [ngTemplateOutletContext]="{ $implicit: monsterId }">
-
-    </ng-container>
-  </ng-container>
-
-  <button mat-fab
-          class="list-style-button"
-          (click)="appService.toggleViewMode$.next()">
-    <mat-icon>list</mat-icon>
-  </button>
+     fxLayoutGap="20px">
+  <monster-detail *ngFor="let monster of sortedMonsters$ | async; index as i"
+                  [monster]="monster"
+                  [ngClass]="{'active': (combatService.store.turn$ | async) === i + 1 }">
+  </monster-detail>
 </div>
 
-<ng-template #activeMonsterDisplay let-monsterId>
-  <ng-container *ngIf="(appService.scenarioStore.viewMode$ | async) ==='normal'; else list">
-    <app-active-monster-card [monsterId]="monsterId"></app-active-monster-card>
-  </ng-container>
+<ng-template #listView>
+  <div class="content"
+       fxLayout="row">
+    <div fxLayout="column"
+         fxLayoutAlign="start start"
+         fxLayoutGap="10px">
+      <monster-list-item *ngFor="let monster of sortedMonsters$ | async; index as i"
+                         [monster]="monster"
+                         [active]="(combatService.store.turn$ | async) === i + 1">
+      </monster-list-item>
+    </div>
 
-  <ng-template #list>
-    <app-active-monster-list-item [monsterId]="monsterId"></app-active-monster-list-item>
-  </ng-template>
+    <div fxFlex
+         style="align-self: center; text-align: center">
+      <monster-detail
+        *ngIf="!!(combatService.store.turn$ | async) && (sortedMonsters$ | async)?.[(combatService.store.turn$ | async) - 1] as monster"
+        fxFlexAlign="center"
+        [monster]="monster"></monster-detail>
+    </div>
+  </div>
 </ng-template>
+
+<button mat-fab
+        class="list-style-button"
+        (click)="appService.toggleViewMode$.next()">
+  <mat-icon>list</mat-icon>
+</button>

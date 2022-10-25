@@ -1,15 +1,27 @@
-import {AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormControl } from '@angular/forms';
-import { filter, map, startWith } from 'rxjs/operators';
-import { Monster } from '../services/model';
-import {MatAutocompleteTrigger} from "@angular/material/autocomplete";
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
+import { Monster } from '../../services/model';
+import { MatAutocompleteModule, MatAutocompleteTrigger } from "@angular/material/autocomplete";
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-activate-monster-dialog',
   templateUrl: './activate-monster-dialog.component.html',
-  styleUrls: ['./activate-monster-dialog.component.scss']
+  styleUrls: ['./activate-monster-dialog.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatDialogModule,
+    MatButtonModule
+  ]
 })
 export class ActivateMonsterDialogComponent implements OnInit, AfterViewInit {
   @ViewChild('monsterAutoComplete') public monsterAutoComplete: ElementRef;

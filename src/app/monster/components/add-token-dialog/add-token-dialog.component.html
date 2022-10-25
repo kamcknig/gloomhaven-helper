@@ -1,0 +1,51 @@
+<div mat-dialog-title>Choose a token</div>
+
+<mat-dialog-content>
+  <div fxLayout="row"
+       fxLayoutAlign="center center"
+       fxLayoutGap="1rem">
+    <div fxLayout="row wrap"
+         fxLayoutAlign="center start"
+         fxLayoutGap=".5rem grid">
+      <div fxFlex="50"
+           *ngFor="let index of defaultNumbers">
+        <ng-container [ngTemplateOutlet]="buttonTemplate"
+                      [ngTemplateOutletContext]="{ $implicit: index, elite: false }">
+        </ng-container>
+      </div>
+    </div>
+
+    <div fxLayout="row wrap"
+         fxLayoutAlign="center start"
+         fxLayoutGap=".5rem grid">
+      <div fxFlex="50"
+           *ngFor="let index of defaultNumbers">
+        <ng-container [ngTemplateOutlet]="buttonTemplate"
+                      [ngTemplateOutletContext]="{ $implicit: index, elite: true }">
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button
+          (click)="confirmTokens()"
+          [disabled]="!selectedTokens.normal.length && !selectedTokens.elite.length"
+          color="primary">OK
+  </button>
+</mat-dialog-actions>
+
+<ng-template #buttonTemplate let-index let-elite="elite">
+  <button
+    [ngClass]="{
+      'button-elite': elite,
+      'selected': isSelected(index, elite)
+    }"
+    (click)="toggleTokenNumber(index, elite)"
+    [ngStyle]="{'visibility': getTokenButtonVisible(index, elite)}"
+    type="button"
+    mat-mini-fab>
+    {{index}}
+  </button>
+</ng-template>

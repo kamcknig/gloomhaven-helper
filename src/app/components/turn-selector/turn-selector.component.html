@@ -1,0 +1,16 @@
+<div fxLayout="row"
+     fxLayoutAlign="space-between center"
+     fxLayoutGap="1rem">
+
+  <button mat-mini-fab
+          (click)="combatService.previousTurn$.next()">
+    <mat-icon>navigate_before</mat-icon>
+  </button>
+
+  <span>Turn {{ combatService.store.turn$ | async }}</span>
+
+  <button mat-mini-fab
+          (click)="combatService.nextTurn$.next()">
+    <mat-icon>navigate_next</mat-icon>
+  </button>
+</div>

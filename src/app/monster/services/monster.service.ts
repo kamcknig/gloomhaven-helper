@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { createAdapter } from '@state-adapt/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivateMonsterDialogComponent } from '../activate-monster-dialog/activate-monster-dialog.component';
+import { ActivateMonsterDialogComponent } from '../components/activate-monster-dialog/activate-monster-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { filter, map, share, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
@@ -19,7 +19,7 @@ export class MonsterService {
   private static _idIncrementer: number = 0;
 
   public monsterAdapter = createAdapter<MonsterState>()({
-    add: (state, event: MonsterNoId[] | MonsterNoId, initialState) => ({
+    add: (state, event: MonsterNoId[] | MonsterNoId) => ({
       ...state,
       ...(Array.isArray(event) ? event : [event]).reduce((prev, next) => {
         const id = ++MonsterService._idIncrementer;

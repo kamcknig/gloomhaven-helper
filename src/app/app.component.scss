@@ -3,17 +3,19 @@ $header-height: 120px;
 .content {
   padding: 5px;
   margin-top: $header-height;
+  height: calc(100% - 120px);
+  overflow: auto;
+}
 
-  .list-style-button {
-    position: fixed;
-    right: 1rem;
-    top: calc($header-height + 1rem);
+.list-style-button {
+  position: fixed;
+  right: 1rem;
+  top: calc($header-height + 1rem);
 
-    .mat-icon {
-      font-size: 48px;
-      width: 48px;
-      height: 48px;
-      line-height: 24px;
-    }
+  .mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    line-height: 24px;
   }
 }

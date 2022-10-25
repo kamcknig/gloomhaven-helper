@@ -1,10 +1,10 @@
-<div fxLayout="column"
-     fxLayoutAlign="center start"
+<div fxLayout="row"
+     fxLayoutAlign="start center"
      fxLayoutGap="1rem">
   <div>Round {{combatService.store.round$ | async}}</div>
-  <button mat-raised-button
+
+  <button mat-mini-fab
           color="accent"
-          [disabled]="(monsterService.monsterStore.activeMonsters$ | async).length === 0"
-          (click)="combatService.roundComplete$.next()">Next
+          (click)="combatService.roundComplete$.next()"><mat-icon>navigate_next</mat-icon>
   </button>
 </div>

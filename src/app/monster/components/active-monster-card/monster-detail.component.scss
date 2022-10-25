@@ -1,5 +1,11 @@
 :host {
+  display: inline-block;
   position: relative;
+  width: fit-content;
+
+  &.active ::ng-deep .mat-card {
+    border: solid 5px purple;
+  }
 
   /** The mini fab button to trigger adding a token for the monster */
   #add-token, #remove-monster {
@@ -18,44 +24,29 @@
   }
 
   &:hover {
-    #add-token,#remove-monster {
+    #add-token, #remove-monster {
       visibility: visible;
     }
   }
 
-  /** The overlay that appears when adding a status effect or condition to a token */
-  .status-select-overlay {
-    z-index: 100;
-    position: absolute;
-    background: rgba(0, 0, 0, .65);
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-
-    img {
-      max-height: 5rem;
-      max-width: 5rem;
-      cursor: pointer;
-    }
-  }
-
+  ::ng-deep {
     .mat-card {
       mat-card-header {
         .main {
           text-decoration: underline;
         }
 
-        .override {
-          color: darkred;
+        .flying-icon {
+          max-height: 2rem;
+          max-width: 2rem;
         }
       }
 
-      background: linear-gradient(to right, white -25%, rgba(117, 117, 117, .5) 50%, rgba(130, 106, 25, .5) 50%, white 125%);
+      background: linear-gradient(to right, white -25%, rgba(var(--gray), .5) 50%, rgba(var(--gold), .5) 50%, white 125%);
 
       .mat-card-content {
-        width: 520px;
-        height: 420px;
+        width: 26rem;
+        height: 21rem;
         margin-bottom: 0;
 
         .mat-card-content-wrapper {
@@ -69,13 +60,6 @@
         .monster-info-wrapper {
           width: 100%;
           position: relative;
-
-          .monster-status-container {
-            .icon {
-              max-height: 2.5rem;
-              max-width: 2.5rem;
-            }
-          }
         }
 
         .token-info-wrapper {
@@ -94,5 +78,6 @@
           }
         }
       }
+    }
   }
 }

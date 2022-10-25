@@ -3,4 +3,4 @@
     disabled: disabled$ | async
   }"
   [src]="'/assets/monster-ability-cards/' + ((activeCard$ | async)?.imgName ?? 'monster-ability-card-back') + '.jpg'"
-   (click)="monsterService.monsterAbilityCardDraw$.next(monsterId)">
+  (click)="monsterService.monsterAbilityCardDraw$.next(monster.id)">

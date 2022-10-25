@@ -1,0 +1,62 @@
+<div fxLayout="row"
+     fxLayoutGap="5px"
+     fxLayoutAlign="start stretch">
+  <div class="active-indicator"
+       fxFlex="20px"
+       [ngStyle]="{'display': active ? 'block' : 'none'}"></div>
+
+  <section fxLayout="column"
+           fxFlex="1 0 18rem"
+           #leftSection>
+    <div class="header">
+      <!-- the name and level -->
+      <span class="monster-name">{{ monster?.name }}</span>
+
+      <app-monster-level [monster]="monster"></app-monster-level>
+
+      <span *ngIf="monster.flying">
+        <img class="flying-icon"
+             src="/assets/icons/flying.png">
+      </span>
+
+      <div class="header-button-container">
+        <button mat-mini-fab
+                id="add-token"
+                type="button"
+                [disabled]="(tokenCount$ | async) === 10"
+                (click)="tokenService.addToken$.next(monster.id)">T
+        </button>
+      </div>
+    </div>
+
+    <div class="stats-token-container"
+         fxLayout="row">
+      <ng-container *ngFor="let idx of [0, 1]">
+        <div fxLayout="column"
+             fxFlex
+             [class]="idx === 0 ? 'normal' : 'elite'">
+          <app-monster-stats [monster]="monster"
+                             [index]="idx"
+                             [level]="monsterLevel$ | async">
+          </app-monster-stats>
+
+          <div class="token-container">
+            <div class="token-wrapper"
+                 *ngFor="let token of (tokens$ | async)?.[idx === 0 ? 'normal' : 'elite']"
+                 (click)="tokenService.toggleTokenStatusEffect$.next(token)">
+              <app-token-health class="token-info"
+                                [token]="token"></app-token-health>
+            </div>
+          </div>
+        </div>
+
+        <mat-divider *ngIf="idx === 0" style="border-right-color: rgba(var(--gold), .5); border-right-width: 2px"
+                     [vertical]="true"></mat-divider>
+      </ng-container>
+    </div>
+  </section>
+
+  <section #rightSection>
+    <app-monster-ability-deck [monster]="monster"></app-monster-ability-deck>
+  </section>
+</div>
