@@ -1,12 +1,12 @@
 <div fxLayout="row"
      fxLayoutGap="5px"
-     fxLayoutAlign="start center">
+     fxLayoutAlign="start stretch">
   <div class="active-indicator"
        fxFlex="20px"
        [ngStyle]="{'display': active ? 'block' : 'none'}"></div>
 
   <section fxLayout="column"
-           fxFlex
+           fxFlex="1 0 0"
            #leftSection>
     <div class="header">
       <!-- the name and level -->
@@ -30,6 +30,7 @@
     </div>
 
     <div class="stats-token-container"
+         fxFlex="0 1 0"
          fxLayout="row">
       <ng-container *ngFor="let idx of [0, 1]">
         <div fxLayout="column"
@@ -57,7 +58,6 @@
   </section>
 
   <section #rightSection>
-    <app-monster-ability-deck [ngStyle]="{'visibility': !active ? 'visible' : 'hidden'}"
-                              [monster]="monster"></app-monster-ability-deck>
+    <app-monster-ability-deck [monster]="monster"></app-monster-ability-deck>
   </section>
 </div>
