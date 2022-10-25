@@ -4,7 +4,10 @@ $header-height: 120px;
   padding: 5px;
   margin-top: $header-height;
   height: calc(100% - 120px);
-  overflow: auto;
+
+  .list-content {
+    overflow: auto;
+  }
 }
 
 .list-style-button {
