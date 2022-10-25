@@ -4,9 +4,10 @@
      class="content"
      fxLayout="row"
      fxLayoutAlign="start start"
-     fxLayoutGap="10px">
-  <monster-detail *ngFor="let monster of sortedMonsters$ | async"
-                  [monster]="monster">
+     fxLayoutGap="20px">
+  <monster-detail *ngFor="let monster of sortedMonsters$ | async; index as i"
+                  [monster]="monster"
+                  [ngClass]="{'active': (combatService.store.turn$ | async) === i + 1 }">
   </monster-detail>
 </div>
 

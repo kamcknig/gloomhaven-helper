@@ -3,6 +3,10 @@
   position: relative;
   width: fit-content;
 
+  &.active ::ng-deep .mat-card {
+    border: solid 5px purple;
+  }
+
   /** The mini fab button to trigger adding a token for the monster */
   #add-token, #remove-monster {
     position: absolute;
@@ -20,7 +24,7 @@
   }
 
   &:hover {
-    #add-token,#remove-monster {
+    #add-token, #remove-monster {
       visibility: visible;
     }
   }
