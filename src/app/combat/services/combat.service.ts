@@ -120,7 +120,8 @@ export class CombatService {
       return {
         ...state,
         tokens: [...state.tokens.filter(t => t.monsterId !== monster.id)],
-        activeMonsters
+        activeMonsters,
+        turn: Math.min(state.turn, Object.keys(activeMonsters).length)
       }
     },
     activateMonster: (state, event: Monster) => ({
