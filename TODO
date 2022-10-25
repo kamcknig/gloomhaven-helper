@@ -1,1 +1,4 @@
 Add token info to the monster list component
+
+
+extract token display into a template maybe.

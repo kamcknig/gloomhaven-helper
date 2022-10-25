@@ -13,6 +13,8 @@ import {MonsterLevelComponent} from "../monster-level/monster-level.component";
 import {MatDividerModule} from "@angular/material/divider";
 import {MonsterAbilityDeckComponent} from '../monster-ability-deck/monster-ability-deck.component';
 import {CombatService} from '../../../combat/services/combat.service';
+import {TokenInfo} from "../../../combat/services/model";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'monster-list-item',
@@ -37,6 +39,7 @@ export class MonsterListItemComponent implements OnInit, AfterViewInit {
   @Input() public monster: Monster;
   @Input() public active: boolean;
 
+  public tokens$: Observable<TokenInfo[]>;
   public monsterLevel$: Observable<number>;
 
   constructor(
@@ -50,6 +53,10 @@ export class MonsterListItemComponent implements OnInit, AfterViewInit {
 
   public ngOnInit(): void {
     this.monsterLevel$ = this._appService.monsterLevel(this.monster.id);
+
+    this.tokens$ = this.combatService.store.tokens$.pipe(
+      map(tokens => tokens.filter(t => t.monsterId === this.monster.id))
+    );
   }
 
   public ngAfterViewInit(): void {

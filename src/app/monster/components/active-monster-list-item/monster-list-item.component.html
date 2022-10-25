@@ -29,12 +29,21 @@
     <div class="stats-container"
          fxLayout="row">
       <ng-container *ngFor="let idx of [0, 1]">
-        <app-monster-stats fxFlex
-                           [monster]="monster"
-                           [index]="idx"
-                           [level]="monsterLevel$ | async"
-                           [class]="idx === 0 ? 'normal' : 'elite'">
-        </app-monster-stats>
+        <div fxLayout="column"
+             fxFlex>
+          <app-monster-stats [monster]="monster"
+                             [index]="idx"
+                             [level]="monsterLevel$ | async"
+                             [class]="idx === 0 ? 'normal' : 'elite'">
+          </app-monster-stats>
+
+          <div fxLayout="row wrap"
+               fxLayoutGap="2px grid">
+              <ng-container *ngFor="let token of tokens$ | async">
+                <span>{{ token.number }}</span> - <span style="color: #a00707">{{ token.health ?? token.maxHealth }}</span>
+              </ng-container>
+          </div>
+        </div>
 
         <mat-divider *ngIf="idx === 0" style="border-right-color: rgba(var(--gold), .5); border-right-width: 2px"
                      [vertical]="true"></mat-divider>
