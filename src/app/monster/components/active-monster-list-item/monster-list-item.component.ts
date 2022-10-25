@@ -15,6 +15,7 @@ import {MonsterAbilityDeckComponent} from '../monster-ability-deck/monster-abili
 import {CombatService} from '../../../combat/services/combat.service';
 import {TokenInfo} from "../../../combat/services/model";
 import {map} from "rxjs/operators";
+import { TokenHealthComponent } from '../../../combat/components/token-health/token-health.component';
 
 @Component({
   selector: 'monster-list-item',
@@ -29,7 +30,8 @@ import {map} from "rxjs/operators";
     MatIconModule,
     MonsterLevelComponent,
     MatDividerModule,
-    MonsterAbilityDeckComponent
+    MonsterAbilityDeckComponent,
+    TokenHealthComponent
   ]
 })
 export class MonsterListItemComponent implements OnInit, AfterViewInit {
@@ -39,7 +41,7 @@ export class MonsterListItemComponent implements OnInit, AfterViewInit {
   @Input() public monster: Monster;
   @Input() public active: boolean;
 
-  public tokens$: Observable<TokenInfo[]>;
+  public tokens$: Observable<{ elite: TokenInfo[], normal: TokenInfo[] }>;
   public monsterLevel$: Observable<number>;
 
   constructor(
@@ -55,7 +57,11 @@ export class MonsterListItemComponent implements OnInit, AfterViewInit {
     this.monsterLevel$ = this._appService.monsterLevel(this.monster.id);
 
     this.tokens$ = this.combatService.store.tokens$.pipe(
-      map(tokens => tokens.filter(t => t.monsterId === this.monster.id))
+      map(tokens => tokens.filter(t => t.monsterId === this.monster.id)),
+      map(tokens => tokens.reduce((prev, next) => {
+        prev[next.elite ? 'elite' : 'normal'].push(next);
+        return prev;
+      }, { elite: [], normal: []}))
     );
   }
 

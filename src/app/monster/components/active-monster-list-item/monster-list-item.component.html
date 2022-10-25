@@ -5,6 +5,7 @@
        [ngStyle]="{'display': active ? 'initial' : 'none'}"></div>
 
   <section fxLayout="column"
+           fxFlex
            #leftSection>
     <div class="header">
       <!-- the name and level -->
@@ -26,22 +27,23 @@
       </div>
     </div>
 
-    <div class="stats-container"
+    <div class="stats-token-container"
          fxLayout="row">
       <ng-container *ngFor="let idx of [0, 1]">
         <div fxLayout="column"
-             fxFlex>
+             fxFlex
+             [class]="idx === 0 ? 'normal' : 'elite'">
           <app-monster-stats [monster]="monster"
                              [index]="idx"
-                             [level]="monsterLevel$ | async"
-                             [class]="idx === 0 ? 'normal' : 'elite'">
+                             [level]="monsterLevel$ | async">
           </app-monster-stats>
 
-          <div fxLayout="row wrap"
-               fxLayoutGap="2px grid">
-              <ng-container *ngFor="let token of tokens$ | async">
-                <span>{{ token.number }}</span> - <span style="color: #a00707">{{ token.health ?? token.maxHealth }}</span>
-              </ng-container>
+          <div class="token-container">
+            <div class="token-wrapper"
+                 *ngFor="let token of (tokens$ | async)?.[idx === 0 ? 'normal' : 'elite']">
+              <app-token-health class="token-info"
+                                [token]="token"></app-token-health>
+            </div>
           </div>
         </div>
 

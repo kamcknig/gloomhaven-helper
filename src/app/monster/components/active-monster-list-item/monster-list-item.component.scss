@@ -1,12 +1,20 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
+:host {
+  width: 28rem;
+}
+
 .header {
   font-size: 1.5rem;
   position: relative;
-  min-width: 20rem;
   background: linear-gradient(to right, white -25%, rgba(var(--gray), .5) 50%, rgba(var(--gold), .5) 50%, white 125%);
   padding: 1rem;
+
+  .monster-name {
+    text-decoration: underline;
+    margin: 0;
+  }
 
   .header-button-container {
     position: absolute;
@@ -20,13 +28,36 @@
   }
 }
 
-.monster-name {
-  text-decoration: underline;
-  margin: 0;
-}
-
-.stats-container {
+.stats-token-container {
   width: 100%;
+
+  .normal {
+    background: linear-gradient(to right, rgba(var(--gray), .5) -25%, rgba(var(--gray), .2) 125%);
+  }
+
+  .elite {
+    background: rgba(var(--gold), .5);
+    background: linear-gradient(to right, rgba(var(--gold), .2) -25%, rgba(var(--gold), .5) 125%);
+  }
+
+  .token-container {
+    flex-flow: row wrap;
+    display: flex;
+    box-sizing: border-box;
+    flex: 1 1 0;
+    margin: 0 6px 6px 0;
+    gap: 17px 4px;
+
+    app-token-health {
+      background: rgba(var(--gray), .2);
+      border-radius: 5px;
+      padding: 3px;
+    }
+
+    > .token-wrapper {
+      padding: 0 -2px -2px 0
+    }
+  }
 }
 
 app-monster-ability-deck {
@@ -34,5 +65,9 @@ app-monster-ability-deck {
 }
 
 .active-indicator {
-  background: map.get(mat.$deep-purple-palette, 500);;
+  background: map.get(mat.$deep-purple-palette, 500);
+}
+
+.token-info {
+  font-size: 1.3rem;
 }

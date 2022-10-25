@@ -4,6 +4,7 @@ import { CombatService } from '../../../combat/services/combat.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { TokenHealthComponent } from '../../../combat/components/token-health/token-health.component';
 
 @Component({
   selector: 'app-token-list-item',
@@ -13,7 +14,8 @@ import { CommonModule } from '@angular/common';
   imports: [
     CommonModule,
     FlexLayoutModule,
-    MatIconModule
+    MatIconModule,
+    TokenHealthComponent
   ]
 })
 export class TokenListItemComponent implements OnInit {

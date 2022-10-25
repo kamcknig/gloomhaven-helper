@@ -9,15 +9,6 @@
 }
 
 :host {
-  &.normal .container {
-    background: linear-gradient(to right, rgba(var(--gray), .5) -25%, rgba(var(--gray), .2) 125%);
-  }
-
-  &.elite .container {
-    background: rgba(var(--gold), .5);
-    background: linear-gradient(to right, rgba(var(--gold), .2) -25%, rgba(var(--gold), .5) 125%);
-  }
-
   &.large {
     .container {
       font-size: 1.5rem;

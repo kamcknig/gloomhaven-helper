@@ -9,7 +9,7 @@
        fxLayoutAlign="start center"
        fxLayoutGap=".5rem">
     <!-- Token and health display -->
-    <div>{{value.number}} - <span style="color: #a00707">{{value.health ?? value.maxHealth}}</span></div>
+    <app-token-health [token]="value"></app-token-health>
 
     <!-- token health adjustment buttons -->
     <div fxLayout="column"
