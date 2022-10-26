@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppService } from '../../../app.service';
 import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
-import { map, take, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
+import { map, take, takeUntil, withLatestFrom } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ConditionAndEffectTypes, ConditionsAndEffects, Monster } from '../../services/model';
 import { TokenInfo } from '../../../combat/services/model';
@@ -77,10 +77,8 @@ export class MonsterDetailComponent implements OnInit {
       this._monster$
     ])
       .pipe(
-        tap(r => console.log(r)),
         // gets the tokens that belong to this monster
-        map(([tokens, monster]) => tokens.filter(t => t.monsterId === monster.id)),
-        tap(r => console.log(r))
+        map(([tokens, monster]) => tokens.filter(t => t.monsterId === monster.id))
       );
 
     this.tokenCount$ = tokens.pipe(map(tokens => tokens?.length ?? 0));
