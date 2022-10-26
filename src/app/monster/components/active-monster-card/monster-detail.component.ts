@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppService } from '../../../app.service';
-import { Observable, of, Subject } from 'rxjs';
-import { map, take, takeUntil, withLatestFrom } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
+import { map, take, takeUntil, tap, withLatestFrom } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { ConditionAndEffectTypes, ConditionsAndEffects, Monster } from '../../services/model';
 import { TokenInfo } from '../../../combat/services/model';
@@ -40,7 +40,17 @@ import { MonsterLevelComponent } from "../monster-level/monster-level.component"
   ]
 })
 export class MonsterDetailComponent implements OnInit {
-  @Input() public monster: Monster;
+  private _monster$: BehaviorSubject<Monster> = new BehaviorSubject<Monster>(undefined);
+  private _monster: Monster;
+
+  get monster(): Monster {
+    return this._monster;
+  }
+
+  @Input() set monster(value: Monster) {
+    this._monster = value;
+    this._monster$.next(value);
+  }
 
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
   public monsterLevel$: Observable<number | undefined>;
@@ -62,10 +72,16 @@ export class MonsterDetailComponent implements OnInit {
   ngOnInit(): void {
     this.scenarioLevel$ = this.appService.scenarioStore.level$;
 
-    const tokens = this.combatService.store.tokens$.pipe(
-      // gets the tokens that belong to this monster
-      map(tokens => tokens.filter(t => t.monsterId === this.monster.id))
-    );
+    const tokens = combineLatest([
+      this.combatService.store.tokens$,
+      this._monster$
+    ])
+      .pipe(
+        tap(r => console.log(r)),
+        // gets the tokens that belong to this monster
+        map(([tokens, monster]) => tokens.filter(t => t.monsterId === monster.id)),
+        tap(r => console.log(r))
+      );
 
     this.tokenCount$ = tokens.pipe(map(tokens => tokens?.length ?? 0));
 
@@ -80,11 +96,11 @@ export class MonsterDetailComponent implements OnInit {
       takeUntil(this._destroy$)
     );
 
-    this.monsterLevel$ = this.appService.monsterLevel(this.monster.id);
+    this.monsterLevel$ = this.appService.monsterLevel(this._monster.id);
   }
 
   removeMonster() {
-    this.monsterService.deactivateMonster$.next(this.monster);
+    this.monsterService.deactivateMonster$.next(this._monster);
   }
 
   getTokenConditionsAndEffects(token: TokenInfo) {
@@ -99,22 +115,26 @@ export class MonsterDetailComponent implements OnInit {
 
   hasCondition(condition: ConditionAndEffectTypes, elite: boolean): boolean | [number, number] {
     let out;
-    of(this.monster).pipe(
-      withLatestFrom(this.monsterLevel$),
-      map(([monster, level]) => {
-        const tmp = monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0] ?? 0;
-        if (typeof tmp === 'number') {
-          return tmp > 0;
-        } else if(typeof tmp[0] === 'number') {
-          return tmp[0] > 0;
-        }
+    of(this._monster)
+      .pipe(
+        withLatestFrom(this.monsterLevel$),
+        map(([monster, level]) => {
+          const tmp = monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0] ?? 0;
+          if (typeof tmp === 'number') {
+            return tmp > 0;
+          } else if (typeof tmp[0] === 'number') {
+            return tmp[0] > 0;
+          }
 
-        return tmp;
-      }),
-      take(1)
-    ).subscribe({
-      next: result => { out = result; }
-    });
+          return tmp;
+        }),
+        take(1)
+      )
+      .subscribe({
+        next: result => {
+          out = result;
+        }
+      });
 
     return out;
   }
@@ -125,16 +145,20 @@ export class MonsterDetailComponent implements OnInit {
 
   monsterHasConditionEffect(condition: string, elite: boolean = false): boolean {
     let out;
-    of(this.monster).pipe(
-      withLatestFrom(this.monsterLevel$),
-      map(([monster, level]) => {
-        return monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0] > 0
-          || monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0]?.[0] > 0;
-      }),
-      take(1)
-    ).subscribe({
-      next: result => { out = result; }
-    });
+    of(this._monster)
+      .pipe(
+        withLatestFrom(this.monsterLevel$),
+        map(([monster, level]) => {
+          return monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0] > 0
+            || monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0]?.[0] > 0;
+        }),
+        take(1)
+      )
+      .subscribe({
+        next: result => {
+          out = result;
+        }
+      });
 
     return out;
   }
