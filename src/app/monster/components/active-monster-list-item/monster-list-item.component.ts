@@ -55,7 +55,7 @@ export class MonsterListItemComponent implements OnInit, AfterViewInit {
   }
 
   public ngOnInit(): void {
-    this.monsterLevel$ = this._appService.monsterLevel(this.monster.id);
+    this.monsterLevel$ = this._appService.monsterLevel(this.monster.id).level$;
 
     const tokens = this.combatService.store.tokens$.pipe(
       map(tokens => tokens.filter(t => t.monsterId === this.monster.id))

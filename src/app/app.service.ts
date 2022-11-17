@@ -3,9 +3,9 @@ import { createAdapter } from '@state-adapt/core';
 import { MAX_LEVEL } from './scenario-options/max-level.token';
 import { adapt } from '@state-adapt/angular';
 import { CombatService } from './combat/services/combat.service';
-import {ScenarioInfo, ViewMode} from './model';
+import { ScenarioInfo, ViewMode } from './model';
 import { MonsterService } from "./monster/services/monster.service";
-import { joinSelectors, Source } from '@state-adapt/rxjs';
+import { joinStores, Source } from '@state-adapt/rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class AppService {
       ...state,
       level: Math.min(Math.max(typeof event === 'string' ? state.level + Number(event) : event, 0), this.maxLevel)
     }),
-    toggleViewMode: (state) => ({... state, viewMode: state.viewMode === 'normal' ? 'list' : 'normal'}),
+    toggleViewMode: (state) => ({ ...state, viewMode: state.viewMode === 'normal' ? 'list' : 'normal' }),
     selectors: {
       level: s => s.level,
       viewMode: s => s.viewMode
@@ -27,12 +27,14 @@ export class AppService {
   });
 
   scenarioStore = adapt(
-    'scenario',
-    {
-      level: 1,
-      viewMode: 'list' as ViewMode
-    },
-    this._scenarioAdapter,
+    [
+      'scenario',
+      {
+        level: 1,
+        viewMode: 'list' as ViewMode
+      },
+      this._scenarioAdapter
+    ],
     {
       scenarioLevelUpdate: this.scenarioLevelUpdate$,
       toggleViewMode: this.toggleViewMode$
@@ -40,11 +42,12 @@ export class AppService {
   )
 
   public monsterLevel(monsterId: number) {
-    return joinSelectors(
-      [this._monsterService.monsterStore, 'activeMonsters'],
-      [this.scenarioStore, 'level'],
-      (monsters, scenarioLevel) => monsters.find(m => m.id === monsterId)?.level ?? scenarioLevel
-    ).state$;
+    return joinStores({
+      one: this._monsterService.monsterStore,
+      two: this.scenarioStore
+    })({
+      level: s => s.oneActiveMonsters.find(m => m.id === monsterId)?.level ?? s.twoLevel
+    })();
   }
 
   constructor(

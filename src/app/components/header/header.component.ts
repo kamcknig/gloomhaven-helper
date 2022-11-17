@@ -8,7 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ScenarioLevelInputComponent } from '../scenario-level-input/scenario-level-input.component';
 import { ScenarioRoundComponent } from '../scenario-round/scenario-round.component';
-import {TurnSelectorComponent} from "../turn-selector/turn-selector.component";
+import { TurnSelectorComponent } from "../turn-selector/turn-selector.component";
 
 @Component({
   selector: 'app-header',

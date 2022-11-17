@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { createAdapter } from '@state-adapt/core';
 import { HttpClient } from '@angular/common/http';
-import { ActivateMonsterDialogComponent } from '../components/activate-monster-dialog/activate-monster-dialog.component';
+import {
+  ActivateMonsterDialogComponent
+} from '../components/activate-monster-dialog/activate-monster-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { filter, map, share, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
@@ -81,9 +83,11 @@ export class MonsterService {
   public overrideMonsterLevel$: Source<{ monsterId: number; level: number }> = new Source('overrideMonsterLevel$');
 
   public monsterStore = adapt(
-    'monsters',
-    {},
-    this.monsterAdapter,
+    [
+      'monsters',
+      {},
+      this.monsterAdapter
+    ],
     {
       add: this._monsterGet as Observable<any>,
       activateMonster: this.activateMonster$,
@@ -93,15 +97,18 @@ export class MonsterService {
   );
 
   public overrideMonsterLevel(monsterId: number): void {
-    this._dialogService.open(SelectMonsterLevelOverrideComponent, {data: {monsterId}}).afterClosed().pipe(
-      filter(v => v !== undefined),
-      map(result => ({
+    this._dialogService.open(SelectMonsterLevelOverrideComponent, { data: { monsterId } })
+      .afterClosed()
+      .pipe(
+        filter(v => v !== undefined),
+        map(result => ({
           monsterId,
           level: result
-      }))
-    ).subscribe({
-      next: value => this.overrideMonsterLevel$.next(value)
-    });
+        }))
+      )
+      .subscribe({
+        next: value => this.overrideMonsterLevel$.next(value)
+      });
   }
 
   public selectMonsterToActivate() {

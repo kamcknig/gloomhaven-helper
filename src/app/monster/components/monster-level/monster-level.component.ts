@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MonsterService} from "../../services/monster.service";
-import {Observable} from "rxjs";
-import {AppService} from "../../../app.service";
-import {Monster} from "../../services/model";
+import { Component, Input, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MonsterService } from "../../services/monster.service";
+import { Observable } from "rxjs";
+import { AppService } from "../../../app.service";
+import { Monster } from "../../services/model";
 
 @Component({
   selector: 'app-monster-level',
@@ -25,6 +25,6 @@ export class MonsterLevelComponent implements OnInit {
 
   ngOnInit(): void {
     this.scenarioLevel$ = this.appService.scenarioStore.level$;
-    this.monsterLevel$ = this.appService.monsterLevel(this.monster.id);
+    this.monsterLevel$ = this.appService.monsterLevel(this.monster.id).level$;
   }
 }

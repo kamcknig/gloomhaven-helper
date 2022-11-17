@@ -1,10 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {CombatService} from '../../../combat/services/combat.service';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {Monster, MonsterAbility} from '../../services/model';
-import {MonsterService} from '../../services/monster.service';
-import {CommonModule} from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { CombatService } from '../../../combat/services/combat.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Monster, MonsterAbility } from '../../services/model';
+import { MonsterService } from '../../services/monster.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-monster-ability-deck',
