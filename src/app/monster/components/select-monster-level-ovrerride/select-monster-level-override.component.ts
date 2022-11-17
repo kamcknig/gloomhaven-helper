@@ -40,7 +40,7 @@ export class SelectMonsterLevelOverrideComponent implements OnInit {
       level: new FormControl(this._data.level)
     });
 
-    this.monsterLevel$ = this._appService.monsterLevel(this._data.monsterId);
+    this.monsterLevel$ = this._appService.monsterLevel(this._data.monsterId).level$;
 
     this.monsterLevel$.pipe(take(1)).subscribe({
       next: value => {

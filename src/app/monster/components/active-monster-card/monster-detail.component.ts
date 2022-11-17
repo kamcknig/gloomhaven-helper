@@ -94,7 +94,7 @@ export class MonsterDetailComponent implements OnInit {
       takeUntil(this._destroy$)
     );
 
-    this.monsterLevel$ = this.appService.monsterLevel(this._monster.id);
+    this.monsterLevel$ = this.appService.monsterLevel(this._monster.id).level$;
   }
 
   removeMonster() {

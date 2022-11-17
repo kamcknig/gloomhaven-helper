@@ -1,14 +1,14 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatButtonModule} from "@angular/material/button";
-import {MatIconModule} from "@angular/material/icon";
-import {FlexModule} from "@angular/flex-layout";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
+import { FlexModule } from "@angular/flex-layout";
 import { ApplicableConditions } from '../../services/model';
-import {CombatService} from "../../../combat/services/combat.service";
-import {MAT_DIALOG_DATA, MatDialogModule} from "@angular/material/dialog";
-import {TokenInfo} from "../../../combat/services/model";
-import {map, takeUntil} from "rxjs/operators";
-import {Observable, Subject} from "rxjs";
+import { CombatService } from "../../../combat/services/combat.service";
+import { MAT_DIALOG_DATA, MatDialogModule } from "@angular/material/dialog";
+import { TokenInfo } from "../../../combat/services/model";
+import { map, takeUntil } from "rxjs/operators";
+import { Observable, Subject } from "rxjs";
 
 @Component({
   selector: 'app-toggle-status-effect-dialog',
