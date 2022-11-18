@@ -5,27 +5,27 @@
         fxLayoutAlign="start center">
     <img class="icon"
          src="../../../../assets/icons/health.png">
-    {{monster.health?.[level ?? 0]?.[index] | monsterStat }}
+    {{ monster | monsterStat : 'health' : level : $any(index) }}
   </span>
 
   <span fxLayout="column"
         fxLayoutAlign="start center">
     <img class="icon"
          src="../../../../assets/icons/move.png">
-    {{monster.move?.[level ?? 0]?.[index] | monsterStat}}
+    {{ monster | monsterStat : 'move' : level : $any(index) }}
   </span>
 
   <span fxLayout="column"
         fxLayoutAlign="start center">
     <img class="icon"
          src="../../../../assets/icons/attack.png">
-    {{monster.attack?.[level ?? 0]?.[index] | monsterStat}}
+    {{ monster | monsterStat : 'attack' : level : $any(index) }}
   </span>
 
   <span fxLayout="column"
         fxLayoutAlign="start center">
     <img class="icon"
          src="../../../../assets/icons/range.png">
-    {{monster.range?.[level ?? 0]?.[index] | monsterStat}}
+    {{ monster | monsterStat : 'range' : level : $any(index) }}
   </span>
 </div>

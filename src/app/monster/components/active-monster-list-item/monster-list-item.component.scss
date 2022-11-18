@@ -68,6 +68,14 @@ app-monster-ability-deck {
   max-width: 9.9rem;
 }
 
+app-monster-stat {
+  font-size: 1.3rem;
+
+  ::ng-deep .icon {
+    max-width: 1.5rem;
+  }
+}
+
 .active-indicator {
   background: map.get(mat.$deep-purple-palette, 500);
 }

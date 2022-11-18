@@ -34,11 +34,24 @@
       <ng-container *ngFor="let idx of [0, 1]">
         <div fxLayout="column"
              fxFlex
+             fxLayoutGap=".5rem"
              [class]="idx === 0 ? 'normal' : 'elite'">
           <app-monster-stats [monster]="monster"
                              [index]="idx"
                              [level]="monsterLevel$ | async">
           </app-monster-stats>
+
+          <div *ngIf="monsterLevel$ | async as level"
+               [fxLayout]="idx === 0 ? 'row wrap' : 'row-reverse wrap'"
+               style="gap: .15rem;">
+            <ng-container *ngFor="let condition of ConditionsAndEffects">
+              <app-monster-stat *ngIf="hasCondition(condition, idx === 1)"
+                                [condition]="condition"
+                                [conditionAmount]="monster | monsterStat : condition : level : $any(idx)"
+                                fxLayout="row"
+                                fxLayoutAlign="start center"></app-monster-stat>
+            </ng-container>
+          </div>
 
           <div class="token-container">
             <div class="token-wrapper"

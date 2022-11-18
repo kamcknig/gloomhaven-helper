@@ -19,6 +19,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MonsterStatsComponent } from '../monster-stats-component/monster-stats.component';
 import { TokenService } from '../../../combat/services/token.service';
 import { MonsterLevelComponent } from "../monster-level/monster-level.component";
+import {MonsterStatComponent} from "../monster-stat/monster-stat.component";
+import { MonsterStatPipePipe } from '../../pipes/monster-stat.pipe';
 
 @Component({
   selector: 'monster-detail',
@@ -36,7 +38,9 @@ import { MonsterLevelComponent } from "../monster-level/monster-level.component"
     TokenListItemComponent,
     DragDropModule,
     MonsterStatsComponent,
-    MonsterLevelComponent
+    MonsterLevelComponent,
+    MonsterStatComponent,
+    MonsterStatPipePipe
   ]
 })
 export class MonsterDetailComponent implements OnInit {
@@ -127,30 +131,6 @@ export class MonsterDetailComponent implements OnInit {
           }
 
           return tmp;
-        }),
-        take(1)
-      )
-      .subscribe({
-        next: result => {
-          out = result;
-        }
-      });
-
-    return out;
-  }
-
-  showAdditionalConditionEffectInfo(condition: string) {
-    return ['Retaliate', 'Pierce', 'Pull', 'Shield', 'Target'].includes(condition);
-  }
-
-  monsterHasConditionEffect(condition: string, elite: boolean = false): boolean {
-    let out;
-    of(this._monster)
-      .pipe(
-        withLatestFrom(this.monsterLevel$),
-        map(([monster, level]) => {
-          return monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0] > 0
-            || monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0]?.[0] > 0;
         }),
         take(1)
       )

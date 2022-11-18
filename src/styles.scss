@@ -77,3 +77,9 @@ $my-custom-typography: mat.define-typography-config(
 
 html, body { height: 100%; font-size: 20px; }
 body { margin: 0; overflow-y: hidden }
+
+
+.icon {
+  max-width: 2rem;
+  max-height: auto;
+}

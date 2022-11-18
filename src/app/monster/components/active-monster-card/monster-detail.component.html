@@ -37,23 +37,14 @@
                 </app-monster-stats>
 
                 <!-- statuses that the monster has on it's monster info card -->
-                <div fxLayout="row">
-                  <div *ngFor="let condition of ConditionsAndEffects"
-                       fxLayout="row"
-                       fxLayoutAlign="start center">
-                    <img *ngIf="hasCondition(condition, index === 1)"
-                         [src]="'assets/icons/' + condition.toLowerCase() + '.png'"
-                         style="max-width: 2rem; max-height: 2rem;">
-                    <span
-                      *ngIf="showAdditionalConditionEffectInfo(condition) && monsterHasConditionEffect(condition, index === 1)"
-                      style="margin: 0 .35rem; font-size: 1.5rem;">
-                  {{monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]?.[0] ?? monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]}}
-                      <span
-                        *ngIf="condition === 'Retaliate' && monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]?.[1] > 0">
-                    @{{monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[index]?.[1]}}
-                  </span>
-                </span>
-                  </div>
+                <div [fxLayout]="index === 0 ? 'row wrap' : 'row-reverse wrap'" style="gap: .2rem;">
+                  <ng-container *ngFor="let condition of ConditionsAndEffects">
+                    <app-monster-stat *ngIf="hasCondition(condition, index === 1)"
+                                      [condition]="condition"
+                                      [conditionAmount]="monster | monsterStat : condition : level : $any(index)"
+                                      fxLayout="row"
+                                      fxLayoutAlign="start center"></app-monster-stat>
+                  </ng-container>
                 </div>
               </div>
             </ng-container>
