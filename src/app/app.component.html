@@ -25,7 +25,7 @@
     </div>
 
     <div fxFlex
-         style="align-self: center; text-align: center">
+         style="text-align: center">
       <monster-detail
         *ngIf="!!(combatService.store.turn$ | async) && (sortedMonsters$ | async)?.[(combatService.store.turn$ | async) - 1] as monster"
         fxFlexAlign="center"

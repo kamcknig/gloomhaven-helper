@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MonsterService } from "../../services/monster.service";
-import { Observable } from "rxjs";
-import { Monster } from "../../services/model";
+import { Observable, of } from "rxjs";
+import { ConditionAndEffectTypes, ConditionsAndEffects, Monster } from "../../services/model";
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonModule } from '@angular/common';
 import { AppService } from '../../../app.service';
@@ -14,8 +14,10 @@ import { MatDividerModule } from "@angular/material/divider";
 import { MonsterAbilityDeckComponent } from '../monster-ability-deck/monster-ability-deck.component';
 import { CombatService } from '../../../combat/services/combat.service';
 import { TokenInfo } from "../../../combat/services/model";
-import { map } from "rxjs/operators";
+import { map, take, withLatestFrom } from "rxjs/operators";
 import { TokenHealthComponent } from '../../../combat/components/token-health/token-health.component';
+import { MonsterStatComponent } from '../monster-stat/monster-stat.component';
+import { MonsterStatPipePipe } from '../../pipes/monster-stat.pipe';
 
 @Component({
   selector: 'monster-list-item',
@@ -31,10 +33,12 @@ import { TokenHealthComponent } from '../../../combat/components/token-health/to
     MonsterLevelComponent,
     MatDividerModule,
     MonsterAbilityDeckComponent,
-    TokenHealthComponent
+    TokenHealthComponent,
+    MonsterStatComponent,
+    MonsterStatPipePipe
   ]
 })
-export class MonsterListItemComponent implements OnInit, AfterViewInit {
+export class MonsterListItemComponent implements OnInit {
   @ViewChild('leftSection') leftSection: ElementRef;
   @ViewChild('rightSection') rightSection: ElementRef;
 
@@ -44,6 +48,7 @@ export class MonsterListItemComponent implements OnInit, AfterViewInit {
   public tokens$: Observable<{ elite: TokenInfo[], normal: TokenInfo[] }>;
   public tokenCount$: Observable<number>;
   public monsterLevel$: Observable<number>;
+  public ConditionsAndEffects = ConditionsAndEffects;
 
   constructor(
     private _renderer: Renderer2,
@@ -71,7 +76,29 @@ export class MonsterListItemComponent implements OnInit, AfterViewInit {
     );
   }
 
-  public ngAfterViewInit(): void {
-    //this._renderer.setStyle(this.rightSection.nativeElement, 'max-height', this.leftSection.nativeElement.clientHeight);
+  hasCondition(condition: ConditionAndEffectTypes, elite: boolean): boolean | [number, number] {
+    let out;
+    of(this.monster)
+      .pipe(
+        withLatestFrom(this.monsterLevel$.pipe(map(level => level - 1))),
+        map(([monster, level]) => {
+          const tmp = monster?.conditionsAndEffects?.[condition]?.[level ?? 0]?.[elite ? 1 : 0] ?? 0;
+          if (typeof tmp === 'number') {
+            return tmp > 0;
+          } else if (typeof tmp[0] === 'number') {
+            return tmp[0] > 0;
+          }
+
+          return tmp;
+        }),
+        take(1)
+      )
+      .subscribe({
+        next: result => {
+          out = result;
+        }
+      });
+
+    return out;
   }
 }
