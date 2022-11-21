@@ -60,7 +60,7 @@ export class TokenService {
               return prev.concat({
                 number: nextTokenNumber,
                 elite: key === 'elite',
-                maxHealth: monster.health[scenarioLevel][key === 'elite' ? 1 : 0],
+                maxHealth: monster.attributes.health[scenarioLevel][key === 'elite' ? 1 : 0],
                 monsterId: monster.id
               });
             }, [] as TokenInfo[]));

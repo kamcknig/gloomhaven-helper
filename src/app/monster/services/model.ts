@@ -39,18 +39,24 @@ export const ApplicableConditions = [
 
 export type ConditionAndEffectTypes = typeof ConditionsAndEffects[number];
 
+export type Attribute = [number, number][];
+
 export interface Monster {
   name: string;
   id: number;
-  health: [number, number][],
-  attack?: [number, number][];
+
+  attributes: {
+    health: Attribute,
+    attack?: Attribute;
+    move?: Attribute;
+    range?: Attribute;
+  };
+
   conditionsAndEffects?: {
     [key in ConditionAndEffectTypes]: (boolean | [number, number] | [[number, number], [number, number]])[];
   }
   flying?: boolean;
   elite?: boolean;
-  move?: [number, number][];
-  range?: [number, number][];
   retaliate?: [number, number][];
   target?: [number, number][];
   abilities: MonsterAbility[];
