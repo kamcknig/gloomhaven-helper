@@ -7,11 +7,12 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {DIALOG_DATA} from "@angular/cdk/dialog";
 import {Monster} from "../../../../../monster/services/model";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-boss-stat-select',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatDialogModule, MatButtonModule],
+  imports: [CommonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatDialogModule, MatButtonModule, FlexLayoutModule],
   templateUrl: './boss-stat-select.component.html',
   styleUrls: ['./boss-stat-select.component.scss']
 })

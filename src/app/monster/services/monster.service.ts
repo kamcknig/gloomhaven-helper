@@ -131,7 +131,7 @@ export class MonsterService {
               filter(monster => !!monster),
               switchMap(monster => {
                 return monster.name.toLowerCase() === 'boss'
-                  ? this._dialogService.open(BossStatSelectComponent, { data: { monster }}).afterClosed().pipe(filter(result => !!result))
+                  ? this._dialogService.open(BossStatSelectComponent, { maxWidth: '500px', data: { monster }}).afterClosed().pipe(filter(result => !!result))
                   : of(monster);
               }),
               tap(monster => this.activateMonster$.next(monster))

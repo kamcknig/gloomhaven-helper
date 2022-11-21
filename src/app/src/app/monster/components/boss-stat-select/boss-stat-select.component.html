@@ -8,19 +8,23 @@
     </mat-form-field>
 
     <ng-container [formControlName]="'attributes'">
-      <div class="stat-input"
-           *ngFor="let stat of ['health', 'move', 'attack', 'range']">
-        <img [src]="{{'/assets/icons/' + stat + '.png'}}" style="max-width: 40px; height: auto;"/>
+      <div class="stat-input-wrapper">
+        <div class="stat-input"
+             *ngFor="let stat of ['health', 'move', 'attack', 'range']">
+          <img [src]="'/assets/icons/' + stat + '.png'" style="max-width: 40px; height: auto;"/>
 
-        <mat-form-field>
-          <mat-label>Health</mat-label>
-          <input matInput [formControlName]="'health'"/>
-        </mat-form-field>
+          <mat-form-field>
+            <mat-label>{{stat | uppercase}}</mat-label>
+            <input matInput [formControlName]="stat"
+                   type="number"/>
+          </mat-form-field>
+        </div>
       </div>
     </ng-container>
   </form>
 </div>
 
 <mat-dialog-actions [align]="'end'">
-  <button mat-flat-button color="primary">OK</button>
+  <button mat-flat-button
+          color="primary">OK</button>
 </mat-dialog-actions>
