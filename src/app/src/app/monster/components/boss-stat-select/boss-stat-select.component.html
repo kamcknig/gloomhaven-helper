@@ -7,10 +7,10 @@
       <input matInput [formControlName]="'name'"/>
     </mat-form-field>
 
-    <ng-container [formControlName]="'attributes'">
+    <ng-container [formGroupName]="'attributes'">
       <div class="stat-input-wrapper">
         <div class="stat-input"
-             *ngFor="let stat of ['health', 'move', 'attack', 'range']">
+             *ngFor="let stat of attributes">
           <img [src]="'/assets/icons/' + stat + '.png'" style="max-width: 40px; height: auto;"/>
 
           <mat-form-field>
@@ -26,5 +26,7 @@
 
 <mat-dialog-actions [align]="'end'">
   <button mat-flat-button
+          [disabled]="!formGroup.valid"
+          [mat-dialog-close]="getValue()"
           color="primary">OK</button>
 </mat-dialog-actions>
