@@ -28,6 +28,6 @@ export class MonsterStatComponent {
   constructor() { }
 
   showAdditionalConditionEffectInfo(condition: typeof this.condition) {
-    return ['Retaliate', 'Pierce', 'Pull', 'Shield', 'Target'].includes(condition);
+    return ['retaliate', 'pierce', 'pull', 'shield', 'target'].includes(condition);
   }
 }

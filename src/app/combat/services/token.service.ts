@@ -7,9 +7,7 @@ import { AppService } from '../../app.service';
 import { CombatService } from './combat.service';
 import { Subject } from 'rxjs';
 import { MonsterService } from '../../monster/services/monster.service';
-import {
-  ToggleStatusEffectDialogComponent
-} from "../../monster/components/toggle-status-effect-dialog/toggle-status-effect-dialog.component";
+import { ToggleEffectDialog } from "../../monster/components/toggle-effect-dialog/toggle-effect-dialog.component";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +24,7 @@ export class TokenService {
   ) {
     this.toggleTokenStatusEffect$.pipe(
       switchMap(token => {
-        return this._dialogService.open(ToggleStatusEffectDialogComponent, {
+        return this._dialogService.open(ToggleEffectDialog, {
           width: '450px',
           disableClose: false,
           data: token
