@@ -1,15 +1,15 @@
-export const Conditions = [
-  'bless', 'curse',
-  'disarm', 'immobilize', 'invisible',
-  'muddle', 'poison', 'strengthen',
-  'stun', 'wound'
+const Conditions = [
+  'bless', 'curse', 'disarm',
+  'immobilize', 'invisible', 'muddle',
+  'poison', 'strengthen', 'stun',
+  'wound'
 ] as const;
 export type Condition = typeof Conditions[number];
 export const isCondition = (value: string): value is Condition => {
   return Conditions.includes(value as Condition);
 }
 
-export const AttackEffects = ['pull', 'push', 'pierce', 'target'] as const;
+const AttackEffects = ['pull', 'push', 'pierce', 'target'] as const;
 export type AttackEffect = typeof AttackEffects[number];
 export const isAttackEffect = (value: string): value is AttackEffect => {
   return AttackEffects.includes(value as AttackEffect);
@@ -22,7 +22,7 @@ export const isBonus = (value: string): value is Bonus => {
 }
 
 /**
- * These are the effects and conditions that can be applied to a monster or a character
+ * These are the effects and conditions that can be applied to a monster.
  */
 export const ApplicableConditions = [
   'disarm',
@@ -35,7 +35,7 @@ export const ApplicableConditions = [
   'strengthen',
   'stun',
   'wound'
-]
+] as const;
 
 export type Attribute = [number, number][];
 
