@@ -39,8 +39,6 @@ export class MonsterStatPipePipe implements PipeTransform {
         monster?.attackEffects?.[statName]?.[level ?? 0]?.[elite]?.[1]
       ]
     } else if (isBonus(statName)) {
-      console.log(monster?.bonuses?.[statName]?.[level ?? 0]?.[elite]?.[0] ?? statName, monster?.bonuses?.[statName]?.[level ?? 0]?.[elite]);
-
       return [
         monster?.bonuses?.[statName]?.[level ?? 0]?.[elite]?.[0] ?? monster?.bonuses?.[statName]?.[level ?? 0]?.[elite],
         monster?.bonuses?.[statName]?.[level ?? 0]?.[elite]?.[1]

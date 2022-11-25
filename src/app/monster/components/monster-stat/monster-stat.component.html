@@ -3,5 +3,5 @@
 
 <span *ngIf="showAdditionalConditionEffectInfo(condition)"
       style="margin: 0 .35rem;">
-  {{ (conditionAmount?.[0] ?? conditionAmount) + (condition === 'retaliate' && conditionAmount[1] > 0 ? '@' + conditionAmount[1] : '') }}
+  {{ (conditionAmount?.[0] ?? conditionAmount) + (condition === 'retaliate' && conditionAmount[1] > 1 ? '@' + conditionAmount[1] : '') }}
 </span>

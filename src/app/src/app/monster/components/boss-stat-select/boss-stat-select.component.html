@@ -1,50 +1,94 @@
 <div mat-dialog-title>Create Boss</div>
 
 <div mat-dialog-content>
-  <h2>Attributes</h2>
-
   <form [formGroup]="formGroup">
     <mat-form-field>
       <mat-label>Name</mat-label>
       <input matInput [formControlName]="'name'"/>
     </mat-form-field>
 
-    <ng-container [formGroupName]="'attributes'">
+    <h2>Attributes</h2>
+
+    <ng-container [formArrayName]="'attributes'">
       <section class="stat-input-wrapper">
         <div class="stat-input"
-             *ngFor="let stat of Attributes">
-          <img [src]="'/assets/icons/' + stat + '.png'" style="max-width: 40px; height: auto;"/>
+             *ngFor="let stat of Attributes; index as idx">
+          <img [src]="'/assets/icons/' + stat + '.png'"
+               style="max-width: 40px; height: auto;"/>
 
           <mat-form-field>
             <mat-label>{{stat | uppercase}}</mat-label>
-            <input matInput [formControlName]="stat"
+            <input matInput
+                   min="1"
+                   [formControlName]="idx"
                    type="number"/>
           </mat-form-field>
         </div>
       </section>
     </ng-container>
 
-    <h2>Conditions</h2>
+    <h2>Immunities</h2>
 
-    <ng-container [formGroupName]="'conditions'">
+    <ng-container [formArrayName]="'conditions'">
       <section>
-        <mat-checkbox [labelPosition]="'before'"
-                      *ngFor="let condition of Conditions">
+        <mat-checkbox style="margin-right: 20px;"
+                      [formControlName]="idx"
+                      *ngFor="let condition of Conditions; index as idx">
           <img [src]="'/assets/icons/' + condition + '.png'"
-               style="max-width: 40px; height: auto;"/>
+               style="margin-left: 10px; max-width: 40px; height: auto;"/>
         </mat-checkbox>
       </section>
     </ng-container>
 
     <h2>Attack Effects</h2>
 
-    <ng-container [formGroupName]="'attackEffects'">
+    <ng-container [formArrayName]="'attackEffects'">
       <section>
-        <mat-checkbox [labelPosition]="'before'"
-                      *ngFor="let attackEffect of AttackEffects">
-          <img [src]="'/assets/icons/' + attackEffect + '.png'"
-               style="max-width: 40px; height: auto;"/>
-        </mat-checkbox>
+        <div *ngFor="let attackEffect of AttackEffects; index as idx"
+             [formGroupName]="idx">
+          <mat-checkbox style="margin-right: 20px;"
+                        [formControlName]="'has'">
+            <img [src]="'/assets/icons/' + attackEffect + '.png'"
+                 style="margin-left: 10px; max-width: 40px; height: auto;"/>
+          </mat-checkbox>
+
+          <mat-form-field>
+            <mat-label>Amount</mat-label>
+            <input matInput
+                   [formControlName]="'value'">
+          </mat-form-field>
+        </div>
+      </section>
+    </ng-container>
+
+    <h2>Bonuses</h2>
+
+    <ng-container [formGroupName]="'bonuses'">
+      <section>
+        <div *ngFor="let bonus of Bonuses; index as idx"
+             [formGroupName]="idx">
+          <mat-checkbox style="margin-right: 20px;"
+                        [formControlName]="'has'">
+            <img [src]="'/assets/icons/' + bonus + '.png'"
+                 style="margin-left: 10px; max-width: 40px; height: auto;"/>
+          </mat-checkbox>
+
+          <mat-form-field>
+            <mat-label>Amount</mat-label>
+            <input matInput
+                   min="1"
+                   type="number"
+                   [formControlName]="'value'">
+          </mat-form-field>
+
+          <mat-form-field *ngIf="bonus === 'retaliate'">
+            <mat-label>Range</mat-label>
+            <input matInput
+                   min="0"
+                   type="number"
+                   [formControlName]="'value-2'">
+          </mat-form-field>
+        </div>
       </section>
     </ng-container>
   </form>
