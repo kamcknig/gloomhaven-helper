@@ -13,7 +13,7 @@ import {
   SelectMonsterLevelOverrideComponent
 } from "../components/select-monster-level-ovrerride/select-monster-level-override.component";
 import { Source, toSource } from '@state-adapt/rxjs';
-import {BossStatSelectComponent} from "../../src/app/monster/components/boss-stat-select/boss-stat-select.component";
+import { BossStatSelectComponent } from "../../src/app/monster/components/boss-stat-select/boss-stat-select.component";
 
 @Injectable({
   providedIn: 'root'
@@ -113,6 +113,13 @@ export class MonsterService {
       });
   }
 
+  /**
+   * Invoke this method to open the dialog to choose a monster to activate.
+   *
+   * @returns An Observable the resolves to a {@link Monster} that is activated
+   * or null if the operation is cancelled or fails. If the {@link Monster} is
+   * a boss, it triggers another dialog to collect stats for the {@link Monster}
+   */
   public selectMonsterToActivate() {
     return this.monsterStore.inactiveMonsters$
       .pipe(
