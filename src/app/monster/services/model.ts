@@ -1,4 +1,11 @@
-import { ElementNames } from '../../elements/model';
+export const Conditions = ['poison', 'wound', 'immobilize', 'disarm', 'stun', 'muddle', 'curse', 'invisible', 'strengthen', 'bless'] as const;
+export type ConditionsType = typeof Conditions[number];
+
+export const AttackEffects = ['Pull', 'Push', 'Pierce', 'Target'] as const;
+export type AttackEffectsType = typeof AttackEffects[number];
+
+export const Bonuses = ['Shield', 'Retaliate'] as const;
+export type BonusesType = typeof Bonuses[number];
 
 export const ConditionsAndEffects = [
   'Target',
@@ -52,16 +59,23 @@ export interface Monster {
     range?: Attribute;
   };
 
-  conditionsAndEffects?: {
-    [key in ConditionAndEffectTypes]: (boolean | [number, number] | [[number, number], [number, number]])[];
+  conditions: {
+    [key in ConditionsType]: (boolean | [number, number] | [[number, number], [number, number]])[];
   }
+
+  attackEffects: {
+    [key in AttackEffectsType]: (boolean | [number, number] | [[number, number], [number, number]])[];
+  }
+
+  bonuses: {
+    [key in BonusesType]: (boolean | [number, number] | [[number, number], [number, number]])[];
+  }
+
   flying?: boolean;
   elite?: boolean;
-  retaliate?: [number, number][];
   target?: [number, number][];
   abilities: MonsterAbility[];
   active?: boolean;
-  infusions?: Lowercase<ElementNames>[];
 
   // can be used as an override to the scenario level
   level?: number;
