@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ConditionAndEffectTypes} from "../../services/model";
+import { AttackEffect, Bonus, Condition } from "../../services/model";
 
 @Component({
   selector: 'app-monster-stat',
@@ -10,16 +10,24 @@ import {ConditionAndEffectTypes} from "../../services/model";
   styleUrls: ['./monster-stat.component.scss']
 })
 export class MonsterStatComponent {
-  @Input() condition: ConditionAndEffectTypes;
+  get conditionAmount(): number | [number, number] | undefined {
+    return this._conditionAmount;
+  }
+
+  @Input() set conditionAmount(value: number | [number, number] | undefined) {
+    this._conditionAmount = value;
+    console.log(this._conditionAmount);
+  }
+  @Input() condition: AttackEffect | Bonus | Condition;
 
   /**
    * The associated value that goes with the condition if any
     */
-  @Input() conditionAmount: number | [number, number] | undefined;
+  private _conditionAmount: number | [number, number] | undefined;
 
   constructor() { }
 
-  showAdditionalConditionEffectInfo(condition: ConditionAndEffectTypes) {
+  showAdditionalConditionEffectInfo(condition: typeof this.condition) {
     return ['Retaliate', 'Pierce', 'Pull', 'Shield', 'Target'].includes(condition);
   }
 }

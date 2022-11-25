@@ -13,6 +13,7 @@ import {
   SelectMonsterLevelOverrideComponent
 } from "../components/select-monster-level-ovrerride/select-monster-level-override.component";
 import { Source, toSource } from '@state-adapt/rxjs';
+import {BossStatSelectComponent} from "../../src/app/monster/components/boss-stat-select/boss-stat-select.component";
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,7 @@ export class MonsterService {
       ...state,
       [event.id]: {
         ...state[event.id],
+        ...event,
         active: true
       }
     }),
@@ -127,6 +129,11 @@ export class MonsterService {
               withLatestFrom(this.monsterStore.monsters$),
               map(([id, monsters]) => monsters.find(m => m.id === id)),
               filter(monster => !!monster),
+              switchMap(monster => {
+                return monster.name.toLowerCase() === 'boss'
+                  ? this._dialogService.open(BossStatSelectComponent, { maxWidth: '500px', data: { monster }}).afterClosed().pipe(filter(result => !!result))
+                  : of(monster);
+              }),
               tap(monster => this.activateMonster$.next(monster))
             )
           : of(null))

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MonsterStatsComponent } from './monster-stats.component';
+import { BossStatSelectComponent } from './boss-stat-select.component';
 
-describe('MonsterStatsComponentComponent', () => {
-  let component: MonsterStatsComponent;
-  let fixture: ComponentFixture<MonsterStatsComponent>;
+describe('BossStatSelectComponent', () => {
+  let component: BossStatSelectComponent;
+  let fixture: ComponentFixture<BossStatSelectComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MonsterStatsComponent ]
+      imports: [ BossStatSelectComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MonsterStatsComponent);
+    fixture = TestBed.createComponent(BossStatSelectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

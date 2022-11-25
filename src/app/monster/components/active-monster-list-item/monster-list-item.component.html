@@ -36,21 +36,42 @@
              fxFlex
              fxLayoutGap=".5rem"
              [class]="idx === 0 ? 'normal' : 'elite'">
-          <app-monster-stats [monster]="monster"
-                             [index]="idx"
-                             [level]="monsterLevel$ | async">
-          </app-monster-stats>
+          <app-monster-attributes [monster]="monster"
+                                  [index]="idx"
+                                  [level]="monsterLevel$ | async">
+          </app-monster-attributes>
 
           <div *ngIf="monsterLevel$ | async as level"
                [fxLayout]="idx === 0 ? 'row wrap' : 'row-reverse wrap'"
                style="gap: .15rem;">
-            <ng-container *ngFor="let condition of ConditionsAndEffects">
+            <app-monster-stat *ngFor="let effect of monster | conditionList : level : $any(idx)"
+                              [condition]="$any(effect)"
+                              [conditionAmount]="monster | monsterStat : effect : level : $any(idx)"
+                              fxLayout="row"
+                              fxLayoutAlign="start center">
+            </app-monster-stat>
+
+            <app-monster-stat *ngFor="let effect of monster | attackEffectList : level : $any(idx)"
+                              [condition]="$any(effect)"
+                              [conditionAmount]="monster | monsterStat : effect : level : $any(idx)"
+                              fxLayout="row"
+                              fxLayoutAlign="start center">
+            </app-monster-stat>
+
+            <app-monster-stat *ngFor="let effect of monster | bonusList : level : $any(idx)"
+                              [condition]="$any(effect)"
+                              [conditionAmount]="monster | monsterStat : effect : level : $any(idx)"
+                              fxLayout="row"
+                              fxLayoutAlign="start center">
+            </app-monster-stat>
+
+            <!--<ng-container *ngFor="let condition of ConditionsAndEffects">
               <app-monster-stat *ngIf="hasCondition(condition, idx === 1)"
                                 [condition]="condition"
                                 [conditionAmount]="monster | monsterStat : condition : level : $any(idx)"
                                 fxLayout="row"
                                 fxLayoutAlign="start center"></app-monster-stat>
-            </ng-container>
+            </ng-container>-->
           </div>
 
           <div class="token-container">

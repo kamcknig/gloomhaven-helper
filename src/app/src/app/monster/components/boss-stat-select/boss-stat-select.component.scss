@@ -1,0 +1,12 @@
+.stat-input-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+
+  .stat-input {
+    display: flex;
+    align-items: center;
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+}
+

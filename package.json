@@ -21,6 +21,7 @@
     "@angular/platform-browser": "14.2.7",
     "@angular/platform-browser-dynamic": "14.2.7",
     "@angular/router": "14.2.7",
+    "@ngrx/component": "14.3.2",
     "@state-adapt/core": "0.59.0",
     "@state-adapt/angular": "0.59.0",
     "@state-adapt/rxjs": "0.59.0",

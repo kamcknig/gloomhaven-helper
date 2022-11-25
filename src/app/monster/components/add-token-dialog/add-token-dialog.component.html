@@ -28,7 +28,7 @@
   </div>
 </mat-dialog-content>
 
-<mat-dialog-actions>
+<mat-dialog-actions [align]="'end'">
   <button mat-raised-button
           (click)="confirmTokens()"
           [disabled]="!selectedTokens.normal.length && !selectedTokens.elite.length"
