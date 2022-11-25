@@ -1,59 +1,41 @@
-export const Conditions = ['poison', 'wound', 'immobilize', 'disarm', 'stun', 'muddle', 'curse', 'invisible', 'strengthen', 'bless'] as const;
+export const Conditions = [
+  'bless', 'curse',
+  'disarm', 'immobilize', 'invisible',
+  'muddle', 'poison', 'strengthen',
+  'stun', 'wound'
+] as const;
 export type Condition = typeof Conditions[number];
 export const isCondition = (value: string): value is Condition => {
   return Conditions.includes(value as Condition);
 }
 
-export const AttackEffects = ['Pull', 'Push', 'Pierce', 'Target'] as const;
+export const AttackEffects = ['pull', 'push', 'pierce', 'target'] as const;
 export type AttackEffect = typeof AttackEffects[number];
 export const isAttackEffect = (value: string): value is AttackEffect => {
   return AttackEffects.includes(value as AttackEffect);
 }
 
-export const Bonuses = ['Shield', 'Retaliate'] as const;
+export const Bonuses = ['shield', 'retaliate'] as const;
 export type Bonus = typeof Bonuses[number];
 export const isBonus = (value: string): value is Bonus => {
   return Bonuses.includes(value as Bonus);
 }
 
-/*export const ConditionsAndEffects = [
-  'Target',
-  'Advantage',
-  'Bless',
-  'Curse',
-  'Disadvantage',
-  'Disarm',
-  'Immobilize',
-  'Invisible',
-  'Muddle',
-  'Pierce',
-  'Poison',
-  'Pull',
-  'Push',
-  'Retaliate',
-  'Shield',
-  'Strengthen',
-  'Stun',
-  'Wound'
-] as const;*/
-
 /**
  * These are the effects and conditions that can be applied to a monster or a character
  */
 export const ApplicableConditions = [
-  'Disarm',
-  'Immobilize',
-  'Invisible',
-  'Muddle',
-  'Poison',
-  'Retaliate',
-  'Shield',
-  'Strengthen',
-  'Stun',
-  'Wound'
+  'disarm',
+  'immobilize',
+  'invisible',
+  'muddle',
+  'poison',
+  'retaliate',
+  'shield',
+  'strengthen',
+  'stun',
+  'wound'
 ]
-
-// export type ConditionAndEffectTypes = typeof ConditionsAndEffects[number];
 
 export type Attribute = [number, number][];
 

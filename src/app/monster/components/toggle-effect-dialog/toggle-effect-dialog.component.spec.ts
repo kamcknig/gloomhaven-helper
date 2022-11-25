@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ToggleStatusEffectDialogComponent } from './toggle-status-effect-dialog.component';
+import { ToggleEffectDialog } from './toggle-effect-dialog.component';
 
 describe('ToggleStatusEffectDialogComponent', () => {
-  let component: ToggleStatusEffectDialogComponent;
-  let fixture: ComponentFixture<ToggleStatusEffectDialogComponent>;
+  let component: ToggleEffectDialog;
+  let fixture: ComponentFixture<ToggleEffectDialog>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ ToggleStatusEffectDialogComponent ]
+      imports: [ ToggleEffectDialog ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ToggleStatusEffectDialogComponent);
+    fixture = TestBed.createComponent(ToggleEffectDialog);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

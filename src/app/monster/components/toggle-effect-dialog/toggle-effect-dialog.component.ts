@@ -11,13 +11,13 @@ import { map, takeUntil } from "rxjs/operators";
 import { Observable, Subject } from "rxjs";
 
 @Component({
-  selector: 'app-toggle-status-effect-dialog',
+  selector: 'app-toggle-effect-dialog',
   standalone: true,
   imports: [CommonModule, MatButtonModule, MatIconModule, FlexModule, MatDialogModule],
-  templateUrl: './toggle-status-effect-dialog.component.html',
-  styleUrls: ['./toggle-status-effect-dialog.component.scss']
+  templateUrl: './toggle-effect-dialog.component.html',
+  styleUrls: ['./toggle-effect-dialog.component.scss']
 })
-export class ToggleStatusEffectDialogComponent implements OnInit, OnDestroy {
+export class ToggleEffectDialog implements OnInit, OnDestroy {
   private _destroy$: Subject<void> = new Subject<void>();
 
   public ApplicableConditions = ApplicableConditions;
