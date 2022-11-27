@@ -1,24 +1,38 @@
-export const Conditions = [
-  'bless', 'curse', 'disarm',
-  'immobilize', 'invisible', 'muddle',
-  'poison', 'strengthen', 'stun',
-  'wound'
-] as const;
-export type Condition = typeof Conditions[number];
+export enum Conditions {
+  bless = 'bless',
+  curse = "curse",
+  disarm = "disarm",
+  immobilize = "immobilize",
+  invisible = "invisible",
+  muddle = "muddle",
+  poison = "poison",
+  strengthen = "strengthen",
+  stun = "stun",
+  wound = "wound"
+}
+export type Condition = keyof typeof Conditions;
 export const isCondition = (value: string): value is Condition => {
-  return Conditions.includes(value as Condition);
+  return Object.values(Conditions).includes(value as Conditions);
 }
 
-export const AttackEffects = ['pull', 'push', 'pierce', 'target'] as const;
-export type AttackEffect = typeof AttackEffects[number];
+export enum AttackEffects {
+  pull = 'pull',
+  push = "push",
+  pierce = "pierce",
+  target = "target"
+}
+export type AttackEffect = keyof typeof AttackEffects;
 export const isAttackEffect = (value: string): value is AttackEffect => {
-  return AttackEffects.includes(value as AttackEffect);
+  return Object.values(AttackEffects).includes(value as AttackEffects);
 }
 
-export const Bonuses = ['shield', 'retaliate'] as const;
-export type Bonus = typeof Bonuses[number];
+export enum Bonuses {
+  'shield' = 'shield',
+  'retaliate' = "retaliate"
+}
+export type Bonus = keyof typeof Bonuses;
 export const isBonus = (value: string): value is Bonus => {
-  return Bonuses.includes(value as Bonus);
+  return Object.values(Bonuses).includes(value as Bonuses);
 }
 
 /**
@@ -39,8 +53,13 @@ export const ApplicableConditions = [
 
 export type Stat = [number, number];
 
-export const Attributes = ['health', 'move', 'attack', 'range'] as const;
-export type Attribute = typeof Attributes[number];
+export enum Attributes {
+  'health' = "health",
+  'move' = "move",
+  'attack' = "attack",
+  'range' = "range"
+}
+export type Attribute = keyof typeof Attributes;
 
 export interface Monster {
   name: string;

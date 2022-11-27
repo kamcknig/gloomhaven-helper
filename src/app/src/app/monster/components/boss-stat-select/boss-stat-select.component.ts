@@ -33,10 +33,10 @@ export class BossStatSelectComponent implements OnInit {
     }>>;
   }>;
 
-  public Attributes = Attributes;
-  public Conditions = Conditions;
-  public AttackEffects = AttackEffects;
-  public Bonuses = Bonuses;
+  public Attributes = Object.values(Attributes);
+  public Conditions = Object.values(Conditions);
+  public AttackEffects = Object.values(AttackEffects);
+  public Bonuses = Object.values(Bonuses);
 
   constructor(
     private _form: FormBuilder,
@@ -50,7 +50,7 @@ export class BossStatSelectComponent implements OnInit {
       attributes: this._form.array(
         this.Attributes.map(next => new FormControl<number>(undefined, [Validators.required, Validators.min(1)]))),
       conditions: this._form.array(this.Conditions.map(next => new FormControl<boolean>(undefined))),
-      attackEffects: this._form.array(this.Conditions.map(next => this._form.group({
+      attackEffects: this._form.array(this.AttackEffects.map(next => this._form.group({
         has: new FormControl<boolean>(undefined),
         value: new FormControl<number>(undefined)
       }))),
@@ -69,20 +69,20 @@ export class BossStatSelectComponent implements OnInit {
       ...this._data.monster,
       ...this.formGroup.value,
       attributes: {
-        ...Attributes.reduce((prev, next, idx) => {
+        ...Object.values(Attributes).reduce((prev, next, idx) => {
           prev[next] = new Array(7).fill([this.formGroup.value.attributes[idx], this.formGroup.value.attributes[idx]]);
           return prev;
         }, {} as any)
       },
       conditions: {
-        ...Conditions.reduce((prev, next, idx) => {
+        ...Object.values(Conditions).reduce((prev, next, idx) => {
           prev[next] = new Array(7).fill(
             [!!this.formGroup.value.conditions[idx] ? 1 : 0, !!this.formGroup.value.conditions[idx] ? 1 : 0]);
           return prev;
         }, {} as any)
       },
       attackEffects: {
-        ...AttackEffects.reduce((prev, next, idx) => {
+        ...Object.values(AttackEffects).reduce((prev, next, idx) => {
           prev[next] = new Array(7).fill([
             !!this.formGroup.value.attackEffects[idx].has ? this.formGroup.value.attackEffects[idx].value : 0, !!this.formGroup.value.attackEffects[idx].has ? this.formGroup.value.attackEffects[idx].value : 0
           ])
@@ -90,7 +90,7 @@ export class BossStatSelectComponent implements OnInit {
         }, {} as any)
       },
       bonuses: {
-        ...Bonuses.reduce((prev, next, idx) => {
+        ...Object.values(Bonuses).reduce((prev, next, idx) => {
           prev[next] = new Array(7).fill(next === 'retaliate'
             ? [
               [!!this.formGroup.value.bonuses[idx].has ? this.formGroup.value.bonuses[idx].value : 0, this.formGroup.value.bonuses[idx]['value-2']],
