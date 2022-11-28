@@ -1,16 +1,17 @@
 <div mat-dialog-title>Create Boss</div>
 
 <div mat-dialog-content>
-  <form [formGroup]="formGroup" style="margin-top:10px">
+  <form [formGroup]="formGroup"
+        style="margin-top:10px">
     <mat-form-field>
       <mat-label>Name</mat-label>
       <input matInput [formControlName]="'name'"/>
     </mat-form-field>
 
-    <h2>Attributes</h2>
+    <section [formArrayName]="'attributes'">
+      <h2>Attributes</h2>
 
-    <ng-container [formArrayName]="'attributes'">
-      <section class="stat-input-wrapper">
+      <div class="flex-wrap">
         <div class="stat-input"
              *ngFor="let stat of Attributes; index as idx">
           <img [src]="'/assets/icons/' + stat + '.png'"
@@ -24,26 +25,26 @@
                    type="number"/>
           </mat-form-field>
         </div>
-      </section>
-    </ng-container>
+      </div>
+    </section>
 
-    <h2>Immunities</h2>
+    <section [formArrayName]="'conditions'">
+      <h2>Condition Immunities</h2>
 
-    <ng-container [formArrayName]="'conditions'">
-      <section>
+      <div class="flex-wrap">
         <mat-checkbox style="margin-right: 20px;"
                       [formControlName]="idx"
                       *ngFor="let condition of Conditions; index as idx">
           <img [src]="'/assets/icons/' + condition + '.png'"
                style="margin-left: 10px; max-width: 40px; height: auto;"/>
         </mat-checkbox>
-      </section>
-    </ng-container>
+      </div>
+    </section>
 
-    <h2>Attack Effects</h2>
+    <section [formArrayName]="'attackEffects'">
+      <h2>Attack Effects</h2>
 
-    <ng-container [formArrayName]="'attackEffects'">
-      <section>
+      <div class="flex-wrap">
         <div *ngFor="let attackEffect of AttackEffects; index as idx"
              [formGroupName]="idx">
           <mat-checkbox style="margin-right: 20px;"
@@ -58,21 +59,22 @@
                    [formControlName]="'value'">
           </mat-form-field>
         </div>
-      </section>
-    </ng-container>
+      </div>
+    </section>
 
-    <h2>Bonuses</h2>
+    <section [formArrayName]="'bonuses'">
+      <h2>Bonuses</h2>
 
-    <ng-container [formArrayName]="'bonuses'">
-      <section>
+      <div class="flex-wrap">
         <div *ngFor="let bonus of Bonuses; index as idx"
-             [formControlName]="idx">
+             [formGroupName]="idx">
           <mat-checkbox style="margin-right: 20px;"
                         #bonusChkBox
                         [formControlName]="'has'">
-            <img [src]="'/assets/icons/' + bonus + '.png'"
-                 style="margin-left: 10px; max-width: 40px; height: auto;"/>
           </mat-checkbox>
+
+          <img [src]="'/assets/icons/' + bonus + '.png'"
+               style="margin-left: 10px; max-width: 40px; height: auto;"/>
 
           <mat-form-field>
             <mat-label>{{bonus === 'retaliate' ? 'Amount' : 'Range'}}</mat-label>
@@ -92,8 +94,8 @@
                    [formControlName]="'value-2'">
           </mat-form-field>
         </div>
-      </section>
-    </ng-container>
+      </div>
+    </section>
   </form>
 </div>
 

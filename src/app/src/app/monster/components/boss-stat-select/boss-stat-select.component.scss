@@ -1,6 +1,11 @@
-.stat-input-wrapper {
+section {
+  margin-top: 10px;
+}
+
+.flex-wrap {
   display: flex;
   flex-wrap: wrap;
+  place-content: space-between;
 
   .stat-input {
     display: flex;
@@ -10,3 +15,6 @@
   }
 }
 
+:host ::ng-deep .mat-form-field-infix {
+  width: 100px;
+}

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -9,6 +9,7 @@ import { DIALOG_DATA } from "@angular/cdk/dialog";
 import { AttackEffects, Attributes, Bonuses, Conditions, Monster } from "../../../../../monster/services/model";
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {Subject} from "rxjs";
 
 @Component({
   selector: 'app-boss-stat-select',
@@ -17,7 +18,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   templateUrl: './boss-stat-select.component.html',
   styleUrls: ['./boss-stat-select.component.scss']
 })
-export class BossStatSelectComponent implements OnInit {
+export class BossStatSelectComponent implements OnInit, OnDestroy {
+  private _destroy$: Subject<void> = new Subject<void>();
+
   public formGroup: FormGroup<{
     name: FormControl<string>;
     attributes: FormArray<FormControl<number>>;
@@ -52,16 +55,28 @@ export class BossStatSelectComponent implements OnInit {
       conditions: this._form.array(this.Conditions.map(next => new FormControl<boolean>(undefined))),
       attackEffects: this._form.array(this.AttackEffects.map(next => this._form.group({
         has: new FormControl<boolean>(undefined),
-        value: new FormControl<number>(undefined)
+        value: new FormControl<number>({ value: 1, disabled: true }, [Validators.required, Validators.min(1)])
       }))),
       bonuses: this._form.array(this.Bonuses.map(next => this._form.group({
         has: new FormControl<boolean>(undefined),
-        value: new FormControl<number>(1, [Validators.min(1), Validators.required]),
-        'value-2': new FormControl<number>(1, [Validators.min(0), Validators.required])
+        value: new FormControl<number>({ value: 1, disabled: true }, [Validators.min(1), Validators.required]),
+        'value-2': new FormControl<number>({ value: 1, disabled: true }, [Validators.min(0), Validators.required])
       })))
     });
 
-    this.formGroup.valid
+    this.formGroup.controls.bonuses.controls.concat(this.formGroup.controls.attackEffects.controls as any).forEach(c => {
+      c.get('has').valueChanges.subscribe({
+        next: value => {
+          c.get('value')[value ? 'enable' : 'disable']();
+          c.get('value-2')?.[value ? 'enable' : 'disable']();
+        }
+      });
+    });
+  }
+
+  ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 
   public getValue(): Monster {
