@@ -1,28 +1,42 @@
-export const Conditions = [
-  'bless', 'curse',
-  'disarm', 'immobilize', 'invisible',
-  'muddle', 'poison', 'strengthen',
-  'stun', 'wound'
-] as const;
-export type Condition = typeof Conditions[number];
+export enum Conditions {
+  bless = 'bless',
+  curse = "curse",
+  disarm = "disarm",
+  immobilize = "immobilize",
+  invisible = "invisible",
+  muddle = "muddle",
+  poison = "poison",
+  strengthen = "strengthen",
+  stun = "stun",
+  wound = "wound"
+}
+export type Condition = keyof typeof Conditions;
 export const isCondition = (value: string): value is Condition => {
-  return Conditions.includes(value as Condition);
+  return Object.values(Conditions).includes(value as Conditions);
 }
 
-export const AttackEffects = ['pull', 'push', 'pierce', 'target'] as const;
-export type AttackEffect = typeof AttackEffects[number];
+export enum AttackEffects {
+  pull = 'pull',
+  push = "push",
+  pierce = "pierce",
+  target = "target"
+}
+export type AttackEffect = keyof typeof AttackEffects;
 export const isAttackEffect = (value: string): value is AttackEffect => {
-  return AttackEffects.includes(value as AttackEffect);
+  return Object.values(AttackEffects).includes(value as AttackEffects);
 }
 
-export const Bonuses = ['shield', 'retaliate'] as const;
-export type Bonus = typeof Bonuses[number];
+export enum Bonuses {
+  'shield' = 'shield',
+  'retaliate' = "retaliate"
+}
+export type Bonus = keyof typeof Bonuses;
 export const isBonus = (value: string): value is Bonus => {
-  return Bonuses.includes(value as Bonus);
+  return Object.values(Bonuses).includes(value as Bonuses);
 }
 
 /**
- * These are the effects and conditions that can be applied to a monster or a character
+ * These are the effects and conditions that can be applied to a monster.
  */
 export const ApplicableConditions = [
   'disarm',
@@ -35,40 +49,48 @@ export const ApplicableConditions = [
   'strengthen',
   'stun',
   'wound'
-]
+] as const;
 
-export type Attribute = [number, number][];
+export type Stat = [number, number];
+
+export enum Attributes {
+  'health' = "health",
+  'move' = "move",
+  'attack' = "attack",
+  'range' = "range"
+}
+export type Attribute = keyof typeof Attributes;
 
 export interface Monster {
   name: string;
   id: number;
 
+  /**
+   * Contains info on the attributes of {@link Monster}. The attributes are {@link Attribute}
+   */
   attributes: {
-    health: Attribute,
-    attack?: Attribute;
-    move?: Attribute;
-    range?: Attribute;
+    [k in Attribute]: Stat[];
   };
 
   /**
-   * Contains info on the conditions a monster has. The conditions are {@link Condition}
+   * Contains info on the conditions a {@link Monster} has. The conditions are {@link Condition}
    */
   conditions: {
-    [key in Condition]: [number, number][];
+    [key in Condition]: Stat[];
   }
 
   /**
-   * Contains info on the attack effects a monster has. The attack effects are {@link AttackEffect}
+   * Contains info on the attack effects a {@link Monster} has. The attack effects are {@link AttackEffect}
    */
   attackEffects: {
-    [key in AttackEffect]: [number, number][];
+    [key in AttackEffect]: Stat[];
   }
 
   /**
    * Contains info on the bonuses a monster has. The bonuses are {@link Bonus}
    */
   bonuses: {
-    [key in Bonus]: ([number, number] | [[number, number], [number, number]])[];
+    [key in Bonus]: (Stat | [Stat, Stat])[];
   }
 
   flying?: boolean;
