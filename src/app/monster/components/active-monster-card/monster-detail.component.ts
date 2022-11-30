@@ -50,8 +50,9 @@ import { BonusListPipe } from '../../pipes/bonus-list.pipe';
   ]
 })
 export class MonsterDetailComponent implements OnInit {
-  private _monster$: BehaviorSubject<Monster> = new BehaviorSubject<Monster>(undefined);
   private _monster: Monster;
+
+  public monster$: BehaviorSubject<Monster> = new BehaviorSubject<Monster>(undefined);
 
   get monster(): Monster {
     return this._monster;
@@ -59,7 +60,7 @@ export class MonsterDetailComponent implements OnInit {
 
   @Input() set monster(value: Monster) {
     this._monster = value;
-    this._monster$.next(value);
+    this.monster$.next(value);
   }
 
   public tokens$: Observable<{ elites: TokenInfo[], normals: TokenInfo[] }> | undefined;
@@ -83,7 +84,7 @@ export class MonsterDetailComponent implements OnInit {
 
     const tokens = combineLatest([
       this.combatService.store.tokens$,
-      this._monster$
+      this.monster$
     ])
       .pipe(
         // gets the tokens that belong to this monster

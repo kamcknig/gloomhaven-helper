@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CombatService } from '../../../combat/services/combat.service';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { Monster, MonsterAbility } from '../../services/model';
 import { MonsterService } from '../../services/monster.service';
 import { CommonModule } from '@angular/common';
@@ -16,7 +16,18 @@ import { CommonModule } from '@angular/common';
   ]
 })
 export class MonsterAbilityDeckComponent implements OnInit {
-  @Input() public monster: Monster;
+  private _monster$: BehaviorSubject<Monster> = new BehaviorSubject<Monster>(undefined);
+  private _monster: Monster;
+
+  get monster(): Monster {
+    return this._monster;
+  }
+
+  @Input()
+  set monster(value: Monster) {
+    this._monster = value;
+    this._monster$.next(value);
+  }
 
   public disabled$: Observable<boolean>;
   public activeCard$: Observable<MonsterAbility>;
@@ -27,12 +38,15 @@ export class MonsterAbilityDeckComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.disabled$ = this._combatService.store.tokens$.pipe(
-      map(tokens => !tokens.some(t => t.monsterId === this.monster.id))
-    );
+    this.disabled$ = combineLatest([
+      this._monster$,
+      this._combatService.store.tokens$.pipe(
+        map(tokens => !tokens.some(t => t.monsterId === this._monster.id))
+      )
+    ]).pipe(map(([, tokens]) => tokens));
 
-    const deck$ = this._combatService.store.activeMonsters$.pipe(
-      map(value => value[this.monster.id]?.abilities)
+    const deck$ = this._monster$.pipe(
+      switchMap(monster => this._combatService.store.activeMonsters$.pipe(map(value => value[monster.id]?.abilities)))
     );
 
     this.activeCard$ = deck$.pipe(
