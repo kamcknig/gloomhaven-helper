@@ -58,12 +58,6 @@
                                     fxLayout="row"
                                     fxLayoutAlign="start center">
                   </app-monster-stat>
-
-                  <!--<app-monster-stat *ngIf="hasCondition(condition, index === 1)"
-                                    [condition]="condition"
-                                    [conditionAmount]="monster | monsterStat : condition : level : $any(index)"
-                                    fxLayout="row"
-                                    fxLayoutAlign="start center"></app-monster-stat>-->
                 </div>
               </div>
             </ng-container>
@@ -127,4 +121,4 @@
   </button>
 </mat-card>
 
-<app-monster-ability-deck [monster]="monster"></app-monster-ability-deck>
+<app-monster-ability-deck [monster]="monster$ | async"></app-monster-ability-deck>
