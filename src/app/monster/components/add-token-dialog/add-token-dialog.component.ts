@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { TokenInfo } from '../../../combat/services/model';
 import { CommonModule } from '@angular/common';
@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule
   ]
 })
-export class AddTokenDialogComponent implements OnInit {
+export class AddTokenDialogComponent {
   public value: { normal: TokenInfo[], elite: TokenInfo[] };
   public defaultNumbers: number[];
   public selectedTokens: { normal: number[], elite: number[] } = {normal: [], elite: []};
@@ -34,9 +34,6 @@ export class AddTokenDialogComponent implements OnInit {
       prev[next.elite ? 'elite' : 'normal'].push(next);
       return prev;
     }, {elite: [] as TokenInfo[], normal: [] as TokenInfo[]});
-  }
-
-  ngOnInit(): void {
   }
 
   /**
