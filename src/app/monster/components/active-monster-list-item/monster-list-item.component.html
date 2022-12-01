@@ -31,52 +31,44 @@
 
     <div class="stats-token-container"
          fxLayout="row">
-      <ng-container *ngFor="let idx of [0, 1]">
+      <ng-container *ngFor="let elite of [0, 1]">
         <div fxLayout="column"
              fxFlex
              fxLayoutGap=".5rem"
-             [class]="idx === 0 ? 'normal' : 'elite'">
+             [class]="!elite ? 'normal' : 'elite'">
           <app-monster-attributes [monster]="monster"
-                                  [index]="idx"
+                                  [index]="elite"
                                   [level]="monsterLevel$ | async">
           </app-monster-attributes>
 
           <div *ngIf="monsterLevel$ | async as level"
-               [fxLayout]="idx === 0 ? 'row wrap' : 'row-reverse wrap'"
+               [fxLayout]="!elite  ? 'row wrap' : 'row-reverse wrap'"
                style="gap: .15rem;">
-            <app-monster-stat *ngFor="let effect of monster | conditionList : level : $any(idx)"
+            <app-monster-stat *ngFor="let effect of monster | conditionList : level : $any(elite)"
                               [condition]="$any(effect)"
-                              [conditionAmount]="monster | monsterStat : effect : level : $any(idx)"
+                              [conditionAmount]="monster | monsterStat : effect : level : $any(elite)"
                               fxLayout="row"
                               fxLayoutAlign="start center">
             </app-monster-stat>
 
-            <app-monster-stat *ngFor="let effect of monster | attackEffectList : level : $any(idx)"
+            <app-monster-stat *ngFor="let effect of monster | attackEffectList : level : $any(elite)"
                               [condition]="$any(effect)"
-                              [conditionAmount]="monster | monsterStat : effect : level : $any(idx)"
+                              [conditionAmount]="monster | monsterStat : effect : level : $any(elite)"
                               fxLayout="row"
                               fxLayoutAlign="start center">
             </app-monster-stat>
 
-            <app-monster-stat *ngFor="let effect of monster | bonusList : level : $any(idx)"
+            <app-monster-stat *ngFor="let effect of monster | bonusList : level : $any(elite)"
                               [condition]="$any(effect)"
-                              [conditionAmount]="monster | monsterStat : effect : level : $any(idx)"
+                              [conditionAmount]="monster | monsterStat : effect : level : $any(elite)"
                               fxLayout="row"
                               fxLayoutAlign="start center">
             </app-monster-stat>
-
-            <!--<ng-container *ngFor="let condition of ConditionsAndEffects">
-              <app-monster-stat *ngIf="hasCondition(condition, idx === 1)"
-                                [condition]="condition"
-                                [conditionAmount]="monster | monsterStat : condition : level : $any(idx)"
-                                fxLayout="row"
-                                fxLayoutAlign="start center"></app-monster-stat>
-            </ng-container>-->
           </div>
 
           <div class="token-container">
             <div class="token-wrapper"
-                 *ngFor="let token of (tokens$ | async)?.[idx === 0 ? 'normal' : 'elite']"
+                 *ngFor="let token of (tokens$ | async)?.[!elite ? 'normal' : 'elite']"
                  (click)="tokenService.toggleTokenStatusEffect$.next(token)">
               <app-token-health class="token-info"
                                 [token]="token"></app-token-health>
@@ -84,7 +76,7 @@
           </div>
         </div>
 
-        <mat-divider *ngIf="idx === 0" style="border-right-color: rgba(var(--gold), .5); border-right-width: 2px"
+        <mat-divider *ngIf="!elite" style="border-right-color: rgba(var(--gold), .5); border-right-width: 2px"
                      [vertical]="true"></mat-divider>
       </ng-container>
     </div>

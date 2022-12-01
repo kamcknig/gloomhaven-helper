@@ -12,11 +12,19 @@
     <mat-autocomplete #autocompleteTemplateRefId="matAutocomplete"
                       [autoActiveFirstOption]="true"
                       [displayWith]="displayAutocompleteForValue">
-      <mat-option *ngFor="let choice of filteredAvailableMonsters$ | async" [value]="choice">
+      <mat-option *ngFor="let choice of filteredAvailableMonsters$ | async"
+                  [value]="choice">
         {{choice.name}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
+
+  <br />
+  <button mat-raised-button
+          (click)="handleCreateBossClick()"
+          color="accent">
+    Create Boss
+  </button>
 </mat-dialog-content>
 
 <div mat-dialog-actions [align]="'end'">

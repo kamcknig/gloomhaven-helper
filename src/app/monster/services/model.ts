@@ -1,3 +1,7 @@
+import { v4 } from 'uuid';
+
+export type MonsterId = number | string;
+
 export enum Conditions {
   bless = 'bless',
   curse = "curse",
@@ -63,7 +67,7 @@ export type Attribute = keyof typeof Attributes;
 
 export interface Monster {
   name: string;
-  id: number;
+  id: MonsterId;
 
   /**
    * Contains info on the attributes of {@link Monster}. The attributes are {@link Attribute}

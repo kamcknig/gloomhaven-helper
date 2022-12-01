@@ -1,19 +1,16 @@
-import { Injectable } from '@angular/core';
-import { createAdapter } from '@state-adapt/core';
-import { HttpClient } from '@angular/common/http';
-import {
-  ActivateMonsterDialogComponent
-} from '../components/activate-monster-dialog/activate-monster-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
-import { filter, map, share, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
-import { adapt } from '@state-adapt/angular';
-import { Monster, MonsterNoId, MonsterState } from './model';
+import {Injectable} from '@angular/core';
+import {createAdapter} from '@state-adapt/core';
+import {HttpClient} from '@angular/common/http';
+import {ActivateMonsterDialogComponent} from '../components/activate-monster-dialog/activate-monster-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {filter, map, share, switchMap, take, tap, withLatestFrom} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {adapt} from '@state-adapt/angular';
+import {Monster, MonsterId, MonsterNoId, MonsterState} from './model';
 import {
   SelectMonsterLevelOverrideComponent
 } from "../components/select-monster-level-ovrerride/select-monster-level-override.component";
-import { Source, toSource } from '@state-adapt/rxjs';
-import { BossStatSelectComponent } from "../../src/app/monster/components/boss-stat-select/boss-stat-select.component";
+import {Source, toSource} from '@state-adapt/rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -80,9 +77,9 @@ export class MonsterService {
   public deactivateMonster$: Source<Monster> = new Source('deactivateMonster$')
 
   // trigger draw action, pass monster ID
-  public monsterAbilityCardDraw$: Source<number> = new Source('drawAbilityCard$');
+  public monsterAbilityCardDraw$: Source<MonsterId> = new Source('drawAbilityCard$');
 
-  public overrideMonsterLevel$: Source<{ monsterId: number; level: number }> = new Source('overrideMonsterLevel$');
+  public overrideMonsterLevel$: Source<{ monsterId: MonsterId; level: number }> = new Source('overrideMonsterLevel$');
 
   public monsterStore = adapt(
     [
@@ -98,7 +95,7 @@ export class MonsterService {
     }
   );
 
-  public overrideMonsterLevel(monsterId: number): void {
+  public overrideMonsterLevel(monsterId: MonsterId): void {
     this._dialogService.open(SelectMonsterLevelOverrideComponent, { data: { monsterId } })
       .afterClosed()
       .pipe(
@@ -133,14 +130,10 @@ export class MonsterService {
           )
             .afterClosed()
             .pipe(
+              filter(result => !!result),
               withLatestFrom(this.monsterStore.monsters$),
               map(([id, monsters]) => monsters.find(m => m.id === id)),
               filter(monster => !!monster),
-              switchMap(monster => {
-                return monster.name.toLowerCase() === 'boss'
-                  ? this._dialogService.open(BossStatSelectComponent, { maxWidth: '500px', data: { monster }}).afterClosed().pipe(filter(result => !!result))
-                  : of(monster);
-              }),
               tap(monster => this.activateMonster$.next(monster))
             )
           : of(null))
