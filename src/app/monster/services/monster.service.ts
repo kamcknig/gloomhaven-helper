@@ -1,19 +1,16 @@
-import { Injectable } from '@angular/core';
-import { createAdapter } from '@state-adapt/core';
-import { HttpClient } from '@angular/common/http';
-import {
-  ActivateMonsterDialogComponent
-} from '../components/activate-monster-dialog/activate-monster-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
-import { filter, map, share, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
-import { adapt } from '@state-adapt/angular';
+import {Injectable} from '@angular/core';
+import {createAdapter} from '@state-adapt/core';
+import {HttpClient} from '@angular/common/http';
+import {ActivateMonsterDialogComponent} from '../components/activate-monster-dialog/activate-monster-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {filter, map, share, switchMap, take, tap, withLatestFrom} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {adapt} from '@state-adapt/angular';
 import {Monster, MonsterId, MonsterNoId, MonsterState} from './model';
 import {
   SelectMonsterLevelOverrideComponent
 } from "../components/select-monster-level-ovrerride/select-monster-level-override.component";
-import { Source, toSource } from '@state-adapt/rxjs';
-import { BossStatSelectComponent } from "../../src/app/monster/components/boss-stat-select/boss-stat-select.component";
+import {Source, toSource} from '@state-adapt/rxjs';
 
 @Injectable({
   providedIn: 'root'

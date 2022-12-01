@@ -124,25 +124,22 @@ export class CombatService {
         turn: Math.min(state.turn, Object.keys(activeMonsters).length)
       }
     },
-    activateMonster: (state, event: Monster) => {
-      console.log(event);
-      return {
-        ...state,
-        activeMonsters: {
-          ...state.activeMonsters,
-          [event.id]: {
-            abilities: event.abilities?.reduce((prev: any[], next: MonsterAbility) => {
+    activateMonster: (state, event: Monster) => ({
+      ...state,
+      activeMonsters: {
+        ...state.activeMonsters,
+        [event.id]: {
+          abilities: event.abilities?.reduce((prev: any[], next: MonsterAbility) => {
               const count = next?.count ?? 1;
               for (let i = 0; i < count; i++) {
                 prev.push({...next});
               }
               return prev;
             }, [])
-              ?.map((a: any) => ({...a})) ?? []
-          }
+            ?.map((a: any) => ({...a})) ?? []
         }
       }
-    },
+    }),
     monsterAbilityCardDraw: (state, event) => {
       let abilities = [...state.activeMonsters[event].abilities];
       const ability = this.drawCard(abilities);

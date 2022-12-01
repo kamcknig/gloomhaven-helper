@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { Monster } from '../services/model';
+import {Pipe, PipeTransform} from '@angular/core';
+import {Monster} from '../services/model';
 
 @Pipe({
   name: 'attackEffectList',
@@ -11,11 +11,11 @@ import { Monster } from '../services/model';
  */
 export class AttackEffectListPipe implements PipeTransform {
   transform(value: Monster, level: number, elite: 1 | 0 = 0): string[] {
-    level--;
-
     if (!value.attackEffects) {
       return [];
     }
+
+    level--;
 
     return Object.entries(value.attackEffects).reduce((prev, [key, attEffValue]) => {
      if (attEffValue[level ?? 0]?.[elite] > 0) {

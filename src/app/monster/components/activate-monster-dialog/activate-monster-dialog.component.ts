@@ -2,15 +2,15 @@ import {AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild} from '@
 import {Observable} from 'rxjs';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {map, startWith, tap} from 'rxjs/operators';
+import {map, startWith} from 'rxjs/operators';
 import {Monster} from '../../services/model';
 import {MatAutocompleteModule, MatAutocompleteTrigger} from "@angular/material/autocomplete";
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {CommonModule} from '@angular/common';
-import {BossStatSelectComponent} from "../../../src/app/monster/components/boss-stat-select/boss-stat-select.component";
+import {CreateBossComponent} from "../../../src/app/monster/components/create-boss/create-boss.component";
 import {MonsterService} from "../../services/monster.service";
-import { v4 as uuid } from 'uuid';
+import {v4 as uuid} from 'uuid';
 
 @Component({
   selector: 'app-activate-monster-dialog',
@@ -86,7 +86,7 @@ export class ActivateMonsterDialogComponent implements OnInit, AfterViewInit {
   handleCreateBossClick() {
     this._dialogRef.close();
 
-    this._dialogService.open(BossStatSelectComponent, {
+    this._dialogService.open(CreateBossComponent, {
       maxWidth: '500px',
       data: this._boss
     }).afterClosed().subscribe({

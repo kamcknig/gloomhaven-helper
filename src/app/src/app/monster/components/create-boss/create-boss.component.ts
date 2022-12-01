@@ -1,24 +1,24 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MatFormFieldModule } from "@angular/material/form-field";
-import { MatInputModule } from "@angular/material/input";
-import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { MatDialogModule } from "@angular/material/dialog";
-import { MatButtonModule } from "@angular/material/button";
-import { DIALOG_DATA } from "@angular/cdk/dialog";
-import { AttackEffects, Attributes, Bonuses, Conditions, Monster } from "../../../../../monster/services/model";
-import { MatDividerModule } from '@angular/material/divider';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import {CommonModule} from '@angular/common';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatButtonModule} from "@angular/material/button";
+import {DIALOG_DATA} from "@angular/cdk/dialog";
+import {AttackEffects, Attributes, Bonuses, Conditions, Monster} from "../../../../../monster/services/model";
+import {MatDividerModule} from '@angular/material/divider';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {Subject} from "rxjs";
 
 @Component({
-  selector: 'app-boss-stat-select',
+  selector: 'app-create-boss',
   standalone: true,
   imports: [CommonModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatDialogModule, MatButtonModule, MatDividerModule, MatCheckboxModule],
-  templateUrl: './boss-stat-select.component.html',
-  styleUrls: ['./boss-stat-select.component.scss']
+  templateUrl: './create-boss.component.html',
+  styleUrls: ['./create-boss.component.scss']
 })
-export class BossStatSelectComponent implements OnInit, OnDestroy {
+export class CreateBossComponent implements OnInit, OnDestroy {
   private _destroy$: Subject<void> = new Subject<void>();
 
   public formGroup: FormGroup<{
@@ -55,12 +55,12 @@ export class BossStatSelectComponent implements OnInit, OnDestroy {
       conditions: this._form.array(this.Conditions.map(next => new FormControl<boolean>(undefined))),
       attackEffects: this._form.array(this.AttackEffects.map(next => this._form.group({
         has: new FormControl<boolean>(undefined),
-        value: new FormControl<number>({ value: 1, disabled: true }, [Validators.required, Validators.min(1)])
+        value: new FormControl<number>({value: 1, disabled: true}, [Validators.required, Validators.min(1)])
       }))),
       bonuses: this._form.array(this.Bonuses.map(next => this._form.group({
         has: new FormControl<boolean>(undefined),
-        value: new FormControl<number>({ value: 1, disabled: true }, [Validators.min(1), Validators.required]),
-        'value-2': new FormControl<number>({ value: 1, disabled: true }, [Validators.min(0), Validators.required])
+        value: new FormControl<number>({value: 1, disabled: true}, [Validators.min(1), Validators.required]),
+        'value-2': new FormControl<number>({value: 1, disabled: true}, [Validators.min(0), Validators.required])
       })))
     });
 
@@ -112,10 +112,8 @@ export class BossStatSelectComponent implements OnInit, OnDestroy {
               [!!this.formGroup.value.bonuses[idx].has ? this.formGroup.value.bonuses[idx].value : 0, this.formGroup.value.bonuses[idx]['value-2']]
             ]
             : [
-              [
-                !!this.formGroup.value.bonuses[idx].has ? this.formGroup.value.bonuses[idx].value : 0,
-                !!this.formGroup.value.bonuses[idx].has ? this.formGroup.value.bonuses[idx].value : 0
-              ]
+              !!this.formGroup.value.bonuses[idx].has ? this.formGroup.value.bonuses[idx].value : 0,
+              !!this.formGroup.value.bonuses[idx].has ? this.formGroup.value.bonuses[idx].value : 0
             ]
           );
           return prev;
