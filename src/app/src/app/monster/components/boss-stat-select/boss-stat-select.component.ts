@@ -43,7 +43,7 @@ export class BossStatSelectComponent implements OnInit, OnDestroy {
 
   constructor(
     private _form: FormBuilder,
-    @Inject(DIALOG_DATA) private _data: { monster: Monster }
+    @Inject(DIALOG_DATA) private _data: Monster
   ) {
   }
 
@@ -81,7 +81,7 @@ export class BossStatSelectComponent implements OnInit, OnDestroy {
 
   public getValue(): Monster {
     return {
-      ...this._data.monster,
+      ...this._data,
       ...this.formGroup.value,
       attributes: {
         ...Object.values(Attributes).reduce((prev, next, idx) => {

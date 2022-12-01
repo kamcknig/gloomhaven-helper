@@ -6,6 +6,7 @@ import { CombatService } from './combat/services/combat.service';
 import { ScenarioInfo, ViewMode } from './model';
 import { MonsterService } from "./monster/services/monster.service";
 import { joinStores, Source } from '@state-adapt/rxjs';
+import {MonsterId} from "./monster/services/model";
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,7 @@ export class AppService {
     }
   )
 
-  public monsterLevel(monsterId: number) {
+  public monsterLevel(monsterId: MonsterId) {
     return joinStores({
       one: this._monsterService.monsterStore,
       two: this.scenarioStore

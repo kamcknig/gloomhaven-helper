@@ -8,12 +8,13 @@ import { CombatService } from './combat.service';
 import { Subject } from 'rxjs';
 import { MonsterService } from '../../monster/services/monster.service';
 import { ToggleEffectDialog } from "../../monster/components/toggle-effect-dialog/toggle-effect-dialog.component";
+import {MonsterId} from "../../monster/services/model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
-  public addToken$: Subject<number> = new Subject<number>();
+  public addToken$: Subject<MonsterId> = new Subject<MonsterId>();
   public toggleTokenStatusEffect$: Subject<TokenInfo> = new Subject<TokenInfo>();
 
   constructor(

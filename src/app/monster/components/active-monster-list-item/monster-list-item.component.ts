@@ -45,10 +45,18 @@ import { BonusListPipe } from '../../pipes/bonus-list.pipe';
   ]
 })
 export class MonsterListItemComponent implements OnInit {
+  get monster(): Monster {
+    return this._monster;
+  }
+
+  @Input() set monster(value: Monster) {
+    this._monster = value;
+    console.log(this._monster);
+  }
   @ViewChild('leftSection') leftSection: ElementRef;
   @ViewChild('rightSection') rightSection: ElementRef;
 
-  @Input() public monster: Monster;
+   private _monster: Monster;
   @Input() public active: boolean;
 
   public tokens$: Observable<{ elite: TokenInfo[], normal: TokenInfo[] }>;
@@ -65,10 +73,11 @@ export class MonsterListItemComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.monsterLevel$ = this._appService.monsterLevel(this.monster.id).level$;
+    if (this.monster)
+    this.monsterLevel$ = this._appService.monsterLevel(this._monster.id).level$;
 
     const tokens = this.combatService.store.tokens$.pipe(
-      map(tokens => tokens.filter(t => t.monsterId === this.monster.id))
+      map(tokens => tokens.filter(t => t.monsterId === this._monster.id))
     );
 
     this.tokenCount$ = tokens.pipe(map(tokens => tokens?.length ?? 0));
