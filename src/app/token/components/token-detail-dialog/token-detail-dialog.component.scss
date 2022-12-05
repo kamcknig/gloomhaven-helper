@@ -1,8 +1,20 @@
 /** The overlay that appears when adding a status effect or condition to a token */
-.status-select-overlay {
+.content-container {
   img {
-    max-height: 5rem;
-    max-width: 5rem;
+    max-width: 3.5rem;
+    height: auto;
     cursor: pointer;
+  }
+
+  .hit-point-input {
+    margin-bottom: 20px;
+  }
+
+  :first-child {
+    margin-top: 10px;
+  }
+
+  :last-child {
+    margin-bottom: 15px;
   }
 }
