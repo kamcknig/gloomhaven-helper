@@ -15,7 +15,7 @@ import {MonsterId} from "../../monster/services/model";
 })
 export class TokenService {
   public addToken$: Subject<MonsterId> = new Subject<MonsterId>();
-  public toggleTokenStatusEffect$: Subject<TokenInfo> = new Subject<TokenInfo>();
+  public updateTokenDetails$: Subject<TokenInfo> = new Subject<TokenInfo>();
 
   constructor(
     private _monsterService: MonsterService,
@@ -23,7 +23,7 @@ export class TokenService {
     private _appService: AppService,
     private _combatService: CombatService
   ) {
-    this.toggleTokenStatusEffect$.pipe(
+    this.updateTokenDetails$.pipe(
       switchMap(token => {
         return this._dialogService.open(TokenDetailDialogComponent, {
           width: '450px',

@@ -95,7 +95,7 @@
                                        style="width: 100%;"
                                        [value]="token"
                                        [statuses]="getTokenConditionsAndEffects(token)"
-                                       (statusPress)="tokenService.toggleTokenStatusEffect$.next(token)">
+                                       (statusPress)="tokenService.updateTokenDetails$.next(token)">
                   </app-token-list-item>
                 </div>
               </div>

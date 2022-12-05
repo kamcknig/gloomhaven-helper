@@ -73,7 +73,7 @@
           <div class="token-container">
             <app-token-health class="token-info"
                               *ngFor="let token of (tokens$ | async)?.[!elite ? 'normal' : 'elite']"
-                              (click)="tokenService.toggleTokenStatusEffect$.next(token)"
+                              (click)="tokenService.updateTokenDetails$.next(token)"
                               [token]="token">
             </app-token-health>
           </div>

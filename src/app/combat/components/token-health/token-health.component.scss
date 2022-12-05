@@ -1,5 +1,15 @@
 @import '../../../../css/colors';
 
+.has-conditions {
+  margin-right: 5px;
+
+  &::after {
+    content: '*';
+    vertical-align: super;
+    position: absolute;
+  }
+}
+
 .health {
   color: $deep-red;
 }
