@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TokenInfo} from '../../services/model';
 
@@ -12,13 +12,12 @@ import {TokenInfo} from '../../services/model';
 /**
  * Displays a {@link TokenInfo}s number and current health side by side
  */
-export class TokenHealthComponent implements OnInit {
+export class TokenHealthComponent {
   @Input() token: TokenInfo;
 
   constructor() { }
 
-
-  ngOnInit(): void {
+  hasConditions(): boolean {
+    return Object.values(this.token?.appliedConditionsAndEffects ?? {})?.some(v => v > 0);
   }
-
 }
