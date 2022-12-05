@@ -2,7 +2,7 @@ import {AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild} from '@
 import {Observable} from 'rxjs';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {map, startWith} from 'rxjs/operators';
+import {filter, map, startWith} from 'rxjs/operators';
 import {Monster} from '../../services/model';
 import {MatAutocompleteModule, MatAutocompleteTrigger} from "@angular/material/autocomplete";
 import {MatInputModule} from '@angular/material/input';
@@ -89,7 +89,7 @@ export class ActivateMonsterDialogComponent implements OnInit, AfterViewInit {
     this._dialogService.open(CreateBossComponent, {
       maxWidth: '500px',
       data: this._boss
-    }).afterClosed().subscribe({
+    }).afterClosed().pipe(filter(result => !!result)).subscribe({
       next: monster => this._monsterService.activateMonster$.next({...monster, id: uuid() })
     });
   }
