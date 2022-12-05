@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { AddTokenDialogComponent } from '../../monster/components/add-token-dialog/add-token-dialog.component';
-import { filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
-import { TokenInfo } from './model';
-import { MatDialog } from '@angular/material/dialog';
-import { AppService } from '../../app.service';
-import { CombatService } from './combat.service';
-import { Subject } from 'rxjs';
-import { MonsterService } from '../../monster/services/monster.service';
-import { ToggleEffectDialog } from "../../monster/components/toggle-effect-dialog/toggle-effect-dialog.component";
+import {Injectable} from '@angular/core';
+import {AddTokenDialogComponent} from '../../monster/components/add-token-dialog/add-token-dialog.component';
+import {filter, map, switchMap, withLatestFrom} from 'rxjs/operators';
+import {TokenInfo} from './model';
+import {MatDialog} from '@angular/material/dialog';
+import {AppService} from '../../app.service';
+import {CombatService} from './combat.service';
+import {Subject} from 'rxjs';
+import {MonsterService} from '../../monster/services/monster.service';
+import {TokenDetailDialogComponent} from "../../token/components/token-detail-dialog/token-detail-dialog.component";
 import {MonsterId} from "../../monster/services/model";
 
 @Injectable({
@@ -25,7 +25,7 @@ export class TokenService {
   ) {
     this.toggleTokenStatusEffect$.pipe(
       switchMap(token => {
-        return this._dialogService.open(ToggleEffectDialog, {
+        return this._dialogService.open(TokenDetailDialogComponent, {
           width: '450px',
           disableClose: false,
           data: token

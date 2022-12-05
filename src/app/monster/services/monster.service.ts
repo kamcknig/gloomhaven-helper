@@ -69,9 +69,9 @@ export class MonsterService {
       toSource('[GET Monsters]')
     );
 
-  //------ sources
-
-  // trigger activate monster action, pass Monster instance
+  /**
+   * Trigger activate monster action, pass a {@link Monster} instance
+   */
   public activateMonster$: Source<Monster> = new Source('activateMonster$');
 
   public deactivateMonster$: Source<Monster> = new Source('deactivateMonster$')

@@ -102,7 +102,7 @@ export class AppComponent implements OnInit {
 
             return m1Initiative - m2Initiative;
           })
-          .map(combatMonster => monsters.find(m => m.id === combatMonster[0]))
+          .map(combatMonster => monsters.find(m => m.id.toString() === combatMonster[0].toString()))
         )
       );
   }

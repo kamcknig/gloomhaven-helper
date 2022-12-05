@@ -8,7 +8,7 @@ import {MatAutocompleteModule, MatAutocompleteTrigger} from "@angular/material/a
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {CommonModule} from '@angular/common';
-import {CreateBossComponent} from "../../../src/app/monster/components/create-boss/create-boss.component";
+import {CreateBossComponent} from "../create-boss/create-boss.component";
 import {MonsterService} from "../../services/monster.service";
 import {v4 as uuid} from 'uuid';
 
@@ -83,6 +83,11 @@ export class ActivateMonsterDialogComponent implements OnInit, AfterViewInit {
     return $event?.name ?? '';
   }
 
+  /**
+   * Closes the {@link ActivateMonsterDialogComponent} and opens the
+   * {@link CreateBossComponent} for stat selection. Upon boss stat
+   * selection, dispatches {@link MonsterService.activateMonster$}
+   */
   handleCreateBossClick() {
     this._dialogRef.close();
 

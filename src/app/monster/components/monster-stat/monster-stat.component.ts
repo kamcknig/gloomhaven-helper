@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AttackEffect, Bonus, Condition } from "../../services/model";
+import {Component, Input} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {AttackEffect, Bonus, Condition} from "../../services/model";
 
 @Component({
   selector: 'app-monster-stat',
@@ -16,7 +16,6 @@ export class MonsterStatComponent {
 
   @Input() set conditionAmount(value: number | [number, number] | undefined) {
     this._conditionAmount = value;
-    console.log(this._conditionAmount);
   }
   @Input() condition: AttackEffect | Bonus | Condition;
 
