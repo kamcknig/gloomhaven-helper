@@ -38,11 +38,13 @@
              fxFlex
              fxLayoutGap=".5rem"
              [class]="!elite ? 'normal' : 'elite'">
+          <!-- displays monster attributes such as health, movement, etc. -->
           <app-monster-attributes [monster]="monster$ | async"
                                   [index]="elite"
                                   [level]="monsterLevel$ | async">
           </app-monster-attributes>
 
+          <!-- displays the Monsters stats including conditions, bonuses, etc. -->
           <div *ngIf="monsterLevel$ | async as level"
                [fxLayout]="!elite  ? 'row wrap' : 'row-reverse wrap'"
                style="gap: .15rem;">
@@ -69,17 +71,18 @@
           </div>
 
           <div class="token-container">
-            <div class="token-wrapper"
-                 *ngFor="let token of (tokens$ | async)?.[!elite ? 'normal' : 'elite']"
-                 (click)="tokenService.toggleTokenStatusEffect$.next(token)">
-              <app-token-health class="token-info"
-                                [token]="token"></app-token-health>
-            </div>
+            <app-token-health class="token-info"
+                              *ngFor="let token of (tokens$ | async)?.[!elite ? 'normal' : 'elite']"
+                              (click)="tokenService.toggleTokenStatusEffect$.next(token)"
+                              [token]="token">
+            </app-token-health>
           </div>
         </div>
 
-        <mat-divider *ngIf="!elite" style="border-right-color: rgba(var(--gold), .5); border-right-width: 2px"
-                     [vertical]="true"></mat-divider>
+        <mat-divider *ngIf="!elite"
+                     style="border-right-color: rgba(var(--gold), .5); border-right-width: 2px"
+                     [vertical]="true">
+        </mat-divider>
       </ng-container>
     </div>
   </section>
