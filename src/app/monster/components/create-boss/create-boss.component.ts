@@ -6,7 +6,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Val
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {DIALOG_DATA} from "@angular/cdk/dialog";
-import {AttackEffects, Attributes, Bonuses, Conditions, Monster} from "../../../../../monster/services/model";
+import {AttackEffects, Attributes, Bonuses, Conditions, Monster} from "../../services/model";
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {Subject} from "rxjs";

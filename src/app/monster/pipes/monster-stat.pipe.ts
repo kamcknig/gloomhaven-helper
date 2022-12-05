@@ -1,5 +1,5 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { isAttackEffect, isBonus, isCondition, Monster } from '../services/model';
+import {Pipe, PipeTransform} from '@angular/core';
+import {isAttackEffect, isBonus, isCondition, Monster} from '../services/model';
 
 /**
  * A Pipe to extract a value for a given stat on a monster.
@@ -24,6 +24,10 @@ export class MonsterStatPipePipe implements PipeTransform {
    * @param elite 1 if elite, 0 if not
    */
   transform(monster: Monster, statName: string, level: number, elite: 0 | 1 = 0): number | [number, number] {
+    if (!monster) {
+      return 0;
+    }
+
     level--;
 
     if (['health', 'move', 'attack', 'range'].includes(statName)) {
