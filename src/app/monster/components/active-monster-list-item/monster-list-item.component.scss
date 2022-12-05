@@ -48,8 +48,9 @@
     margin: 0 6px 6px 0;
     gap: 17px 4px;
 
-    > .token-wrapper {
-      padding: 0 -2px -2px 0
+    > .token-info {
+      cursor: pointer;
+      padding: 5px;
     }
 
     app-token-health {
