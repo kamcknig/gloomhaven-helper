@@ -90,13 +90,14 @@ export class CreateBossComponent implements OnInit, OnDestroy, AfterViewInit {
       })))
     });
 
-    this.formGroup.setValue({
+    // uncomment to have a  boss pre-filled with some data
+    /*this.formGroup.setValue({
       attackEffects: [{has: true, value: 1}, { has: true, value: 1}, { has: false, value: 1}, { has: false, value: 1}],
       attributes: [1, 1, 1, 1],
       name: 'Boss',
       conditions: [true, true, true, true, false, false, false, false, false, false],
       bonuses: [{has: true, value: 1, "value-2": 1}, { has: true, value: 1, "value-2": 1}]
-    })
+    });*/
   }
 
   ngOnDestroy(): void {
