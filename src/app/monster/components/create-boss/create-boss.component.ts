@@ -1,7 +1,7 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
+import {MatInput, MatInputModule} from "@angular/material/input";
 import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
@@ -18,8 +18,28 @@ import {Subject} from "rxjs";
   templateUrl: './create-boss.component.html',
   styleUrls: ['./create-boss.component.scss']
 })
-export class CreateBossComponent implements OnInit, OnDestroy {
+export class CreateBossComponent implements OnInit, OnDestroy, AfterViewInit {
   private _destroy$: Subject<void> = new Subject<void>();
+
+  @ViewChildren('bonusValueInput', { read: MatInput }) public bonusValueInputs: QueryList<MatInput>;
+  @ViewChildren('attackEffectValueInput', { read: MatInput }) public attackEffectValueInputs: QueryList<MatInput>;
+
+  ngAfterViewInit() {
+    const func = (inputs: QueryList<MatInput>) => (c: FormGroup, idx: number) => {
+      c.get('has').valueChanges.subscribe({
+        next: value => {
+          c.get('value')[value ? 'enable' : 'disable']();
+          c.get('value-2')?.[value ? 'enable' : 'disable']();
+
+          if (value) {
+            inputs.get(idx)?.focus();
+          }
+        }
+      });
+    }
+    this.formGroup.controls.attackEffects.controls.forEach(func(this.attackEffectValueInputs))
+    this.formGroup.controls.bonuses.controls.forEach(func(this.bonusValueInputs));
+  }
 
   public formGroup: FormGroup<{
     name: FormControl<string>;
@@ -62,15 +82,6 @@ export class CreateBossComponent implements OnInit, OnDestroy {
         value: new FormControl<number>({value: 1, disabled: true}, [Validators.min(1), Validators.required]),
         'value-2': new FormControl<number>({value: 1, disabled: true}, [Validators.min(0), Validators.required])
       })))
-    });
-
-    this.formGroup.controls.bonuses.controls.concat(this.formGroup.controls.attackEffects.controls as any).forEach(c => {
-      c.get('has').valueChanges.subscribe({
-        next: value => {
-          c.get('value')[value ? 'enable' : 'disable']();
-          c.get('value-2')?.[value ? 'enable' : 'disable']();
-        }
-      });
     });
   }
 
