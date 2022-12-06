@@ -11,6 +11,21 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {Subject} from "rxjs";
 
+type BossForm = {
+  name: FormControl<string>;
+  attributes: FormArray<FormControl<number>>;
+  conditions: FormArray<FormControl<boolean>>;
+  attackEffects: FormArray<FormGroup<{
+    has: FormControl<boolean>,
+    value: FormControl<number>
+  }>>;
+  bonuses: FormArray<FormGroup<{
+    has: FormControl<boolean>;
+    value: FormControl<number>;
+    'value-2': FormControl<number>;
+  }>>;
+};
+
 @Component({
   selector: 'app-create-boss',
   standalone: true,
@@ -45,20 +60,7 @@ export class CreateBossComponent implements OnInit, OnDestroy, AfterViewInit {
     this.formGroup.controls.bonuses.controls.forEach(func(this.bonusValueInputs, this.bonusValueInputEls));
   }
 
-  public formGroup: FormGroup<{
-    name: FormControl<string>;
-    attributes: FormArray<FormControl<number>>;
-    conditions: FormArray<FormControl<boolean>>;
-    attackEffects: FormArray<FormGroup<{
-      has: FormControl<boolean>,
-      value: FormControl<number>
-    }>>;
-    bonuses: FormArray<FormGroup<{
-      has: FormControl<boolean>;
-      value: FormControl<number>;
-      'value-2': FormControl<number>;
-    }>>;
-  }>;
+  public formGroup: FormGroup<BossForm>;
 
   public Attributes = Object.values(Attributes);
   public Conditions = Object.values(Conditions);
@@ -87,6 +89,14 @@ export class CreateBossComponent implements OnInit, OnDestroy, AfterViewInit {
         'value-2': new FormControl<number>({value: 1, disabled: true}, [Validators.min(0), Validators.required])
       })))
     });
+
+    this.formGroup.setValue({
+      attackEffects: [{has: true, value: 1}, { has: true, value: 1}, { has: false, value: 1}, { has: false, value: 1}],
+      attributes: [1, 1, 1, 1],
+      name: 'Boss',
+      conditions: [true, true, true, true, false, false, false, false, false, false],
+      bonuses: [{has: true, value: 1, "value-2": 1}, { has: true, value: 1, "value-2": 1}]
+    })
   }
 
   ngOnDestroy(): void {

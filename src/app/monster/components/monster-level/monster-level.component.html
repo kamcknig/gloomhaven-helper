@@ -1,4 +1,4 @@
-<ng-container *ngrxLet="monster$ | async as monster">
+<ng-container *ngrxLet="monster$ as monster">
   <span [ngClass]="{override: (monsterLevel$ | async) !== (scenarioLevel$ | async)}"
         (click)="monsterService.overrideMonsterLevel(monster.id)">
     ( {{monsterLevel$ | async}} )

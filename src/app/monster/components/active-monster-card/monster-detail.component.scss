@@ -50,20 +50,45 @@
         margin-bottom: 0;
 
         .mat-card-content-wrapper {
-          width: 100%
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          justify-content: flex-start;
         }
 
         .mat-title {
           text-decoration: underline;
         }
 
-        .monster-info-wrapper {
-          width: 100%;
+        .monster-stat-parent-wrapper {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+
+          &.boss {
+            justify-content: center;
+          }
+
           position: relative;
+
+          .monster-stat-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+
+            &.elite {
+              align-items: flex-end;
+            }
+
+            > *:not(:last-child) {
+              margin-bottom: .5rem;
+            }
+          }
         }
 
         .token-info-wrapper {
-          width: 100%;
           position: relative;
           height: 100%;
 

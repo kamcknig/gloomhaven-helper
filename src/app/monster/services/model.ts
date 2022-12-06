@@ -1,5 +1,3 @@
-import { v4 } from 'uuid';
-
 export type MonsterId = number | string;
 
 export enum Conditions {
@@ -64,6 +62,11 @@ export enum Attributes {
   'range' = "range"
 }
 export type Attribute = keyof typeof Attributes;
+
+export type Boss = Monster & { boss: true };
+export const isBoss = (value: Monster): value is Boss => {
+  return !!value && value.hasOwnProperty('boss') && value['boss'] === true;
+}
 
 export interface Monster {
   name: string;

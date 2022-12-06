@@ -95,7 +95,7 @@ export class ActivateMonsterDialogComponent implements OnInit, AfterViewInit {
       maxWidth: '500px',
       data: this._boss
     }).afterClosed().pipe(filter(result => !!result)).subscribe({
-      next: monster => this._monsterService.activateMonster$.next({...monster, id: uuid() })
+      next: monster => this._monsterService.activateMonster$.next({...monster, id: uuid(), boss: true })
     });
   }
 }

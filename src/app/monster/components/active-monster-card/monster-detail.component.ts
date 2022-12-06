@@ -3,7 +3,7 @@ import {AppService} from '../../../app.service';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {map, takeUntil} from 'rxjs/operators';
 import {MatDialog} from '@angular/material/dialog';
-import {Monster} from '../../services/model';
+import {isBoss, Monster} from '../../services/model';
 import {TokenInfo} from '../../../combat/services/model';
 import {CombatService} from '../../../combat/services/combat.service';
 import {MonsterService} from '../../services/monster.service';
@@ -24,6 +24,7 @@ import {MonsterStatPipe} from '../../pipes/monster-stat.pipe';
 import {ConditionListPipe} from '../../pipes/condition-list.pipe';
 import {AttackEffectListPipe} from '../../pipes/attack-effect-list.pipe';
 import {BonusListPipe} from '../../pipes/bonus-list.pipe';
+import {LetModule} from "@ngrx/component";
 
 @Component({
   selector: 'monster-detail',
@@ -46,11 +47,14 @@ import {BonusListPipe} from '../../pipes/bonus-list.pipe';
     MonsterStatPipe,
     ConditionListPipe,
     AttackEffectListPipe,
-    BonusListPipe
+    BonusListPipe,
+    LetModule
   ]
 })
 export class MonsterDetailComponent implements OnInit {
   private _monster: Monster;
+
+  public isBoss = isBoss;
 
   public monster$: BehaviorSubject<Monster> = new BehaviorSubject<Monster>(undefined);
 
