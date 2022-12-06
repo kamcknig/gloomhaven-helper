@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { Monster } from '../../services/model';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MonsterStatPipePipe } from '../../pipes/monster-stat.pipe';
+import {Component, Input} from '@angular/core';
+import {Monster} from '../../services/model';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {MonsterStatPipe} from '../../pipes/monster-stat.pipe';
 
 @Component({
   selector: 'app-monster-attributes',
@@ -10,7 +10,7 @@ import { MonsterStatPipePipe } from '../../pipes/monster-stat.pipe';
   standalone: true,
   imports: [
     FlexLayoutModule,
-    MonsterStatPipePipe
+    MonsterStatPipe
   ]
 })
 /**

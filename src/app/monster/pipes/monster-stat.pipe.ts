@@ -8,14 +8,14 @@ import {isAttackEffect, isBonus, isCondition, Monster} from '../services/model';
   name: 'monsterStat',
   standalone: true
 })
-export class MonsterStatPipePipe implements PipeTransform {
+export class MonsterStatPipe implements PipeTransform {
 
   /**
    * Returns the value of a given stat for a {@link Monster.conditions}, {@link Monster.attackEffects},
    * or {@link Monster.bonuses}. This can either be a number or a tuple of two numbers.
    *
    * If it is a tuple the first element represents the value and the second element represents some other arbitrary
-   * data. Right now, the only example of the latter would be {@link ConditionsAndEffects}.<em>Retaliate</em>
+   * data. Right now, the only example of the latter would be {@link Bonus.retaliate}
    * where a monster can retaliate X amount at range Y.
    *
    * @param monster The monster whose stat we are looking for
