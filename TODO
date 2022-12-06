@@ -1,3 +1,5 @@
 update focused monster detail component when in list view so that it's ability deck can grow bigger.
 
 update the monster list item component to have a more readable attribute section for the boss monsters. the numbers look weird spread out.
+
+add a way to quickly remove a token rather than making it's HP 0. You can do that a little quicker than using the arrows by going into the token details dialog and setting it to 0 but should there be an even quicker way? A delete button on that dialog? One on the monster list and/or detail view? on the token selection dialog?
