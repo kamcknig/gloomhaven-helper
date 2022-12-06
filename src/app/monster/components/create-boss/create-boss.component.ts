@@ -1,7 +1,7 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
+import {MatInput, MatInputModule} from "@angular/material/input";
 import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
@@ -18,8 +18,32 @@ import {Subject} from "rxjs";
   templateUrl: './create-boss.component.html',
   styleUrls: ['./create-boss.component.scss']
 })
-export class CreateBossComponent implements OnInit, OnDestroy {
+export class CreateBossComponent implements OnInit, OnDestroy, AfterViewInit {
   private _destroy$: Subject<void> = new Subject<void>();
+
+  @ViewChildren('bonusValueInput', { read: MatInput }) public bonusValueInputs: QueryList<MatInput>;
+  @ViewChildren('bonusValueInput', { read: ElementRef }) public bonusValueInputEls: QueryList<ElementRef<HTMLInputElement>>;
+
+  @ViewChildren('attackEffectValueInput', { read: MatInput }) public attackEffectValueInputs: QueryList<MatInput>;
+  @ViewChildren('attackEffectValueInput', { read: ElementRef }) public attackEffectValueInputEls: QueryList<ElementRef<HTMLInputElement>>;
+
+  ngAfterViewInit() {
+    const func = (inputs: QueryList<MatInput>, els: QueryList<ElementRef<HTMLInputElement>>) => (c: FormGroup, idx: number) => {
+      c.get('has').valueChanges.subscribe({
+        next: value => {
+          c.get('value')[value ? 'enable' : 'disable']();
+          c.get('value-2')?.[value ? 'enable' : 'disable']();
+
+          if (value) {
+            inputs.get(idx)?.focus();
+            els.get(idx)?.nativeElement.select();
+          }
+        }
+      });
+    }
+    this.formGroup.controls.attackEffects.controls.forEach(func(this.attackEffectValueInputs, this.attackEffectValueInputEls))
+    this.formGroup.controls.bonuses.controls.forEach(func(this.bonusValueInputs, this.bonusValueInputEls));
+  }
 
   public formGroup: FormGroup<{
     name: FormControl<string>;
@@ -51,26 +75,17 @@ export class CreateBossComponent implements OnInit, OnDestroy {
     this.formGroup = this._form.group({
       name: new FormControl('Boss'),
       attributes: this._form.array(
-        this.Attributes.map(next => new FormControl<number>(undefined, [Validators.required, Validators.min(1)]))),
-      conditions: this._form.array(this.Conditions.map(next => new FormControl<boolean>(undefined))),
-      attackEffects: this._form.array(this.AttackEffects.map(next => this._form.group({
+        this.Attributes.map(() => new FormControl<number>(undefined, [Validators.required, Validators.min(1)]))),
+      conditions: this._form.array(this.Conditions.map(() => new FormControl<boolean>(undefined))),
+      attackEffects: this._form.array(this.AttackEffects.map(() => this._form.group({
         has: new FormControl<boolean>(undefined),
         value: new FormControl<number>({value: 1, disabled: true}, [Validators.required, Validators.min(1)])
       }))),
-      bonuses: this._form.array(this.Bonuses.map(next => this._form.group({
+      bonuses: this._form.array(this.Bonuses.map(() => this._form.group({
         has: new FormControl<boolean>(undefined),
         value: new FormControl<number>({value: 1, disabled: true}, [Validators.min(1), Validators.required]),
         'value-2': new FormControl<number>({value: 1, disabled: true}, [Validators.min(0), Validators.required])
       })))
-    });
-
-    this.formGroup.controls.bonuses.controls.concat(this.formGroup.controls.attackEffects.controls as any).forEach(c => {
-      c.get('has').valueChanges.subscribe({
-        next: value => {
-          c.get('value')[value ? 'enable' : 'disable']();
-          c.get('value-2')?.[value ? 'enable' : 'disable']();
-        }
-      });
     });
   }
 

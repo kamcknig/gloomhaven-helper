@@ -56,12 +56,14 @@
           <mat-form-field>
             <mat-label>Amount</mat-label>
             <input matInput
+                   #attackEffectValueInput
                    [formControlName]="'value'">
           </mat-form-field>
         </div>
       </div>
     </section>
 
+    <!-- list of bonuses to give the boss -->
     <section [formArrayName]="'bonuses'">
       <h2>Bonuses</h2>
 
@@ -81,6 +83,7 @@
             <input matInput
                    min="1"
                    type="number"
+                   #bonusValueInput
                    [disabled]="!bonusChkBox.checked"
                    [formControlName]="'value'">
           </mat-form-field>
