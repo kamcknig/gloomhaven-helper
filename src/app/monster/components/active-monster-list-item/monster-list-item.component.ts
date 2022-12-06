@@ -17,7 +17,7 @@ import {TokenInfo} from "../../../combat/services/model";
 import {map, switchMap} from "rxjs/operators";
 import {TokenHealthComponent} from '../../../combat/components/token-health/token-health.component';
 import {MonsterStatComponent} from '../monster-stat/monster-stat.component';
-import {MonsterStatPipePipe} from '../../pipes/monster-stat.pipe';
+import {MonsterStatPipe} from '../../pipes/monster-stat.pipe';
 import {ConditionListPipe} from '../../pipes/condition-list.pipe';
 import {AttackEffectListPipe} from '../../pipes/attack-effect-list.pipe';
 import {BonusListPipe} from '../../pipes/bonus-list.pipe';
@@ -39,7 +39,7 @@ import {LetModule} from "@ngrx/component";
     MonsterAbilityDeckComponent,
     TokenHealthComponent,
     MonsterStatComponent,
-    MonsterStatPipePipe,
+    MonsterStatPipe,
     ConditionListPipe,
     AttackEffectListPipe,
     BonusListPipe,
