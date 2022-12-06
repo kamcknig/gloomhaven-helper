@@ -77,7 +77,7 @@ export class CreateBossComponent implements OnInit, OnDestroy, AfterViewInit {
     this.formGroup = this._form.group({
       name: new FormControl('Boss'),
       attributes: this._form.array(
-        this.Attributes.map(() => new FormControl<number>(undefined, [Validators.required, Validators.min(1)]))),
+        this.Attributes.map(attr => new FormControl<number>(undefined, [Validators.required, Validators.min(attr === Attributes.health ? 1 : 0)]))),
       conditions: this._form.array(this.Conditions.map(() => new FormControl<boolean>(undefined))),
       attackEffects: this._form.array(this.AttackEffects.map(() => this._form.group({
         has: new FormControl<boolean>(undefined),
