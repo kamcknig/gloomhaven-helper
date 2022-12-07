@@ -1,14 +1,13 @@
 <ng-container *ngrxLet="monster$ as monster">
   <div fxLayout="row"
        fxLayoutGap="5px"
-       fxLayoutAlign="start stretch">
+       fxLayoutAlign="start center">
     <div class="active-indicator"
          fxFlex="20px"
          [ngStyle]="{'display': active ? 'block' : 'none'}"></div>
 
     <section fxLayout="column"
-             fxFlex="1 0 18rem"
-             #leftSection>
+             fxFlex="1 0 18rem">
       <div class="header">
         <!-- the name and level -->
         <span class="monster-name">{{ monster.name }}</span>
@@ -91,8 +90,6 @@
       </div>
     </section>
 
-    <section #rightSection>
-      <app-monster-ability-deck [monster]="monster"></app-monster-ability-deck>
-    </section>
+    <app-monster-ability-deck class="list" [monster]="monster"></app-monster-ability-deck>
   </div>
 </ng-container>
