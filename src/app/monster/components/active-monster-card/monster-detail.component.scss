@@ -4,6 +4,11 @@
   width: fit-content;
   max-width: 550px;
 
+  app-monster-ability-deck {
+    margin-top: 10px;
+    text-align: center;
+  }
+
   &.active ::ng-deep .mat-card {
     border: solid 5px purple;
   }
