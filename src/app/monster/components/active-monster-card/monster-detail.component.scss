@@ -10,14 +10,18 @@
 }
 
 :host {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: fit-content;
   max-width: 550px;
 
+  > *:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
   app-monster-ability-deck {
-    margin-top: 10px;
-    text-align: center;
+    flex: 1 1 0;
   }
 
   &.active ::ng-deep .mat-card {

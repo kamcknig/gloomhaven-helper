@@ -65,7 +65,7 @@
 }
 
 app-monster-ability-deck {
-  max-width: 9.9rem;
+  flex: 0 1 9.9rem;
 }
 
 app-monster-stat {
@@ -78,6 +78,7 @@ app-monster-stat {
 
 .active-indicator {
   background: map.get(mat.$deep-purple-palette, 500);
+  align-self: stretch;
 }
 
 .token-info {
