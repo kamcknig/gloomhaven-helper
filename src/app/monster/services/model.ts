@@ -110,6 +110,8 @@ export interface Monster {
   level?: number;
 }
 
+export type Mob = Boss | Monster;
+
 /**
  * Represents a single round ability a monster has. These are the monster "cards".
  */

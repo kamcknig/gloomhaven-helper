@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {createAdapter} from '@state-adapt/core';
 import {MonsterService} from '../../monster/services/monster.service';
 import {adapt} from '@state-adapt/angular';
-import {Monster, MonsterAbility} from '../../monster/services/model';
+import {isBoss, Mob, MonsterAbility, MonsterId} from '../../monster/services/model';
 import {CombatState, TokenInfo} from './model';
 import {Source} from '@state-adapt/rxjs';
 
@@ -115,7 +115,7 @@ export class CombatService {
         tokens: [...tokens]
       };
     },
-    deactivateMonster: (state, monster: Monster) => {
+    deactivateMonster: (state, monster: Mob) => {
       const {[monster.id]: removed, ...activeMonsters} = state.activeMonsters;
       return {
         ...state,
@@ -124,11 +124,12 @@ export class CombatService {
         turn: Math.min(state.turn, Object.keys(activeMonsters).length)
       }
     },
-    activateMonster: (state, event: Monster) => ({
+    activateMonster: (state, event: Mob) => ({
       ...state,
       activeMonsters: {
         ...state.activeMonsters,
         [event.id]: {
+          boss: isBoss(event) ? event.boss : false,
           abilities: event.abilities?.reduce((prev: any[], next: MonsterAbility) => {
               const count = next?.count ?? 1;
               for (let i = 0; i < count; i++) {
@@ -140,7 +141,7 @@ export class CombatService {
         }
       }
     }),
-    monsterAbilityCardDraw: (state, event) => {
+    monsterAbilityCardDraw: (state, event: MonsterId) => {
       let abilities = [...state.activeMonsters[event].abilities];
       const ability = this.drawCard(abilities);
 
@@ -162,13 +163,15 @@ export class CombatService {
       activeMonsters: {
         ...state.activeMonsters,
         ...Object.entries(state.activeMonsters)
-          .reduce((prev, [monsterId, {abilities: cards}]) => {
+          .reduce((prev, [monsterId, monster]) => {
             // if there are no tokens in play for the monster, don't draw a card
-            if (!state.tokens.find(t => t.monsterId.toString() === monsterId)) {
+            if (!state.activeMonsters[monsterId].boss && !state.tokens.find(t => t.monsterId.toString() === monsterId)) {
               return prev;
             }
 
-            for (let i = cards.length - 1; i >= 0; i--) {
+            const l = monster.abilities.length;
+            const cards = monster.abilities;
+            for (let i = l - 1; i >= 0; i--) {
               if (cards[i].drawn && cards[i].shuffle) {
                 this.shuffleArray(cards);
                 cards.forEach(c => c.drawn = false);
@@ -179,7 +182,8 @@ export class CombatService {
             const ability = this.drawCard(cards);
 
             prev[monsterId] = {
-              abilities: cards,
+              ...monster,
+              abilities: [...cards],
               initiative: ability.initiative
             };
 

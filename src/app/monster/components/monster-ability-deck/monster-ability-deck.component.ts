@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CombatService } from '../../../combat/services/combat.service';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
-import { Monster, MonsterAbility } from '../../services/model';
-import { MonsterService } from '../../services/monster.service';
-import { CommonModule } from '@angular/common';
+import {Component, Input, OnInit} from '@angular/core';
+import {CombatService} from '../../../combat/services/combat.service';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {map, switchMap} from 'rxjs/operators';
+import {isBoss, Monster, MonsterAbility} from '../../services/model';
+import {MonsterService} from '../../services/monster.service';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-monster-ability-deck',
@@ -43,7 +43,7 @@ export class MonsterAbilityDeckComponent implements OnInit {
       this._combatService.store.tokens$.pipe(
         map(tokens => !tokens.some(t => t.monsterId === this._monster.id))
       )
-    ]).pipe(map(([, tokens]) => tokens));
+    ]).pipe(map(([monster, tokens]) => !isBoss(monster) && tokens));
 
     const deck$ = this._monster$.pipe(
       switchMap(monster => this._combatService.store.activeMonsters$.pipe(map(value => value[monster.id]?.abilities)))
