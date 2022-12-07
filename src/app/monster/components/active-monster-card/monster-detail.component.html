@@ -24,7 +24,7 @@
           <!-- loop for normal vs elite monsters -->
           <ng-container *ngrxLet="monsterLevel$ | async as level">
             <ng-container *ngFor="let index of isBoss(monster) ? [0] : [0, 1]">
-              <div class="monster-stat-wrapper"
+              <div class="monster-stat-attribute-wrapper"
                    [ngClass]="{
                     elite: index === 1,
                     boss: isBoss(monster)
@@ -38,7 +38,12 @@
 
                 <!-- TODO add 'immunities' text for boss? -->
                 <!-- statuses that the monster has on it's monster info card -->
-                <div [fxLayout]="index === 0 ? 'row wrap' : 'row-reverse wrap'" style="gap: .2rem;">
+                <div class="stats-wrapper"
+                     [ngClass]="{
+                      elite: index === 1,
+                      boss: isBoss(monster)
+                     }"
+                     style="gap: .2rem;">
                   <app-monster-stat *ngFor="let effect of monster | conditionList : level : $any(index)"
                                     [condition]="$any(effect)"
                                     [conditionAmount]="monster | monsterStat : effect : level : $any(index)"
