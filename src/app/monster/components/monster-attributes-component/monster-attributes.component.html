@@ -1,29 +1,23 @@
-<div fxLayout="row"
-     fxLayoutAlign="space-around"
-     class="container">
-  <span fxLayout="column"
-        fxLayoutAlign="start center">
+<div class="container">
+  <span>
     <img class="icon"
          src="../../../../assets/icons/health.png">
     {{ monster | monsterStat : 'health' : level : $any(index) }}
   </span>
 
-  <span fxLayout="column"
-        fxLayoutAlign="start center">
+  <span>
     <img class="icon"
          src="../../../../assets/icons/move.png">
     {{ monster | monsterStat : 'move' : level : $any(index) }}
   </span>
 
-  <span fxLayout="column"
-        fxLayoutAlign="start center">
+  <span>
     <img class="icon"
          src="../../../../assets/icons/attack.png">
     {{ monster | monsterStat : 'attack' : level : $any(index) }}
   </span>
 
-  <span fxLayout="column"
-        fxLayoutAlign="start center">
+  <span>
     <img class="icon"
          src="../../../../assets/icons/range.png">
     {{ monster | monsterStat : 'range' : level : $any(index) }}

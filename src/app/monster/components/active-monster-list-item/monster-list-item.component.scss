@@ -83,3 +83,15 @@ app-monster-stat {
 .token-info {
   font-size: 1.3rem;
 }
+
+:host ::ng-deep app-monster-attributes.boss {
+  .container {
+    justify-content: flex-start;
+    font-size: 1.2rem;
+
+    .icon {
+      height:auto;
+      max-width: 2rem;
+    }
+  }
+}

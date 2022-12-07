@@ -44,7 +44,8 @@
             <!-- displays monster attributes such as health, movement, etc. -->
             <app-monster-attributes [monster]="monster"
                                     [index]="elite"
-                                    [level]="monsterLevel$ | async">
+                                    [level]="monsterLevel$ | async"
+                                    [ngClass]="{ boss: isBoss(monster) }">
             </app-monster-attributes>
 
             <!-- displays the Monsters stats including conditions, bonuses, etc. -->
