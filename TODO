@@ -1,5 +1,3 @@
-update focused monster detail component when in list view so that it's ability deck can grow bigger.
-
 update the monster list item component to have a more readable attribute section for the boss monsters.
 the numbers look weird spread out.
 
