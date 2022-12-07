@@ -7,4 +7,4 @@ add a way to quickly remove a token rather than making it's HP 0. You can do tha
 the arrows by going into the token details dialog and setting it to 0 but should there be an even quicker way?
 A delete button on that dialog? One on the monster list and/or detail view? on the token selection dialog?
 
-better indication of which elements are waxing and waning
+extract header element icons into components
