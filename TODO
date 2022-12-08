@@ -6,3 +6,6 @@ extract header element icons into components
 
 the delete button on detail cards is hard to see when the change
 view mode is over it
+
+add attribute modification data to monster card json. add net attributes display to show monsters
+actual attributes with their currently drawn card
