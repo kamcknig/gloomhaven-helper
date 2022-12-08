@@ -4,7 +4,5 @@ A delete button on that dialog? One on the monster list and/or detail view? on t
 
 extract header element icons into components
 
-cards aren't shuffled in combat state when monster is first activated
-
 the delete button on detail cards is hard to see when the change
 view mode is over it

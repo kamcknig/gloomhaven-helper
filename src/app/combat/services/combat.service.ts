@@ -124,23 +124,29 @@ export class CombatService {
         turn: Math.min(state.turn, Object.keys(activeMonsters).length)
       }
     },
-    activateMonster: (state, event: Mob) => ({
-      ...state,
-      activeMonsters: {
-        ...state.activeMonsters,
-        [event.id]: {
-          boss: isBoss(event) ? event.boss : false,
-          abilities: event.abilities?.reduce((prev: any[], next: MonsterAbility) => {
-              const count = next?.count ?? 1;
-              for (let i = 0; i < count; i++) {
-                prev.push({...next});
-              }
-              return prev;
-            }, [])
-            ?.map((a: any) => ({...a})) ?? []
+    activateMonster: (state, event: Mob) => {
+      const abilities = event.abilities?.reduce((prev: any[], next: MonsterAbility) => {
+          const count = next?.count ?? 1;
+          for (let i = 0; i < count; i++) {
+            prev.push({...next});
+          }
+          return prev;
+        }, [])
+        ?.map((a: any) => ({...a})) ?? [];
+
+      this.shuffleArray(abilities);
+
+      return {
+        ...state,
+        activeMonsters: {
+          ...state.activeMonsters,
+          [event.id]: {
+            boss: isBoss(event) ? event.boss : false,
+            abilities
+          }
         }
-      }
-    }),
+      };
+    },
     monsterAbilityCardDraw: (state, event: MonsterId) => {
       let abilities = [...state.activeMonsters[event].abilities];
       const ability = this.drawCard(abilities);
