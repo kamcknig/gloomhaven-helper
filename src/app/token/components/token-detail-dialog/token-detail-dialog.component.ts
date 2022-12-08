@@ -49,7 +49,7 @@ export class TokenDetailDialogComponent implements OnInit, OnDestroy {
 
     this.token$.pipe(filter(t => !!t),takeUntil(this._destroy$)).subscribe({
       next: token => {
-        this.hitPointControl = new FormControl<number>(token.health ?? token.maxHealth, [Validators.max(token.maxHealth), Validators.min(0)])
+        this.hitPointControl = new FormControl<number>(token.health ?? token.maxHealth, Validators.min(0))
       }
     })
   }
