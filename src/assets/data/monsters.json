@@ -96,33 +96,78 @@
       "abilities": [
         {
           "initiative": 46,
-          "imgName": "ancient-artillery-1"
+          "imgName": "ancient-artillery-1",
+          "actions": [
+            {
+              "attack": -1,
+              "range": 2
+            }
+          ],
+          "attributeModifiers": {
+            "attack": -1,
+            "range": 2
+          }
         },
         {
           "initiative": 37,
-          "imgName": "ancient-artillery-2"
+          "imgName": "ancient-artillery-2",
+          "attributeModifiers": {
+            "attack": -1,
+            "range": -1
+          },
+          "attackEffects": {
+            "push": 1
+          }
         },
         {
           "initiative": 95,
-          "imgName": "ancient-artillery-3"
+          "imgName": "ancient-artillery-3",
+          "attributeModifiers": {
+            "attack": 1
+          }
         },
         {
           "initiative": 71,
           "imgName": "ancient-artillery-4",
           "count": 2,
-          "shuffle": true
+          "shuffle": true,
+          "attributeModifiers": {
+            "attack": 0
+          }
         },
         {
           "initiative": 17,
-          "imgName": "ancient-artillery-5"
+          "imgName": "ancient-artillery-5",
+          "attackEffects": {
+            "push": 2
+          },
+          "bonuses": {
+            "shield": 2
+          },
+          "attributeModifiers": {
+            "attack": -2
+          }
         },
         {
           "initiative": 37,
-          "imgName": "ancient-artillery-6"
+          "imgName": "ancient-artillery-6",
+          "attackEffects": {
+            "push": 1
+          },
+          "attributeModifiers": {
+            "attack": -1,
+            "range": -1
+          }
         },
         {
           "initiative": 46,
-          "imgName": "ancient-artillery-7"
+          "imgName": "ancient-artillery-7",
+          "attributeModifiers": {
+            "attack": -1
+          },
+          "conditions": {
+            "immobilize": 1
+          }
         }
       ]
     },
@@ -185,25 +230,51 @@
       "abilities": [
         {
           "initiative": 44,
-          "imgName": "archer-1"
+          "imgName": "archer-1",
+          "attributeModifiers": {
+            "move": -1,
+            "attack": 1
+          }
         },
         {
           "initiative": 56,
-          "imgName": "archer-2"
+          "imgName": "archer-2",
+          "attributeModifiers": {
+            "attack": -1
+          },
+          "attackEffects": {
+            "target": 2
+          }
         },
         {
           "initiative": 68,
           "imgName": "archer-3",
-          "shuffle": true
+          "shuffle": true,
+          "attributeModifiers": {
+            "attack": 1,
+            "range": 1
+          }
         },
         {
           "initiative": 29,
           "shuffle": true,
-          "imgName": "archer-4"
+          "imgName": "archer-4",
+          "attributeModifiers": {
+            "move": 0,
+            "attack": -1,
+            "range": 1
+          },
+          "conditions": {
+            "immobilize": 1
+          }
         },
         {
           "initiative": 16,
-          "imgName": "archer-5"
+          "imgName": "archer-5",
+          "attributeModifiers": {
+            "move": 1,
+            "attack": -1
+          }
         },
         {
           "initiative": 32,
