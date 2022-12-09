@@ -5,41 +5,65 @@
       "abilities": [
         {
           "initiative": 85,
-          "imgName": "boss-1"
+          "imgName": "boss-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 14,
-          "imgName": "boss-2"
+          "imgName": "boss-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 52,
-          "imgName": "boss-3"
+          "imgName": "boss-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 17,
-          "imgName": "boss-4"
+          "imgName": "boss-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 11,
-          "imgName": "boss-5"
+          "imgName": "boss-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 79,
-          "imgName": "boss-6"
+          "imgName": "boss-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 36,
-          "imgName": "boss-7"
+          "imgName": "boss-7",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 73,
-          "imgName": "boss-8"
+          "imgName": "boss-8",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
     {
       "name": "Ancient Artillery",
-      "attributes":  {
+      "attributes": {
         "health": [
           [4, 7],
           [6, 9],
@@ -51,46 +75,142 @@
           [16, 20]
         ],
         "move": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [4, 4],
-          [4, 4],
-          [4, 5],
-          [4, 5]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "range": [
-          [4, 5],
-          [4, 5],
-          [5, 6],
-          [5, 6],
-          [5, 6],
-          [6, 7],
-          [6, 7],
-          [7, 7]
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            7
+          ]
         ]
       },
       "attackEffects": {
         "target": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 2],
-          [0, 2],
-          [0, 2],
-          [0, 2]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            2
+          ]
         ]
       },
       "abilities": [
@@ -102,72 +222,72 @@
               "attack": -1,
               "range": 2
             }
-          ],
-          "attributeModifiers": {
-            "attack": -1,
-            "range": 2
-          }
+          ]
         },
         {
           "initiative": 37,
           "imgName": "ancient-artillery-2",
-          "attributeModifiers": {
-            "attack": -1,
-            "range": -1
-          },
-          "attackEffects": {
-            "push": 1
-          }
+          "actions": [
+            { "push":  1, "info-text":  "Target all adjacent enemies" },
+            {
+              "attack": -1,
+              "range": -1
+            }
+          ]
         },
         {
           "initiative": 95,
           "imgName": "ancient-artillery-3",
-          "attributeModifiers": {
-            "attack": 1
-          }
+          "actions": [
+            {
+              "attack": 1
+            }
+          ]
         },
         {
           "initiative": 71,
           "imgName": "ancient-artillery-4",
           "count": 2,
           "shuffle": true,
-          "attributeModifiers": {
-            "attack": 0
-          }
+          "actions": [
+            {
+              "attack": 0, "info-text": "All adjacent enemies suffer 2 damage."
+            }
+          ]
         },
         {
           "initiative": 17,
           "imgName": "ancient-artillery-5",
-          "attackEffects": {
-            "push": 2
-          },
-          "bonuses": {
-            "shield": 2
-          },
-          "attributeModifiers": {
-            "attack": -2
-          }
+          "actions": [
+            {
+              "push": 2, "info-text": "Target all adjacent enemies"
+            },
+            { "shield": 2 },
+            {
+              "attack": -2
+            }
+          ]
         },
         {
           "initiative": 37,
           "imgName": "ancient-artillery-6",
-          "attackEffects": {
-            "push": 1
-          },
-          "attributeModifiers": {
-            "attack": -1,
-            "range": -1
-          }
+          "actions": [
+            { "push":  1, "info-text": "Target all adjacent enemies" },
+            {
+              "attack": -1,
+              "range": -1
+            }
+          ]
         },
         {
           "initiative": 46,
           "imgName": "ancient-artillery-7",
-          "attributeModifiers": {
-            "attack": -1
-          },
-          "conditions": {
-            "immobilize": 1
-          }
+          "actions": [
+            {
+              "attack": -1,
+              "immobilize": true
+            }
+          ]
         }
       ]
     },
@@ -175,118 +295,276 @@
       "name": "Bandit Archer",
       "attributes": {
         "health": [
-          [4, 6],
-          [5, 7],
-          [6, 9],
-          [6, 10],
-          [8, 10],
-          [10, 12],
-          [10, 13],
-          [13, 17]
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            6,
+            10
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            10,
+            13
+          ],
+          [
+            13,
+            17
+          ]
         ],
         "move": [
-          [2, 2],
-          [2, 2],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "range": [
-          [3, 3],
-          [4, 5],
-          [4, 5],
-          [4, 5],
-          [4, 6],
-          [5, 6],
-          [5, 6],
-          [5, 6]
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ]
         ]
       },
       "conditions": {
         "poison": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [0, 1],
-          [0, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 44,
           "imgName": "archer-1",
-          "attributeModifiers": {
-            "move": -1,
-            "attack": 1
-          }
+          "actions": [
+            {
+              "move": -1,
+              "attack": 1
+            }
+          ]
         },
         {
           "initiative": 56,
           "imgName": "archer-2",
-          "attributeModifiers": {
-            "attack": -1
-          },
-          "attackEffects": {
-            "target": 2
-          }
+          "actions": [
+            {
+              "attack": -1,
+              "target": 2
+            }
+          ]
         },
         {
           "initiative": 68,
           "imgName": "archer-3",
           "shuffle": true,
-          "attributeModifiers": {
-            "attack": 1,
-            "range": 1
-          }
+          "actions": [
+            {
+              "attack": 1,
+              "range": 1
+            }
+          ]
         },
         {
           "initiative": 29,
           "shuffle": true,
           "imgName": "archer-4",
-          "attributeModifiers": {
-            "move": 0,
-            "attack": -1,
-            "range": 1
-          },
-          "conditions": {
-            "immobilize": 1
-          }
+          "actions": [
+            {
+              "move": 0
+            },
+            {
+              "attack": -1,
+              "range": 1,
+              "immobilize": true
+            }
+          ]
         },
         {
           "initiative": 16,
           "imgName": "archer-5",
-          "attributeModifiers": {
-            "move": 1,
-            "attack": -1
-          }
+          "actions": [
+            {
+              "move": 1
+            },
+            {
+              "attack": -1
+            }
+          ]
         },
         {
           "initiative": 32,
-          "imgName": "archer-6"
+          "imgName": "archer-6",
+          "actions": [
+            {
+              "move": 0
+            },
+            {
+              "attack": 1,
+              "range": -1
+            }
+          ]
         },
         {
           "initiative": 31,
-          "imgName": "archer-7"
+          "imgName": "archer-7",
+          "actions": [
+            {
+              "move": 0
+            },
+            {
+              "attack": 0
+            }
+          ]
         },
         {
           "initiative": 14,
-          "imgName": "archer-8"
+          "imgName": "archer-8",
+          "actions": [
+            {
+              "move": -1
+            },
+            {
+              "attack": -1
+            },
+            {
+              "info-text": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
+            }
+          ]
         }
       ]
     },
@@ -294,101 +572,283 @@
       "name": "Bandit Guard",
       "attributes": {
         "health": [
-          [5, 9],
-          [6, 9],
-          [6, 10],
-          [9, 10],
-          [10, 11],
-          [11, 12],
-          [14, 14],
-          [16, 14]
+          [
+            5,
+            9
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            6,
+            10
+          ],
+          [
+            9,
+            10
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            11,
+            12
+          ],
+          [
+            14,
+            14
+          ],
+          [
+            16,
+            14
+          ]
         ],
         "move": [
-          [2, 2],
-          [3, 2],
-          [3, 2],
-          [3, 3],
-          [4, 3],
-          [4, 3],
-          [4, 3],
-          [5, 3]
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            5,
+            3
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 5]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "conditions": {
         "muddle": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [0, 1],
-          [0, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
         ]
       },
       "bonuses": {
         "shield": [
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [0, 2],
-          [0, 2],
-          [0, 2],
-          [0, 2],
-          [0, 3]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 55,
-          "imgName": "guard-1"
+          "imgName": "guard-1",
+          "actions": [
+            {
+              "move":  1
+            },
+            {
+              "attack": 0
+            },
+            {
+              "strengthen": true, "info-text": "Self"
+            }
+          ]
         },
         {
           "initiative": 15,
           "imgName": "guard-2",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            { "shield":  1 },
+            {
+              "attack":  0,
+              "poison":  true
+            }
+          ]
         },
         {
           "initiative": 30,
-          "imgName": "guard-3"
+          "imgName": "guard-3",
+          "actions": [
+            { "move":  1 },
+            { "attack":  -1 }
+          ]
         },
         {
           "initiative": 50,
           "count": 2,
-          "imgName": "guard-4"
+          "imgName": "guard-4",
+          "actions": [
+            { "move":  0 },
+            { "attack": 0 }
+          ]
         },
         {
           "initiative": 35,
-          "imgName": "guard-5"
+          "imgName": "guard-5",
+          "actions": [
+            { "move":  -1 },
+            { "attack":  0, "range":  "=2" }
+          ]
         },
         {
           "initiative": 15,
           "imgName": "guard-6",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            { "shield":  1 },
+            { "retaliate":  [2, 0] }
+          ]
         },
         {
           "initiative": 70,
-          "imgName": "guard-7"
+          "imgName": "guard-7",
+          "actions": [
+            { "move":  -1 },
+            { "attack":  1 }
+          ]
         }
       ]
     },
@@ -396,99 +856,273 @@
       "name": "Black Imp",
       "attributes": {
         "health": [
-          [3, 4],
-          [4, 6],
-          [5, 8],
-          [5, 8],
-          [7, 11],
-          [9, 12],
-          [10, 14],
-          [12, 17]
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            7,
+            11
+          ],
+          [
+            9,
+            12
+          ],
+          [
+            10,
+            14
+          ],
+          [
+            12,
+            17
+          ]
         ],
         "move": [
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ],
         "attack": [
-          [1, 2],
-          [1, 2],
-          [1, 2],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4]
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ],
         "range": [
-          [3, 3],
-          [3, 3],
-          [4, 4],
-          [4, 4],
-          [4, 4],
-          [4, 5],
-          [4, 5],
-          [4, 5]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ]
       },
       "conditions": {
         "disadvantage": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [0, 1],
-          [0, 1],
-          [0, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
         ],
         "poison": [
-          [0, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 42,
-          "imgName": "imp-1"
+          "imgName": "imp-1",
+          "actions": [
+            { "move":  1 },
+            { "heal":  2, "range": 3 }
+          ]
         },
         {
           "initiative": 43,
           "imgName": "imp-2",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            { "move":  0 },
+            { "attack":  -1, "target": 2, "poison": true }
+          ]
         },
         {
           "initiative": 76,
-          "imgName": "imp-3"
+          "imgName": "imp-3",
+          "actions": [
+            { "move": -1 },
+            { "attack": 1 }
+          ]
         },
         {
           "initiative": 24,
-          "imgName": "imp-4"
+          "imgName": "imp-4",
+          "actions": [
+            { "strengthen": true, "info-text": "Affect all allies within <span class=\"attribute\">Range<span> 2" },
+            { "muddle": true, "info-text": "Target all enemies within <span class=\"attribute\">Range<span> 2" }
+          ]
         },
         {
           "initiative": 5,
-          "imgName": "imp-5"
+          "imgName": "imp-5",
+          "actions": [
+            { "shield":  5 },
+            { "heal":  [1, 0] }
+          ]
         },
         {
           "initiative": 37,
           "imgName": "imp-6",
-          "count": 2
+          "count": 2,
+          "actions": [
+            { "move":  0 },
+            { "attack":  0 }
+          ]
         },
         {
           "initiative": 43,
           "imgName": "imp-7",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            {
+              "move": 0
+            },
+            { "attack":  -1, "target": 2, "curse": true }
+          ]
         }
       ]
     },
@@ -496,92 +1130,244 @@
       "name": "Cave Bear",
       "attributes": {
         "health": [
-          [7, 11],
-          [9, 14],
-          [11, 17],
-          [13, 20],
-          [16, 21],
-          [17, 24],
-          [19, 28],
-          [22, 33]
+          [
+            7,
+            11
+          ],
+          [
+            9,
+            14
+          ],
+          [
+            11,
+            17
+          ],
+          [
+            13,
+            20
+          ],
+          [
+            16,
+            21
+          ],
+          [
+            17,
+            24
+          ],
+          [
+            19,
+            28
+          ],
+          [
+            22,
+            33
+          ]
         ],
         "move": [
-          [3, 3],
-          [3, 3],
-          [4, 4],
-          [4, 4],
-          [4, 5],
-          [5, 5],
-          [5, 5],
-          [5, 5]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            5
+          ]
         ],
         "attack": [
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 6],
-          [5, 7],
-          [5, 7]
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            5,
+            7
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "conditions": {
         "wound": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 13,
-          "imgName": "cave-bear-1"
+          "imgName": "cave-bear-1",
+          "actions": [
+            { "move":  1 },
+            { "attack":  -1 }
+          ]
         },
         {
           "initiative": 60,
-          "imgName": "cave-bear-2"
+          "imgName": "cave-bear-2",
+          "actions": [
+            { "move":  -1 },
+            { "attack":  1 }
+          ]
         },
         {
           "initiative": 3,
-          "imgName": "cave-bear-3"
+          "imgName": "cave-bear-3",
+          "actions": [
+            { "shield":  1 },
+            { "retaliate":  [2, 0] },
+            { "heal":  [2, 0] }
+          ]
         },
         {
           "initiative": 14,
-          "imgName": "cave-bear-4"
+          "imgName": "cave-bear-4",
+          "actions": [
+            { "move":  -1 },
+            { "attack":  -1, "immobilize": true }
+          ]
         },
         {
           "initiative": 61,
-          "imgName": "cave-bear-5"
+          "imgName": "cave-bear-5",
+          "actions": [
+            { "move":  0 },
+            { "attack":  -1, "target": 2 }
+          ]
         },
         {
           "initiative": 80,
           "imgName": "cave-bear-6",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            { "attack":  -1 },
+            { "move":  -2 },
+            { "attack":  1, "wound":  true }
+          ]
         },
         {
           "initiative": 34,
           "imgName": "cave-bear-7",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            { "attack":  1, "wound":  true }
+          ]
         },
         {
           "initiative": 41,
-          "imgName": "cave-bear-8"
+          "imgName": "cave-bear-8",
+          "actions": [
+            { "move":  0, "attack":  0 }
+          ]
         }
       ]
     },
@@ -589,104 +1375,312 @@
       "name": "City Archer",
       "attributes": {
         "health": [
-          [4, 6],
-          [5, 6],
-          [6, 7],
-          [6, 8],
-          [8, 10],
-          [9, 11],
-          [9, 12],
-          [10, 13]
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            6,
+            8
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            9,
+            11
+          ],
+          [
+            9,
+            12
+          ],
+          [
+            10,
+            13
+          ]
         ],
         "move": [
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [3, 3],
-          [3, 3]
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 6],
-          [4, 6]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            6
+          ]
         ],
         "range": [
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 5],
-          [5, 6],
-          [5, 6],
-          [5, 6],
-          [6, 7]
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            7
+          ]
         ]
       },
       "bonuses": {
         "shield": [
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [1, 2],
-          [1, 2],
-          [1, 2],
-          [2, 2],
-          [2, 3]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ]
         ]
       },
       "attackEffects": {
         "pierce": [
-          [0, 0],
-          [0, 1],
-          [0, 2],
-          [0, 2],
-          [0, 2],
-          [0, 3],
-          [0, 3],
-          [0, 3]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            3
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 44,
-          "imgName": "archer-1"
+          "imgName": "archer-1",
+          "actions": [
+            {
+              "move": -1,
+              "attack": 1
+            }
+          ]
         },
         {
           "initiative": 56,
-          "imgName": "archer-2"
+          "imgName": "archer-2",
+          "actions": [
+            {
+              "attack": -1,
+              "target": 2
+            }
+          ]
         },
         {
           "initiative": 68,
           "imgName": "archer-3",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            {
+              "attack": 1,
+              "range": 1
+            }
+          ]
         },
         {
           "initiative": 29,
           "shuffle": true,
-          "imgName": "archer-4"
+          "imgName": "archer-4",
+          "actions": [
+            {
+              "move": 0
+            },
+            {
+              "attack": -1,
+              "range": 1,
+              "immobilize": true
+            }
+          ]
         },
         {
           "initiative": 16,
-          "imgName": "archer-5"
+          "imgName": "archer-5",
+          "actions": [
+            {
+              "move": 1
+            },
+            {
+              "attack": -1
+            }
+          ]
         },
         {
           "initiative": 32,
-          "imgName": "archer-6"
+          "imgName": "archer-6",
+          "actions": [
+            {
+              "move": 0
+            },
+            {
+              "attack": 1,
+              "range": -1
+            }
+          ]
         },
         {
           "initiative": 31,
-          "imgName": "archer-7"
+          "imgName": "archer-7",
+          "actions": [
+            {
+              "move": 0
+            },
+            {
+              "attack": 0
+            }
+          ]
         },
         {
           "initiative": 14,
-          "imgName": "archer-8"
+          "imgName": "archer-8",
+          "actions": [
+            {
+              "move": -1
+            },
+            {
+              "attack": -1
+            },
+            {
+              "info-text": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
+            }
+          ]
         }
       ]
     },
@@ -694,99 +1688,329 @@
       "name": "City Guard",
       "attributes": {
         "heath": [
-          [5, 6],
-          [5, 6],
-          [7, 9],
-          [8, 9],
-          [9, 10],
-          [10, 12],
-          [11, 13],
-          [13, 14]
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            7,
+            9
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            9,
+            10
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            11,
+            13
+          ],
+          [
+            13,
+            14
+          ]
         ],
         "move": [
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 6]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "bonuses": {
         "retaliate": [
-          [[0, 0], [0, 0]],
-          [[0, 0], [0, 0]],
-          [[0, 0], [0, 0]],
-          [[0, 0], [1, 0]],
-          [[0, 0], [2, 0]],
-          [[0, 0], [2, 0]],
-          [[0, 0], [3, 0]],
-          [[0, 0], [3, 0]]
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ]
         ],
         "shield": [
-          [0, 1],
-          [1, 1],
-          [1, 2],
-          [1, 2],
-          [1, 2],
-          [2, 3],
-          [2, 3],
-          [2, 3]
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 55,
-          "imgName": "guard-1"
+          "imgName": "guard-1",
+          "actions": [
+            {
+              "move":  1
+            },
+            {
+              "attack": 0
+            },
+            {
+              "strengthen": true, "info-text": "Self"
+            }
+          ]
         },
         {
           "initiative": 15,
           "imgName": "guard-2",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            { "shield":  1 },
+            {
+              "attack":  0,
+              "poison":  true
+            }
+          ]
         },
         {
           "initiative": 30,
-          "imgName": "guard-3"
+          "imgName": "guard-3",
+          "actions": [
+            { "move":  1 },
+            { "attack":  -1 }
+          ]
         },
         {
           "initiative": 50,
           "count": 2,
-          "imgName": "guard-4"
+          "imgName": "guard-4",
+          "actions": [
+            { "move":  0 },
+            { "attack": 0 }
+          ]
         },
         {
           "initiative": 35,
-          "imgName": "guard-5"
+          "imgName": "guard-5",
+          "actions": [
+            { "move":  -1 },
+            { "attack":  0, "range":  "=2" }
+          ]
         },
         {
           "initiative": 15,
           "imgName": "guard-6",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            { "shield":  1 },
+            { "retaliate":  [2, 0] }
+          ]
         },
         {
           "initiative": 70,
-          "imgName": "guard-7"
+          "imgName": "guard-7",
+          "actions": [
+            { "move":  -1 },
+            { "attack":  1 }
+          ]
         }
       ]
     },
@@ -794,88 +2018,236 @@
       "name": "Cultist",
       "attributes": {
         "health": [
-          [4, 7],
-          [5, 9],
-          [7, 12],
-          [9, 13],
-          [10, 15],
-          [11, 18],
-          [14, 22],
-          [15, 25]
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            9
+          ],
+          [
+            7,
+            12
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            10,
+            15
+          ],
+          [
+            11,
+            18
+          ],
+          [
+            14,
+            22
+          ],
+          [
+            15,
+            25
+          ]
         ],
         "move": [
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ]
         ],
         "attack": [
-          [1, 2],
-          [1, 2],
-          [1, 2],
-          [1, 2],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4]
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "conditions": {
         "curse": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 39,
-          "imgName": "cultist-1"
+          "imgName": "cultist-1",
+          "actions": [
+            { "move": -1 },
+            { "attack": 0 },
+            { "heal": [1, 0] }
+          ]
         },
         {
           "initiative": 31,
-          "imgName": "cultist-2"
+          "imgName": "cultist-2",
+          "actions": [
+            { "move": -1},
+            { "heal": [2, 3] }
+          ]
         },
         {
           "initiative": 27,
-          "imgName": "cultist-3"
+          "imgName": "cultist-3",
+          "actions": [
+            { "move":  0 },
+            { "attack": 0 }
+          ]
         },
         {
           "initiative": 63,
           "imgName": "cultist-4",
           "count": 2,
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            { "info-text": "Summon normal Living Bones\n\nCultist suffers 2 damage." }
+          ]
         },
         {
           "initiative": 10,
-          "imgName": "cultist-5"
+          "imgName": "cultist-5",
+          "actions": [
+            { "move":  -1 },
+            { "attack":  -1 }
+          ]
         },
         {
           "initiative": 27,
-          "imgName": "cultist-6"
+          "imgName": "cultist-6",
+          "actions": [
+            { "move":  0 },
+            { "attack":  0 }
+          ]
         },
         {
           "initiative": 10,
-          "imgName": "cultist-7"
+          "imgName": "cultist-7",
+          "actions": [
+            { "move":  -1 },
+            { "attack":  -1 }
+          ]
         }
       ]
     },
@@ -883,88 +2255,281 @@
       "name": "Deep Terror",
       "attributes": {
         "health": [
-          [3, 5],
-          [4, 6],
-          [4, 7],
-          [5, 8],
-          [6, 9],
-          [7, 11],
-          [8, 13],
-          [9, 15]
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            7,
+            11
+          ],
+          [
+            8,
+            13
+          ],
+          [
+            9,
+            15
+          ]
         ],
         "move": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [5, 6],
-          [5, 6]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "bonuses": {
         "retaliate": [
-          [[0, 0], [0, 0]],
-          [[1, 0], [1, 0]],
-          [[1, 0], [1, 0]],
-          [[2, 0], [2, 0]],
-          [[2, 0], [2, 0]],
-          [[3, 0], [3, 0]],
-          [[3, 0], [3, 0]],
-          [[4, 0], [4, 0]]
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 54,
-          "imgName": "deep-terror-1"
+          "imgName": "deep-terror-1",
+          "actions": [
+            { "wound": true, "poison": true, "info-text": "Target all adjacent enemies" },
+            { "attack": 0, "range": 4 }
+          ]
         },
         {
           "initiative": 75,
-          "imgName": "deep-terror-2"
+          "imgName": "deep-terror-2",
+          "actions": [
+            { "attack": -2, "disarm": true, "info-text": "Target all adjacent enemies" },
+            { "attack": 0, "range": 3, "target": 2 }
+          ]
         },
         {
           "initiative": 60,
           "imgName": "deep-terror-3",
           "count": 2,
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            { "attack": 0, "pierce": 3 }
+          ]
         },
         {
           "initiative": 75,
-          "imgName": "deep-terror-4"
+          "imgName": "deep-terror-4",
+          "actions": [
+            { "attack": 0, "poison": true },
+            { "attack": -1, "range": 5, "immobilize": true }
+          ]
         },
         {
           "initiative": 65,
-          "imgName": "deep-terror-5"
+          "imgName": "deep-terror-5",
+          "actions": [
+            { "attack": 0, "range": 3, "target": 3, "curse": true }
+          ]
         },
         {
           "initiative": 84,
-          "imgName": "deep-terror-6"
+          "imgName": "deep-terror-6",
+          "actions": [
+            { "attack": -1, "info-text": "Target all adjacent enemies" },
+            { "attack": 0, "range": 4, "wound": true }
+          ]
         },
         {
           "initiative": 96,
-          "imgName": "deep-terror-7"
+          "imgName": "deep-terror-7",
+          "actions": [
+            { "attack": -2, "range": 6, "info-text": "Summon normal Deep Terror in a hex adjacent to the target" }
+          ]
         }
       ]
     },
@@ -972,92 +2537,236 @@
       "name": "Earth Demon",
       "attributes": {
         "health": [
-          [7, 10],
-          [9, 13],
-          [12, 18],
-          [13, 20],
-          [15, 21],
-          [17, 25],
-          [20, 27],
-          [22, 32]
+          [
+            7,
+            10
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            12,
+            18
+          ],
+          [
+            13,
+            20
+          ],
+          [
+            15,
+            21
+          ],
+          [
+            17,
+            25
+          ],
+          [
+            20,
+            27
+          ],
+          [
+            22,
+            32
+          ]
         ],
         "move": [
-          [1, 2],
-          [1, 2],
-          [1, 2],
-          [2, 2],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 3]
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ]
         ],
         "attack": [
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 6],
-          [4, 6]
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            6
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "conditions": {
         "immobilize": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 87,
-          "imgName": "earth-demon-1"
+          "imgName": "earth-demon-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 40,
           "imgName": "earth-demon-2",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 79,
-          "imgName": "earth-demon-3"
+          "imgName": "earth-demon-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 93,
-          "imgName": "earth-demon-4"
+          "imgName": "earth-demon-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 71,
-          "imgName": "earth-demon-5"
+          "imgName": "earth-demon-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 62,
-          "imgName": "earth-demon-6"
+          "imgName": "earth-demon-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 83,
-          "imgName": "earth-demon-7"
+          "imgName": "earth-demon-7",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 42,
           "imgName": "earth-demon-8",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -1065,81 +2774,282 @@
       "name": "Flame Demon",
       "attributes": {
         "health": [
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 5],
-          [3, 5],
-          [4, 6],
-          [4, 7],
-          [5, 8]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            8
+          ]
         ],
         "move": [
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [4, 4],
-          [4, 4],
-          [4, 4],
-          [4, 5]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "attack": [
-          [2, 2],
-          [2, 2],
-          [3, 3],
-          [3, 3],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "range": [
-          [3, 3],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 5],
-          [4, 5],
-          [5, 6]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ]
         ]
       },
       "bonuses": {
         "retaliate": [
-          [[0, 0], [0, 0]],
-          [[0, 0], [2, 2]],
-          [[0, 0], [3, 2]],
-          [[2, 2], [3, 3]],
-          [[3, 2], [4, 3]],
-          [[3, 2], [4, 3]],
-          [[4, 2], [5, 3]],
-          [[4, 3], [5, 4]]
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              2
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              3,
+              2
+            ]
+          ],
+          [
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              3
+            ]
+          ],
+          [
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              3
+            ]
+          ],
+          [
+            [
+              3,
+              2
+            ],
+            [
+              4,
+              3
+            ]
+          ],
+          [
+            [
+              4,
+              2
+            ],
+            [
+              5,
+              3
+            ]
+          ],
+          [
+            [
+              4,
+              3
+            ],
+            [
+              5,
+              4
+            ]
+          ]
         ],
         "shield": [
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 5]
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 46,
           "imgName": "flame-demon-1",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 8,
-          "imgName": "flame-demon-2"
+          "imgName": "flame-demon-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 24,
-          "imgName": "flame-demon-3"
+          "imgName": "flame-demon-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 3,
@@ -1150,11 +3060,17 @@
         },
         {
           "initiative": 77,
-          "imgName": "flame-demon-5"
+          "imgName": "flame-demon-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 49,
-          "imgName": "flame-demon-6"
+          "imgName": "flame-demon-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 67,
@@ -1166,7 +3082,10 @@
         {
           "initiative": 30,
           "imgName": "flame-demon-8",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            {}
+          ]
         }
       ],
       "flying": true
@@ -1175,101 +3094,275 @@
       "name": "Forest Imp",
       "attributes": {
         "health": [
-          [1, 4],
-          [2, 5],
-          [2, 6],
-          [3, 7],
-          [3, 7],
-          [4, 8],
-          [4, 9],
-          [6, 11]
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            3,
+            7
+          ],
+          [
+            4,
+            8
+          ],
+          [
+            4,
+            9
+          ],
+          [
+            6,
+            11
+          ]
         ],
         "move": [
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [4, 4],
-          [4, 4],
-          [4, 4],
-          [4, 4],
-          [4, 4]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ]
         ],
         "attack": [
-          [1, 1],
-          [1, 2],
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [2, 3],
-          [3, 4],
-          [3, 4]
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ],
         "range": [
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [4, 4],
-          [4, 4],
-          [4, 4],
-          [4, 4],
-          [4, 4]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ]
         ]
       },
       "bonuses": {
         "shield": [
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [2, 2]
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ]
         ]
       },
       "conditions": {
         "curse": [
-          [0, 0],
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [0, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 42,
-          "imgName": "imp-1"
+          "imgName": "imp-1",
+          "actions": [
+            { "move":  1 },
+            { "heal":  2, "range": 3 }
+          ]
         },
         {
           "initiative": 43,
           "imgName": "imp-2",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            { "move":  0 },
+            { "attack":  -1, "target": 2, "poison": true }
+          ]
         },
         {
           "initiative": 76,
-          "imgName": "imp-3"
+          "imgName": "imp-3",
+          "actions": [
+            { "move": -1 },
+            { "attack": 1 }
+          ]
         },
         {
           "initiative": 24,
-          "imgName": "imp-4"
+          "imgName": "imp-4",
+          "actions": [
+            { "strengthen": true, "info-text": "Affect all allies within <span class=\"attribute\">Range<span> 2" },
+            { "muddle": true, "info-text": "Target all enemies within <span class=\"attribute\">Range<span> 2" }
+          ]
         },
         {
           "initiative": 5,
-          "imgName": "imp-5"
+          "imgName": "imp-5",
+          "actions": [
+            { "shield":  5 },
+            { "heal":  [1, 0] }
+          ]
         },
         {
           "initiative": 37,
           "imgName": "imp-6",
-          "count": 2
+          "count": 2,
+          "actions": [
+            { "move":  0 },
+            { "attack":  0 }
+          ]
         },
         {
           "initiative": 43,
           "imgName": "imp-7",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            {
+              "move": 0
+            },
+            { "attack":  -1, "target": 2, "curse": true }
+          ]
         }
       ],
       "flying": true
@@ -1278,70 +3371,247 @@
       "name": "Frost Demon",
       "attributes": {
         "health": [
-          [5, 10],
-          [6, 10],
-          [7, 12],
-          [8, 14],
-          [10, 18],
-          [11, 20],
-          [12, 22],
-          [14, 25]
+          [
+            5,
+            10
+          ],
+          [
+            6,
+            10
+          ],
+          [
+            7,
+            12
+          ],
+          [
+            8,
+            14
+          ],
+          [
+            10,
+            18
+          ],
+          [
+            11,
+            20
+          ],
+          [
+            12,
+            22
+          ],
+          [
+            14,
+            25
+          ]
         ],
         "move": [
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ],
         "attack": [
-          [3, 3],
-          [3, 3],
-          [3, 4],
-          [4, 4],
-          [4, 4],
-          [4, 5],
-          [5, 5],
-          [5, 5]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            5
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "bonuses": {
         "retaliate": [
-          [[0, 0], [0, 0]],
-          [[1, 0], [2, 0]],
-          [[2, 0], [2, 0]],
-          [[2, 0], [3, 0]],
-          [[2, 0], [3, 0]],
-          [[3, 0], [3, 0]],
-          [[3, 0], [4, 0]],
-          [[3, 0], [4, 0]]
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              3,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ],
+          [
+            [
+              3,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 18,
-          "imgName": "frost-demon-1"
+          "imgName": "frost-demon-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 18,
-          "imgName": "frost-demon-2"
+          "imgName": "frost-demon-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 58,
-          "imgName": "frost-demon-3"
+          "imgName": "frost-demon-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 78,
@@ -1354,15 +3624,24 @@
         },
         {
           "initiative": 38,
-          "imgName": "frost-demon-5"
+          "imgName": "frost-demon-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 58,
-          "imgName": "frost-demon-6"
+          "imgName": "frost-demon-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 58,
-          "imgName": "frost-demon-7"
+          "imgName": "frost-demon-7",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -1370,92 +3649,236 @@
       "name": "Giant Viper",
       "attributes": {
         "health": [
-          [2, 3],
-          [3, 5],
-          [4, 7],
-          [4, 8],
-          [6, 11],
-          [7, 13],
-          [8, 14],
-          [10, 17]
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            4,
+            8
+          ],
+          [
+            6,
+            11
+          ],
+          [
+            7,
+            13
+          ],
+          [
+            8,
+            14
+          ],
+          [
+            10,
+            17
+          ]
         ],
         "move": [
-          [2, 2],
-          [2, 2],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 4],
-          [4, 4],
-          [4, 4]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ]
         ],
         "attack": [
-          [1, 2],
-          [1, 2],
-          [1, 2],
-          [2, 3],
-          [2, 3],
-          [3, 3],
-          [3, 4],
-          [3, 4]
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "conditions": {
         "poison": [
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 11,
-          "imgName": "giant-viper-1"
+          "imgName": "giant-viper-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 23,
-          "imgName": "giant-viper-2"
+          "imgName": "giant-viper-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 58,
-          "imgName": "giant-viper-3"
+          "imgName": "giant-viper-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 58,
-          "imgName": "giant-viper-4"
+          "imgName": "giant-viper-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 43,
-          "imgName": "giant-viper-5"
+          "imgName": "giant-viper-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 32,
           "imgName": "giant-viper-6",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 43,
-          "imgName": "giant-viper-7"
+          "imgName": "giant-viper-7",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 32,
           "imgName": "giant-viper-8",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -1463,92 +3886,284 @@
       "name": "Harrower Infester",
       "attributes": {
         "health": [
-          [6, 12],
-          [7, 12],
-          [8, 14],
-          [10, 17],
-          [12, 19],
-          [12, 21],
-          [15, 22],
-          [17, 26]
+          [
+            6,
+            12
+          ],
+          [
+            7,
+            12
+          ],
+          [
+            8,
+            14
+          ],
+          [
+            10,
+            17
+          ],
+          [
+            12,
+            19
+          ],
+          [
+            12,
+            21
+          ],
+          [
+            15,
+            22
+          ],
+          [
+            17,
+            26
+          ]
         ],
         "move": [
-          [2, 2],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 3],
-          [3, 3],
-          [3, 4],
-          [3, 4]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ],
         "attack": [
-          [2, 2],
-          [2, 2],
-          [2, 3],
-          [3, 3],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 5]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "bonuses": {
         "retaliate": [
-          [[0, 0], [0, 0]],
-          [[1, 0], [2, 0]],
-          [[2, 0], [2, 0]],
-          [[2, 0], [3, 0]],
-          [[2, 0], [3, 0]],
-          [[3, 0], [3, 0]],
-          [[3, 0], [4, 0]],
-          [[4, 0], [4, 0]]
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              3,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              3,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ],
+          [
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 38,
-          "imgName": "harrower-infester-1"
+          "imgName": "harrower-infester-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 7,
           "shuffle": true,
-          "imgName": "harrower-infester-2"
+          "imgName": "harrower-infester-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 16,
-          "imgName": "harrower-infester-3"
+          "imgName": "harrower-infester-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 16,
-          "imgName": "harrower-infester-4"
+          "imgName": "harrower-infester-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 38,
-          "imgName": "harrower-infester-5"
+          "imgName": "harrower-infester-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 2,
           "shuffle": true,
-          "imgName": "harrower-infester-6"
+          "imgName": "harrower-infester-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 7,
-          "imgName": "harrower-infester-7"
+          "imgName": "harrower-infester-7",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 30,
-          "imgName": "harrower-infester-8"
+          "imgName": "harrower-infester-8",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -1556,66 +4171,240 @@
       "name": "Hound",
       "attributes": {
         "health": [
-          [4, 6],
-          [4, 6],
-          [6, 7],
-          [8, 8],
-          [8, 11],
-          [9, 12],
-          [11, 15],
-          [15, 15]
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            8,
+            8
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            9,
+            12
+          ],
+          [
+            11,
+            15
+          ],
+          [
+            15,
+            15
+          ]
         ],
         "move": [
-          [3, 5],
-          [4, 5],
-          [4, 5],
-          [4, 5],
-          [4, 5],
-          [4, 5],
-          [5, 6],
-          [5, 6]
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ]
         ],
         "attack": [
-          [2, 2],
-          [2, 2],
-          [2, 3],
-          [2, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 5]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            5
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "bonuses": {
         "retaliate": [
-          [[0, 0], [0, 0]],
-          [[1, 0], [2, 0]],
-          [[1, 0], [2, 0]],
-          [[1, 0], [2, 0]],
-          [[1, 0], [2, 0]],
-          [[2, 0], [3, 0]],
-          [[2, 0], [3, 0]],
-          [[2, 0], [4, 0]]
+          [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 7,
-          "imgName": "hound-1"
+          "imgName": "hound-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 83,
-          "imgName": "hound-2"
+          "imgName": "hound-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 26,
@@ -1624,17 +4413,26 @@
         },
         {
           "initiative": 72,
-          "imgName": "hound-4"
+          "imgName": "hound-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 6,
-          "imgName": "hound-5"
+          "imgName": "hound-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 19,
           "shuffle": true,
           "count": 2,
-          "imgName": "hound-6"
+          "imgName": "hound-6",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -1642,92 +4440,236 @@
       "name": "Inox Archer",
       "attributes": {
         "health": [
-          [5, 7],
-          [6, 8],
-          [8, 11],
-          [9, 13],
-          [10, 14],
-          [12, 17],
-          [12, 19],
-          [15, 23]
+          [
+            5,
+            7
+          ],
+          [
+            6,
+            8
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            10,
+            14
+          ],
+          [
+            12,
+            17
+          ],
+          [
+            12,
+            19
+          ],
+          [
+            15,
+            23
+          ]
         ],
         "move": [
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "range": [
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 5]
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ]
       },
       "conditions": {
         "wound": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [1, 1],
-          [1, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 44,
-          "imgName": "archer-1"
+          "imgName": "archer-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 56,
-          "imgName": "archer-2"
+          "imgName": "archer-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 68,
           "imgName": "archer-3",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 29,
           "shuffle": true,
-          "imgName": "archer-4"
+          "imgName": "archer-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 16,
-          "imgName": "archer-5"
+          "imgName": "archer-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 32,
-          "imgName": "archer-6"
+          "imgName": "archer-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 31,
-          "imgName": "archer-7"
+          "imgName": "archer-7",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 14,
-          "imgName": "archer-8"
+          "imgName": "archer-8",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -1735,89 +4677,278 @@
       "name": "Inox Guard",
       "attributes": {
         "health": [
-          [5, 9],
-          [8, 10],
-          [9, 12],
-          [11, 15],
-          [12, 17],
-          [13, 19],
-          [16, 21],
-          [19, 23]
+          [
+            5,
+            9
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            9,
+            12
+          ],
+          [
+            11,
+            15
+          ],
+          [
+            12,
+            17
+          ],
+          [
+            13,
+            19
+          ],
+          [
+            16,
+            21
+          ],
+          [
+            19,
+            23
+          ]
         ],
         "move": [
-          [2, 1],
-          [2, 2],
-          [2, 2],
-          [3, 2],
-          [3, 2],
-          [3, 2],
-          [3, 3],
-          [3, 3]
+          [
+            2,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            3,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 5],
-          [4, 5],
-          [4, 5],
-          [4, 6]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "bonuses": {
         "retaliate": [
-          [[0, 0], [1, 0]],
-          [[0, 0], [2, 0]],
-          [[0, 0], [2, 0]],
-          [[0, 0], [3, 0]],
-          [[1, 0], [3, 0]],
-          [[1, 0], [4, 0]],
-          [[1, 0], [4, 0]],
-          [[2, 0], [4, 0]]
+          [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          [
+            [
+              0,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ],
+          [
+            [
+              1,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ],
+          [
+            [
+              2,
+              0
+            ],
+            [
+              4,
+              0
+            ]
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 55,
-          "imgName": "guard-1"
+          "imgName": "guard-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 15,
           "imgName": "guard-2",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 30,
-          "imgName": "guard-3"
+          "imgName": "guard-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 50,
           "count": 2,
-          "imgName": "guard-4"
+          "imgName": "guard-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 35,
-          "imgName": "guard-5"
+          "imgName": "guard-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 15,
           "imgName": "guard-6",
-          "shuffle": true
+          "shuffle": true,
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 70,
-          "imgName": "guard-7"
+          "imgName": "guard-7",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -1825,44 +4956,140 @@
       "name": "Inox Shaman",
       "attributes": {
         "health": [
-          [4, 6],
-          [6, 9],
-          [7, 11],
-          [9, 14],
-          [10, 16],
-          [13, 20],
-          [15, 24],
-          [16, 27]
+          [
+            4,
+            6
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            7,
+            11
+          ],
+          [
+            9,
+            14
+          ],
+          [
+            10,
+            16
+          ],
+          [
+            13,
+            20
+          ],
+          [
+            15,
+            24
+          ],
+          [
+            16,
+            27
+          ]
         ],
         "move": [
-          [1, 2],
-          [1, 2],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4]
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "range": [
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [4, 4],
-          [4, 4],
-          [4, 4],
-          [4, 4],
-          [4, 4]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ]
         ]
       },
       "abilities": [
@@ -1870,31 +5097,52 @@
           "initiative": 23,
           "shuffle": true,
           "count": 2,
-          "imgName": "shaman-1"
+          "imgName": "shaman-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 8,
-          "imgName": "shaman-2"
+          "imgName": "shaman-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 62,
-          "imgName": "shaman-3"
+          "imgName": "shaman-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 89,
-          "imgName": "shaman-4"
+          "imgName": "shaman-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 9,
-          "imgName": "shaman-5"
+          "imgName": "shaman-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 74,
-          "imgName": "shaman-6"
+          "imgName": "shaman-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 8,
-          "imgName": "shaman-7"
+          "imgName": "shaman-7",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -1902,78 +5150,228 @@
       "name": "Living Bones",
       "attributes": {
         "health": [
-          [5, 6],
-          [5, 6],
-          [5, 7],
-          [7, 10],
-          [7, 11],
-          [9, 11],
-          [10, 11],
-          [13, 14]
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            7,
+            10
+          ],
+          [
+            7,
+            11
+          ],
+          [
+            9,
+            11
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            13,
+            14
+          ]
         ],
         "move": [
-          [2, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 6],
-          [4, 6]
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            6
+          ]
         ],
         "attack": [
-          [1, 2],
-          [1, 2],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4]
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "attackEffects": {
         "target": [
-          [2, 2],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [2, 3]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ]
         ]
       },
       "bonuses": {
         "shield": [
-          [0, 0],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 2],
-          [1, 2],
-          [1, 2]
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 25,
-          "imgName": "living-bones-1"
+          "imgName": "living-bones-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 64,
-          "imgName": "living-bones-2"
+          "imgName": "living-bones-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 45,
@@ -1983,20 +5381,32 @@
         {
           "initiative": 20,
           "shuffle": true,
-          "imgName": "living-bones-4"
+          "imgName": "living-bones-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 12,
           "shuffle": true,
-          "imgName": "living-bones-5"
+          "imgName": "living-bones-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 81,
-          "imgName": "living-bones-6"
+          "imgName": "living-bones-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 74,
-          "imgName": "living-bones-7"
+          "imgName": "living-bones-7",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -2004,62 +5414,185 @@
       "name": "Living Corpse",
       "attributes": {
         "health": [
-          [5, 10],
-          [7, 10],
-          [9, 13],
-          [10, 13],
-          [11, 15],
-          [13, 17],
-          [14, 21],
-          [15, 25]
+          [
+            5,
+            10
+          ],
+          [
+            7,
+            10
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            10,
+            13
+          ],
+          [
+            11,
+            15
+          ],
+          [
+            13,
+            17
+          ],
+          [
+            14,
+            21
+          ],
+          [
+            15,
+            25
+          ]
         ],
         "move": [
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 2],
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [2, 2]
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ]
         ],
         "attack": [
-          [3, 3],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 6],
-          [4, 6],
-          [5, 6]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            6
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "conditions": {
         "poison": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [1, 1],
-          [1, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 47,
-          "imgName": "living-corpse-1"
+          "imgName": "living-corpse-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 66,
@@ -2069,23 +5602,38 @@
         },
         {
           "initiative": 21,
-          "imgName": "living-corpse-3"
+          "imgName": "living-corpse-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 32,
-          "imgName": "living-corpse-4"
+          "imgName": "living-corpse-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 71,
-          "imgName": "living-corpse-5"
+          "imgName": "living-corpse-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 82,
-          "imgName": "living-corpse-6"
+          "imgName": "living-corpse-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 91,
-          "imgName": "living-corpse-7"
+          "imgName": "living-corpse-7",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -2093,89 +5641,230 @@
       "name": "Living Spirit",
       "attributes": {
         "health": [
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [4, 6],
-          [4, 7],
-          [6, 9]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            6,
+            9
+          ]
         ],
         "move": [
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "range": [
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 4],
-          [4, 5],
-          [4, 5]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ]
       },
       "bonuses": {
         "shield": [
-          [1, 2],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4]
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 48,
           "count": 2,
-          "imgName": "living-spirit-1"
+          "imgName": "living-spirit-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 67,
-          "imgName": "living-spirit-2"
+          "imgName": "living-spirit-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 75,
-          "imgName": "living-spirit-3"
+          "imgName": "living-spirit-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 61,
-          "imgName": "living-spirit-4"
+          "imgName": "living-spirit-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 55,
-          "imgName": "living-spirit-5"
+          "imgName": "living-spirit-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 22,
           "shuffle": true,
-          "imgName": "living-spirit-6"
+          "imgName": "living-spirit-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 33,
           "shuffle": true,
-          "imgName": "living-spirit-7"
+          "imgName": "living-spirit-7",
+          "actions": [
+            {}
+          ]
         }
       ],
       "flying": true
@@ -2184,114 +5873,306 @@
       "name": "Lurker",
       "attributes": {
         "health": [
-          [5, 7],
-          [7, 9],
-          [9, 12],
-          [10, 14],
-          [10, 14],
-          [11, 15],
-          [12, 16],
-          [14, 18]
+          [
+            5,
+            7
+          ],
+          [
+            7,
+            9
+          ],
+          [
+            9,
+            12
+          ],
+          [
+            10,
+            14
+          ],
+          [
+            10,
+            14
+          ],
+          [
+            11,
+            15
+          ],
+          [
+            12,
+            16
+          ],
+          [
+            14,
+            18
+          ]
         ],
         "move": [
-          [2, 2],
-          [2, 2],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [4, 4],
-          [4, 4]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 5]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "attackEffects": {
         "target": [
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [2, 2]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ]
         ],
         "pierce": [
-          [0, 0],
-          [1, 1],
-          [1, 2],
-          [2, 2],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4]
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ]
       },
       "bonuses": {
         "shield": [
-          [0, 1],
-          [0, 1],
-          [0, 1],
-          [0, 1],
-          [1, 2],
-          [1, 2],
-          [1, 2],
-          [1, 2]
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 23,
           "shuffle": true,
-          "imgName": "lurker-1"
+          "imgName": "lurker-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 61,
-          "imgName": "lurker-2"
+          "imgName": "lurker-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 38,
-          "imgName": "lurker-3"
+          "imgName": "lurker-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 28,
-          "imgName": "lurker-4"
+          "imgName": "lurker-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 38,
-          "imgName": "lurker-5"
+          "imgName": "lurker-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 64,
-          "imgName": "lurker-6"
+          "imgName": "lurker-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 11,
           "shuffle": true,
-          "imgName": "lurker-7"
+          "imgName": "lurker-7",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 41,
-          "imgName": "lurker-8"
+          "imgName": "lurker-8",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -2299,100 +6180,265 @@
       "name": "Ooze",
       "attributes": {
         "health": [
-          [4, 8],
-          [5, 9],
-          [7, 11],
-          [8, 11],
-          [9, 13],
-          [10, 15],
-          [12, 16],
-          [14, 18]
+          [
+            4,
+            8
+          ],
+          [
+            5,
+            9
+          ],
+          [
+            7,
+            11
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            10,
+            15
+          ],
+          [
+            12,
+            16
+          ],
+          [
+            14,
+            18
+          ]
         ],
         "move": [
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 2],
-          [2, 2],
-          [2, 3],
-          [2, 3],
-          [2, 3]
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ]
         ],
         "attack": [
-          [2, 2],
-          [2, 2],
-          [2, 3],
-          [3, 3],
-          [3, 4],
-          [3, 4],
-          [4, 4],
-          [4, 5]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "range": [
-          [2, 3],
-          [2, 3],
-          [3, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ]
       },
       "bonuses": {
         "shield": [
-          [0, 0],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 2],
-          [1, 2]
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ]
         ]
       },
       "conditions": {
         "poison": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 66,
-          "imgName": "ooze-1"
+          "imgName": "ooze-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 94,
           "shuffle": true,
           "count": 2,
-          "imgName": "ooze-2"
+          "imgName": "ooze-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 66,
-          "imgName": "ooze-3"
+          "imgName": "ooze-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 85,
-          "imgName": "ooze-4"
+          "imgName": "ooze-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 59,
-          "imgName": "ooze-5"
+          "imgName": "ooze-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 36,
-          "imgName": "ooze-6"
+          "imgName": "ooze-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 57,
-          "imgName": "ooze-7"
+          "imgName": "ooze-7",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -2400,56 +6446,176 @@
       "name": "Night Demon",
       "attributes": {
         "health": [
-          [3, 5],
-          [5, 8],
-          [6, 11],
-          [7, 13],
-          [8, 15],
-          [11, 17],
-          [14, 21],
-          [15, 21]
+          [
+            3,
+            5
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            6,
+            11
+          ],
+          [
+            7,
+            13
+          ],
+          [
+            8,
+            15
+          ],
+          [
+            11,
+            17
+          ],
+          [
+            14,
+            21
+          ],
+          [
+            15,
+            21
+          ]
         ],
         "move": [
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 4],
-          [4, 5],
-          [4, 5],
-          [4, 5],
-          [4, 5]
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "attack": [
-          [3, 4],
-          [3, 4],
-          [4, 4],
-          [4, 5],
-          [5, 5],
-          [5, 6],
-          [5, 6],
-          [6, 8]
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            5
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            8
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "conditions": {
         "disadvantage": [
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "abilities": [
@@ -2457,16 +6623,25 @@
           "initiative": 46,
           "shuffle": true,
           "count": 2,
-          "imgName": "night-demon-1"
+          "imgName": "night-demon-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 15,
-          "imgName": "night-demon-2"
+          "imgName": "night-demon-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 41,
           "shuffle": true,
-          "imgName": "night-demon-3"
+          "imgName": "night-demon-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 22,
@@ -2477,15 +6652,24 @@
         },
         {
           "initiative": 35,
-          "imgName": "night-demon-5"
+          "imgName": "night-demon-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 26,
-          "imgName": "night-demon-6"
+          "imgName": "night-demon-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 4,
-          "imgName": "night-demon-7"
+          "imgName": "night-demon-7",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -2493,92 +6677,236 @@
       "name": "Rending Drake",
       "attributes": {
         "health": [
-          [5, 7],
-          [6, 7],
-          [7, 9],
-          [7, 10],
-          [9, 11],
-          [10, 14],
-          [11, 15],
-          [14, 18]
+          [
+            5,
+            7
+          ],
+          [
+            6,
+            7
+          ],
+          [
+            7,
+            9
+          ],
+          [
+            7,
+            10
+          ],
+          [
+            9,
+            11
+          ],
+          [
+            10,
+            14
+          ],
+          [
+            11,
+            15
+          ],
+          [
+            14,
+            18
+          ]
         ],
         "move": [
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 6],
-          [4, 6],
-          [5, 6],
-          [5, 6]
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ]
         ],
         "attack": [
-          [3, 4],
-          [3, 5],
-          [3, 5],
-          [4, 6],
-          [4, 6],
-          [5, 6],
-          [5, 7],
-          [5, 7]
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            5,
+            7
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "conditions": {
         "wound": [
-          [0, 0],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 12,
-          "imgName": "rending-drake-1"
+          "imgName": "rending-drake-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 72,
           "shuffle": true,
-          "imgName": "rending-drake-2"
+          "imgName": "rending-drake-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 6,
-          "imgName": "rending-drake-3"
+          "imgName": "rending-drake-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 39,
-          "imgName": "rending-drake-4"
+          "imgName": "rending-drake-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 54,
-          "imgName": "rending-drake-5"
+          "imgName": "rending-drake-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 25,
-          "imgName": "rending-drake-6"
+          "imgName": "rending-drake-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 59,
-          "imgName": "rending-drake-7"
+          "imgName": "rending-drake-7",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 13,
           "shuffle": true,
-          "imgName": "rending-drake-8"
+          "imgName": "rending-drake-8",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -2586,68 +6914,212 @@
       "name": "Savvas Icestorm",
       "attributes": {
         "health": [
-          [7, 12],
-          [10, 12],
-          [12, 15],
-          [12, 18],
-          [14, 19],
-          [16, 21],
-          [16, 23],
-          [17, 24]
+          [
+            7,
+            12
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            12,
+            15
+          ],
+          [
+            12,
+            18
+          ],
+          [
+            14,
+            19
+          ],
+          [
+            16,
+            21
+          ],
+          [
+            16,
+            23
+          ],
+          [
+            17,
+            24
+          ]
         ],
         "move": [
-          [2, 2],
-          [2, 2],
-          [3, 3],
-          [3, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 4]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            4
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 6],
-          [4, 6]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            6
+          ]
         ],
         "range": [
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 6],
-          [5, 6],
-          [5, 6],
-          [5, 6],
-          [6, 6]
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            6,
+            6
+          ]
         ]
       },
       "attackEffects": {
         "pierce": [
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ]
         ]
       },
       "bonuses": {
         "shield": [
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [1, 1],
-          [1, 2],
-          [1, 2],
-          [2, 2],
-          [2, 3]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ]
         ]
       },
       "abilities": [
@@ -2669,7 +7141,10 @@
         },
         {
           "initiative": 14,
-          "imgName": "savvas-icestorm-3"
+          "imgName": "savvas-icestorm-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 14,
@@ -2706,66 +7181,210 @@
       "name": "Savvas Lavaflow",
       "attributes": {
         "health": [
-          [8, 13],
-          [9, 15],
-          [11, 18],
-          [14, 21],
-          [16, 24],
-          [18, 27],
-          [20, 30],
-          [24, 35]
+          [
+            8,
+            13
+          ],
+          [
+            9,
+            15
+          ],
+          [
+            11,
+            18
+          ],
+          [
+            14,
+            21
+          ],
+          [
+            16,
+            24
+          ],
+          [
+            18,
+            27
+          ],
+          [
+            20,
+            30
+          ],
+          [
+            24,
+            35
+          ]
         ],
         "move": [
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 4],
-          [3, 4],
-          [4, 4],
-          [4, 4]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [3, 3],
-          [3, 4],
-          [4, 4],
-          [4, 5],
-          [4, 6],
-          [4, 6]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            4,
+            6
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "conditions": {
         "poison": [
-          [0, 0],
-          [1, 0],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ],
         "wound": [
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [0, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "abilities": [
@@ -2779,15 +7398,24 @@
         },
         {
           "initiative": 31,
-          "imgName": "savvas-lavaflow-2"
+          "imgName": "savvas-lavaflow-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 51,
-          "imgName": "savvas-lavaflow-3"
+          "imgName": "savvas-lavaflow-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 41,
-          "imgName": "savvas-lavaflow-4"
+          "imgName": "savvas-lavaflow-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 68,
@@ -2799,7 +7427,10 @@
         },
         {
           "initiative": 22,
-          "imgName": "savvas-lavaflow-6"
+          "imgName": "savvas-lavaflow-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 97,
@@ -2821,92 +7452,236 @@
       "name": "Spitting Drake",
       "attributes": {
         "health": [
-          [5, 8],
-          [6, 9],
-          [8, 10],
-          [8, 12],
-          [9, 14],
-          [12, 16],
-          [13, 19],
-          [16, 21]
+          [
+            5,
+            8
+          ],
+          [
+            6,
+            9
+          ],
+          [
+            8,
+            10
+          ],
+          [
+            8,
+            12
+          ],
+          [
+            9,
+            14
+          ],
+          [
+            12,
+            16
+          ],
+          [
+            13,
+            19
+          ],
+          [
+            16,
+            21
+          ]
         ],
         "move": [
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [4, 4],
-          [4, 4],
-          [4, 4],
-          [4, 4]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ]
         ],
         "attack": [
-          [3, 4],
-          [3, 4],
-          [3, 5],
-          [4, 5],
-          [4, 5],
-          [4, 6],
-          [5, 6],
-          [5, 7]
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            7
+          ]
         ],
         "range": [
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 5],
-          [4, 5],
-          [4, 5]
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ]
       },
       "conditions": {
         "muddle": [
-          [0, 0],
-          [0, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 27,
-          "imgName": "spitting-drake-1"
+          "imgName": "spitting-drake-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 87,
-          "imgName": "spitting-drake-2"
+          "imgName": "spitting-drake-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 89,
-          "imgName": "spitting-drake-3"
+          "imgName": "spitting-drake-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 57,
           "shuffle": true,
-          "imgName": "spitting-drake-4"
+          "imgName": "spitting-drake-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 6,
-          "imgName": "spitting-drake-5"
+          "imgName": "spitting-drake-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 89,
           "shuffle": true,
-          "imgName": "spitting-drake-6"
+          "imgName": "spitting-drake-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 52,
-          "imgName": "spitting-drake-7"
+          "imgName": "spitting-drake-7",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 32,
-          "imgName": "spitting-drake-8"
+          "imgName": "spitting-drake-8",
+          "actions": [
+            {}
+          ]
         }
       ],
       "flying": true
@@ -2915,92 +7690,236 @@
       "name": "Stone Golem",
       "attributes": {
         "health": [
-          [10, 10],
-          [10, 11],
-          [11, 14],
-          [11, 15],
-          [12, 17],
-          [13, 19],
-          [16, 20],
-          [16, 21]
+          [
+            10,
+            10
+          ],
+          [
+            10,
+            11
+          ],
+          [
+            11,
+            14
+          ],
+          [
+            11,
+            15
+          ],
+          [
+            12,
+            17
+          ],
+          [
+            13,
+            19
+          ],
+          [
+            16,
+            20
+          ],
+          [
+            16,
+            21
+          ]
         ],
         "move": [
-          [1, 2],
-          [1, 2],
-          [1, 2],
-          [1, 2],
-          [2, 2],
-          [2, 3],
-          [2, 3],
-          [2, 3]
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ]
         ],
         "attack": [
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 6],
-          [5, 6],
-          [5, 7],
-          [5, 7]
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            5,
+            7
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "bonuses": {
         "shield": [
-          [0, 1],
-          [1, 2],
-          [1, 2],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4]
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 51,
           "shuffle": true,
-          "imgName": "stone-golem-1"
+          "imgName": "stone-golem-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 72,
-          "imgName": "stone-golem-2"
+          "imgName": "stone-golem-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 11,
-          "imgName": "stone-golem-3"
+          "imgName": "stone-golem-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 28,
-          "imgName": "stone-golem-4"
+          "imgName": "stone-golem-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 83,
-          "imgName": "stone-golem-5"
+          "imgName": "stone-golem-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 90,
           "shuffle": true,
-          "imgName": "stone-golem-6"
+          "imgName": "stone-golem-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 65,
-          "imgName": "stone-golem-7"
+          "imgName": "stone-golem-7",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 28,
-          "imgName": "stone-golem-8"
+          "imgName": "stone-golem-8",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -3008,87 +7927,243 @@
       "name": "Sun Demon",
       "attributes": {
         "health": [
-          [5, 9],
-          [7, 12],
-          [9, 13],
-          [10, 15],
-          [11, 16],
-          [11, 16],
-          [12, 18],
-          [15, 22]
+          [
+            5,
+            9
+          ],
+          [
+            7,
+            12
+          ],
+          [
+            9,
+            13
+          ],
+          [
+            10,
+            15
+          ],
+          [
+            11,
+            16
+          ],
+          [
+            11,
+            16
+          ],
+          [
+            12,
+            18
+          ],
+          [
+            15,
+            22
+          ]
         ],
         "move": [
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [2, 3],
-          [3, 3],
-          [3, 3],
-          [3, 4],
-          [3, 4]
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [2, 4],
-          [3, 4],
-          [3, 5],
-          [3, 5],
-          [4, 5],
-          [4, 5]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "conditions": {
         "advantage": [
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "bonuses": {
         "shield": [
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [2, 2],
-          [2, 2],
-          [2, 2]
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 50,
-          "imgName": "sun-demon-1"
+          "imgName": "sun-demon-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 88,
-          "imgName": "sun-demon-2"
+          "imgName": "sun-demon-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 73,
           "shuffle": true,
-          "imgName": "sun-demon-3"
+          "imgName": "sun-demon-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 95,
-          "imgName": "sun-demon-4"
+          "imgName": "sun-demon-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 68,
@@ -3100,7 +8175,10 @@
         {
           "initiative": 17,
           "shuffle": true,
-          "imgName": "sun-demon-6"
+          "imgName": "sun-demon-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 36,
@@ -3116,80 +8194,200 @@
       "name": "Vermling Scout",
       "attributes": {
         "health": [
-          [2, 4],
-          [3, 5],
-          [3, 5],
-          [5, 7],
-          [6, 8],
-          [8, 11],
-          [9, 12],
-          [11, 15]
+          [
+            2,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            6,
+            8
+          ],
+          [
+            8,
+            11
+          ],
+          [
+            9,
+            12
+          ],
+          [
+            11,
+            15
+          ]
         ],
         "move": [
-          [3, 3],
-          [3, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "attack": [
-          [1, 2],
-          [1, 2],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4]
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ]
         ],
         "range": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 40,
-          "imgName": "scout-1"
+          "imgName": "scout-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 29,
-          "imgName": "scout-2"
+          "imgName": "scout-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 53,
-          "imgName": "scout-3"
+          "imgName": "scout-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 69,
-          "imgName": "scout-4"
+          "imgName": "scout-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 79,
-          "imgName": "scout-5"
+          "imgName": "scout-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 54,
-          "imgName": "scout-6"
+          "imgName": "scout-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 92,
           "shuffle": true,
-          "imgName": "scout-7"
+          "imgName": "scout-7",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 35,
           "shuffle": true,
-          "imgName": "scout-8"
+          "imgName": "scout-8",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -3197,68 +8395,212 @@
       "name": "Vermling Shaman",
       "attributes": {
         "health": [
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 5],
-          [3, 5],
-          [4, 6],
-          [5, 6],
-          [7, 8]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            6
+          ],
+          [
+            7,
+            8
+          ]
         ],
         "move": [
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 3]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ]
         ],
         "attack": [
-          [1, 2],
-          [1, 2],
-          [1, 2],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [4, 4],
-          [4, 4]
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ]
         ],
         "range": [
-          [3, 3],
-          [3, 3],
-          [4, 4],
-          [4, 4],
-          [4, 4],
-          [4, 4],
-          [4, 4],
-          [4, 4]
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ]
         ]
       },
       "conditions": {
         "muddle": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [1, 1],
-          [1, 1],
-          [1, 1],
-          [1, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
         ]
       },
       "bonuses": {
         "shield": [
-          [2, 2],
-          [3, 3],
-          [3, 3],
-          [3, 3],
-          [3, 4],
-          [3, 4],
-          [3, 5],
-          [3, 5]
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            5
+          ]
         ]
       },
       "abilities": [
@@ -3266,31 +8608,52 @@
           "initiative": 23,
           "shuffle": true,
           "count": 2,
-          "imgName": "shaman-1"
+          "imgName": "shaman-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 8,
-          "imgName": "shaman-2"
+          "imgName": "shaman-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 62,
-          "imgName": "shaman-3"
+          "imgName": "shaman-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 89,
-          "imgName": "shaman-4"
+          "imgName": "shaman-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 9,
-          "imgName": "shaman-5"
+          "imgName": "shaman-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 74,
-          "imgName": "shaman-6"
+          "imgName": "shaman-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 8,
-          "imgName": "shaman-7"
+          "imgName": "shaman-7",
+          "actions": [
+            {}
+          ]
         }
       ]
     },
@@ -3298,94 +8661,256 @@
       "name": "Wind Demon",
       "attributes": {
         "health": [
-          [3, 5],
-          [3, 5],
-          [4, 7],
-          [5, 8],
-          [7, 8],
-          [9, 11],
-          [10, 12],
-          [11, 13]
+          [
+            3,
+            5
+          ],
+          [
+            3,
+            5
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            8
+          ],
+          [
+            7,
+            8
+          ],
+          [
+            9,
+            11
+          ],
+          [
+            10,
+            12
+          ],
+          [
+            11,
+            13
+          ]
         ],
         "move": [
-          [3, 4],
-          [3, 4],
-          [4, 5],
-          [4, 5],
-          [4, 5],
-          [4, 5],
-          [4, 5],
-          [4, 5]
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "attack": [
-          [2, 3],
-          [2, 3],
-          [2, 3],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 5]
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ]
         ],
         "range": [
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [3, 4],
-          [4, 4],
-          [4, 4],
-          [4, 4]
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            4,
+            4
+          ]
         ]
       },
       "conditions": {
         "disarm": [
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 0],
-          [0, 1],
-          [0, 1],
-          [0, 1],
-          [0, 1]
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            1
+          ]
         ]
       },
       "bonuses": {
         "shield": [
-          [1, 1],
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [2, 2],
-          [3, 3],
-          [3, 3]
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            3,
+            3
+          ],
+          [
+            3,
+            3
+          ]
         ]
       },
       "abilities": [
         {
           "initiative": 2,
-          "imgName": "wind-demon-1"
+          "imgName": "wind-demon-1",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 43,
-          "imgName": "wind-demon-2"
+          "imgName": "wind-demon-2",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 29,
-          "imgName": "wind-demon-3"
+          "imgName": "wind-demon-3",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 9,
-          "imgName": "wind-demon-4"
+          "imgName": "wind-demon-4",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 37,
-          "imgName": "wind-demon-5"
+          "imgName": "wind-demon-5",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 43,
-          "imgName": "wind-demon-6"
+          "imgName": "wind-demon-6",
+          "actions": [
+            {}
+          ]
         },
         {
           "initiative": 21,
