@@ -55,6 +55,10 @@ export const ApplicableConditions = [
   'wound'
 ] as const;
 
+/**
+ * Represents the values of a stat for a monster. It represents the values at a particular level. The first number
+ * of the tuple is the normal monster value, and the second in the tuple is the elite monster value
+ */
 export type Stat = [number, number];
 
 export enum Attributes {
@@ -121,8 +125,14 @@ export interface Monster {
  */
 export type StatModifier = number | string;
 
+/**
+ * Generic monster type
+ */
 export type Mob = Boss | Monster;
 
+/**
+ * Represents an action a {@link Mob} can take. One {@link MobAction} is one ability line on the monster ability card.
+ */
 export type MobAction = {
   /**
    * Indicates the {@link StatModifier} that modifies the {@link MobAction}s attack power
