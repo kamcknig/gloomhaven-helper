@@ -6581,9 +6581,16 @@
           "initiative": 55,
           "imgName": "living-spirit-5",
           "actions": [
-            {"move": 0},
-            {"curse": true, "info-text": "Target all enemies within range"},
-            {"infuse": ["cold"]}
+            {
+              "move": 0
+            },
+            {
+              "curse": true,
+              "info-text": "Target all enemies within range"
+            },
+            {
+              "infuse": ["cold"]
+            }
           ]
         },
         {
@@ -6591,9 +6598,12 @@
           "shuffle": true,
           "imgName": "living-spirit-6",
           "actions": [
-            {"move": -1},
             {
-              "attack": -1, "muddle": true
+              "move": -1
+            },
+            {
+              "attack": -1,
+              "muddle": true
             }
           ]
         },
@@ -6602,8 +6612,13 @@
           "shuffle": true,
           "imgName": "living-spirit-7",
           "actions": [
-            {"move": 0},
-            {"attack": -1, "info-text": "Target all enemies within range"}
+            {
+              "move": 0
+            },
+            {
+              "attack": -1,
+              "info-text": "Target all enemies within range"
+            }
           ]
         }
       ],
@@ -6919,7 +6934,8 @@
               "move": 0
             },
             {
-              "attack": 0, "info-text": "Target one enemy with all attacks"
+              "attack": 0,
+              "info-text": "Target one enemy with all attacks"
             }
           ]
         },
@@ -6928,7 +6944,8 @@
           "imgName": "lurker-6",
           "actions": [
             {
-              "attack": 1, "info-text": "Target all adjacent enemies"
+              "attack": 1,
+              "info-text": "Target all adjacent enemies"
             }
           ]
         },
@@ -6941,7 +6958,8 @@
               "shield": 1
             },
             {
-              "wound": true, "info-text": "Target all adjacent enemies"
+              "wound": true,
+              "info-text": "Target all adjacent enemies"
             }
           ]
         },
@@ -6949,7 +6967,9 @@
           "initiative": 41,
           "imgName": "lurker-8",
           "actions": [
-            {"move": 0},
+            {
+              "move": 0
+            },
             {
               "attack": -1,
               "wound": true
@@ -7175,7 +7195,15 @@
           "initiative": 66,
           "imgName": "ooze-1",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "loot": 1
+            },
+            {
+              "heal": [2,0]
+            }
           ]
         },
         {
@@ -7184,42 +7212,70 @@
           "count": 2,
           "imgName": "ooze-2",
           "actions": [
-            {}
+            {"info-text": "Ooze suffers 2 damage."},
+            {"info-text": "Summon normal Ooze with a hit point value equal to the summoning Ooze's current hit point value (limited by a normal Ooze's specified maximum hit point value)."}
           ]
         },
         {
           "initiative": 66,
           "imgName": "ooze-3",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "attack": 1,
+              "range": 1
+            }
           ]
         },
         {
           "initiative": 85,
           "imgName": "ooze-4",
           "actions": [
-            {}
+            {
+              "push": 1,
+              "poison": true, "info-text": "Target all adjacent enemies"
+            },
+            {
+              "attack": 1,
+              "range": -1
+            }
           ]
         },
         {
           "initiative": 59,
           "imgName": "ooze-5",
           "actions": [
-            {}
+            {
+              "attack": 0,
+              "target": 2,
+              "poison": true
+            }
           ]
         },
         {
           "initiative": 36,
           "imgName": "ooze-6",
           "actions": [
-            {}
+            {
+              "move": 1
+            },
+            {
+              "attack": -1
+            }
           ]
         },
         {
           "initiative": 57,
           "imgName": "ooze-7",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": 0
+            }
           ]
         }
       ]
@@ -7696,38 +7752,14 @@
       "name": "Savvas Icestorm",
       "attributes": {
         "health": [
-          [
-            7,
-            12
-          ],
-          [
-            10,
-            12
-          ],
-          [
-            12,
-            15
-          ],
-          [
-            12,
-            18
-          ],
-          [
-            14,
-            19
-          ],
-          [
-            16,
-            21
-          ],
-          [
-            16,
-            23
-          ],
-          [
-            17,
-            24
-          ]
+          [7, 12],
+          [10, 12],
+          [12, 15],
+          [12, 18],
+          [14, 19],
+          [16, 21],
+          [16, 23],
+          [17, 24]
         ],
         "move": [
           [

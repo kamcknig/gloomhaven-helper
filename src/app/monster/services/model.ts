@@ -161,9 +161,14 @@ export type MobAction = {
   'info-text': string;
 
   /**
-   * Inicates which elements the {@link MobAction} infuses during the turn
+   * Indicates which elements the {@link MobAction} infuses during the turn
    */
   infuse?: ElementNames[];
+
+  /**
+   * Indicates a loot {@link MobAction}
+   */
+  loot?: boolean;
 
   /**
    * Indicates the number of hexes to modify the {@link MobAction} movement value
