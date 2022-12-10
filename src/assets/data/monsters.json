@@ -8923,35 +8923,60 @@
           "shuffle": true,
           "imgName": "stone-golem-1",
           "actions": [
-            {}
+            {
+              "move": 1
+            },
+            {
+              "attack": -1
+            }
           ]
         },
         {
           "initiative": 72,
           "imgName": "stone-golem-2",
           "actions": [
-            {}
+            {
+              "attack": 1,
+              "range": 3
+            },
+            {
+              "info-text": "Stone Golem suffers 2 damage."
+            }
           ]
         },
         {
           "initiative": 11,
           "imgName": "stone-golem-3",
           "actions": [
-            {}
+            {
+              "retaliate": [3,3]
+            }
           ]
         },
         {
           "initiative": 28,
           "imgName": "stone-golem-4",
           "actions": [
-            {}
+            {
+              "move": 1
+            },
+            {"attack": 2,
+              "range": 3,
+              "pull": 2,
+              "immobilize": true
+            }
           ]
         },
         {
           "initiative": 83,
           "imgName": "stone-golem-5",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": 1, "info-text": "Target all adjacent enemies"
+            }
           ]
         },
         {
@@ -8959,21 +8984,37 @@
           "shuffle": true,
           "imgName": "stone-golem-6",
           "actions": [
-            {}
+            {
+              "move": -1,
+              "attack": 1
+            }
           ]
         },
         {
           "initiative": 65,
           "imgName": "stone-golem-7",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": 0
+            }
           ]
         },
         {
           "initiative": 28,
           "imgName": "stone-golem-8",
           "actions": [
-            {}
+            {
+              "move": 1
+            },
+            {
+              "attack": 0
+            },
+            {
+              "info-text": "Stone Golem suffers 1 damage."
+            }
           ]
         }
       ]
