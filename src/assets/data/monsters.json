@@ -9480,42 +9480,74 @@
           "initiative": 40,
           "imgName": "scout-1",
           "actions": [
-            {}
+            {
+              "move": 1
+            },
+            {
+              "attack": -1
+            }
           ]
         },
         {
           "initiative": 29,
           "imgName": "scout-2",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "attack": -1,
+              "range": 3
+            }
           ]
         },
         {
           "initiative": 53,
           "imgName": "scout-3",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": 0
+            }
           ]
         },
         {
           "initiative": 69,
           "imgName": "scout-4",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "attack": 1
+            }
           ]
         },
         {
           "initiative": 79,
           "imgName": "scout-5",
           "actions": [
-            {}
+            {
+              "attack": -1,
+              "range": 4,
+              "target": 2
+            }
           ]
         },
         {
           "initiative": 54,
           "imgName": "scout-6",
           "actions": [
-            {}
+            {
+              "move": -2
+            },
+            {
+              "attack": 0,
+              "range": 3,
+              "poison": true
+            }
           ]
         },
         {
@@ -9523,7 +9555,10 @@
           "shuffle": true,
           "imgName": "scout-7",
           "actions": [
-            {}
+            {
+              "attack": 2,
+              "poison": true
+            }
           ]
         },
         {
@@ -9531,7 +9566,13 @@
           "shuffle": true,
           "imgName": "scout-8",
           "actions": [
-            {}
+            {
+              "move": 1,
+              "jump": true
+            },
+            {
+              "loot": 1
+            }
           ]
         }
       ]
