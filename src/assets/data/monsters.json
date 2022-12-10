@@ -7463,14 +7463,27 @@
           "count": 2,
           "imgName": "night-demon-1",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "attack": 1
+            }
           ]
         },
         {
           "initiative": 15,
           "imgName": "night-demon-2",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": -1
+            },
+            {
+              "info-text": "All adjacent enemies and allies suffer 1 damage."
+            }
           ]
         },
         {
@@ -7478,35 +7491,73 @@
           "shuffle": true,
           "imgName": "night-demon-3",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "attack": 1
+            },
+            {
+              "infuse": [
+                "dark"
+              ]
+            }
           ]
         },
         {
           "initiative": 22,
           "imgName": "night-demon-4",
-          "infusions": [
-            "dark"
+          "actions": [
+            {
+              "move": 0
+            },
+            {
+              "attack": 0
+            },
+            {
+              "infuse": [
+                "dark"
+              ]
+            }
           ]
         },
         {
           "initiative": 35,
           "imgName": "night-demon-5",
           "actions": [
-            {}
+            {
+              "attack": -1
+            },
+            {
+              "attack": -1,
+              "pierce": 2
+            }
           ]
         },
         {
           "initiative": 26,
           "imgName": "night-demon-6",
           "actions": [
-            {}
+            {
+              "attack": -2,
+              "range": 3,
+              "target": 4
+            }
           ]
         },
         {
           "initiative": 4,
           "imgName": "night-demon-7",
           "actions": [
-            {}
+            {
+              "move": 1
+            },
+            {
+              "attack": -1
+            },
+            {
+              "infuse": ["dark"]
+            }
           ]
         }
       ]
