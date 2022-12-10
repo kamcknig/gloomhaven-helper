@@ -6861,42 +6861,75 @@
           "shuffle": true,
           "imgName": "lurker-1",
           "actions": [
-            {}
+            {
+              "shield": 1
+            },
+            {
+              "move": 0
+            },
+            {
+              "attack": -1
+            },
+            {
+              "infuse": ["cold"]
+            }
           ]
         },
         {
           "initiative": 61,
           "imgName": "lurker-2",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "attack": 1
+            }
           ]
         },
         {
           "initiative": 38,
           "imgName": "lurker-3",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": 0
+            }
           ]
         },
         {
           "initiative": 28,
           "imgName": "lurker-4",
           "actions": [
-            {}
+            {
+              "move": 1
+            },
+            {
+              "attack": -1
+            }
           ]
         },
         {
           "initiative": 38,
           "imgName": "lurker-5",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": 0, "info-text": "Target one enemy with all attacks"
+            }
           ]
         },
         {
           "initiative": 64,
           "imgName": "lurker-6",
           "actions": [
-            {}
+            {
+              "attack": 1, "info-text": "Target all adjacent enemies"
+            }
           ]
         },
         {
@@ -6904,14 +6937,23 @@
           "shuffle": true,
           "imgName": "lurker-7",
           "actions": [
-            {}
+            {
+              "shield": 1
+            },
+            {
+              "wound": true, "info-text": "Target all adjacent enemies"
+            }
           ]
         },
         {
           "initiative": 41,
           "imgName": "lurker-8",
           "actions": [
-            {}
+            {"move": 0},
+            {
+              "attack": -1,
+              "wound": true
+            }
           ]
         }
       ]
