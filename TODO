@@ -1,0 +1,18 @@
+add a way to quickly remove a token rather than making it's HP 0. You can do that a little quicker than using
+the arrows by going into the token details dialog and setting it to 0 but should there be an even quicker way?
+A delete button on that dialog? One on the monster list and/or detail view? on the token selection dialog?
+
+extract header element icons into components
+
+the delete button on detail cards is hard to see when the change
+view mode is over it
+
+add attribute modification data to monster card json. add net attributes display to show monsters
+actual attributes with their currently drawn card
+
+on death effect for monster abilities like cultist # 7 card
+
+optional monster attack card options such as earth demon 5
+
+on monster ability cards. are the sentences that end in periods their own actions and the ones with no period are sub-texts
+of the actions they follow?

@@ -25,17 +25,18 @@
   <span style="flex: 1 1 auto;"></span>
 
   <div fxLayout="row"
-       fxLayoutGap="10px"
+       fxLayoutGap="30px"
        class="element-wrapper">
-    <img *ngFor="let element of elementService.elementStore.elements$ | async"
-         [src]="'assets/icons/element-' + element.name.toLowerCase() + '.png'"
+    <div *ngFor="let element of elementService.elementStore.elements$ | async"
+         class="element-icon"
          [ngClass]="{
               'infused': element.level === ElementPhases.infused,
               'waning': element.level === ElementPhases.waning,
               'dark': element.name.toLowerCase() === 'dark'
              }"
-         class="element-icon"
          (click)="elementService.cycleElement$.next(element.name)">
+      <img [src]="'assets/icons/element-' + element.name.toLowerCase() + '.png'">
+    </div>
   </div>
 </mat-toolbar>
 

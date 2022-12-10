@@ -1,7 +1,7 @@
-import {Component, ElementRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, Renderer2} from '@angular/core';
 import {MonsterService} from "../../services/monster.service";
 import {BehaviorSubject, combineLatest, Observable} from "rxjs";
-import {Monster} from "../../services/model";
+import {isBoss, Monster} from "../../services/model";
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CommonModule} from '@angular/common';
 import {AppService} from '../../../app.service';
@@ -47,9 +47,6 @@ import {LetModule} from "@ngrx/component";
   ]
 })
 export class MonsterListItemComponent implements OnInit {
-  @ViewChild('leftSection') leftSection: ElementRef;
-  @ViewChild('rightSection') rightSection: ElementRef;
-
   @Input() public active: boolean;
 
   public monster$: BehaviorSubject<Monster> = new BehaviorSubject<Monster>(undefined);
@@ -62,6 +59,8 @@ export class MonsterListItemComponent implements OnInit {
   public tokens$: Observable<{ elite: TokenInfo[], normal: TokenInfo[] }>;
   public tokenCount$: Observable<number>;
   public monsterLevel$: Observable<number>;
+
+  public isBoss = isBoss;
 
   constructor(
     private _renderer: Renderer2,

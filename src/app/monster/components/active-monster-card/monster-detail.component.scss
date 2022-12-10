@@ -1,7 +1,28 @@
+:host ::ng-deep app-monster-attributes.large {
+  .container {
+    font-size: 1.5rem;
+
+    .icon {
+      max-height: 2.5rem;
+      max-width: 2.5rem;
+    }
+  }
+}
+
 :host {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: fit-content;
+  max-width: 550px;
+
+  > *:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  app-monster-ability-deck {
+    flex: 1 1 0;
+  }
 
   &.active ::ng-deep .mat-card {
     border: solid 5px purple;
@@ -50,20 +71,59 @@
         margin-bottom: 0;
 
         .mat-card-content-wrapper {
-          width: 100%
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          justify-content: flex-start;
         }
 
         .mat-title {
           text-decoration: underline;
         }
 
-        .monster-info-wrapper {
-          width: 100%;
+        .monster-stat-parent-wrapper {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+
+          &.boss {
+            justify-content: center;
+          }
+
           position: relative;
+
+          .monster-stat-attribute-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            justify-content: flex-start;
+
+            &.elite {
+              align-items: flex-end;
+            }
+
+            .stats-wrapper {
+              display: flex;
+              flex-wrap: wrap;
+
+              &.elite {
+                flex-wrap: wrap-reverse;
+              }
+
+              &.boss {
+                flex-wrap: unset;
+                justify-content: center;
+              }
+            }
+
+            > *:not(:last-child) {
+              margin-bottom: .5rem;
+            }
+          }
         }
 
         .token-info-wrapper {
-          width: 100%;
           position: relative;
           height: 100%;
 

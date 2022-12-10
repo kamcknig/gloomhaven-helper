@@ -20,7 +20,7 @@
           <mat-form-field>
             <mat-label>{{stat | uppercase}}</mat-label>
             <input matInput
-                   min="1"
+                   min="{{stat === 'health' ? 1 : 0}}"
                    [formControlName]="idx"
                    type="number"/>
           </mat-form-field>

@@ -1,93 +1,96 @@
-<div fxLayout="row"
-     fxLayoutGap="5px"
-     fxLayoutAlign="start stretch">
-  <div class="active-indicator"
-       fxFlex="20px"
-       [ngStyle]="{'display': active ? 'block' : 'none'}"></div>
+<ng-container *ngrxLet="monster$ as monster">
+  <div fxLayout="row"
+       fxLayoutGap="5px"
+       fxLayoutAlign="start center">
+    <div class="active-indicator"
+         fxFlex="20px"
+         [ngStyle]="{'display': active ? 'block' : 'none'}"></div>
 
-  <section fxLayout="column"
-           fxFlex="1 0 18rem"
-           #leftSection>
-    <div class="header">
-      <!-- the name and level -->
-      <span class="monster-name">{{ (monster$ | async)?.name }}</span>
+    <section fxLayout="column"
+             fxFlex="1 0 18rem">
+      <div class="header">
+        <!-- the name and level -->
+        <span class="monster-name">{{ monster.name }}</span>
 
-      <app-monster-level [monster]="(monster$ | async)"></app-monster-level>
+        <ng-container *ngIf="!isBoss(monster)">
+          <app-monster-level [monster]="monster"></app-monster-level>
+        </ng-container>
 
-      <span *ngIf="(monster$ | async)?.flying">
+        <span *ngIf="(monster$ | async)?.flying">
         <img class="flying-icon"
-             src="/assets/icons/flying.png">
+             src="/assets/icons/flying.png"
+             alt="flying">
       </span>
 
-      <ng-container *ngrxLet="monster$ | async as monster">
-        <div class="header-button-container">
-          <button mat-mini-fab
-                  id="add-token"
-                  type="button"
-                  [disabled]="(tokenCount$ | async) === 10"
-                  (click)="tokenService.addToken$.next(monster.id)">T
-          </button>
-        </div>
-      </ng-container>
-    </div>
+        <ng-container *ngIf="!isBoss(monster)">
+          <div class="header-button-container">
+            <button mat-mini-fab
+                    id="add-token"
+                    type="button"
+                    [disabled]="(tokenCount$ | async) === 10"
+                    (click)="tokenService.addToken$.next(monster.id)">T
+            </button>
+          </div>
+        </ng-container>
+      </div>
 
-    <div class="stats-token-container"
-         fxLayout="row">
-      <ng-container *ngFor="let elite of [0, 1]">
-        <div fxLayout="column"
-             fxFlex
-             fxLayoutGap=".5rem"
-             [class]="!elite ? 'normal' : 'elite'">
-          <!-- displays monster attributes such as health, movement, etc. -->
-          <app-monster-attributes [monster]="monster$ | async"
-                                  [index]="elite"
-                                  [level]="monsterLevel$ | async">
-          </app-monster-attributes>
+      <div class="stats-token-container"
+           fxLayout="row">
+        <ng-container *ngFor="let elite of isBoss(monster) ? [0] : [0, 1]; last as last;">
+          <div fxLayout="column"
+               fxFlex
+               fxLayoutGap=".5rem"
+               [class]="!elite ? 'normal' : 'elite'">
+            <!-- displays monster attributes such as health, movement, etc. -->
+            <app-monster-attributes [monster]="monster"
+                                    [index]="elite"
+                                    [level]="monsterLevel$ | async"
+                                    [ngClass]="{ boss: isBoss(monster) }">
+            </app-monster-attributes>
 
-          <!-- displays the Monsters stats including conditions, bonuses, etc. -->
-          <div *ngIf="monsterLevel$ | async as level"
-               [fxLayout]="!elite  ? 'row wrap' : 'row-reverse wrap'"
-               style="gap: .15rem;">
-            <app-monster-stat *ngFor="let effect of monster$ | async | conditionList : level : $any(elite)"
-                              [condition]="$any(effect)"
-                              [conditionAmount]="monster$ | async | monsterStat : effect : level : $any(elite)"
-                              fxLayout="row"
-                              fxLayoutAlign="start center">
-            </app-monster-stat>
+            <!-- displays the Monsters stats including conditions, bonuses, etc. -->
+            <div *ngIf="monsterLevel$ | async as level"
+                 [fxLayout]="!elite  ? 'row wrap' : 'row-reverse wrap'"
+                 style="gap: .15rem;">
+              <app-monster-stat *ngFor="let effect of monster | conditionList : level : $any(elite)"
+                                [condition]="$any(effect)"
+                                [conditionAmount]="monster | monsterStat : effect : level : $any(elite)"
+                                fxLayout="row"
+                                fxLayoutAlign="start center">
+              </app-monster-stat>
 
-            <app-monster-stat *ngFor="let effect of monster$ | async | attackEffectList : level : $any(elite)"
-                              [condition]="$any(effect)"
-                              [conditionAmount]="monster$ | async | monsterStat : effect : level : $any(elite)"
-                              fxLayout="row"
-                              fxLayoutAlign="start center">
-            </app-monster-stat>
+              <app-monster-stat *ngFor="let effect of monster | attackEffectList : level : $any(elite)"
+                                [condition]="$any(effect)"
+                                [conditionAmount]="monster | monsterStat : effect : level : $any(elite)"
+                                fxLayout="row"
+                                fxLayoutAlign="start center">
+              </app-monster-stat>
 
-            <app-monster-stat *ngFor="let effect of monster$ | async | bonusList : level : $any(elite)"
-                              [condition]="$any(effect)"
-                              [conditionAmount]="monster$ | async | monsterStat : effect : level : $any(elite)"
-                              fxLayout="row"
-                              fxLayoutAlign="start center">
-            </app-monster-stat>
+              <app-monster-stat *ngFor="let effect of monster | bonusList : level : $any(elite)"
+                                [condition]="$any(effect)"
+                                [conditionAmount]="monster | monsterStat : effect : level : $any(elite)"
+                                fxLayout="row"
+                                fxLayoutAlign="start center">
+              </app-monster-stat>
+            </div>
+
+            <div class="token-container">
+              <app-token-health class="token-info"
+                                *ngFor="let token of (tokens$ | async)?.[!elite ? 'normal' : 'elite']"
+                                (click)="tokenService.updateTokenDetails$.next(token)"
+                                [token]="token">
+              </app-token-health>
+            </div>
           </div>
 
-          <div class="token-container">
-            <app-token-health class="token-info"
-                              *ngFor="let token of (tokens$ | async)?.[!elite ? 'normal' : 'elite']"
-                              (click)="tokenService.updateTokenDetails$.next(token)"
-                              [token]="token">
-            </app-token-health>
-          </div>
-        </div>
+          <mat-divider *ngIf="!elite && !last"
+                       style="border-right-color: rgba(var(--gold), .5); border-right-width: 2px"
+                       [vertical]="true">
+          </mat-divider>
+        </ng-container>
+      </div>
+    </section>
 
-        <mat-divider *ngIf="!elite"
-                     style="border-right-color: rgba(var(--gold), .5); border-right-width: 2px"
-                     [vertical]="true">
-        </mat-divider>
-      </ng-container>
-    </div>
-  </section>
-
-  <section #rightSection>
-    <app-monster-ability-deck [monster]="monster$ | async"></app-monster-ability-deck>
-  </section>
-</div>
+    <app-monster-ability-deck class="list" [monster]="monster"></app-monster-ability-deck>
+  </div>
+</ng-container>

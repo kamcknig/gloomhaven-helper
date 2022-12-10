@@ -1,34 +1,34 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>
-      <span class="main">{{monster.name}}</span>
+<ng-container *ngrxLet="monster$ as monster">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <span class="main">{{monster.name}}</span>
 
-      <app-monster-level [monster]="monster"></app-monster-level>
+        <ng-container *ngIf="!isBoss(monster)">
+          <app-monster-level [monster]="monster"></app-monster-level>
+        </ng-container>
 
-      <span *ngIf="monster.flying">
+        <span *ngIf="monster.flying">
         <img class="flying-icon"
-             src="/assets/icons/flying.png">
+             src="/assets/icons/flying.png"
+             alt="flying">
       </span>
-    </mat-card-title>
-  </mat-card-header>
+      </mat-card-title>
+    </mat-card-header>
 
-  <mat-card-content>
-    <div class="mat-card-content-wrapper"
-         fxFlex
-         fxLayout="column"
-         fxLayoutAlign="start center">
-      <!-- stats section for both normals and elites -->
-      <div class="monster-info-wrapper"
-           fxLayout="row"
-           fxLayoutAlign="space-between start">
-        <!-- loop for normal vs elite monsters -->
-        <ng-container *ngFor="let index of [0, 1]">
-          <ng-container *ngIf="monster">
-            <ng-container *ngIf="monsterLevel$ | async as level">
-              <div fxLayout="column"
-                   fxFlex
-                   [fxLayoutAlign]="index === 0 ? 'start start' : 'start end'"
-                   fxLayoutGap=".5rem">
+    <mat-card-content>
+      <div class="mat-card-content-wrapper">
+        <!-- stats section for both normals and elites -->
+        <div class="monster-stat-parent-wrapper"
+             [ngClass]="{ boss: isBoss(monster) }">
+          <!-- loop for normal vs elite monsters -->
+          <ng-container *ngrxLet="monsterLevel$ | async as level">
+            <ng-container *ngFor="let index of isBoss(monster) ? [0] : [0, 1]">
+              <div class="monster-stat-attribute-wrapper"
+                   [ngClass]="{
+                    elite: index === 1,
+                    boss: isBoss(monster)
+                   }">
                 <!-- monster stats on the monster info card -->
                 <app-monster-attributes class="large"
                                         [monster]="monster"
@@ -36,8 +36,14 @@
                                         [index]="index">
                 </app-monster-attributes>
 
+                <!-- TODO add 'immunities' text for boss? -->
                 <!-- statuses that the monster has on it's monster info card -->
-                <div [fxLayout]="index === 0 ? 'row wrap' : 'row-reverse wrap'" style="gap: .2rem;">
+                <div class="stats-wrapper"
+                     [ngClass]="{
+                      elite: index === 1,
+                      boss: isBoss(monster)
+                     }"
+                     style="gap: .2rem;">
                   <app-monster-stat *ngFor="let effect of monster | conditionList : level : $any(index)"
                                     [condition]="$any(effect)"
                                     [conditionAmount]="monster | monsterStat : effect : level : $any(index)"
@@ -62,63 +68,69 @@
               </div>
             </ng-container>
           </ng-container>
+        </div>
+
+        <mat-divider style="width: 100%; margin: 1rem 0;"></mat-divider>
+
+        <ng-container *ngIf="!isBoss(monster)">
+          <div fxFlex
+               class="token-info-wrapper"
+               fxLayout="column">
+            <div class="mat-title"
+                 style="text-align: center">Tokens
+            </div>
+
+            <div class="token-list-wrapper"
+                 fxLayoutGap="2rem"
+                 fxLayout="row"
+                 cdkDropListGroup
+                 fxFlex>
+              <ng-container *ngIf="tokens$ | async as tokens">
+                <ng-container *ngFor="let tokenType of ['normals', 'elites']">
+                  <div fxFlex="50"
+                       class="token-list">
+                    <div fxFlex
+                         fxLayout="column"
+                         fxLayoutAlign="start start"
+                         cdkDropList
+                         [cdkDropListData]="tokenType"
+                         (cdkDropListDropped)="$event.previousContainer !== $event.container ? combatService.toggleTokenElite$.next($event.item.data) : undefined">
+                      <app-token-list-item *ngFor="let token of tokens?.[tokenType]"
+                                           cdkDrag
+                                           [cdkDragData]="token"
+                                           style="width: 100%;"
+                                           [value]="token"
+                                           [statuses]="getTokenConditionsAndEffects(token)"
+                                           (statusPress)="tokenService.updateTokenDetails$.next(token)">
+                      </app-token-list-item>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
         </ng-container>
       </div>
+    </mat-card-content>
 
-      <mat-divider style="width: 100%; margin: 1rem 0;"></mat-divider>
+    <ng-container *ngrxLet="monster$ as monster">
+      <ng-container *ngIf="!isBoss(monster)">
+        <button mat-mini-fab
+                id="add-token"
+                type="button"
+                [disabled]="(tokenCount$ | async) === 10"
+                (click)="tokenService.addToken$.next(monster.id)">T
+        </button>
+      </ng-container>
+    </ng-container>
 
-      <div fxFlex
-           class="token-info-wrapper"
-           fxLayout="column">
-        <div class="mat-title"
-             style="text-align: center">Tokens
-        </div>
+    <button mat-mini-fab
+            id="remove-monster"
+            type="button"
+            (click)="removeMonster()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-card>
 
-        <div class="token-list-wrapper"
-             fxLayoutGap="2rem"
-             fxLayout="row"
-             cdkDropListGroup
-             fxFlex>
-          <ng-container *ngIf="tokens$ | async as tokens">
-            <ng-container *ngFor="let tokenType of ['normals', 'elites']">
-              <div fxFlex="50"
-                   class="token-list">
-                <div fxFlex
-                     fxLayout="column"
-                     fxLayoutAlign="start start"
-                     cdkDropList
-                     [cdkDropListData]="tokenType"
-                     (cdkDropListDropped)="$event.previousContainer !== $event.container ? combatService.toggleTokenElite$.next($event.item.data) : undefined">
-                  <app-token-list-item *ngFor="let token of tokens?.[tokenType]"
-                                       cdkDrag
-                                       [cdkDragData]="token"
-                                       style="width: 100%;"
-                                       [value]="token"
-                                       [statuses]="getTokenConditionsAndEffects(token)"
-                                       (statusPress)="tokenService.updateTokenDetails$.next(token)">
-                  </app-token-list-item>
-                </div>
-              </div>
-            </ng-container>
-          </ng-container>
-        </div>
-      </div>
-    </div>
-  </mat-card-content>
-
-  <button mat-mini-fab
-          id="add-token"
-          type="button"
-          [disabled]="(tokenCount$ | async) === 10"
-          (click)="tokenService.addToken$.next(monster.id)">T
-  </button>
-
-  <button mat-mini-fab
-          id="remove-monster"
-          type="button"
-          (click)="removeMonster()">
-    <mat-icon>delete</mat-icon>
-  </button>
-</mat-card>
-
-<app-monster-ability-deck [monster]="monster$ | async"></app-monster-ability-deck>
+  <app-monster-ability-deck [monster]="monster$ | async"></app-monster-ability-deck>
+</ng-container>
