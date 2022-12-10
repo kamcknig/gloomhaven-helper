@@ -6530,35 +6530,60 @@
           "count": 2,
           "imgName": "living-spirit-1",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": 0
+            }
           ]
         },
         {
           "initiative": 67,
           "imgName": "living-spirit-2",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "attack": 1
+            }
           ]
         },
         {
           "initiative": 75,
           "imgName": "living-spirit-3",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "attack": 1,
+              "range": -1
+            },
+            {
+              "heal": [1, 0]
+            }
           ]
         },
         {
           "initiative": 61,
           "imgName": "living-spirit-4",
           "actions": [
-            {}
+            {
+              "attack": 0,
+              "range": -1,
+              "target": 2
+            }
           ]
         },
         {
           "initiative": 55,
           "imgName": "living-spirit-5",
           "actions": [
-            {}
+            {"move": 0},
+            {"curse": true, "info-text": "Target all enemies within range"},
+            {"infuse": ["cold"]}
           ]
         },
         {
@@ -6566,7 +6591,10 @@
           "shuffle": true,
           "imgName": "living-spirit-6",
           "actions": [
-            {}
+            {"move": -1},
+            {
+              "attack": -1, "muddle": true
+            }
           ]
         },
         {
@@ -6574,7 +6602,8 @@
           "shuffle": true,
           "imgName": "living-spirit-7",
           "actions": [
-            {}
+            {"move": 0},
+            {"attack": -1, "info-text": "Target all enemies within range"}
           ]
         }
       ],
