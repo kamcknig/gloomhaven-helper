@@ -51,7 +51,7 @@ export class ElementService {
       'elements',
       Object.keys(Elements)
         .reduce((prev, key) => {
-          prev[key] = { name: key, level: 0 }
+          prev[key.toLowerCase()] = { name: key, level: 0 }
           return prev;
         }, {} as ElementState),
       this._elementAdapter

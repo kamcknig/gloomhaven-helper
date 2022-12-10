@@ -1,10 +1,10 @@
 export enum Elements {
-  Dark = 'Dark',
-  Earth = 'Earth',
-  Fire = 'Fire',
-  Ice = 'Ice',
-  Sun = 'Sun',
-  Wind = 'Wind'
+  Dark = 'dark',
+  Earth = 'earth',
+  Fire = 'fire',
+  Ice = 'ice',
+  Sun = 'sun',
+  Wind = 'wind'
 }
 
 export type ElementNames = keyof typeof Elements
