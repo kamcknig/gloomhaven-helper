@@ -7,56 +7,78 @@
           "initiative": 85,
           "imgName": "boss-1",
           "actions": [
-            {}
+            {
+              "special": 1
+            }
           ]
         },
         {
           "initiative": 14,
           "imgName": "boss-2",
           "actions": [
-            {}
+            {
+              "special": 2
+            }
           ]
         },
         {
           "initiative": 52,
           "imgName": "boss-3",
           "actions": [
-            {}
+            {
+              "move": "-1"
+            },
+            {
+              "attack": "-1",
+              "range": "=3",
+              "target": 2
+            }
           ]
         },
         {
           "initiative": 17,
           "imgName": "boss-4",
           "actions": [
-            {}
+            {
+              "special": 2
+            }
           ]
         },
         {
           "initiative": 11,
           "imgName": "boss-5",
           "actions": [
-            {}
+            {
+              "special": 2
+            }
           ]
         },
         {
           "initiative": 79,
           "imgName": "boss-6",
           "actions": [
-            {}
+            {
+              "special": 1
+            }
           ]
         },
         {
           "initiative": 36,
           "imgName": "boss-7",
           "actions": [
-            {}
+            {
+              "move": "+0"
+            },
+            {
+              "attack": "+0"
+            }
           ]
         },
         {
           "initiative": 73,
           "imgName": "boss-8",
           "actions": [
-            {}
+            {"special": 1}
           ]
         }
       ]

@@ -217,6 +217,11 @@ export type MobAction = {
   strengthen?: boolean;
 
   /**
+   * Indicates the {@link MobAction} is a boss special action
+   */
+  special: 1 | 2;
+
+  /**
    * Indicates the {@link StatModifier} that modifies the {@link MobAction}s number of targets
    */
   target?: StatModifier;
