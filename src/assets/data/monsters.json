@@ -10103,7 +10103,7 @@
           "imgName": "wind-demon-1",
           "actions": [
             {
-              "shield": 1,
+              "shield": 1
             },
             {
               "move": -1
