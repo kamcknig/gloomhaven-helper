@@ -1,3 +1,5 @@
+import {ElementNames} from "../../elements/model";
+
 export type MonsterId = number | string;
 
 export enum Conditions {
@@ -128,6 +130,12 @@ export type MobAction = {
   attack?: StatModifier;
 
   /**
+   * Indicates the {@link MobAction} should apply {@link Condition.bless}
+   */
+  // todo: might change to a [number, number] or [boolean, number]?
+  bless?: boolean;
+
+  /**
    * Indicates the {@link MobAction} applies {@link Condition.curse} to the target
    */
   curse?: boolean;
@@ -138,6 +146,11 @@ export type MobAction = {
   immobilize?: boolean;
 
   /**
+   * Indicates that the {@link MobAction} provides jump for any movement
+   */
+  jump?:boolean;
+
+  /**
    * Indicates that the {@link MobAction} applies a heal effect to the target and at what range if any
    */
   heal?: [number, number];
@@ -146,6 +159,11 @@ export type MobAction = {
    * Any text on the card that might modify the {@link MobAction}
    */
   'info-text': string;
+
+  /**
+   * Inicates which elements the {@link MobAction} infuses during the turn
+   */
+  infuse?: ElementNames[];
 
   /**
    * Indicates the number of hexes to modify the {@link MobAction} movement value

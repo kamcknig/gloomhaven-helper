@@ -2714,7 +2714,8 @@
           "initiative": 87,
           "imgName": "earth-demon-1",
           "actions": [
-            {}
+            { "move": 0 },
+            { "attack": -1 }
           ]
         },
         {
@@ -2722,42 +2723,48 @@
           "imgName": "earth-demon-2",
           "shuffle": true,
           "actions": [
-            {}
+            { "heal": [3, 0] }
           ]
         },
         {
           "initiative": 79,
           "imgName": "earth-demon-3",
           "actions": [
-            {}
+            { "move": 1 },
+            { "attack": 0 }
           ]
         },
         {
           "initiative": 93,
           "imgName": "earth-demon-4",
           "actions": [
-            {}
+            { "move": -1 },
+            { "attack": -1, "info-text": "Target all adjacent eenmies" }
           ]
         },
         {
           "initiative": 71,
           "imgName": "earth-demon-5",
           "actions": [
-            {}
+            { "attack": 0, "range": 4 }
           ]
         },
         {
           "initiative": 62,
           "imgName": "earth-demon-6",
           "actions": [
-            {}
+            { "move": 0 },
+            { "attack": 0 },
+            { "infuse": ["earth"] }
           ]
         },
         {
           "initiative": 83,
           "imgName": "earth-demon-7",
           "actions": [
-            {}
+            { "move": -1 },
+            { "attack": 1 },
+            { "infuse":  ["earth"] }
           ]
         },
         {
@@ -2765,7 +2772,8 @@
           "imgName": "earth-demon-8",
           "shuffle": true,
           "actions": [
-            {}
+            { "move": 1 },
+            { "attack": -1}
           ]
         }
       ]
@@ -3034,49 +3042,55 @@
           "imgName": "flame-demon-1",
           "shuffle": true,
           "actions": [
-            {}
+            { "attack": 0}
           ]
         },
         {
           "initiative": 8,
           "imgName": "flame-demon-2",
           "actions": [
-            {}
+            { "move": -1, "info-text": "Create a 4 damage trap in an adjacent empty hex closest to an enemy." }
           ]
         },
         {
           "initiative": 24,
           "imgName": "flame-demon-3",
           "actions": [
-            {}
+            { "move": 0},
+            {"attack": 0},
+            { "infuse": ["fire"] }
           ]
         },
         {
           "initiative": 3,
           "imgName": "flame-demon-4",
-          "infusions": [
-            "fire"
+          "actions": [
+            {"move": 1},
+            {"attack": -1},
+            { "infuse":  ["fire"]}
           ]
         },
         {
           "initiative": 77,
           "imgName": "flame-demon-5",
           "actions": [
-            {}
+            { "attack": 0, "info-text": "Target all adjacent enemies"}
           ]
         },
         {
           "initiative": 49,
           "imgName": "flame-demon-6",
           "actions": [
-            {}
+            { "attack": 0}
           ]
         },
         {
           "initiative": 67,
           "imgName": "flame-demon-7",
-          "infusions": [
-            "fire"
+          "actions": [
+            {"move": -1},
+            {"attack": 1, "range": -1},
+            {"infuse":  ["fire"]}
           ]
         },
         {
@@ -3084,7 +3098,8 @@
           "imgName": "flame-demon-8",
           "shuffle": true,
           "actions": [
-            {}
+            {"move": 0},
+            {"attack": -2, "wound":  true, "target":  2}
           ]
         }
       ],
@@ -3596,21 +3611,23 @@
           "initiative": 18,
           "imgName": "frost-demon-1",
           "actions": [
-            {}
+            { "immobilize":  true, "info-text": "Target all enemies within range 2" }
           ]
         },
         {
           "initiative": 18,
           "imgName": "frost-demon-2",
           "actions": [
-            {}
+            { "shield": 2 },
+            { "move": 1 }
           ]
         },
         {
           "initiative": 58,
           "imgName": "frost-demon-3",
           "actions": [
-            {}
+            { "move": -1 },
+            { "attack": 0, "range": 2 }
           ]
         },
         {
@@ -3618,29 +3635,34 @@
           "count": 2,
           "shuffle": true,
           "imgName": "frost-demon-4",
-          "infusions": [
-            "ice"
+          "actions": [
+            { "move": -1 },
+            { "attack": 0 },
+            { "infuse":  ["cold"] }
           ]
         },
         {
           "initiative": 38,
           "imgName": "frost-demon-5",
           "actions": [
-            {}
+            { "move": 1 },
+            { "attack": -1 }
           ]
         },
         {
           "initiative": 58,
           "imgName": "frost-demon-6",
           "actions": [
-            {}
+            { "move": -1 },
+            { "attack": -1, "pierce":  3 }
           ]
         },
         {
           "initiative": 58,
           "imgName": "frost-demon-7",
           "actions": [
-            {}
+            { "move": 0 },
+            { "attack": 0 }
           ]
         }
       ]
@@ -3826,35 +3848,41 @@
           "initiative": 11,
           "imgName": "giant-viper-1",
           "actions": [
-            {}
+            { "shield": 1 },
+            { "attack": -1 }
           ]
         },
         {
           "initiative": 23,
           "imgName": "giant-viper-2",
           "actions": [
-            {}
+            { "move": -1 },
+            { "attack": -1, "immobilize":  true },
+            { "attack": -1 }
           ]
         },
         {
           "initiative": 58,
           "imgName": "giant-viper-3",
           "actions": [
-            {}
+            { "move": -1 },
+            { "attack": 1 }
           ]
         },
         {
           "initiative": 58,
           "imgName": "giant-viper-4",
           "actions": [
-            {}
+            { "move": 1, "jump": true },
+            { "attack": -1, "info-text": "All attacks targeting Giant Viper this round gain Disadvantage." }
           ]
         },
         {
           "initiative": 43,
           "imgName": "giant-viper-5",
           "actions": [
-            {}
+            { "move": 1, "jump": true },
+            { "attack": -1, "info-text": "Target all adjacent enemies" }
           ]
         },
         {
@@ -3862,14 +3890,16 @@
           "imgName": "giant-viper-6",
           "shuffle": true,
           "actions": [
-            {}
+            { "move": 0 },
+            { "attack": 0, "info-text": "Add +2 Attack if the target is adjacent to any of the Giant Viper's allies." }
           ]
         },
         {
           "initiative": 43,
           "imgName": "giant-viper-7",
           "actions": [
-            {}
+            { "move": -1, "jump":  true },
+            { "attack": 0, "target":  true }
           ]
         },
         {
@@ -3877,7 +3907,8 @@
           "imgName": "giant-viper-8",
           "shuffle": true,
           "actions": [
-            {}
+            { "move": 0 },
+            { "attack": 0, "info-text": "Add +2 Attack if the target is adjacent to any of the Giant Viper's allies." }
           ]
         }
       ]
@@ -4111,7 +4142,8 @@
           "initiative": 38,
           "imgName": "harrower-infester-1",
           "actions": [
-            {}
+            { "move": -1 },
+            {"attack": 1, "target": 2}
           ]
         },
         {
@@ -4119,28 +4151,33 @@
           "shuffle": true,
           "imgName": "harrower-infester-2",
           "actions": [
-            {}
+            { "attack": -1, "range": 3, "muddle":  true },
+            { "heal": [4, 0] }
           ]
         },
         {
           "initiative": 16,
           "imgName": "harrower-infester-3",
           "actions": [
-            {}
+            { "attack": 2, "immobilize": true },
+            { "retaliate":  [2, 0] }
           ]
         },
         {
           "initiative": 16,
           "imgName": "harrower-infester-4",
           "actions": [
-            {}
+            { "move": -1 },
+            { "attack": -1 },
+            { "heal": [5, 0] }
           ]
         },
         {
           "initiative": 38,
           "imgName": "harrower-infester-5",
           "actions": [
-            {}
+            { "move": 0 },
+            { "attack": -1, "target": 2 }
           ]
         },
         {
@@ -4148,21 +4185,25 @@
           "shuffle": true,
           "imgName": "harrower-infester-6",
           "actions": [
-            {}
+            { "shield": 2 },
+            { "retaliate":  [2, 3] }
           ]
         },
         {
           "initiative": 7,
           "imgName": "harrower-infester-7",
           "actions": [
-            {}
+            { "move": 0 },
+            { "attack": -1, "poison": true },
+            { "infuse":  [ "dark" ] }
           ]
         },
         {
           "initiative": 30,
           "imgName": "harrower-infester-8",
           "actions": [
-            {}
+            { "move": -1 },
+            { "attack": 0 }
           ]
         }
       ]
@@ -4396,33 +4437,42 @@
           "initiative": 7,
           "imgName": "hound-1",
           "actions": [
-            {}
+            {"move": 0},
+            {"muddle": true, "info-text": "Target all adjacent enemies"}
           ]
         },
         {
           "initiative": 83,
           "imgName": "hound-2",
           "actions": [
-            {}
+            {"move": -2},
+            {"attack": 1}
           ]
         },
         {
           "initiative": 26,
           "imgName": "hound-3",
-          "count": 2
+          "count": 2,
+          "actions": [
+            {"move": 0},
+            {"attack": 0}
+          ]
         },
         {
           "initiative": 72,
           "imgName": "hound-4",
           "actions": [
-            {}
+            {"attack": -1, "pierce": 2},
+            {"move": -2},
+            {"attack": -1, "pierce": 2}
           ]
         },
         {
           "initiative": 6,
           "imgName": "hound-5",
           "actions": [
-            {}
+            {"move": -1},
+            {"attack": 0, "immobilize": true}
           ]
         },
         {
@@ -4431,7 +4481,8 @@
           "count": 2,
           "imgName": "hound-6",
           "actions": [
-            {}
+            {"move": 0},
+            {"attack": 0, "info-text":   "Add +2 Attack if the target is adjacent to any of the Hound's allies." }
           ]
         }
       ]
@@ -4617,14 +4668,20 @@
           "initiative": 44,
           "imgName": "archer-1",
           "actions": [
-            {}
+            {
+              "move": -1,
+              "attack": 1
+            }
           ]
         },
         {
           "initiative": 56,
           "imgName": "archer-2",
           "actions": [
-            {}
+            {
+              "attack": -1,
+              "target": 2
+            }
           ]
         },
         {
@@ -4632,7 +4689,10 @@
           "imgName": "archer-3",
           "shuffle": true,
           "actions": [
-            {}
+            {
+              "attack": 1,
+              "range": 1
+            }
           ]
         },
         {
@@ -4640,35 +4700,66 @@
           "shuffle": true,
           "imgName": "archer-4",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": -1,
+              "range": 1,
+              "immobilize": true
+            }
           ]
         },
         {
           "initiative": 16,
           "imgName": "archer-5",
           "actions": [
-            {}
+            {
+              "move": 1
+            },
+            {
+              "attack": -1
+            }
           ]
         },
         {
           "initiative": 32,
           "imgName": "archer-6",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": 1,
+              "range": -1
+            }
           ]
         },
         {
           "initiative": 31,
           "imgName": "archer-7",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": 0
+            }
           ]
         },
         {
           "initiative": 14,
           "imgName": "archer-8",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "attack": -1
+            },
+            {
+              "info-text": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
+            }
           ]
         }
       ]
@@ -4902,7 +4993,15 @@
           "initiative": 55,
           "imgName": "guard-1",
           "actions": [
-            {}
+            {
+              "move":  1
+            },
+            {
+              "attack": 0
+            },
+            {
+              "strengthen": true, "info-text": "Self"
+            }
           ]
         },
         {
@@ -4910,14 +5009,19 @@
           "imgName": "guard-2",
           "shuffle": true,
           "actions": [
-            {}
+            { "shield":  1 },
+            {
+              "attack":  0,
+              "poison":  true
+            }
           ]
         },
         {
           "initiative": 30,
           "imgName": "guard-3",
           "actions": [
-            {}
+            { "move":  1 },
+            { "attack":  -1 }
           ]
         },
         {
@@ -4925,14 +5029,16 @@
           "count": 2,
           "imgName": "guard-4",
           "actions": [
-            {}
+            { "move":  0 },
+            { "attack": 0 }
           ]
         },
         {
           "initiative": 35,
           "imgName": "guard-5",
           "actions": [
-            {}
+            { "move":  -1 },
+            { "attack":  0, "range":  "=2" }
           ]
         },
         {
@@ -4940,14 +5046,16 @@
           "imgName": "guard-6",
           "shuffle": true,
           "actions": [
-            {}
+            { "shield":  1 },
+            { "retaliate":  [2, 0] }
           ]
         },
         {
           "initiative": 70,
           "imgName": "guard-7",
           "actions": [
-            {}
+            { "move":  -1 },
+            { "attack":  1 }
           ]
         }
       ]
@@ -5099,49 +5207,57 @@
           "count": 2,
           "imgName": "shaman-1",
           "actions": [
-            {}
+            {"move": 0},
+            {"heal": [3, 3]}
           ]
         },
         {
           "initiative": 8,
           "imgName": "shaman-2",
           "actions": [
-            {}
+            {"move": 0},
+            {"attack": -1, "disarm": true}
           ]
         },
         {
           "initiative": 62,
           "imgName": "shaman-3",
           "actions": [
-            {}
+            {"move": 0},
+            {"attack": 0}
           ]
         },
         {
           "initiative": 89,
           "imgName": "shaman-4",
           "actions": [
-            {}
+            {"move": -1},
+            {"heal": [1], "info-text": "Affect all adjacent allies"},
+            {"bless": true, "info-text": "self" }
           ]
         },
         {
           "initiative": 9,
           "imgName": "shaman-5",
           "actions": [
-            {}
+            {"move": 1},
+            {"attack": -1, "curse": true, "target": 2 }
           ]
         },
         {
           "initiative": 74,
           "imgName": "shaman-6",
           "actions": [
-            {}
+            {"move": -1},
+            {"attack": 1}
           ]
         },
         {
           "initiative": 8,
           "imgName": "shaman-7",
           "actions": [
-            {}
+            {"move": -1},
+            {"attack": 0, "immobilize": true}
           ]
         }
       ]
@@ -5363,27 +5479,35 @@
           "initiative": 25,
           "imgName": "living-bones-1",
           "actions": [
-            {}
+            {"move": 1},
+            {"attack": -1}
           ]
         },
         {
           "initiative": 64,
           "imgName": "living-bones-2",
           "actions": [
-            {}
+            {"move": -1},
+            {"attack": 1}
           ]
         },
         {
           "initiative": 45,
           "imgName": "living-bones-3",
-          "count": 2
+          "count": 2,
+          "actions": [
+            {"move": 0},
+            {"attack": 0}
+          ]
         },
         {
           "initiative": 20,
           "shuffle": true,
           "imgName": "living-bones-4",
           "actions": [
-            {}
+            {"move": -2},
+            {"attack": 0},
+            {"heal": true, "info-text": "self"}
           ]
         },
         {
@@ -5391,21 +5515,23 @@
           "shuffle": true,
           "imgName": "living-bones-5",
           "actions": [
-            {}
+            {"shield": 1},
+            {"heal": true, "info-text": "self"}
           ]
         },
         {
           "initiative": 81,
           "imgName": "living-bones-6",
           "actions": [
-            {}
+            {"attack": 2}
           ]
         },
         {
           "initiative": 74,
           "imgName": "living-bones-7",
           "actions": [
-            {}
+            {"move": 0},
+            {"attack": 0, "info-text": "Target one enemy with all attacks"}
           ]
         }
       ]
