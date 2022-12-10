@@ -9796,49 +9796,91 @@
           "count": 2,
           "imgName": "shaman-1",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "heal": [3,3]
+            }
           ]
         },
         {
           "initiative": 8,
           "imgName": "shaman-2",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": -1,
+              "disarm": true
+            }
           ]
         },
         {
           "initiative": 62,
           "imgName": "shaman-3",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": 0
+            }
           ]
         },
         {
           "initiative": 89,
           "imgName": "shaman-4",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "heal": [1], "info-text": "Affect all adjacent allies"
+            },
+            {
+              "bless": true
+            }
           ]
         },
         {
           "initiative": 9,
           "imgName": "shaman-5",
           "actions": [
-            {}
+            {
+              "move": 1
+            },
+            {
+              "attack": -1,
+              "curse": true,
+              "target": 2
+            }
           ]
         },
         {
           "initiative": 74,
           "imgName": "shaman-6",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "attack": 1
+            }
           ]
         },
         {
           "initiative": 8,
           "imgName": "shaman-7",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "attack": 0,
+              "immobilize": true
+            }
           ]
         }
       ]
