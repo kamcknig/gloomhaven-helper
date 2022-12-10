@@ -75,142 +75,46 @@
           [16, 20]
         ],
         "move": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            0
-          ]
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0]
         ],
         "attack": [
-          [
-            2,
-            3
-          ],
-          [
-            2,
-            3
-          ],
-          [
-            2,
-            3
-          ],
-          [
-            3,
-            4
-          ],
-          [
-            4,
-            4
-          ],
-          [
-            4,
-            4
-          ],
-          [
-            4,
-            5
-          ],
-          [
-            4,
-            5
-          ]
+          [2, 3],
+          [2, 3],
+          [2, 3],
+          [3, 4],
+          [4, 4],
+          [4, 4],
+          [4, 5],
+          [4, 5]
         ],
         "range": [
-          [
-            4,
-            5
-          ],
-          [
-            4,
-            5
-          ],
-          [
-            5,
-            6
-          ],
-          [
-            5,
-            6
-          ],
-          [
-            5,
-            6
-          ],
-          [
-            6,
-            7
-          ],
-          [
-            6,
-            7
-          ],
-          [
-            7,
-            7
-          ]
+          [4, 5],
+          [4, 5],
+          [5, 6],
+          [5, 6],
+          [5, 6],
+          [6, 7],
+          [6, 7],
+          [7, 7]
         ]
       },
       "attackEffects": {
         "target": [
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            0
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            2
-          ],
-          [
-            0,
-            2
-          ]
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 0],
+          [0, 2],
+          [0, 2],
+          [0, 2],
+          [0, 2]
         ]
       },
       "abilities": [
@@ -219,8 +123,8 @@
           "imgName": "ancient-artillery-1",
           "actions": [
             {
-              "attack": -1,
-              "range": 2
+              "attack": "-1",
+              "range": "+2"
             }
           ]
         },
@@ -233,8 +137,8 @@
               "info-text": "Target all adjacent enemies"
             },
             {
-              "attack": -1,
-              "range": -1
+              "attack": "-1",
+              "range":"-1"
             }
           ]
         },
@@ -243,7 +147,7 @@
           "imgName": "ancient-artillery-3",
           "actions": [
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -254,7 +158,7 @@
           "shuffle": true,
           "actions": [
             {
-              "attack": 0,
+              "attack":  "+0",
               "info-text": "All adjacent enemies suffer 2 damage."
             }
           ]
@@ -271,7 +175,7 @@
               "shield": 2
             },
             {
-              "attack": -2
+              "attack":"-2"
             }
           ]
         },
@@ -284,8 +188,8 @@
               "info-text": "Target all adjacent enemies"
             },
             {
-              "attack": -1,
-              "range": -1
+              "attack":"-1",
+              "range":"-1"
             }
           ]
         },
@@ -294,7 +198,7 @@
           "imgName": "ancient-artillery-7",
           "actions": [
             {
-              "attack": -1,
+              "attack":"-1",
               "immobilize": true
             }
           ]
@@ -483,8 +387,8 @@
           "imgName": "archer-1",
           "actions": [
             {
-              "move": -1,
-              "attack": 1
+              "move":"-1",
+              "attack":  "+1"
             }
           ]
         },
@@ -493,7 +397,7 @@
           "imgName": "archer-2",
           "actions": [
             {
-              "attack": -1,
+              "attack":"-1",
               "target": 2
             }
           ]
@@ -504,8 +408,8 @@
           "shuffle": true,
           "actions": [
             {
-              "attack": 1,
-              "range": 1
+              "attack":  "+1",
+              "range": "+1"
             }
           ]
         },
@@ -515,11 +419,11 @@
           "imgName": "archer-4",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
-              "range": 1,
+              "attack":"-1",
+              "range":"+1",
               "immobilize": true
             }
           ]
@@ -529,10 +433,10 @@
           "imgName": "archer-5",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -541,11 +445,11 @@
           "imgName": "archer-6",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 1,
-              "range": -1
+              "attack":  "+1",
+              "range":"-1"
             }
           ]
         },
@@ -554,10 +458,10 @@
           "imgName": "archer-7",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -566,10 +470,10 @@
           "imgName": "archer-8",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
               "info-text": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
@@ -796,10 +700,10 @@
           "imgName": "guard-1",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             },
             {
               "strengthen": true,
@@ -816,7 +720,7 @@
               "shield": 1
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "poison": true
             }
           ]
@@ -826,10 +730,10 @@
           "imgName": "guard-3",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -839,10 +743,10 @@
           "imgName": "guard-4",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -851,10 +755,10 @@
           "imgName": "guard-5",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "range": "=2"
             }
           ]
@@ -877,10 +781,10 @@
           "imgName": "guard-7",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         }
@@ -1102,11 +1006,11 @@
           "imgName": "imp-1",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
               "heal": 2,
-              "range": 3
+              "range":"=3"
             }
           ]
         },
@@ -1116,10 +1020,10 @@
           "shuffle": true,
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "target": 2,
               "poison": true
             }
@@ -1130,10 +1034,10 @@
           "imgName": "imp-3",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -1169,10 +1073,10 @@
           "count": 2,
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -1182,10 +1086,10 @@
           "shuffle": true,
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "target": 2,
               "curse": true
             }
@@ -1375,10 +1279,10 @@
           "imgName": "cave-bear-1",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -1387,10 +1291,10 @@
           "imgName": "cave-bear-2",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -1414,10 +1318,10 @@
           "imgName": "cave-bear-4",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "immobilize": true
             }
           ]
@@ -1427,10 +1331,10 @@
           "imgName": "cave-bear-5",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "target": 2
             }
           ]
@@ -1441,13 +1345,13 @@
           "shuffle": true,
           "actions": [
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
-              "move": -2
+              "move":"-2"
             },
             {
-              "attack": 1,
+              "attack":  "+1",
               "wound": true
             }
           ]
@@ -1458,7 +1362,7 @@
           "shuffle": true,
           "actions": [
             {
-              "attack": 1,
+              "attack":  "+1",
               "wound": true
             }
           ]
@@ -1468,8 +1372,8 @@
           "imgName": "cave-bear-8",
           "actions": [
             {
-              "move": 0,
-              "attack": 0
+              "move":  "+0",
+              "attack":  "+0"
             }
           ]
         }
@@ -1693,8 +1597,8 @@
           "imgName": "archer-1",
           "actions": [
             {
-              "move": -1,
-              "attack": 1
+              "move":"-1",
+              "attack":  "+1"
             }
           ]
         },
@@ -1703,7 +1607,7 @@
           "imgName": "archer-2",
           "actions": [
             {
-              "attack": -1,
+              "attack":"-1",
               "target": 2
             }
           ]
@@ -1714,8 +1618,8 @@
           "shuffle": true,
           "actions": [
             {
-              "attack": 1,
-              "range": 1
+              "attack":  "+1",
+              "range":"+1"
             }
           ]
         },
@@ -1725,10 +1629,10 @@
           "imgName": "archer-4",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "range": 1,
               "immobilize": true
             }
@@ -1739,10 +1643,10 @@
           "imgName": "archer-5",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -1751,11 +1655,11 @@
           "imgName": "archer-6",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 1,
-              "range": -1
+              "attack":  "+1",
+              "range":"-1"
             }
           ]
         },
@@ -1764,10 +1668,10 @@
           "imgName": "archer-7",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -1776,10 +1680,10 @@
           "imgName": "archer-8",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
               "info-text": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
@@ -2052,10 +1956,10 @@
           "imgName": "guard-1",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             },
             {
               "strengthen": true,
@@ -2072,7 +1976,7 @@
               "shield": 1
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "poison": true
             }
           ]
@@ -2082,10 +1986,10 @@
           "imgName": "guard-3",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -2095,10 +1999,10 @@
           "imgName": "guard-4",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -2107,10 +2011,10 @@
           "imgName": "guard-5",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "range": "=2"
             }
           ]
@@ -2133,10 +2037,10 @@
           "imgName": "guard-7",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         }
@@ -2324,10 +2228,10 @@
           "imgName": "cultist-1",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             },
             {
               "heal": [1, 0]
@@ -2339,7 +2243,7 @@
           "imgName": "cultist-2",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
               "heal": [2, 3]
@@ -2351,10 +2255,10 @@
           "imgName": "cultist-3",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -2374,10 +2278,10 @@
           "imgName": "cultist-5",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -2386,10 +2290,10 @@
           "imgName": "cultist-6",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -2398,10 +2302,10 @@
           "imgName": "cultist-7",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         }
@@ -2642,8 +2546,8 @@
               "info-text": "Target all adjacent enemies"
             },
             {
-              "attack": 0,
-              "range": 4
+              "attack":  "+0",
+              "range":"+4"
             }
           ]
         },
@@ -2652,13 +2556,13 @@
           "imgName": "deep-terror-2",
           "actions": [
             {
-              "attack": -2,
+              "attack":"-2",
               "disarm": true,
               "info-text": "Target all adjacent enemies"
             },
             {
-              "attack": 0,
-              "range": 3,
+              "attack":  "+0",
+              "range":"=3",
               "target": 2
             }
           ]
@@ -2670,7 +2574,7 @@
           "shuffle": true,
           "actions": [
             {
-              "attack": 0,
+              "attack":  "+0",
               "pierce": 3
             }
           ]
@@ -2680,12 +2584,12 @@
           "imgName": "deep-terror-4",
           "actions": [
             {
-              "attack": 0,
+              "attack":  "+0",
               "poison": true
             },
             {
-              "attack": -1,
-              "range": 5,
+              "attack":"-1",
+              "range": "=5",
               "immobilize": true
             }
           ]
@@ -2695,8 +2599,8 @@
           "imgName": "deep-terror-5",
           "actions": [
             {
-              "attack": 0,
-              "range": 3,
+              "attack":  "+0",
+              "range": "=3",
               "target": 3,
               "curse": true
             }
@@ -2707,12 +2611,12 @@
           "imgName": "deep-terror-6",
           "actions": [
             {
-              "attack": -1,
+              "attack":"-1",
               "info-text": "Target all adjacent enemies"
             },
             {
-              "attack": 0,
-              "range": 4,
+              "attack":  "+0",
+              "range": "=4",
               "wound": true
             }
           ]
@@ -2722,8 +2626,8 @@
           "imgName": "deep-terror-7",
           "actions": [
             {
-              "attack": -2,
-              "range": 6,
+              "attack":"-2",
+              "range": "=6",
               "info-text": "Summon normal Deep Terror in a hex adjacent to the target"
             }
           ]
@@ -2912,10 +2816,10 @@
           "imgName": "earth-demon-1",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -2934,10 +2838,10 @@
           "imgName": "earth-demon-3",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -2946,10 +2850,10 @@
           "imgName": "earth-demon-4",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "info-text": "Target all adjacent eenmies"
             }
           ]
@@ -2959,8 +2863,8 @@
           "imgName": "earth-demon-5",
           "actions": [
             {
-              "attack": 0,
-              "range": 4
+              "attack":  "+0",
+              "range": "=4"
             }
           ]
         },
@@ -2969,10 +2873,10 @@
           "imgName": "earth-demon-6",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             },
             {
               "infuse": ["earth"]
@@ -2984,10 +2888,10 @@
           "imgName": "earth-demon-7",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             },
             {
               "infuse": ["earth"]
@@ -3000,10 +2904,10 @@
           "shuffle": true,
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         }
@@ -3274,7 +3178,7 @@
           "shuffle": true,
           "actions": [
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -3283,7 +3187,7 @@
           "imgName": "flame-demon-2",
           "actions": [
             {
-              "move": -1,
+              "move":"-1",
               "info-text": "Create a 4 damage trap in an adjacent empty hex closest to an enemy."
             }
           ]
@@ -3293,10 +3197,10 @@
           "imgName": "flame-demon-3",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             },
             {
               "infuse": ["fire"]
@@ -3308,10 +3212,10 @@
           "imgName": "flame-demon-4",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
               "infuse": ["fire"]
@@ -3323,7 +3227,7 @@
           "imgName": "flame-demon-5",
           "actions": [
             {
-              "attack": 0,
+              "attack":  "+0",
               "info-text": "Target all adjacent enemies"
             }
           ]
@@ -3333,7 +3237,7 @@
           "imgName": "flame-demon-6",
           "actions": [
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -3342,11 +3246,11 @@
           "imgName": "flame-demon-7",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1,
-              "range": -1
+              "attack":  "+1",
+              "range":"-1"
             },
             {
               "infuse": ["fire"]
@@ -3359,10 +3263,10 @@
           "shuffle": true,
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -2,
+              "attack":"-2",
               "wound": true,
               "target": 2
             }
@@ -3589,11 +3493,11 @@
           "imgName": "imp-1",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
               "heal": 2,
-              "range": 3
+              "range": "=3"
             }
           ]
         },
@@ -3603,10 +3507,10 @@
           "shuffle": true,
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "target": 2,
               "poison": true
             }
@@ -3617,10 +3521,10 @@
           "imgName": "imp-3",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -3656,10 +3560,10 @@
           "count": 2,
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -3669,10 +3573,10 @@
           "shuffle": true,
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "target": 2,
               "curse": true
             }
@@ -3924,7 +3828,7 @@
               "shield": 2
             },
             {
-              "move": 1
+              "move":  "+1"
             }
           ]
         },
@@ -3933,11 +3837,11 @@
           "imgName": "frost-demon-3",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 0,
-              "range": 2
+              "attack":  "+0",
+              "range": "=2"
             }
           ]
         },
@@ -3948,10 +3852,10 @@
           "imgName": "frost-demon-4",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             },
             {
               "infuse": ["cold"]
@@ -3963,10 +3867,10 @@
           "imgName": "frost-demon-5",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -3975,10 +3879,10 @@
           "imgName": "frost-demon-6",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "pierce": 3
             }
           ]
@@ -3988,10 +3892,10 @@
           "imgName": "frost-demon-7",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         }
@@ -4182,7 +4086,7 @@
               "shield": 1
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -4191,14 +4095,14 @@
           "imgName": "giant-viper-2",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "immobilize": true
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -4207,10 +4111,10 @@
           "imgName": "giant-viper-3",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -4219,11 +4123,11 @@
           "imgName": "giant-viper-4",
           "actions": [
             {
-              "move": 1,
+              "move":  "+1",
               "jump": true
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "info-text": "All attacks targeting Giant Viper this round gain Disadvantage."
             }
           ]
@@ -4233,11 +4137,11 @@
           "imgName": "giant-viper-5",
           "actions": [
             {
-              "move": 1,
+              "move":  "+1",
               "jump": true
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "info-text": "Target all adjacent enemies"
             }
           ]
@@ -4248,10 +4152,10 @@
           "shuffle": true,
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "info-text": "Add +2 Attack if the target is adjacent to any of the Giant Viper's allies."
             }
           ]
@@ -4261,11 +4165,11 @@
           "imgName": "giant-viper-7",
           "actions": [
             {
-              "move": -1,
+              "move":"-1",
               "jump": true
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "target": true
             }
           ]
@@ -4276,10 +4180,10 @@
           "shuffle": true,
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "info-text": "Add +2 Attack if the target is adjacent to any of the Giant Viper's allies."
             }
           ]
@@ -4516,10 +4420,10 @@
           "imgName": "harrower-infester-1",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1,
+              "attack":  "+1",
               "target": 2
             }
           ]
@@ -4530,8 +4434,8 @@
           "imgName": "harrower-infester-2",
           "actions": [
             {
-              "attack": -1,
-              "range": 3,
+              "attack":"-1",
+              "range": "=3",
               "muddle": true
             },
             {
@@ -4544,7 +4448,7 @@
           "imgName": "harrower-infester-3",
           "actions": [
             {
-              "attack": 2,
+              "attack":  "+2",
               "immobilize": true
             },
             {
@@ -4557,10 +4461,10 @@
           "imgName": "harrower-infester-4",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
               "heal": [5, 0]
@@ -4572,10 +4476,10 @@
           "imgName": "harrower-infester-5",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "target": 2
             }
           ]
@@ -4598,10 +4502,10 @@
           "imgName": "harrower-infester-7",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "poison": true
             },
             {
@@ -4614,10 +4518,10 @@
           "imgName": "harrower-infester-8",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         }
@@ -4853,7 +4757,7 @@
           "imgName": "hound-1",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
               "muddle": true,
@@ -4866,10 +4770,10 @@
           "imgName": "hound-2",
           "actions": [
             {
-              "move": -2
+              "move":"-2"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -4879,10 +4783,10 @@
           "count": 2,
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -4891,14 +4795,14 @@
           "imgName": "hound-4",
           "actions": [
             {
-              "attack": -1,
+              "attack":"-1",
               "pierce": 2
             },
             {
-              "move": -2
+              "move":"-2"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "pierce": 2
             }
           ]
@@ -4908,10 +4812,10 @@
           "imgName": "hound-5",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "immobilize": true
             }
           ]
@@ -4923,10 +4827,10 @@
           "imgName": "hound-6",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "info-text": "Add +2 Attack if the target is adjacent to any of the Hound's allies."
             }
           ]
@@ -5115,8 +5019,8 @@
           "imgName": "archer-1",
           "actions": [
             {
-              "move": -1,
-              "attack": 1
+              "move":"-1",
+              "attack":  "+1"
             }
           ]
         },
@@ -5125,7 +5029,7 @@
           "imgName": "archer-2",
           "actions": [
             {
-              "attack": -1,
+              "attack":"-1",
               "target": 2
             }
           ]
@@ -5136,8 +5040,8 @@
           "shuffle": true,
           "actions": [
             {
-              "attack": 1,
-              "range": 1
+              "attack":  "+1",
+              "range": "+1"
             }
           ]
         },
@@ -5147,11 +5051,11 @@
           "imgName": "archer-4",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
-              "range": 1,
+              "attack":"-1",
+              "range": "=1",
               "immobilize": true
             }
           ]
@@ -5161,10 +5065,10 @@
           "imgName": "archer-5",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -5173,11 +5077,11 @@
           "imgName": "archer-6",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 1,
-              "range": -1
+              "attack":  "+1",
+              "range":"-1"
             }
           ]
         },
@@ -5186,10 +5090,10 @@
           "imgName": "archer-7",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -5198,10 +5102,10 @@
           "imgName": "archer-8",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
               "info-text": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
@@ -5440,10 +5344,10 @@
           "imgName": "guard-1",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             },
             {
               "strengthen": true,
@@ -5460,7 +5364,7 @@
               "shield": 1
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "poison": true
             }
           ]
@@ -5470,10 +5374,10 @@
           "imgName": "guard-3",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -5483,10 +5387,10 @@
           "imgName": "guard-4",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -5495,10 +5399,10 @@
           "imgName": "guard-5",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "range": "=2"
             }
           ]
@@ -5521,10 +5425,10 @@
           "imgName": "guard-7",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         }
@@ -5678,7 +5582,7 @@
           "imgName": "shaman-1",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
               "heal": [3, 3]
@@ -5690,10 +5594,10 @@
           "imgName": "shaman-2",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "disarm": true
             }
           ]
@@ -5703,10 +5607,10 @@
           "imgName": "shaman-3",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -5715,7 +5619,7 @@
           "imgName": "shaman-4",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
               "heal": [1],
@@ -5732,10 +5636,10 @@
           "imgName": "shaman-5",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "curse": true,
               "target": 2
             }
@@ -5746,10 +5650,10 @@
           "imgName": "shaman-6",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -5758,10 +5662,10 @@
           "imgName": "shaman-7",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "immobilize": true
             }
           ]
@@ -5986,10 +5890,10 @@
           "imgName": "living-bones-1",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -5998,10 +5902,10 @@
           "imgName": "living-bones-2",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -6011,10 +5915,10 @@
           "count": 2,
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -6024,10 +5928,10 @@
           "imgName": "living-bones-4",
           "actions": [
             {
-              "move": -2
+              "move":"-2"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             },
             {
               "heal": true,
@@ -6054,7 +5958,7 @@
           "imgName": "living-bones-6",
           "actions": [
             {
-              "attack": 2
+              "attack":  "+2"
             }
           ]
         },
@@ -6063,10 +5967,10 @@
           "imgName": "living-bones-7",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "info-text": "Target one enemy with all attacks"
             }
           ]
@@ -6255,10 +6159,10 @@
           "imgName": "living-corpse-1",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -6269,10 +6173,10 @@
           "count": 2,
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -6281,7 +6185,7 @@
           "imgName": "living-corpse-3",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
               "muddle": true,
@@ -6295,7 +6199,7 @@
           "imgName": "living-corpse-4",
           "actions": [
             {
-              "attack": 2,
+              "attack":  "+2",
               "push": 1
             },
             {
@@ -6308,10 +6212,10 @@
           "imgName": "living-corpse-5",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             },
             {
               "poison": true,
@@ -6327,10 +6231,10 @@
           "imgName": "living-corpse-6",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -6339,7 +6243,7 @@
           "imgName": "living-corpse-7",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
               "info-text": "Living Corpse suffers 1 damage"
@@ -6531,10 +6435,10 @@
           "imgName": "living-spirit-1",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -6543,10 +6447,10 @@
           "imgName": "living-spirit-2",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -6555,11 +6459,11 @@
           "imgName": "living-spirit-3",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1,
-              "range": -1
+              "attack":  "+1",
+              "range":"-1"
             },
             {
               "heal": [1, 0]
@@ -6571,8 +6475,8 @@
           "imgName": "living-spirit-4",
           "actions": [
             {
-              "attack": 0,
-              "range": -1,
+              "attack":  "+0",
+              "range":"-1",
               "target": 2
             }
           ]
@@ -6582,7 +6486,7 @@
           "imgName": "living-spirit-5",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
               "curse": true,
@@ -6599,10 +6503,10 @@
           "imgName": "living-spirit-6",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "muddle": true
             }
           ]
@@ -6613,10 +6517,10 @@
           "imgName": "living-spirit-7",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "info-text": "Target all enemies within range"
             }
           ]
@@ -6880,10 +6784,10 @@
               "shield": 1
             },
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
               "infuse": ["cold"]
@@ -6895,10 +6799,10 @@
           "imgName": "lurker-2",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -6907,10 +6811,10 @@
           "imgName": "lurker-3",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -6919,10 +6823,10 @@
           "imgName": "lurker-4",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -6931,10 +6835,10 @@
           "imgName": "lurker-5",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "info-text": "Target one enemy with all attacks"
             }
           ]
@@ -6944,7 +6848,7 @@
           "imgName": "lurker-6",
           "actions": [
             {
-              "attack": 1,
+              "attack":  "+1",
               "info-text": "Target all adjacent enemies"
             }
           ]
@@ -6968,10 +6872,10 @@
           "imgName": "lurker-8",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "wound": true
             }
           ]
@@ -7196,7 +7100,7 @@
           "imgName": "ooze-1",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
               "loot": 1
@@ -7225,11 +7129,11 @@
           "imgName": "ooze-3",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1,
-              "range": 1
+              "attack":  "+1",
+              "range": "+1"
             }
           ]
         },
@@ -7243,8 +7147,8 @@
               "info-text": "Target all adjacent enemies"
             },
             {
-              "attack": 1,
-              "range": -1
+              "attack":  "+1",
+              "range":"-1"
             }
           ]
         },
@@ -7253,7 +7157,7 @@
           "imgName": "ooze-5",
           "actions": [
             {
-              "attack": 0,
+              "attack":  "+0",
               "target": 2,
               "poison": true
             }
@@ -7264,10 +7168,10 @@
           "imgName": "ooze-6",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -7276,10 +7180,10 @@
           "imgName": "ooze-7",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         }
@@ -7469,10 +7373,10 @@
           "imgName": "night-demon-1",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -7481,10 +7385,10 @@
           "imgName": "night-demon-2",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
               "info-text": "All adjacent enemies and allies suffer 1 damage."
@@ -7497,10 +7401,10 @@
           "imgName": "night-demon-3",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             },
             {
               "infuse": [
@@ -7514,10 +7418,10 @@
           "imgName": "night-demon-4",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             },
             {
               "infuse": [
@@ -7531,10 +7435,10 @@
           "imgName": "night-demon-5",
           "actions": [
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "pierce": 2
             }
           ]
@@ -7544,8 +7448,8 @@
           "imgName": "night-demon-6",
           "actions": [
             {
-              "attack": -2,
-              "range": 3,
+              "attack":"-2",
+              "range": "=3",
               "target": 4
             }
           ]
@@ -7555,10 +7459,10 @@
           "imgName": "night-demon-7",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
               "infuse": ["dark"]
@@ -7749,10 +7653,10 @@
           "imgName": "rending-drake-1",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -7762,13 +7666,13 @@
           "imgName": "rending-drake-2",
           "actions": [
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
-              "attack": -2
+              "attack":"-2"
             }
           ]
         },
@@ -7792,10 +7696,10 @@
           "imgName": "rending-drake-4",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -7804,11 +7708,11 @@
           "imgName": "rending-drake-5",
           "actions": [
             {
-              "move": -2
+              "move":"-2"
             },
             {
-              "attack": -1,
-              "range": 3,
+              "attack":"-1",
+              "range": "=3",
               "target": 2,
               "poison": true
             }
@@ -7819,10 +7723,10 @@
           "imgName": "rending-drake-6",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -7831,10 +7735,10 @@
           "imgName": "rending-drake-7",
           "actions": [
             {
-              "move": -2
+              "move":"-2"
             },
             {
-              "attack": 1,
+              "attack":  "+1",
               "target": 2
             }
           ]
@@ -7845,13 +7749,13 @@
           "imgName": "rending-drake-8",
           "actions": [
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         }
@@ -8055,10 +7959,10 @@
               "shield": 1
             },
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -8068,10 +7972,10 @@
           "imgName": "savvas-icestorm-2",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -8080,10 +7984,10 @@
           "imgName": "savvas-icestorm-3",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "target": 2
             }
           ]
@@ -8093,7 +7997,7 @@
           "imgName": "savvas-icestorm-4",
           "actions": [
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
               "heal": [1, 0]
@@ -8105,10 +8009,10 @@
           "imgName": "savvas-icestorm-5",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -8122,7 +8026,7 @@
               "info-text": "Target all adjacent enemiesw"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -8131,10 +8035,10 @@
           "imgName": "savvas-icestorm-7",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "pull": 1
             },
             {
@@ -8363,11 +8267,11 @@
           "imgName": "savvas-lavaflow-1",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1,
-              "range": 3,
+              "attack":"-1",
+              "range": "=3",
               "target": 2
             },
             {
@@ -8398,10 +8302,10 @@
           "imgName": "savvas-lavaflow-4",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -8411,11 +8315,11 @@
           "imgName": "savvas-lavaflow-5",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1,
-              "range": 3,
+              "attack":  "+1",
+              "range": "=3",
               "info-text": "All allies and enemies adjacent to the target suffer 2 damage."
             },
             {
@@ -8428,10 +8332,10 @@
           "imgName": "savvas-lavaflow-6",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "info-text": "Target all adjacent enemies"
             }
           ]
@@ -8646,7 +8550,7 @@
           "imgName": "spitting-drake-1",
           "actions": [
             {
-              "attack": 0,
+              "attack":  "+0",
               "target": 2,
               "poison": true
             }
@@ -8657,10 +8561,10 @@
           "imgName": "spitting-drake-2",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -8669,7 +8573,7 @@
           "imgName": "spitting-drake-3",
           "actions": [
             {
-              "attack": -2,
+              "attack":"-2",
               "stun": true
             }
           ]
@@ -8680,11 +8584,11 @@
           "imgName": "spitting-drake-4",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
-              "range": -1
+              "attack":"-1",
+              "range":"-1"
             }
           ]
         },
@@ -8709,11 +8613,11 @@
           "imgName": "spitting-drake-6",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -2,
-              "range": -2,
+              "attack":"-2",
+              "range":"-2",
               "poison": true
             }
           ]
@@ -8723,10 +8627,10 @@
           "imgName": "spitting-drake-7",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -8735,10 +8639,10 @@
           "imgName": "spitting-drake-8",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         }
@@ -8928,10 +8832,10 @@
           "imgName": "stone-golem-1",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -8940,8 +8844,8 @@
           "imgName": "stone-golem-2",
           "actions": [
             {
-              "attack": 1,
-              "range": 3
+              "attack":  "+1",
+              "range": "=3"
             },
             {
               "info-text": "Stone Golem suffers 2 damage."
@@ -8962,11 +8866,11 @@
           "imgName": "stone-golem-4",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": 2,
-              "range": 3,
+              "attack":  "+2",
+              "range": "=3",
               "pull": 2,
               "immobilize": true
             }
@@ -8977,10 +8881,10 @@
           "imgName": "stone-golem-5",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 1,
+              "attack":  "+1",
               "info-text": "Target all adjacent enemies"
             }
           ]
@@ -8991,8 +8895,8 @@
           "imgName": "stone-golem-6",
           "actions": [
             {
-              "move": -1,
-              "attack": 1
+              "move":"-1",
+              "attack":  "+1"
             }
           ]
         },
@@ -9001,10 +8905,10 @@
           "imgName": "stone-golem-7",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -9013,10 +8917,10 @@
           "imgName": "stone-golem-8",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             },
             {
               "info-text": "Stone Golem suffers 1 damage."
@@ -9243,11 +9147,11 @@
           "imgName": "sun-demon-1",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0,
-              "range": 3
+              "attack":  "+0",
+              "range": "=3"
             }
           ]
         },
@@ -9256,10 +9160,10 @@
           "imgName": "sun-demon-2",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1, "info-text": "Target all adjacent enemies"
+              "attack":"-1", "info-text": "Target all adjacent enemies"
             }
           ]
         },
@@ -9269,10 +9173,10 @@
           "imgName": "sun-demon-3",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -9281,11 +9185,11 @@
           "imgName": "sun-demon-4",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 0,
-              "range": 4
+              "attack":  "+0",
+              "range": "=4"
             }
           ]
         },
@@ -9294,10 +9198,10 @@
           "imgName": "sun-demon-5",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             },
             {
               "infuse": ["sun"]
@@ -9319,10 +9223,10 @@
           "imgName": "sun-demon-7",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "info-text": "Target all adjacent enemies"
             },
             {
@@ -9481,10 +9385,10 @@
           "imgName": "scout-1",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -9493,11 +9397,11 @@
           "imgName": "scout-2",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1,
-              "range": 3
+              "attack":"-1",
+              "range": "=3"
             }
           ]
         },
@@ -9506,10 +9410,10 @@
           "imgName": "scout-3",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -9518,10 +9422,10 @@
           "imgName": "scout-4",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -9530,8 +9434,8 @@
           "imgName": "scout-5",
           "actions": [
             {
-              "attack": -1,
-              "range": 4,
+              "attack":"-1",
+              "range": "=4",
               "target": 2
             }
           ]
@@ -9541,11 +9445,11 @@
           "imgName": "scout-6",
           "actions": [
             {
-              "move": -2
+              "move":"-2"
             },
             {
-              "attack": 0,
-              "range": 3,
+              "attack":  "+0",
+              "range": "=3",
               "poison": true
             }
           ]
@@ -9556,7 +9460,7 @@
           "imgName": "scout-7",
           "actions": [
             {
-              "attack": 2,
+              "attack":  "+2",
               "poison": true
             }
           ]
@@ -9567,7 +9471,7 @@
           "imgName": "scout-8",
           "actions": [
             {
-              "move": 1,
+              "move":  "+1",
               "jump": true
             },
             {
@@ -9797,7 +9701,7 @@
           "imgName": "shaman-1",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
               "heal": [3,3]
@@ -9809,10 +9713,10 @@
           "imgName": "shaman-2",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "disarm": true
             }
           ]
@@ -9822,10 +9726,10 @@
           "imgName": "shaman-3",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -9834,7 +9738,7 @@
           "imgName": "shaman-4",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
               "heal": [1], "info-text": "Affect all adjacent allies"
@@ -9849,10 +9753,10 @@
           "imgName": "shaman-5",
           "actions": [
             {
-              "move": 1
+              "move":  "+1"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "curse": true,
               "target": 2
             }
@@ -9863,10 +9767,10 @@
           "imgName": "shaman-6",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -9875,10 +9779,10 @@
           "imgName": "shaman-7",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "immobilize": true
             }
           ]
@@ -10106,10 +10010,10 @@
               "shield": 1
             },
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": -1
+              "attack":"-1"
             }
           ]
         },
@@ -10118,10 +10022,10 @@
           "imgName": "wind-demon-2",
           "actions": [
             {
-              "move": -1
+              "move":"-1"
             },
             {
-              "attack": 1
+              "attack":  "+1"
             }
           ]
         },
@@ -10130,10 +10034,10 @@
           "imgName": "wind-demon-3",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": -1,
+              "attack":"-1",
               "target": 2
             }
           ]
@@ -10143,7 +10047,7 @@
           "imgName": "wind-demon-4",
           "actions": [
             {
-              "attack": -1
+              "attack":"-1"
             },
             {
               "heal": [1, 0]
@@ -10155,10 +10059,10 @@
           "imgName": "wind-demon-5",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -10170,7 +10074,7 @@
               "push": 1, "info-text": "Target all adjacent enemies"
             },
             {
-              "attack": 0
+              "attack":  "+0"
             }
           ]
         },
@@ -10181,10 +10085,10 @@
           "imgName": "wind-demon-7",
           "actions": [
             {
-              "move": 0
+              "move":  "+0"
             },
             {
-              "attack": 0,
+              "attack":  "+0",
               "pull": 1
             },
             {
