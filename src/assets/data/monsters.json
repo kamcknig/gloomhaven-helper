@@ -10102,42 +10102,76 @@
           "initiative": 2,
           "imgName": "wind-demon-1",
           "actions": [
-            {}
+            {
+              "shield": 1,
+            },
+            {
+              "move": -1
+            },
+            {
+              "attack": -1
+            }
           ]
         },
         {
           "initiative": 43,
           "imgName": "wind-demon-2",
           "actions": [
-            {}
+            {
+              "move": -1
+            },
+            {
+              "attack": 1
+            }
           ]
         },
         {
           "initiative": 29,
           "imgName": "wind-demon-3",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": -1,
+              "target": 2
+            }
           ]
         },
         {
           "initiative": 9,
           "imgName": "wind-demon-4",
           "actions": [
-            {}
+            {
+              "attack": -1
+            },
+            {
+              "heal": [1, 0]
+            }
           ]
         },
         {
           "initiative": 37,
           "imgName": "wind-demon-5",
           "actions": [
-            {}
+            {
+              "move": 0
+            },
+            {
+              "attack": 0
+            }
           ]
         },
         {
           "initiative": 43,
           "imgName": "wind-demon-6",
           "actions": [
-            {}
+            {
+              "push": 1, "info-text": "Target all adjacent enemies"
+            },
+            {
+              "attack": 0
+            }
           ]
         },
         {
@@ -10145,8 +10179,19 @@
           "count": 2,
           "shuffle": true,
           "imgName": "wind-demon-7",
-          "infuse": [
-            "wind"
+          "actions": [
+            {
+              "move": 0
+            },
+            {
+              "attack": 0,
+              "pull": 1
+            },
+            {
+              "infuse": [
+                "wind"
+              ]
+            }
           ]
         }
       ],
