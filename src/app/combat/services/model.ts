@@ -26,6 +26,3 @@ export type CombatState = {
     };
   }
 };
-
-export type Action =
-}
