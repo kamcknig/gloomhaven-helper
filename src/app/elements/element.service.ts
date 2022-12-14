@@ -13,7 +13,7 @@ export class ElementService {
 
   private _elementAdapter = createAdapter<ElementState>()({
     cycleElement: (state, event) => {
-      const element: Element = state[event];
+      const element: Element = state[event.toLowerCase()];
       if (element.level === ElementPhases.off) {
         element.level = ElementPhases.infused;
       } else {
