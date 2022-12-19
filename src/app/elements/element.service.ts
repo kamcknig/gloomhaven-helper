@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { createAdapter } from '@state-adapt/core';
-import { Element, ElementNames, ElementPhases, Elements, ElementState } from './model';
-import { adapt } from '@state-adapt/angular';
-import { CombatService } from '../combat/services/combat.service';
-import { Source } from '@state-adapt/rxjs';
+import {Injectable} from '@angular/core';
+import {createAdapter} from '@state-adapt/core';
+import {Element, ElementNames, ElementPhases, Elements, ElementState} from './model';
+import {adapt} from '@state-adapt/angular';
+import {CombatService} from '../combat/services/combat.service';
+import {Source} from '@state-adapt/rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ElementService {
 
   private _elementAdapter = createAdapter<ElementState>()({
     cycleElement: (state, event) => {
-      const element: Element = state[event.toLowerCase()];
+      const element: Element = state[event];
       if (element.level === ElementPhases.off) {
         element.level = ElementPhases.infused;
       } else {
@@ -51,7 +51,7 @@ export class ElementService {
       'elements',
       Object.keys(Elements)
         .reduce((prev, key) => {
-          prev[key.toLowerCase()] = { name: key, level: 0 }
+          prev[key] = { name: key, level: 0 }
           return prev;
         }, {} as ElementState),
       this._elementAdapter
