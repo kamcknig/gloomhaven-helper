@@ -213,7 +213,8 @@ export class CombatService {
       round: state => state.round,
       tokens: state => state.tokens,
       activeMonsters: state => state.activeMonsters,
-      turn: state => state.turn
+      turn: state => state.turn,
+      currentTurnActions: state => state.activeMonsters
     }
   });
 

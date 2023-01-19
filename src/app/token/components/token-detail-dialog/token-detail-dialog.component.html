@@ -1,43 +1,49 @@
 <div mat-dialog-title>Token Details</div>
 
-<mat-dialog-content class="content-container">
-  <form>
-    <mat-form-field class="hit-point-input">
-      <mat-label>Hit points</mat-label>
+<ng-container *ngrxLet="token$ as token">
+  <mat-dialog-content class="content-container">
+    <form>
+      <mat-form-field class="hit-point-input">
+        <mat-label>Hit points</mat-label>
 
-      <ng-container *ngrxLet="token$ as token">
         <input matInput
                [formControl]="hitPointControl"
                (blur)="combatService.updateTokenHitPoint$.next([token, hitPointControl.value])"
                type="number"
                min="0"
                placeholder="max {{(token$ | async)?.maxHealth}}">
-      </ng-container>
 
-      <mat-hint>Setting to 0 will delete token<br/>Token hit point changes apply when focus leaves the input</mat-hint>
-    </mat-form-field>
+        <mat-hint>Setting to 0 will delete token<br/>Token hit point changes apply when focus leaves the input
+        </mat-hint>
+      </mat-form-field>
 
-    <div fxFlexFill
-         fxLayout="row wrap"
-         fxLayoutAlign="center center"
-         fxLayoutGap=".7rem grid"
-         style="padding: 1rem; overflow: hidden">
-      <ng-container *ngFor="let value of ApplicableConditions">
-        <ng-container *ngrxLet="token$ as token">
-          <img [src]="'assets/icons/' + value.toLowerCase() + '.png'"
-               [ngStyle]="{ 'filter': (token.appliedConditionsAndEffects?.[value.toString()] ?? 0) > 0 ? 'brightness(100%)' : 'brightness(35%)' }"
-               (click)="combatService.toggleTokenCondition$.next({ token, condition: value})"
-               [alt]="value + ' ' + ((token.appliedConditionsAndEffects?.[value.toString()] ?? 0) > 0).toString()">
+      <div fxFlexFill
+           fxLayout="row wrap"
+           fxLayoutAlign="center center"
+           fxLayoutGap=".7rem grid"
+           style="padding: 1rem; overflow: hidden">
+        <ng-container *ngFor="let value of ApplicableConditions">
+          <ng-container *ngIf="token$ | async as token">
+            <img [src]="'assets/icons/' + value.toLowerCase() + '.png'"
+                 [ngStyle]="{ 'filter': (token.appliedConditionsAndEffects?.[value.toString()] ?? 0) > 0 ? 'brightness(100%)' : 'brightness(35%)' }"
+                 (click)="combatService.toggleTokenCondition$.next({ token, condition: value})"
+                 [alt]="value + ' ' + ((token.appliedConditionsAndEffects?.[value.toString()] ?? 0) > 0).toString()">
+          </ng-container>
         </ng-container>
-      </ng-container>
-    </div>
-  </form>
-</mat-dialog-content>
+      </div>
+    </form>
+  </mat-dialog-content>
 
-<mat-dialog-actions align="end">
-  <button mat-raised-button
-          color="primary"
-          [disabled]="!hitPointControl.valid"
-          [mat-dialog-close]="null">OK
-  </button>
-</mat-dialog-actions>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button
+            (click)="combatService.updateTokenHitPoint$.next([token, 0])"
+            color="warn">DELETE
+    </button>
+
+    <button mat-raised-button
+            color="primary"
+            [disabled]="!hitPointControl.valid"
+            [mat-dialog-close]="null">OK
+    </button>
+  </mat-dialog-actions>
+</ng-container>
