@@ -21,6 +21,7 @@ export type CombatState = {
   activeMonsters: {
     [monsterId: number | string]: {
       boss?: boolean;
+      name: string;
       abilities: MonsterAbility[];
       initiative?: number | undefined;
     };

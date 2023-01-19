@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {createAdapter} from '@state-adapt/core';
+import {buildAdapter, createAdapter} from '@state-adapt/core';
 import {MonsterService} from '../../monster/services/monster.service';
 import {adapt} from '@state-adapt/angular';
 import {isBoss, Mob, MonsterAbility, MonsterId} from '../../monster/services/model';
@@ -142,7 +142,8 @@ export class CombatService {
           ...state.activeMonsters,
           [event.id]: {
             boss: isBoss(event) ? event.boss : false,
-            abilities
+            abilities,
+            name: event.name
           }
         }
       };
@@ -156,6 +157,7 @@ export class CombatService {
         activeMonsters: {
           ...state.activeMonsters,
           [event]: {
+            ...state.activeMonsters[event],
             abilities,
             initiative: ability.initiative
           }
@@ -213,10 +215,47 @@ export class CombatService {
       round: state => state.round,
       tokens: state => state.tokens,
       activeMonsters: state => state.activeMonsters,
-      turn: state => state.turn,
-      currentTurnActions: state => state.activeMonsters
+      sortedMonsters: state => Object.entries(state.activeMonsters)
+        .sort(([id1, {abilities: abilities1, name: name1}], [id2, {abilities: abilities2, name: name2}]) => {
+          const m1Initiative = abilities1?.reduce(
+            (initiative, nextCard) => (nextCard.drawn && nextCard.initiative) || initiative, undefined as number)
+          const m2Initiative = abilities2?.reduce(
+            (initiative, nextCard) => (nextCard.drawn && nextCard.initiative) || initiative, undefined as number)
+
+          if (m1Initiative === undefined && m2Initiative === undefined) {
+            if (name1 < name2) {
+              return -1;
+            } else if (name2 > name1) {
+              return 1;
+            } else {
+              return 0;
+            }
+          }
+
+          if (m1Initiative === undefined) {
+            return 1;
+          }
+
+          if (m2Initiative === undefined) {
+            return -1;
+          }
+
+          return m1Initiative - m2Initiative;
+        }),
+      turn: state => state.turn
     }
   });
+
+  private _blah = buildAdapter<CombatState>()(this._adapter)({
+    currentTurnActions: state => Object.keys(state.activeMonsters)
+  })();
+
+  /*private _actionAdapter = createAdapter<CombatState>()({
+    ...this._adapter,
+    selectors: {
+      ...this._adapter.selectors
+    }
+  });*/
 
   public store = adapt(
     [
