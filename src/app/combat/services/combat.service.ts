@@ -216,16 +216,16 @@ export class CombatService {
       tokens: state => state.tokens,
       activeMonsters: state => state.activeMonsters,
       sortedMonsters: state => Object.entries(state.activeMonsters)
-        .sort(([id1, {abilities: abilities1, name: name1}], [id2, {abilities: abilities2, name: name2}]) => {
-          const m1Initiative = abilities1?.reduce(
+        .sort(([id1, mob1], [id2, mob2]) => {
+          const m1Initiative = mob1.abilities?.reduce(
             (initiative, nextCard) => (nextCard.drawn && nextCard.initiative) || initiative, undefined as number)
-          const m2Initiative = abilities2?.reduce(
+          const m2Initiative = mob2.abilities?.reduce(
             (initiative, nextCard) => (nextCard.drawn && nextCard.initiative) || initiative, undefined as number)
 
           if (m1Initiative === undefined && m2Initiative === undefined) {
-            if (name1 < name2) {
+            if (mob1.name < mob2.name) {
               return -1;
-            } else if (name2 > name1) {
+            } else if (mob2.name > mob1.name) {
               return 1;
             } else {
               return 0;
@@ -241,21 +241,19 @@ export class CombatService {
           }
 
           return m1Initiative - m2Initiative;
-        }),
+        }).reduce((acc, curr) => {
+          acc[curr[0]] = curr[1];
+          return acc;
+        }, {}),
       turn: state => state.turn
     }
   });
 
-  private _blah = buildAdapter<CombatState>()(this._adapter)({
-    currentTurnActions: state => Object.keys(state.activeMonsters)
-  })();
-
-  /*private _actionAdapter = createAdapter<CombatState>()({
-    ...this._adapter,
-    selectors: {
-      ...this._adapter.selectors
+  private _actionAdapter = buildAdapter<CombatState>()(this._adapter)({
+    currentTurnActions: state => {
+      // return Object.values(state.sortedMonsters)[state.turn - 1].actions
     }
-  });*/
+  })();
 
   public store = adapt(
     [
@@ -266,7 +264,7 @@ export class CombatService {
         tokens: [],
         activeMonsters: {}
       } as CombatState,
-      this._adapter
+      this._actionAdapter
     ],
     {
       monsterAbilityCardDraw: this._monsterService.monsterAbilityCardDraw$,

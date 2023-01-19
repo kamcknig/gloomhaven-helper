@@ -15,9 +15,6 @@ export type CombatState = {
   round: number
   turn: number;
   tokens: TokenInfo[];
-  /**
-   * A dictionary of monsterId: {@link MonsterAbility}[]
-   */
   activeMonsters: {
     [monsterId: number | string]: {
       boss?: boolean;
