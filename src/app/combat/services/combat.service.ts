@@ -49,7 +49,7 @@ export class CombatService {
     return ability;
   }
 
-  private _adapter = createAdapter<CombatState>()({
+  private _combatAdapter = createAdapter<CombatState>()({
     toggleTokenElite: (state, event: TokenInfo | TokenInfo[]) => {
       const toggleTokens = Array.isArray(event) ? event : [event];
 
@@ -249,9 +249,13 @@ export class CombatService {
     }
   });
 
-  private _actionAdapter = buildAdapter<CombatState>()(this._adapter)({
-    currentTurnActions: state => {
-      // return Object.values(state.sortedMonsters)[state.turn - 1].actions
+  private _actionAdapter = buildAdapter<CombatState>()(this._combatAdapter)({
+    actions: s => {
+      const monster = Object.values(s.sortedMonsters)?.[s.turn - 1] as CombatState['activeMonsters'][string];
+      const idx = monster.abilities.findIndex(a => !a.drawn);
+      return idx === -1
+        ? []
+        : monster.abilities[idx].actions;
     }
   })();
 
@@ -278,7 +282,7 @@ export class CombatService {
       nextTurn: this.nextTurn$,
       previousTurn: this.previousTurn$
     }
-  )
+  );
 
   constructor(
     private _monsterService: MonsterService

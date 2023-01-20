@@ -12,9 +12,14 @@ export interface TokenInfo {
 }
 
 export type CombatState = {
+  actions: MonsterAbility['actions'];
+
   round: number
+
   turn: number;
+
   tokens: TokenInfo[];
+
   activeMonsters: {
     [monsterId: number | string]: {
       boss?: boolean;
