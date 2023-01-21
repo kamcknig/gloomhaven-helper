@@ -409,7 +409,9 @@
           "imgName": "archer-1",
           "actions": [
             {
-              "move":"-1",
+              "move":"-1"
+            },
+            {
               "attack":  "+1"
             }
           ]

@@ -250,7 +250,6 @@ export type MonsterAbility = {
   shuffle?: boolean,
   imgName: string,
   count?: number,
-  drawn?: boolean;
 
   actions?: MobAction[]
 }

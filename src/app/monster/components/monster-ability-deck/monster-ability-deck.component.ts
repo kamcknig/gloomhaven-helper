@@ -49,18 +49,17 @@ export class MonsterAbilityDeckComponent implements OnInit {
       switchMap(monster => this._combatService.store.activeMonsters$.pipe(map(value => value[monster.id]?.abilities)))
     );
 
-    this.activeCard$ = deck$.pipe(
-      map(value => {
-        if (!value?.length) {
+    this.activeCard$ = combineLatest([
+      deck$,
+      this._monster$,
+      this._combatService.store.activeMonsters$
+    ]).pipe(
+      map(([deck, monster, combatMobs]) => {
+        if (!deck?.length) {
           return undefined;
         }
 
-        for (let i = value.length - 1; i >= 0; i--) {
-          if (value[i].drawn) {
-            return value[i];
-          }
-        }
-        return undefined;
+        return deck[combatMobs[monster.id].card];
       })
     );
   }

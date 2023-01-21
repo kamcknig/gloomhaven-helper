@@ -1,4 +1,4 @@
-import {MonsterAbility} from '../../monster/services/model';
+import {MonsterAbility, MonsterId} from '../../monster/services/model';
 
 export interface TokenInfo {
   health?: number;
@@ -22,10 +22,13 @@ export type CombatState = {
 
   activeMonsters: {
     [monsterId: number | string]: {
+      id: MonsterId;
       boss?: boolean;
       name: string;
       abilities: MonsterAbility[];
       initiative?: number | undefined;
+      // 0-indexed number that indicates which card in the {@link abilities} Array is drawn
+      card?: number;
     };
   }
 };

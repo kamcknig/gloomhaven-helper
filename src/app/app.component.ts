@@ -70,8 +70,8 @@ export class AppComponent implements OnInit {
 
     this.sortedMonsters$ = this.combatService.store.sortedMonsters$.pipe(
       withLatestFrom(this.monsterService.monsterStore.activeMonsters$),
-      map(([sortedMonsters, monsters]) => Object.keys(sortedMonsters)
-        .map(id => monsters.find(m => m.id.toString() === id.toString()))
+      map(([combatMobs, monsters]) =>
+        combatMobs.map(({id}) => monsters.find(m => m.id.toString() === id.toString()))
       )
     );
   }
