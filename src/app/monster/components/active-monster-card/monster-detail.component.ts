@@ -25,6 +25,7 @@ import {ConditionListPipe} from '../../pipes/condition-list.pipe';
 import {AttackEffectListPipe} from '../../pipes/attack-effect-list.pipe';
 import {BonusListPipe} from '../../pipes/bonus-list.pipe';
 import {LetModule} from "@ngrx/component";
+import {CombatActionsComponent} from "../../../combat/components/combat-actions/combat-actions.component";
 
 @Component({
   selector: 'monster-detail',
@@ -48,7 +49,8 @@ import {LetModule} from "@ngrx/component";
     ConditionListPipe,
     AttackEffectListPipe,
     BonusListPipe,
-    LetModule
+    LetModule,
+    CombatActionsComponent
   ]
 })
 export class MonsterDetailComponent implements OnInit {
