@@ -110,11 +110,11 @@ export class MonsterDetailComponent implements OnInit {
       takeUntil(this._destroy$)
     );
 
-    this.monsterLevel$ = this.appService.monsterLevel(this._monster.id).level$;
+    this.monsterLevel$ = this.appService.monsterLevel(this.monster$.value.id).level$;
   }
 
   removeMonster() {
-    this.monsterService.deactivateMonster$.next(this._monster);
+    this.monsterService.deactivateMonster$.next(this.monster$.value);
   }
 
   getTokenConditionsAndEffects(token: TokenInfo) {
