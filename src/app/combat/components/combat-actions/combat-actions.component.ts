@@ -1,7 +1,7 @@
 import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CombatActionComponent} from "../combat-action/combat-action.component";
-import {MobAction} from "../../../monster/services/model";
+import {Action} from "../../../monster/services/model";
 
 @Component({
   selector: 'app-combat-actions',
@@ -14,9 +14,14 @@ export class CombatActionsComponent implements OnInit {
 
   @HostBinding('class.combat-actions') public readonly combatActionsClass: boolean = true;
 
-  @Input() public actions: MobAction[] = [{ attack: '+1', range: '+1'}, { attack: '-1', range: '+1'}, { attack: '+1', range: '-1'}];
+  @Input() public actions: Action[] = [
+    {action: "attack", value: '+1', modifiers: [{range: '+1'}]},
+    {action: "attack", value: '-1', modifiers: [{range: '+1'}]},
+    {action: "attack", value: '+1', modifiers: [{range: '-11'}]}
+  ];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

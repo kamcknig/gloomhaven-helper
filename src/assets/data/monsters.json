@@ -486,7 +486,7 @@
               "value": "-1"
             },
             {
-              "info-text": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
+              "text": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
             }
           ]
         }
@@ -856,8 +856,11 @@
               "value": "+1"
             },
             {
-              "heal": 2,
-              "range": "=3"
+              "action": "heal",
+              "value": 2,
+              "modifiers": [
+                { "range":  "=3" }
+              ]
             }
           ]
         },
@@ -873,8 +876,10 @@
             {
               "action": "attack",
               "value": "-1",
-              "target": 2,
-              "poison": true
+              "modifiers": [
+                {"target":  2},
+                {"poison":  true}
+              ]
             }
           ]
         },
@@ -897,12 +902,16 @@
           "imgName": "imp-4",
           "actions": [
             {
-              "strengthen": true,
-              "info-text": "Affect all allies within <span class=\"attribute\">Range<span> 2"
+              "action": "strengthen",
+              "modifiers": [
+                { "text":  "Affect all allies within <span class=\"attribute\">Range<span> 2"}
+              ]
             },
             {
-              "muddle": true,
-              "info-text": "Target all enemies within <span class=\"attribute\">Range<span> 2"
+              "action": "muddle",
+              "modifiers": [
+                {"text":  "Target all enemies within <span class=\"attribute\">Range<span> 2"}
+              ]
             }
           ]
         },
@@ -915,8 +924,9 @@
               "value": 5
             },
             {
-              "heal": [
-                1, 0
+              "action": "heal",
+              "modifiers": [
+                { "text":  "Self" }
               ]
             }
           ]
@@ -948,8 +958,10 @@
             {
               "action": "attack",
               "value": "-1",
-              "target": 2,
-              "curse": true
+              "modifiers": [
+                {"target": 2},
+                {"curse":  true}
+              ]
             }
           ]
         }

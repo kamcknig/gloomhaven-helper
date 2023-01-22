@@ -12,6 +12,7 @@ export enum Conditions {
   stun = "stun",
   wound = "wound"
 }
+
 export type ConditionNames = keyof typeof Conditions;
 
 export const isCondition = (value: string): value is ConditionNames => {
@@ -70,6 +71,7 @@ export enum Attributes {
   'attack' = "attack",
   'range' = "range"
 }
+
 export type Attribute = keyof typeof Attributes;
 
 export type Boss = Monster & { boss: true };
@@ -135,16 +137,38 @@ export type StatModifier = number | string;
 export type Mob = Boss | Monster;
 
 export type MoveModifierNames = 'jump' | 'flying';
-export type ActionNames = ConditionNames | BonusNames | AttackEffectNames | 'attack' | 'move' | 'text';
+export type ActionNames = ConditionNames | BonusNames | AttackEffectNames | 'attack' | 'move' | 'text' | 'heal';
 
-// values can be
-// StatModifier - range, maybe also target?
-// string - text
-// boolean - immobilize
-// number - target maybe also StatModifier?
-export type ActionModifier = {
-  [p in (ConditionNames | BonusNames | AttackEffectNames | 'range' | 'text' | MoveModifierNames)]: any;
-};
+export type AttackEffectModifier = {
+  [p in AttackEffectNames]: number;
+}
+
+export type TextModifier = {
+  text: string;
+}
+
+export type RangeModifier = {
+  range: StatModifier;
+}
+
+export type MoveModifier = {
+  [p in MoveModifierNames]: boolean;
+}
+
+export type ConditionModifier = {
+  [p in ConditionNames]: boolean;
+}
+
+export type BonusModifier = {
+  [p in BonusNames]: number | [number, number];
+}
+
+export type ActionModifier =
+  AttackEffectModifier
+  | TextModifier
+  | RangeModifier
+  | BonusModifier
+  | ConditionModifier;
 
 export type Action = {
   action: ActionNames;

@@ -1,20 +1,12 @@
-import {
-  ComponentFactoryResolver,
-  Directive,
-  ElementRef,
-  Input,
-  OnInit,
-  Renderer2,
-  ViewContainerRef
-} from '@angular/core';
-import {MobAction, StatModifier} from "../../monster/services/model";
+import {Directive, ElementRef, Input, OnInit, Renderer2, ViewContainerRef} from '@angular/core';
+import {Action} from "../../monster/services/model";
 
 @Directive({
   selector: '[appActionIcon],appActionIcon',
   standalone: true
 })
 export class ActionIconDirective implements OnInit {
-  private _appAction: MobAction;
+  private _appAction: Action;
 
   private _mainActions: string[] = [
     'move',
@@ -22,12 +14,12 @@ export class ActionIconDirective implements OnInit {
   ];
 
   @Input('appAction')
-  public set appAction(value: MobAction) {
+  public set appAction(value: Action) {
     this._appAction = value;
   };
 
   @Input('appActionIcon')
-  public set appActionIconAction(value: MobAction) {
+  public set appActionIconAction(value: Action) {
     this._appAction = value;
   };
 
@@ -40,10 +32,16 @@ export class ActionIconDirective implements OnInit {
 
   ngOnInit(): void {
     console.log(this._appAction);
+    const divEl: HTMLDivElement = this._renderer.createElement('div');
+    let actionName: HTMLSpanElement;
+
     const imgEL: HTMLImageElement = this._renderer.createElement('img');
-    Object.keys(this._appAction).find(actionName => this._mainActions.includes(actionName))
-    switch (Object.keys(this._appAction)[0]) {
+    switch (this._appAction.action) {
       case 'attack':
+
+        actionName = this._renderer.createElement('span');
+        actionName.innerText = 'Attack';
+
         imgEL.src = '/assets/icons/attack.png';
         break;
     }
@@ -51,10 +49,4 @@ export class ActionIconDirective implements OnInit {
     this._renderer.setStyle(imgEL, 'display', 'inline-block');
     this._renderer.insertBefore(this._vcf.element.nativeElement.parentElement, imgEL, this._el.nativeElement);
   }
-}
-
-export type ActionAttack = {
-  attack: MobAction['attack'];
-  range?: MobAction['range'];
-  'info-text'?: MobAction['info-text'];
 }
