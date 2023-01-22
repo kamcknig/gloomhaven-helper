@@ -1,5 +1,3 @@
-import {ElementNames} from "../../elements/model";
-
 export type MonsterId = number | string;
 
 export enum Conditions {
@@ -14,9 +12,9 @@ export enum Conditions {
   stun = "stun",
   wound = "wound"
 }
-export type Condition = keyof typeof Conditions;
+export type ConditionNames = keyof typeof Conditions;
 
-export const isCondition = (value: string): value is Condition => {
+export const isCondition = (value: string): value is ConditionNames => {
   return Object.values(Conditions).includes(value as Conditions);
 }
 
@@ -27,9 +25,9 @@ export enum AttackEffects {
   target = 'target'
 }
 
-export type AttackEffect = keyof typeof AttackEffects;
+export type AttackEffectNames = keyof typeof AttackEffects;
 
-export const isAttackEffect = (value: string): value is AttackEffect => {
+export const isAttackEffect = (value: string): value is AttackEffectNames => {
   return Object.values(AttackEffects).includes(value as AttackEffects);
 }
 
@@ -38,9 +36,9 @@ export enum Bonuses {
   'retaliate' = "retaliate"
 }
 
-export type Bonus = keyof typeof Bonuses;
+export type BonusNames = keyof typeof Bonuses;
 
-export const isBonus = (value: string): value is Bonus => {
+export const isBonus = (value: string): value is BonusNames => {
   return Object.values(Bonuses).includes(value as Bonuses);
 }
 
@@ -92,24 +90,24 @@ export interface Monster {
   };
 
   /**
-   * Contains info on the conditions a {@link Monster} has. The conditions are {@link Condition}
+   * Contains info on the conditions a {@link Monster} has. The conditions are {@link ConditionNames}
    */
   conditions: {
-    [key in Condition]: Stat[];
+    [key in ConditionNames]: Stat[];
   }
 
   /**
-   * Contains info on the attack effects a {@link Monster} has. The attack effects are {@link AttackEffect}
+   * Contains info on the attack effects a {@link Monster} has. The attack effects are {@link AttackEffectNames}
    */
   attackEffects: {
-    [key in AttackEffect]: Stat[];
+    [key in AttackEffectNames]: Stat[];
   }
 
   /**
-   * Contains info on the bonuses a monster has. The bonuses are {@link Bonus}
+   * Contains info on the bonuses a monster has. The bonuses are {@link BonusNames}
    */
   bonuses: {
-    [key in Bonus]: (Stat | [Stat, Stat])[];
+    [key in BonusNames]: (Stat | [Stat, Stat])[];
   }
 
   flying?: boolean;
@@ -136,140 +134,34 @@ export type StatModifier = number | string;
  */
 export type Mob = Boss | Monster;
 
-export type AttackAction = CombatAction & {
-  value: StatModifier;
-  range?: StatModifier;
-  target?: StatModifier;
-}
+export type MoveModifierNames = 'jump' | 'flying';
+export type ActionNames = ConditionNames | BonusNames | AttackEffectNames | 'attack' | 'move' | 'text';
 
-export type NamedAction = {
-  action?: (Condition | Bonus | AttackEffect | 'attack' | 'move');
-}
+// values can be
+// StatModifier - range, maybe also target?
+// string - text
+// boolean - immobilize
+// number - target maybe also StatModifier?
+export type ActionModifier = {
+  [p in (ConditionNames | BonusNames | AttackEffectNames | 'range' | 'text' | MoveModifierNames)]: any;
+};
 
-export type CombatAction = NamedAction & {
-  info: string;
-  [p in ('pierce' | 'pull' | 'range' | 'target')]?: StatModifier;
-}
-
-/**
- * Represents an action a {@link Mob} can take. One {@link MobAction} is one ability line on the monster ability card.
- */
-export type MobAction = {
-  conditions?: (Condition | Bonus | AttackEffect | 'attack' | 'move')[];
-
-  /**
-   * Indicates the {@link MobAction} should apply {@link Condition.bless}
-   */
-  // todo: might change to a [number, number] or [boolean, number]?
-  bless?: boolean;
-
-  /**
-   * Indicates the {@link MobAction} applies {@link Condition.curse} to the target
-   */
-  curse?: boolean;
-
-  /**
-   * Indicates that the {@link MobAction} applies {@link Condition.immobilize}
-   */
-  immobilize?: boolean;
-
-  /**
-   * Indicates that the {@link MobAction} provides jump for any movement
-   */
-  jump?:boolean;
-
-  /**
-   * Indicates that the {@link MobAction} applies a heal effect to the target and at what range if any
-   */
-  heal?: [number, number];
-
-  /**
-   * Any text on the card that might modify the {@link MobAction}
-   */
-  'info-text'?: string;
-
-  /**
-   * Indicates which elements the {@link MobAction} infuses during the turn
-   */
-  infuse?: ElementNames[];
-
-  /**
-   * Indicates a loot {@link MobAction}
-   */
-  loot?: boolean;
-
-  /**
-   * Indicates the number of hexes to modify the {@link MobAction} movement value
-   */
-  move?: StatModifier;
-
-  /**
-   * Indicates that the {@link MobAction} applies {@link Condition.muddle} to the target
-   */
-  muddle?: boolean;
-
-  /**
-   * Indicates the number amount of shield a {@link MobAction}s ignores
-   */
-  pierce?: number;
-
-  /**
-   * Indicates the number of hexes the {@link MobAction}s targets are pulled
-   */
-  pull?: StatModifier;
-
-  /**
-   * Indicates the number of hexes the {@link MobAction}s targets are pushed
-   */
-  push?: StatModifier;
-
-  /**
-   * Indicates the {@link StatModifier} that modifies the {@link MobAction}s range
-   */
-  range?: StatModifier;
-
-  /**
-   * Indicates the {@link MobAction} imbues the {@link Mob} with {@link Bonus.retaliate} and the range
-   * at which it applies
-   */
-  retaliate?: [StatModifier, number];
-
-  /**
-   * Indicates the shield value the {@link MobAction} adds to the attacker
-   */
-  shield?: StatModifier;
-
-  /**
-   * Indicates that the {@link MobAction} applies {@link Bonus.shield}
-   */
-  strengthen?: boolean;
-
-  /**
-   * Indicates the {@link MobAction} is a boss special action
-   */
-  special?: 1 | 2;
-
-  /**
-   * Indicates the {@link StatModifier} that modifies the {@link MobAction}s number of targets
-   */
-  target?: StatModifier;
-
-  /**
-   * Indicates the {@link MobAction} applies {@link Condition.wound} to the target
-   */
-  wound?: boolean;
+export type Action = {
+  action: ActionNames;
+  value?: StatModifier | string;
+  modifiers: ActionModifier[];
 }
 
 /**
  * Represents a single round ability a monster has. These are the monster "cards".
  */
 export type MonsterAbility = {
-  initiative: number,
-  shuffle?: boolean,
-  imgName: string,
-  count?: number,
+  initiative: number;
+  shuffle?: boolean;
+  imgName: string;
+  count?: number;
 
-  actions?: MobAction[]
+  actions?: Action[];
 }
 
 export type MonsterNoId = Omit<Monster, 'id'>;
