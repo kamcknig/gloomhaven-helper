@@ -15,17 +15,20 @@ export enum Conditions {
   wound = "wound"
 }
 export type Condition = keyof typeof Conditions;
+
 export const isCondition = (value: string): value is Condition => {
   return Object.values(Conditions).includes(value as Conditions);
 }
 
 export enum AttackEffects {
   pull = 'pull',
-  push = "push",
-  pierce = "pierce",
-  target = "target"
+  push = 'push',
+  pierce = 'pierce',
+  target = 'target'
 }
+
 export type AttackEffect = keyof typeof AttackEffects;
+
 export const isAttackEffect = (value: string): value is AttackEffect => {
   return Object.values(AttackEffects).includes(value as AttackEffects);
 }
@@ -34,7 +37,9 @@ export enum Bonuses {
   'shield' = 'shield',
   'retaliate' = "retaliate"
 }
+
 export type Bonus = keyof typeof Bonuses;
+
 export const isBonus = (value: string): value is Bonus => {
   return Object.values(Bonuses).includes(value as Bonuses);
 }
@@ -70,6 +75,7 @@ export enum Attributes {
 export type Attribute = keyof typeof Attributes;
 
 export type Boss = Monster & { boss: true };
+
 export const isBoss = (value: Monster): value is Boss => {
   return !!value && value.hasOwnProperty('boss') && value['boss'] === true;
 }
@@ -130,14 +136,26 @@ export type StatModifier = number | string;
  */
 export type Mob = Boss | Monster;
 
+export type AttackAction = CombatAction & {
+  value: StatModifier;
+  range?: StatModifier;
+  target?: StatModifier;
+}
+
+export type NamedAction = {
+  action?: (Condition | Bonus | AttackEffect | 'attack' | 'move');
+}
+
+export type CombatAction = NamedAction & {
+  info: string;
+  [p in ('pierce' | 'pull' | 'range' | 'target')]?: StatModifier;
+}
+
 /**
  * Represents an action a {@link Mob} can take. One {@link MobAction} is one ability line on the monster ability card.
  */
 export type MobAction = {
-  /**
-   * Indicates the {@link StatModifier} that modifies the {@link MobAction}s attack power
-   */
-  attack?: StatModifier;
+  conditions?: (Condition | Bonus | AttackEffect | 'attack' | 'move')[];
 
   /**
    * Indicates the {@link MobAction} should apply {@link Condition.bless}
@@ -168,7 +186,7 @@ export type MobAction = {
   /**
    * Any text on the card that might modify the {@link MobAction}
    */
-  'info-text': string;
+  'info-text'?: string;
 
   /**
    * Indicates which elements the {@link MobAction} infuses during the turn
@@ -229,7 +247,7 @@ export type MobAction = {
   /**
    * Indicates the {@link MobAction} is a boss special action
    */
-  special: 1 | 2;
+  special?: 1 | 2;
 
   /**
    * Indicates the {@link StatModifier} that modifies the {@link MobAction}s number of targets

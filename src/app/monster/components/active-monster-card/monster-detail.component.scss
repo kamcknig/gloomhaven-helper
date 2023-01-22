@@ -31,6 +31,13 @@
       left: 0;
       right: 0;
     }
+
+    .combat-actions {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &.active ::ng-deep .mat-card {
