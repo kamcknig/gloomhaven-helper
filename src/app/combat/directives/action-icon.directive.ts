@@ -1,5 +1,6 @@
 import {Directive, ElementRef, Input, OnInit, Renderer2, ViewContainerRef} from '@angular/core';
-import {Action} from "../../monster/services/model";
+import {Action, StatModifier} from "../../monster/services/model";
+import {StatModifierPipe} from "../../monster/pipes/stat-modifier.pipe";
 
 @Directive({
   selector: '[appActionIcon],appActionIcon',
@@ -26,7 +27,8 @@ export class ActionIconDirective implements OnInit {
   constructor(
     private _renderer: Renderer2,
     private _el: ElementRef,
-    private _vcf: ViewContainerRef
+    private _vcf: ViewContainerRef,
+    private _stateModifier: StatModifierPipe
   ) {
   }
 
@@ -34,6 +36,7 @@ export class ActionIconDirective implements OnInit {
     console.log(this._appAction);
     const divEl: HTMLDivElement = this._renderer.createElement('div');
     let actionName: HTMLSpanElement;
+    let actionValue: HTMLSpanElement;
 
     const imgEL: HTMLImageElement = this._renderer.createElement('img');
     switch (this._appAction.action) {
@@ -41,12 +44,18 @@ export class ActionIconDirective implements OnInit {
 
         actionName = this._renderer.createElement('span');
         actionName.innerText = 'Attack';
+        divEl.appendChild(actionName);
 
         imgEL.src = '/assets/icons/attack.png';
+        divEl.appendChild(imgEL);
+
+        actionValue = this._renderer.createElement('span');
+        actionValue.innerText = this._stateModifier.transform(this._appAction.value);
+        divEl.appendChild(actionValue);
         break;
     }
 
     this._renderer.setStyle(imgEL, 'display', 'inline-block');
-    this._renderer.insertBefore(this._vcf.element.nativeElement.parentElement, imgEL, this._el.nativeElement);
+    this._renderer.insertBefore(this._vcf.element.nativeElement.parentElement, divEl, this._el.nativeElement);
   }
 }
