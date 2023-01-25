@@ -2,6 +2,15 @@
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, .5), rgba(0, 0, 0, .1));
 }*/
 
+:host ::ng-deep .action-wrapper {
+  color: white;
+
+  .main-line-action-wrapper {
+    display: flex;
+    align-items: center;
+  }
+}
+
 img {
   max-height: 100%;
   max-width: 100%;

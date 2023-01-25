@@ -35,26 +35,35 @@ export class ActionIconDirective implements OnInit {
   ngOnInit(): void {
     console.log(this._appAction);
     const divEl: HTMLDivElement = this._renderer.createElement('div');
+    this._renderer.addClass(divEl, 'action-wrapper');
+
+    const mainLineDivEl: HTMLDivElement = this._renderer.createElement('div');
+    this._renderer.addClass(mainLineDivEl, 'main-line-action-wrapper');
+
     let actionName: HTMLSpanElement;
     let actionValue: HTMLSpanElement;
 
     const imgEL: HTMLImageElement = this._renderer.createElement('img');
     switch (this._appAction.action) {
       case 'attack':
-
         actionName = this._renderer.createElement('span');
         actionName.innerText = 'Attack';
-        divEl.appendChild(actionName);
+        mainLineDivEl.appendChild(actionName);
 
         imgEL.src = '/assets/icons/attack.png';
-        divEl.appendChild(imgEL);
+        mainLineDivEl.appendChild(imgEL);
 
         actionValue = this._renderer.createElement('span');
         actionValue.innerText = this._stateModifier.transform(this._appAction.value);
-        divEl.appendChild(actionValue);
+        mainLineDivEl.appendChild(actionValue);
         break;
     }
 
+    this._appAction.modifiers.forEach(mod => {
+
+    });
+
+    divEl.appendChild(mainLineDivEl);
     this._renderer.setStyle(imgEL, 'display', 'inline-block');
     this._renderer.insertBefore(this._vcf.element.nativeElement.parentElement, divEl, this._el.nativeElement);
   }
