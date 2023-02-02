@@ -1,5 +1,5 @@
 import {Directive, ElementRef, Input, OnInit, Renderer2, ViewContainerRef} from '@angular/core';
-import {Action, StatModifier} from "../../monster/services/model";
+import {Action} from "../../monster/services/model";
 import {StatModifierPipe} from "../../monster/pipes/stat-modifier.pipe";
 
 @Directive({
@@ -8,11 +8,6 @@ import {StatModifierPipe} from "../../monster/pipes/stat-modifier.pipe";
 })
 export class ActionIconDirective implements OnInit {
   private _appAction: Action;
-
-  private _mainActions: string[] = [
-    'move',
-    'attack'
-  ];
 
   @Input('appAction')
   public set appAction(value: Action) {
