@@ -1,6 +1,7 @@
 import {Directive, ElementRef, Input, OnInit, Renderer2, ViewContainerRef} from '@angular/core';
 import {Action} from "../../monster/services/model";
 import {StatModifierPipe} from "../../monster/pipes/stat-modifier.pipe";
+import {TitleCasePipe, UpperCasePipe} from "@angular/common";
 
 @Directive({
   selector: '[appActionIcon],appActionIcon',
@@ -23,7 +24,8 @@ export class ActionIconDirective implements OnInit {
     private _renderer: Renderer2,
     private _el: ElementRef,
     private _vcf: ViewContainerRef,
-    private _stateModifier: StatModifierPipe
+    private _statModifierPipe: StatModifierPipe,
+    private _titleCasePipe: TitleCasePipe
   ) {
   }
 
@@ -33,33 +35,48 @@ export class ActionIconDirective implements OnInit {
     this._renderer.addClass(divEl, 'action-wrapper');
 
     const mainLineDivEl: HTMLDivElement = this._renderer.createElement('div');
-    this._renderer.addClass(mainLineDivEl, 'main-line-action-wrapper');
+    this._renderer.addClass(mainLineDivEl, `main-line-action-wrapper`);
+    this._renderer.addClass(mainLineDivEl, this._appAction.action);
+    this._renderer.setStyle(mainLineDivEl, 'white-space', 'pre-wrap');
 
-    let actionName: HTMLSpanElement;
-    let actionValue: HTMLSpanElement;
+    let actionNameEl: HTMLSpanElement;
+    let actionValueEl: HTMLSpanElement
 
-    const imgEL: HTMLImageElement = this._renderer.createElement('img');
     switch (this._appAction.action) {
-      case 'attack':
-        actionName = this._renderer.createElement('span');
-        actionName.innerText = 'Attack';
-        mainLineDivEl.appendChild(actionName);
+      case 'text':
+        break;
+      default:
+        actionNameEl = this._renderer.createElement('span');
+        actionNameEl.textContent = this._titleCasePipe.transform(this._appAction.action);
+        mainLineDivEl.appendChild(actionNameEl);
 
-        imgEL.src = '/assets/icons/attack.png';
+        actionValueEl = this._renderer.createElement('span');
+        actionValueEl.textContent = `  ${this._statModifierPipe.transform(this._appAction.value)}  `;
+        mainLineDivEl.appendChild(actionValueEl);
+
+        const imgEL: HTMLImageElement = this._renderer.createElement('img');
+        this._renderer.setStyle(imgEL, 'display', 'inline-block');
+        imgEL.src = `/assets/icons/${this._appAction.action}.png`;
         mainLineDivEl.appendChild(imgEL);
 
-        actionValue = this._renderer.createElement('span');
-        actionValue.innerText = this._stateModifier.transform(this._appAction.value);
-        mainLineDivEl.appendChild(actionValue);
-        break;
+        divEl.appendChild(mainLineDivEl);
     }
 
-    this._appAction.modifiers.forEach(mod => {
+    this._appAction.modifiers?.forEach(mod => {
+      const modifierLineDivEl: HTMLDivElement = this._renderer.createElement('div');
+      this._renderer.addClass(modifierLineDivEl, 'action-modifier-wrapper');
 
+      const modNameEl: HTMLSpanElement = this._renderer.createElement('span');
+      const [[modName, modValue]] = Object.entries(mod);
+      modNameEl.textContent = this._titleCasePipe.transform(modName);
+      modifierLineDivEl.appendChild(modNameEl);
+
+      const imgEl = this._renderer.createElement('img');
+      this._renderer.setStyle(imgEl, 'display', 'inline-block');
+
+      divEl.appendChild(modifierLineDivEl);
     });
 
-    divEl.appendChild(mainLineDivEl);
-    this._renderer.setStyle(imgEL, 'display', 'inline-block');
     this._renderer.insertBefore(this._vcf.element.nativeElement.parentElement, divEl, this._el.nativeElement);
   }
 }

@@ -2,13 +2,16 @@
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, .5), rgba(0, 0, 0, .1));
 }*/
 
+:host {
+  pointer-events: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 :host ::ng-deep .action-wrapper {
   color: white;
-
-  .main-line-action-wrapper {
-    display: flex;
-    align-items: center;
-  }
 }
 
 img {

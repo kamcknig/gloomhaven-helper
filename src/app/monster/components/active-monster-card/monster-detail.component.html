@@ -134,6 +134,6 @@
 
   <div id="deck-actions-container">
     <app-monster-ability-deck [monster]="monster$ | async"></app-monster-ability-deck>
-    <app-combat-actions></app-combat-actions>
+    <app-combat-actions [actions]="(activeCard$ | async)?.actions"></app-combat-actions>
   </div>
 </ng-container>

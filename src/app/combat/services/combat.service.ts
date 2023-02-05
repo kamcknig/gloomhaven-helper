@@ -134,7 +134,7 @@ export class CombatService {
         }
       };
     },
-    monsterAbilityCardDraw: (state, event: MonsterId) => {
+    drawMonsterAbilityCard: (state, event: MonsterId) => {
       const combatMob = state.activeMonsters[event];
       let newCard = isNaN(combatMob.card) ? 0 : combatMob.card + 1;
       let abilities = combatMob.abilities;
@@ -252,7 +252,7 @@ export class CombatService {
       this._actionAdapter
     ],
     {
-      monsterAbilityCardDraw: this._monsterService.monsterAbilityCardDraw$,
+      drawMonsterAbilityCard: this._monsterService.drawMonsterAbilityCard$,
       activateMonster: this._monsterService.activateMonster$,
       deactivateMonster: this._monsterService.deactivateMonster$,
       roundComplete: this.roundComplete$,

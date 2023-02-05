@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, TitleCasePipe, UpperCasePipe} from '@angular/common';
 import {ActionIconDirective} from "../../directives/action-icon.directive";
 import {Action} from "../../../monster/services/model";
 import {StatModifierPipe} from "../../../monster/pipes/stat-modifier.pipe";
@@ -9,7 +9,8 @@ import {StatModifierPipe} from "../../../monster/pipes/stat-modifier.pipe";
   standalone: true,
   imports: [CommonModule, ActionIconDirective],
   providers: [
-    StatModifierPipe
+    StatModifierPipe,
+    TitleCasePipe
   ],
   templateUrl: './combat-action.component.html',
   styleUrls: ['./combat-action.component.scss']

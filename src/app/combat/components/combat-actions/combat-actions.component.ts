@@ -14,11 +14,7 @@ export class CombatActionsComponent implements OnInit {
 
   @HostBinding('class.combat-actions') public readonly combatActionsClass: boolean = true;
 
-  @Input() public actions: Action[] = [
-    {action: "attack", value: '+1', modifiers: [{range: '+1'}]},
-    {action: "attack", value: '-1', modifiers: [{range: '+1'}]},
-    {action: "attack", value: '+1', modifiers: [{range: '-11'}]}
-  ];
+  @Input() public actions: Action[] | undefined;
 
   constructor() {
   }

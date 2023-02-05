@@ -12,11 +12,6 @@ export class StatModifierPipe implements PipeTransform {
       return value.toString();
     }
 
-    const valueAsNum = +value;
-    if (!isNaN(valueAsNum)) {
-      return value as string;
-    }
-
     const [equals, valuePart] = (value as string).split('');
     return equals === '=' && !isNaN(+valuePart) ? valuePart : '?';
   }

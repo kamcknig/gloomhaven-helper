@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AppService} from '../../../app.service';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {map, switchMap, takeUntil} from 'rxjs/operators';
 import {MatDialog} from '@angular/material/dialog';
-import {isBoss, Monster} from '../../services/model';
+import {isBoss, Monster, MonsterAbility} from '../../services/model';
 import {TokenInfo} from '../../../combat/services/model';
 import {CombatService} from '../../../combat/services/combat.service';
 import {MonsterService} from '../../services/monster.service';
@@ -73,6 +73,7 @@ export class MonsterDetailComponent implements OnInit {
   public monsterLevel$: Observable<number | undefined>;
   public scenarioLevel$: Observable<number | undefined>;
   public tokenCount$: Observable<number>;
+  public activeCard$: Observable<MonsterAbility>;
 
   private _destroy$: Subject<void> = new Subject<void>();
 
@@ -111,6 +112,24 @@ export class MonsterDetailComponent implements OnInit {
     );
 
     this.monsterLevel$ = this.appService.monsterLevel(this.monster$.value.id).level$;
+
+    const deck$ = this.monster$.pipe(
+      switchMap(monster => this.combatService.store.activeMonsters$.pipe(map(value => value[monster.id]?.abilities)))
+    );
+
+    this.activeCard$ = combineLatest([
+      deck$,
+      this.monster$,
+      this.combatService.store.activeMonsters$
+    ]).pipe(
+      map(([deck, monster, combatMobs]) => {
+        if (!deck?.length) {
+          return undefined;
+        }
+
+        return deck[combatMobs[monster.id].card];
+      })
+    );
   }
 
   removeMonster() {
