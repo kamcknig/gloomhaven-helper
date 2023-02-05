@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CommonModule, TitleCasePipe, UpperCasePipe} from '@angular/common';
+import {CommonModule, TitleCasePipe} from '@angular/common';
 import {ActionIconDirective} from "../../directives/action-icon.directive";
 import {Action} from "../../../monster/services/model";
 import {StatModifierPipe} from "../../../monster/pipes/stat-modifier.pipe";
