@@ -26,6 +26,7 @@ import {AttackEffectListPipe} from '../../pipes/attack-effect-list.pipe';
 import {BonusListPipe} from '../../pipes/bonus-list.pipe';
 import {LetModule} from "@ngrx/component";
 import {CombatActionsComponent} from "../../../combat/components/combat-actions/combat-actions.component";
+import {state, style, trigger} from "@angular/animations";
 
 @Component({
   selector: 'monster-detail',
@@ -51,6 +52,16 @@ import {CombatActionsComponent} from "../../../combat/components/combat-actions/
     BonusListPipe,
     LetModule,
     CombatActionsComponent
+  ],
+  animations: [
+    trigger('drawerOpenClose', [
+      state('open', style({
+        transform: 'translateY(-100%)'
+      })),
+      state('closed', style({
+        bottom: 0
+      }))
+    ])
   ]
 })
 export class MonsterDetailComponent implements OnInit {

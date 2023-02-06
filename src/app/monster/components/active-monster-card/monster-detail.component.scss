@@ -160,3 +160,15 @@
     }
   }
 }
+
+.drawer-handle {
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 20px solid red;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  user-select: none;
+}
