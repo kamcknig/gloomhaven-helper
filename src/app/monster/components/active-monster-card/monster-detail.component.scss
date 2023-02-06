@@ -21,15 +21,19 @@
   }
 
   #deck-actions-container {
-    flex: 1 1 0;
+    /*flex: 1 1 0;*/
     overflow: hidden;
     position: relative;
 
-    * {
+    app-monster-ability-deck {
       height: 100%;
+    }
+
+    app-combat-actions {
       position: absolute;
-      left: 0;
-      right: 0;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
     }
 
     .combat-actions {
