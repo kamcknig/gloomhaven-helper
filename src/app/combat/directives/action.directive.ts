@@ -1,14 +1,16 @@
-import {Directive, ElementRef, Input, OnInit, Renderer2, ViewContainerRef} from '@angular/core';
+import {Directive, ElementRef, Input, OnDestroy, OnInit, Renderer2, ViewContainerRef} from '@angular/core';
 import {Action} from "../../monster/services/model";
 import {StatModifierPipe} from "../../monster/pipes/stat-modifier.pipe";
-import {TitleCasePipe, UpperCasePipe} from "@angular/common";
+import {TitleCasePipe} from "@angular/common";
 
 @Directive({
   selector: 'appAction,[appAction]',
   standalone: true
 })
-export class ActionDirective implements OnInit {
+export class ActionDirective implements OnInit, OnDestroy {
   private _appAction: Action;
+
+  private _addedEl: HTMLDivElement;
 
   @Input('appAction')
   public set appAction(value: Action) {
@@ -31,28 +33,28 @@ export class ActionDirective implements OnInit {
 
   ngOnInit(): void {
     console.log(this._appAction);
-    const divEl: HTMLDivElement = this._renderer.createElement('div');
-    this._renderer.addClass(divEl, 'action-wrapper');
+    this._addedEl = this._renderer.createElement('div');
+    this._renderer.addClass(this._addedEl, 'action-wrapper');
 
     const mainLineDivEl: HTMLDivElement = this._renderer.createElement('div');
     this._renderer.addClass(mainLineDivEl, `main-line-action-wrapper`);
     this._renderer.addClass(mainLineDivEl, this._appAction.action);
-    this._renderer.setStyle(mainLineDivEl, 'white-space', 'pre-wrap');
 
-    let actionNameEl: HTMLSpanElement;
+    let actionTextEl: HTMLSpanElement = this._renderer.createElement('span');
     let actionValueEl: HTMLSpanElement
 
     switch (this._appAction.action) {
       case 'text':
+        actionTextEl.innerHTML = this._appAction.value as string;
+        mainLineDivEl.appendChild(actionTextEl);
         break;
       default:
-        actionNameEl = this._renderer.createElement('span');
-        actionNameEl.textContent = this._titleCasePipe.transform(this._appAction.action);
-        mainLineDivEl.appendChild(actionNameEl);
+        actionTextEl.innerHTML = this._titleCasePipe.transform(this._appAction.action);
+        mainLineDivEl.appendChild(actionTextEl);
 
         if (this._appAction.value) {
           actionValueEl = this._renderer.createElement('span');
-          actionValueEl.textContent = `  ${this._statModifierPipe.transform(this._appAction.value)}  `;
+          actionValueEl.innerHTML = `&nbsp;&nbsp;${this._statModifierPipe.transform(this._appAction.value)}&nbsp;&nbsp;`;
           mainLineDivEl.appendChild(actionValueEl);
         }
 
@@ -62,9 +64,9 @@ export class ActionDirective implements OnInit {
           imgEL.src = `/assets/icons/${this._appAction.action}.png`;
           mainLineDivEl.appendChild(imgEL);
         }
-
-        divEl.appendChild(mainLineDivEl);
     }
+
+    this._addedEl.appendChild(mainLineDivEl);
 
     this._appAction.modifiers?.forEach(mod => {
       const modifierLineDivEl: HTMLDivElement = this._renderer.createElement('div');
@@ -78,9 +80,13 @@ export class ActionDirective implements OnInit {
       const imgEl = this._renderer.createElement('img');
       this._renderer.setStyle(imgEl, 'display', 'inline-block');
 
-      divEl.appendChild(modifierLineDivEl);
+      this._addedEl.appendChild(modifierLineDivEl);
     });
 
-    this._renderer.insertBefore(this._vcf.element.nativeElement.parentElement, divEl, this._el.nativeElement);
+    this._renderer.appendChild(this._vcf.element.nativeElement.parentElement, this._addedEl);
+  }
+
+  ngOnDestroy() {
+    this._addedEl && this._renderer.removeChild(this._vcf.element.nativeElement.parentElement, this._addedEl);
   }
 }
