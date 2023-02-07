@@ -16,7 +16,7 @@
     max-width: 100%;
   }
 
-  &.attack {
+  &.attack, &.move {
     img {
       filter: brightness(0) invert(1);
     }

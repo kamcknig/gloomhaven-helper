@@ -4,10 +4,10 @@ import {StatModifierPipe} from "../../monster/pipes/stat-modifier.pipe";
 import {TitleCasePipe, UpperCasePipe} from "@angular/common";
 
 @Directive({
-  selector: '[appActionIcon],appActionIcon',
+  selector: 'appAction,[appAction]',
   standalone: true
 })
-export class ActionIconDirective implements OnInit {
+export class ActionDirective implements OnInit {
   private _appAction: Action;
 
   @Input('appAction')
@@ -50,14 +50,18 @@ export class ActionIconDirective implements OnInit {
         actionNameEl.textContent = this._titleCasePipe.transform(this._appAction.action);
         mainLineDivEl.appendChild(actionNameEl);
 
-        actionValueEl = this._renderer.createElement('span');
-        actionValueEl.textContent = `  ${this._statModifierPipe.transform(this._appAction.value)}  `;
-        mainLineDivEl.appendChild(actionValueEl);
+        if (this._appAction.value) {
+          actionValueEl = this._renderer.createElement('span');
+          actionValueEl.textContent = `  ${this._statModifierPipe.transform(this._appAction.value)}  `;
+          mainLineDivEl.appendChild(actionValueEl);
+        }
 
-        const imgEL: HTMLImageElement = this._renderer.createElement('img');
-        this._renderer.setStyle(imgEL, 'display', 'inline-block');
-        imgEL.src = `/assets/icons/${this._appAction.action}.png`;
-        mainLineDivEl.appendChild(imgEL);
+        if (this._appAction.action) {
+          const imgEL: HTMLImageElement = this._renderer.createElement('img');
+          this._renderer.setStyle(imgEL, 'display', 'inline-block');
+          imgEL.src = `/assets/icons/${this._appAction.action}.png`;
+          mainLineDivEl.appendChild(imgEL);
+        }
 
         divEl.appendChild(mainLineDivEl);
     }

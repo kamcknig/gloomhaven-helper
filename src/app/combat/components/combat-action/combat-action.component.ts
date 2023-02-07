@@ -1,13 +1,13 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CommonModule, TitleCasePipe} from '@angular/common';
-import {ActionIconDirective} from "../../directives/action-icon.directive";
+import {ActionDirective} from "../../directives/action.directive";
 import {Action} from "../../../monster/services/model";
 import {StatModifierPipe} from "../../../monster/pipes/stat-modifier.pipe";
 
 @Component({
   selector: 'app-combat-action',
   standalone: true,
-  imports: [CommonModule, ActionIconDirective],
+  imports: [CommonModule, ActionDirective],
   providers: [
     StatModifierPipe,
     TitleCasePipe
