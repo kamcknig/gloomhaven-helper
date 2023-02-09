@@ -70,7 +70,8 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "attack": "+0"
             }
           ]
@@ -455,7 +456,9 @@
             {
               "action": "attack",
               "value": "+1",
-              "range": "-1"
+              "modifiers": [
+                { "range": "-1" }
+              ]
             }
           ]
         },
@@ -486,7 +489,8 @@
               "value": "-1"
             },
             {
-              "text": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
+              "action": "text",
+              "value": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
             }
           ]
         }
@@ -629,8 +633,10 @@
               "value": "+0"
             },
             {
-              "strengthen": true,
-              "info-text": "Self"
+              "action": "strengthen",
+              "modifiers": [
+                { "text": "Self" }
+              ]
             }
           ]
         },
@@ -646,7 +652,9 @@
             {
               "action": "attack",
               "value": "+0",
-              "poison": true
+              "modifiers": [
+                { "poison": true }
+              ]
             }
           ]
         },
@@ -690,7 +698,9 @@
             {
               "action": "attack",
               "value": "+0",
-              "range": "=2"
+              "modifiers": [
+                {"range": "2"}
+              ]
             }
           ]
         },
@@ -704,9 +714,8 @@
               "value": 1
             },
             {
-              "retaliate": [
-                2, 0
-              ]
+              "action": "retaliate",
+              "value": "2"
             }
           ]
         },
@@ -859,7 +868,7 @@
               "action": "heal",
               "value": 2,
               "modifiers": [
-                { "range":  "=3" }
+                { "range":  "3" }
               ]
             }
           ]
@@ -925,6 +934,7 @@
             },
             {
               "action": "heal",
+              "value": 1,
               "modifiers": [
                 { "text":  "Self" }
               ]
@@ -1106,13 +1116,14 @@
               "value": 1
             },
             {
-              "retaliate": [
-                2, 0
-              ]
+              "action": "retaliate",
+              "value":  2
             },
             {
-              "heal": [
-                2, 0
+              "action": "heal",
+              "value":  2,
+              "modifiers": [
+                {"text":  "Self"}
               ]
             }
           ]
@@ -1128,7 +1139,9 @@
             {
               "action": "attack",
               "value": "-1",
-              "immobilize": true
+              "modifiers": [
+                {"immobilize": true}
+              ]
             }
           ]
         },
@@ -1143,7 +1156,9 @@
             {
               "action": "attack",
               "value": "-1",
-              "target": 2
+              "modifiers": [
+                {"target": 2}
+              ]
             }
           ]
         },
@@ -1162,8 +1177,10 @@
             },
             {
               "action": "attack",
-              "value": "+1",
-              "wound": true
+              "value": "-1",
+              "modifiers": [
+                {"wound": true}
+              ]
             }
           ]
         },
@@ -1175,7 +1192,9 @@
             {
               "action": "attack",
               "value": "+1",
-              "wound": true
+              "modifiers": [
+                {"wound": true}
+              ]
             }
           ]
         },
@@ -1184,8 +1203,10 @@
           "imgName": "cave-bear-8",
           "actions": [
             {
-              "action": "move",
-              "value": "+0",
+              "action": "attack",
+              "value": "+0"
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
@@ -1323,7 +1344,9 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1",
+              "value": "-1"
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
@@ -1336,7 +1359,9 @@
             {
               "action": "attack",
               "value": "-1",
-              "target": 2
+              "modifiers": [
+                {"target": 2}
+              ]
             }
           ]
         },
@@ -1348,7 +1373,9 @@
             {
               "action": "attack",
               "value": "+1",
-              "range": "+1"
+              "modifiers": [
+                {"range": "+1"}
+              ]
             }
           ]
         },
@@ -1364,8 +1391,10 @@
             {
               "action": "attack",
               "value": "-1",
-              "range": 1,
-              "immobilize": true
+              "modifiers": [
+                { "range": "+1" },
+                { "immobilize": true }
+              ]
             }
           ]
         },
@@ -1394,7 +1423,9 @@
             {
               "action": "attack",
               "value": "+1",
-              "range": "-1"
+              "modifiers": [
+                {"range": "-1"}
+              ]
             }
           ]
         },
@@ -1425,7 +1456,8 @@
               "value": "-1"
             },
             {
-              "info-text": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
+              "action": "text",
+              "value": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
             }
           ]
         }
@@ -1563,7 +1595,6 @@
             ]
           ]
         ],
-        "action": "shield",
         "value": [
           [
             0, 1
@@ -1598,8 +1629,10 @@
               "value": "+0"
             },
             {
-              "strengthen": true,
-              "info-text": "Self"
+              "action": "strengthen",
+              "modifiers": [
+                {"text":  "Self"}
+              ]
             }
           ]
         },
@@ -1615,7 +1648,9 @@
             {
               "action": "attack",
               "value": "+0",
-              "poison": true
+              "modifiers": [
+                {"poison": true}
+              ]
             }
           ]
         },
@@ -1659,7 +1694,9 @@
             {
               "action": "attack",
               "value": "+0",
-              "range": "=2"
+              "modifiers": [
+                {"range": 2}
+              ]
             }
           ]
         },
@@ -1673,9 +1710,8 @@
               "value": 1
             },
             {
-              "retaliate": [
-                2, 0
-              ]
+              "action":  "retaliate",
+              "value": 2
             }
           ]
         },
@@ -1810,8 +1846,10 @@
               "value": "+0"
             },
             {
-              "heal": [
-                1, 0
+              "action": "heal",
+              "value": 1,
+              "modifiers": [
+                {"text":  "Self"}
               ]
             }
           ]
@@ -1825,8 +1863,10 @@
               "value": "-1"
             },
             {
-              "heal": [
-                2, 3
+              "action": "heal",
+              "value": 3,
+              "modifiers": [
+                {"range":  3}
               ]
             }
           ]
@@ -1852,7 +1892,12 @@
           "shuffle": true,
           "actions": [
             {
-              "info-text": "Summon normal Living Bones\n\nCultist suffers 2 damage."
+              "action": "text",
+              "value": "Summon normal Living Bones."
+            },
+            {
+              "action": "text",
+              "value": "Cultist suffers 2 damage."
             }
           ]
         },
@@ -2039,14 +2084,23 @@
           "imgName": "deep-terror-1",
           "actions": [
             {
-              "wound": true,
-              "poison": true,
-              "info-text": "Target all adjacent enemies"
+              "action": "wound",
+              "modifiers": [
+                {"text": "Target all adjacent enemies"}
+              ]
+            },
+            {
+              "action": "poison",
+              "modifiers": [
+                {"text": "Target all adjacent enemies"}
+              ]
             },
             {
               "action": "attack",
               "value": "+0",
-              "range": "+4"
+              "modifiers": [
+                {"range": 4}
+              ]
             }
           ]
         },
@@ -2057,14 +2111,20 @@
             {
               "action": "attack",
               "value": "-2",
-              "disarm": true,
-              "info-text": "Target all adjacent enemies"
+              "modifiers": [
+                {"text": "Target all adjacent enemies"}
+              ]
+            },
+            {
+              "action": "disarm"
             },
             {
               "action": "attack",
               "value": "+0",
-              "range": "=3",
-              "target": 2
+              "modifiers": [
+                {"range": 3},
+                {"target": 2}
+              ]
             }
           ]
         },
@@ -2077,7 +2137,9 @@
             {
               "action": "attack",
               "value": "+0",
-              "pierce": 3
+              "modifiers": [
+                {"pierce": 3}
+              ]
             }
           ]
         },
@@ -2088,13 +2150,17 @@
             {
               "action": "attack",
               "value": "+0",
-              "poison": true
+              "modifiers": [
+                {"poison": true}
+              ]
             },
             {
               "action": "attack",
               "value": "-1",
-              "range": "=5",
-              "immobilize": true
+              "modifiers": [
+                {"range": 5},
+                {"immobilize": true}
+              ]
             }
           ]
         },
@@ -2105,9 +2171,11 @@
             {
               "action": "attack",
               "value": "+0",
-              "range": "=3",
-              "target": 3,
-              "curse": true
+              "modifiers": [
+                {"range": 3},
+                {"target": 3},
+                {"curse": true}
+              ]
             }
           ]
         },
@@ -2118,13 +2186,17 @@
             {
               "action": "attack",
               "value": "-1",
-              "info-text": "Target all adjacent enemies"
+              "modifiers": [
+                {"text": "Target all adjacent enemies"}
+              ]
             },
             {
               "action": "attack",
               "value": "+0",
-              "range": "=4",
-              "wound": true
+              "modifiers": [
+                {"range": 4},
+                {"wound": true}
+              ]
             }
           ]
         },
@@ -2135,8 +2207,10 @@
             {
               "action": "attack",
               "value": "-2",
-              "range": "=6",
-              "info-text": "Summon normal Deep Terror in a hex adjacent to the target"
+              "modifiers": [
+                {"range": 6},
+                {"text": "Summon normal Deep Terror in a hex adjacent to the target"}
+              ]
             }
           ]
         }
@@ -2264,8 +2338,10 @@
           "shuffle": true,
           "actions": [
             {
-              "heal": [
-                3, 0
+              "action": "heal",
+              "value": 3,
+              "modifiers": [
+                {"text":  "Self"}
               ]
             }
           ]
@@ -2295,7 +2371,9 @@
             {
               "action": "attack",
               "value": "-1",
-              "info-text": "Target all adjacent eenmies"
+              "modifiers": [
+                {"text": "Target all adjacent enemies"}
+              ]
             }
           ]
         },
@@ -2306,7 +2384,9 @@
             {
               "action": "attack",
               "value": "+0",
-              "range": "=4"
+              "modifiers": [
+                {"range": 4}
+              ]
             }
           ]
         },
@@ -2536,8 +2616,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1",
-              "info-text": "Create a 4 damage trap in an adjacent empty hex closest to an enemy."
+              "value": "-1"
+            },
+            {
+              "action": "text",
+              "value": "Create a 4 damage trap in an adjacent empty hex closest to an enemy."
             }
           ]
         },
@@ -2586,7 +2669,9 @@
             {
               "action": "attack",
               "value": "+0",
-              "info-text": "Target all adjacent enemies"
+              "modifiers": [
+                {"text":  "Target all adjacent enemies"}
+              ]
             }
           ]
         },
@@ -2611,7 +2696,9 @@
             {
               "action": "attack",
               "value": "+1",
-              "range": "-1"
+              "modifiers": [
+                {"range": "-1"}
+              ]
             },
             {
               "infuse": [
@@ -2632,8 +2719,10 @@
             {
               "action": "attack",
               "value": "-2",
-              "wound": true,
-              "target": 2
+              "modifiers": [
+                {"wound": true},
+                {"target": 2}
+              ]
             }
           ]
         }
@@ -2773,8 +2862,11 @@
               "value": "+1"
             },
             {
-              "heal": 2,
-              "range": "=3"
+              "action": "heal",
+              "value": 2,
+              "modifiers": [
+                {"range": 3}
+              ]
             }
           ]
         },
@@ -2790,8 +2882,10 @@
             {
               "action": "attack",
               "value": "-1",
-              "target": 2,
-              "poison": true
+              "modifiers": [
+                {"target": 2},
+                {"poison": true}
+              ]
             }
           ]
         },
@@ -2814,12 +2908,16 @@
           "imgName": "imp-4",
           "actions": [
             {
-              "strengthen": true,
-              "info-text": "Affect all allies within <span class=\"attribute\">Range<span> 2"
+              "action": "strengthen",
+              "modifiers": [
+                {"text": "Affect all allies within <span class=\"attribute\">Range<span> 2"}
+              ]
             },
             {
-              "muddle": true,
-              "info-text": "Target all enemies within <span class=\"attribute\">Range<span> 2"
+              "action": "muddle",
+              "modifiers": [
+                {"text": "Target all enemies within <span class=\"attribute\">Range<span> 2"}
+              ]
             }
           ]
         },
@@ -2832,8 +2930,10 @@
               "value": 5
             },
             {
-              "heal": [
-                1, 0
+              "action": "heal",
+              "value": 1,
+              "modifiers": [
+                {"text": "Self"}
               ]
             }
           ]
@@ -2865,8 +2965,10 @@
             {
               "action": "attack",
               "value": "-1",
-              "target": 2,
-              "curse": true
+              "modifiers": [
+                {"target": 2},
+                {"curse": true}
+              ]
             }
           ]
         }
@@ -3012,8 +3114,10 @@
           "imgName": "frost-demon-1",
           "actions": [
             {
-              "immobilize": true,
-              "info-text": "Target all enemies within range 2"
+              "action": "immobilize",
+              "modifiers": [
+                {"text":  "Target all enemies within range 2"}
+              ]
             }
           ]
         },
@@ -3042,7 +3146,9 @@
             {
               "action": "attack",
               "value": "+0",
-              "range": "=2"
+              "modifiers": [
+                {"range": 2}
+              ]
             }
           ]
         },
@@ -3092,7 +3198,9 @@
             {
               "action": "attack",
               "value": "-1",
-              "pierce": 3
+              "modifiers": [
+                {"pierce": 3}
+              ]
             }
           ]
         },
@@ -3111,7 +3219,8 @@
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Giant Viper",
       "attributes": {
         "health": [
@@ -3238,7 +3347,9 @@
             {
               "action": "attack",
               "value": "-1",
-              "immobilize": true
+              "modifiers": [
+                {"immobilize": true}
+              ]
             },
             {
               "action": "attack",
@@ -3267,12 +3378,16 @@
             {
               "action": "move",
               "value": "+1",
-              "jump": true
+              "modifiers": [
+                {"jump": true}
+              ]
             },
             {
               "action": "attack",
               "value": "-1",
-              "info-text": "All attacks targeting Giant Viper this round gain Disadvantage."
+              "modifiers": [
+                {"text":  "All attacks targeting Giant Viper this round gain Disadvantage."}
+              ]
             }
           ]
         },
@@ -3283,12 +3398,16 @@
             {
               "action": "move",
               "value": "+1",
-              "jump": true
+              "modifiers": [
+                {"jump": true}
+              ]
             },
             {
               "action": "attack",
               "value": "-1",
-              "info-text": "Target all adjacent enemies"
+              "modifiers": [
+                {"text":  "Target all adjacent enemies"}
+              ]
             }
           ]
         },
@@ -3304,7 +3423,9 @@
             {
               "action": "attack",
               "value": "+0",
-              "info-text": "Add +2 Attack if the target is adjacent to any of the Giant Viper's allies."
+              "modifiers": [
+                {"text":  "Add +2 Attack if the target is adjacent to any of the Giant Viper's allies"}
+              ]
             }
           ]
         },
@@ -3315,12 +3436,16 @@
             {
               "action": "move",
               "value": "-1",
-              "jump": true
+              "modifiers": [
+                {"jump": true}
+              ]
             },
             {
               "action": "attack",
               "value": "+0",
-              "target": true
+              "modifiers": [
+                {"target": 2}
+              ]
             }
           ]
         },
@@ -3336,7 +3461,11 @@
             {
               "action": "attack",
               "value": "+0",
-              "info-text": "Add +2 Attack if the target is adjacent to any of the Giant Viper's allies."
+              "modifiers": [
+                {
+                  "text": "Add +2 Attack if the target is adjacent to any of the Giant Viper's allies"
+                }
+              ]
             }
           ]
         }
@@ -3487,7 +3616,9 @@
             {
               "action": "attack",
               "value": "+1",
-              "target": 2
+              "modifiers": [
+                {"target": 2}
+              ]
             }
           ]
         },
@@ -3499,12 +3630,16 @@
             {
               "action": "attack",
               "value": "-1",
-              "range": "=3",
-              "muddle": true
+              "modifiers": [
+                {"range": 3},
+                {"muddle": true}
+              ]
             },
             {
-              "heal": [
-                4, 0
+              "action": "heal",
+              "value": 4,
+              "modifiers": [
+                {"text":  "Self"}
               ]
             }
           ]
@@ -3516,12 +3651,13 @@
             {
               "action": "attack",
               "value": "+2",
-              "immobilize": true
+              "modifiers": [
+                {"immobilize": true}
+              ]
             },
             {
-              "retaliate": [
-                2, 0
-              ]
+              "action": "retaliate",
+              "value": 2
             }
           ]
         },
@@ -3538,8 +3674,10 @@
               "value": "-1"
             },
             {
-              "heal": [
-                5, 0
+              "action": "heal",
+              "value": 5,
+              "modifiers": [
+                {"text" :  "Self"}
               ]
             }
           ]
@@ -3555,7 +3693,9 @@
             {
               "action": "attack",
               "value": "-1",
-              "target": 2
+              "modifiers": [
+                {"target": 2}
+              ]
             }
           ]
         },
@@ -3569,8 +3709,10 @@
               "value": 2
             },
             {
-              "retaliate": [
-                2, 3
+              "action": "retaliate",
+              "value": 2,
+              "modifiers": [
+                {"range":  3}
               ]
             }
           ]
@@ -3586,7 +3728,9 @@
             {
               "action": "attack",
               "value": "-1",
-              "poison": true
+              "modifiers": [
+                {"poison": true}
+              ]
             },
             {
               "infuse": [
@@ -3752,24 +3896,30 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
-              "muddle": true,
-              "info-text": "Target all adjacent enemies"
+            },
+            {
+              "action": "muddle",
+              "modifiers": [
+                {"text":  "Target all adjacent enemies"}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 83,
           "imgName": "hound-2",
           "actions": [
             {
               "action": "move",
               "value": "-2"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 26,
           "imgName": "hound-3",
           "count": 2,
@@ -3777,42 +3927,55 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 72,
           "imgName": "hound-4",
           "actions": [
             {
               "action": "attack",
               "value": "-1",
-              "pierce": 2
-            }, {
+              "modifiers": [
+                {"pierce": 2}
+              ]
+            },
+            {
               "action": "move",
               "value": "-2"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
-              "pierce": 2
+              "modifiers": [
+                {"pierce": 2}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 6,
           "imgName": "hound-5",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
-              "immobilize": true
+              "modifiers": [
+                {"immobilize": true}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 19,
           "shuffle": true,
           "count": 2,
@@ -3821,15 +3984,19 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
-              "info-text": "Add +2 Attack if the target is adjacent to any of the Hound's allies."
+              "modifiers": [
+                {"text": "Add +2 Attack if the target is adjacent to any of the Hound's allies"}
+              ]
             }
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Inox Archer",
       "attributes": {
         "health": [
@@ -3937,22 +4104,28 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1",
+              "value": "-1"
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 56,
           "imgName": "archer-2",
           "actions": [
             {
               "action": "attack",
               "value": "-1",
-              "target": 2
+              "modifiers": [
+                {"target": 2}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 68,
           "imgName": "archer-3",
           "shuffle": true,
@@ -3960,10 +4133,13 @@
             {
               "action": "attack",
               "value": "+1",
-              "range": "+1"
+              "modifiers": [
+                {"range": "+1"}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 29,
           "shuffle": true,
           "imgName": "archer-4",
@@ -3971,67 +4147,83 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
-              "range": "=1",
-              "immobilize": true
+              "modifiers": [
+                {"range": "+1"},
+                {"immobilize": true}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 16,
           "imgName": "archer-5",
           "actions": [
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 32,
           "imgName": "archer-6",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1",
-              "range": "-1"
+              "modifiers": [
+                {"range": -1}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 31,
           "imgName": "archer-7",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 14,
           "imgName": "archer-8",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
-            }, {
-              "info-text": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
+            },
+            {
+              "action": "text",
+              "value": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
             }
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Inox Guard",
       "attributes": {
         "health": [
@@ -4171,16 +4363,21 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
-            }, {
+              "value": "-1"
+            },
+            {
               "action": "attack",
               "value": "+0"
-            }, {
-              "strengthen": true,
-              "info-text": "Self"
+            },
+            {
+              "action": "strengthen",
+              "modifiers": [
+                {"text":  "Self"}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 15,
           "imgName": "guard-2",
           "shuffle": true,
@@ -4188,25 +4385,31 @@
             {
               "action": "shield",
               "value": 1
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
-              "poison": true
+              "modifiers": [
+                {"poison": true}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 30,
           "imgName": "guard-3",
           "actions": [
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 50,
           "count": 2,
           "imgName": "guard-4",
@@ -4214,25 +4417,31 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 35,
           "imgName": "guard-5",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
-              "range": "=2"
+              "modifiers": [
+                {"range": 2}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 15,
           "imgName": "guard-6",
           "shuffle": true,
@@ -4240,27 +4449,30 @@
             {
               "action": "shield",
               "value": 1
-            }, {
-              "retaliate": [
-                2, 0
-              ]
+            },
+            {
+              "action": "retaliate",
+              "value": 2
             }
           ]
-        }, {
+        },
+        {
           "initiative": 70,
           "imgName": "guard-7",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Inox Shaman",
       "attributes": {
         "health": [
@@ -4350,96 +4562,122 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
-              "heal": [
-                3, 3
+            },
+            {
+              "action": "heal",
+              "value":  3,
+              "modifiers":  [
+                {"range":  3}
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 8,
           "imgName": "shaman-2",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
-              "disarm": true
+              "modifiers":  [
+                {"disarm": true}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 62,
           "imgName": "shaman-3",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 89,
           "imgName": "shaman-4",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
-              "heal": [
-                1
-              ],
-              "info-text": "Affect all adjacent allies"
-            }, {
-              "bless": true,
-              "info-text": "self"
+            },
+            {
+              "action": "heal",
+              "value": 1,
+              "modifiers":  [
+                {"text": "Affect all adjacent allies"}
+              ]
+            },
+            {
+              "action": "bless",
+              "modifiers": [
+                {"text": "Self"}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 9,
           "imgName": "shaman-5",
           "actions": [
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
-              "curse": true,
-              "target": 2
+              "modifiers": [
+                {"curse": true},
+                {"target": 2}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 74,
           "imgName": "shaman-6",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 8,
           "imgName": "shaman-7",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
-              "immobilize": true
+              "modifiers": [
+                {"immobilize": true}
+              ]
             }
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Living Bones",
       "attributes": {
         "health": [
@@ -4570,24 +4808,28 @@
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 64,
           "imgName": "living-bones-2",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 45,
           "imgName": "living-bones-3",
           "count": 2,
@@ -4595,12 +4837,14 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 20,
           "shuffle": true,
           "imgName": "living-bones-4",
@@ -4608,15 +4852,21 @@
             {
               "action": "move",
               "value": "-2"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
-            }, {
-              "heal": true,
-              "info-text": "self"
+            },
+            {
+              "action": "heal",
+              "value": 2,
+              "modifiers":  [
+                {"text": "Self"}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 12,
           "shuffle": true,
           "imgName": "living-bones-5",
@@ -4624,12 +4874,17 @@
             {
               "action": "shield",
               "value": 1
-            }, {
-              "heal": true,
-              "info-text": "self"
+            },
+            {
+              "action": "heal",
+              "value": 2,
+              "modifiers":  [
+                {"text": "Self"}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 81,
           "imgName": "living-bones-6",
           "actions": [
@@ -4638,22 +4893,27 @@
               "value": "+2"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 74,
           "imgName": "living-bones-7",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
-              "info-text": "Target one enemy with all attacks"
+              "modifiers":  [
+                {"text": "Target one enemy with all attacks"}
+              ]
             }
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Living Corpse",
       "attributes": {
         "health": [
@@ -4762,12 +5022,14 @@
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 66,
           "imgName": "living-corpse-2",
           "shuffle": true,
@@ -4776,79 +5038,98 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 21,
           "imgName": "living-corpse-3",
           "actions": [
             {
               "action": "move",
               "value": "+1"
-            }, {
-              "muddle": true,
-              "immobilize": true,
-              "info-text": "Target one adjacent enemy"
+            },
+            {
+              "action": "text",
+              "value": "Muddle and Immobilize",
+              "modifiers": [
+                {"text": "Target one adjacent enemy"}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 32,
           "imgName": "living-corpse-4",
           "actions": [
             {
               "action": "attack",
               "value": "+2",
-              "push": 1
-            }, {
-              "info-text": "Living corpse suffers 1 damage."
+              "modifiers": [
+                {"push": 1}
+              ]
+            },
+            {
+              "action": "text",
+              "value": "Living corpse suffers 1 damage."
             }
           ]
-        }, {
+        },
+        {
           "initiative": 71,
           "imgName": "living-corpse-5",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
-            }, {
-              "poison": true,
-              "info-text": "Target all adjacent enemies"
-            }, {
-              "info-text": "Living Corpse suffers 1 damage"
+            },
+            {
+              "action": "poison",
+              "modifiers": [
+                {"text": "Target all adjacent enemies"}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 82,
           "imgName": "living-corpse-6",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 91,
           "imgName": "living-corpse-7",
           "actions": [
             {
               "action": "move",
               "value": "+1"
-            }, {
-              "info-text": "Living Corpse suffers 1 damage"
+            },
+            {
+              "action": "text",
+              "value": "Living Corpse suffers 1 damage."
             }
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Living Spirit",
       "attributes": {
         "health": [
@@ -4959,68 +5240,87 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 67,
           "imgName": "living-spirit-2",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 75,
           "imgName": "living-spirit-3",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1",
-              "range": "-1"
-            }, {
-              "heal": [
-                1, 0
+              "modifiers": [
+                {"range": "-1"}
+              ]
+            },
+            {
+              "action": "heal",
+              "value": 1,
+              "modifiers": [
+                {"text":  "Self"}
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 61,
           "imgName": "living-spirit-4",
           "actions": [
             {
               "action": "attack",
               "value": "+0",
-              "range": "-1",
-              "target": 2
+              "modifiers": [
+                {"range": "-1"},
+                {"target": 2}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 55,
           "imgName": "living-spirit-5",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
-              "curse": true,
-              "info-text": "Target all enemies within range"
-            }, {
+            },
+            {
+              "action": "curse",
+              "modifiers": [
+                {"text": "Target all enemies within range"}
+              ]
+            },
+            {
               "infuse": [
                 "cold"
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 22,
           "shuffle": true,
           "imgName": "living-spirit-6",
@@ -5028,13 +5328,17 @@
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
-              "muddle": true
+              "modifiers": [
+                {"muddle": true}
+              ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 33,
           "shuffle": true,
           "imgName": "living-spirit-7",
@@ -5042,16 +5346,20 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
-              "info-text": "Target all enemies within range"
+              "modifiers": [
+                {"text": "Target all enemies within range"}
+              ]
             }
           ]
         }
       ],
       "flying": true
-    }, {
+    },
+    {
       "name": "Lurker",
       "attributes": {
         "health": [
@@ -5202,68 +5510,80 @@
             {
               "action": "shield",
               "value": 1
-            }, {
+            },
+            {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
-            }, {
+            },
+            {
               "infuse": [
                 "cold"
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 61,
           "imgName": "lurker-2",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 38,
           "imgName": "lurker-3",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 28,
           "imgName": "lurker-4",
           "actions": [
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 38,
           "imgName": "lurker-5",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
               "info-text": "Target one enemy with all attacks"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 64,
           "imgName": "lurker-6",
           "actions": [
@@ -5273,7 +5593,8 @@
               "info-text": "Target all adjacent enemies"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 11,
           "shuffle": true,
           "imgName": "lurker-7",
@@ -5281,19 +5602,22 @@
             {
               "action": "shield",
               "value": 1
-            }, {
+            },
+            {
               "wound": true,
               "info-text": "Target all adjacent enemies"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 41,
           "imgName": "lurker-8",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
               "wound": true
@@ -5301,7 +5625,8 @@
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Ooze",
       "attributes": {
         "health": [
@@ -5432,15 +5757,18 @@
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "loot": 1
-            }, {
+            },
+            {
               "heal": [
                 2, 0
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 94,
           "shuffle": true,
           "count": 2,
@@ -5448,24 +5776,28 @@
           "actions": [
             {
               "info-text": "Ooze suffers 2 damage."
-            }, {
+            },
+            {
               "info-text": "Summon normal Ooze with a hit point value equal to the summoning Ooze's current hit point value (limited by a normal Ooze's specified maximum hit point value)."
             }
           ]
-        }, {
+        },
+        {
           "initiative": 66,
           "imgName": "ooze-3",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1",
               "range": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 85,
           "imgName": "ooze-4",
           "actions": [
@@ -5474,13 +5806,15 @@
               "value": 1,
               "poison": true,
               "info-text": "Target all adjacent enemies"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1",
               "range": "-1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 59,
           "imgName": "ooze-5",
           "actions": [
@@ -5491,33 +5825,38 @@
               "poison": true
             }
           ]
-        }, {
+        },
+        {
           "initiative": 36,
           "imgName": "ooze-6",
           "actions": [
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 57,
           "imgName": "ooze-7",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Night Demon",
       "attributes": {
         "health": [
@@ -5628,26 +5967,31 @@
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 15,
           "imgName": "night-demon-2",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
-            }, {
+            },
+            {
               "info-text": "All adjacent enemies and allies suffer 1 damage."
             }
           ]
-        }, {
+        },
+        {
           "initiative": 41,
           "shuffle": true,
           "imgName": "night-demon-3",
@@ -5655,45 +5999,53 @@
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
-            }, {
+            },
+            {
               "infuse": [
                 "dark"
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 22,
           "imgName": "night-demon-4",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
-            }, {
+            },
+            {
               "infuse": [
                 "dark"
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 35,
           "imgName": "night-demon-5",
           "actions": [
             {
               "action": "attack",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
               "pierce": 2
             }
           ]
-        }, {
+        },
+        {
           "initiative": 26,
           "imgName": "night-demon-6",
           "actions": [
@@ -5704,17 +6056,20 @@
               "target": 4
             }
           ]
-        }, {
+        },
+        {
           "initiative": 4,
           "imgName": "night-demon-7",
           "actions": [
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
-            }, {
+            },
+            {
               "infuse": [
                 "dark"
               ]
@@ -5722,7 +6077,8 @@
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Rending Drake",
       "attributes": {
         "health": [
@@ -5831,12 +6187,14 @@
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 72,
           "shuffle": true,
           "imgName": "rending-drake-2",
@@ -5844,49 +6202,58 @@
             {
               "action": "attack",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-2"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 6,
           "imgName": "rending-drake-3",
           "actions": [
             {
               "action": "shield",
               "value": 2
-            }, {
+            },
+            {
               "heal": [
                 2, 0
               ]
-            }, {
+            },
+            {
               "strengthen": true
             }
           ]
-        }, {
+        },
+        {
           "initiative": 39,
           "imgName": "rending-drake-4",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 54,
           "imgName": "rending-drake-5",
           "actions": [
             {
               "action": "move",
               "value": "-2"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
               "range": "=3",
@@ -5894,32 +6261,37 @@
               "poison": true
             }
           ]
-        }, {
+        },
+        {
           "initiative": 25,
           "imgName": "rending-drake-6",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 59,
           "imgName": "rending-drake-7",
           "actions": [
             {
               "action": "move",
               "value": "-2"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1",
               "target": 2
             }
           ]
-        }, {
+        },
+        {
           "initiative": 13,
           "shuffle": true,
           "imgName": "rending-drake-8",
@@ -5927,17 +6299,20 @@
             {
               "action": "attack",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
             }
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Savvas Icestorm",
       "attributes": {
         "health": [
@@ -6069,15 +6444,18 @@
             {
               "action": "shield",
               "value": 1
-            }, {
+            },
+            {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 47,
           "shuffle": true,
           "imgName": "savvas-icestorm-2",
@@ -6085,50 +6463,58 @@
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 14,
           "imgName": "savvas-icestorm-3",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
               "target": 2
             }
           ]
-        }, {
+        },
+        {
           "initiative": 14,
           "imgName": "savvas-icestorm-4",
           "actions": [
             {
               "action": "attack",
               "value": "-1"
-            }, {
+            },
+            {
               "heal": [
                 1, 0
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 19,
           "imgName": "savvas-icestorm-5",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 98,
           "count": 2,
           "imgName": "savvas-icestorm-6",
@@ -6137,23 +6523,27 @@
               "action": "push",
               "value": 1,
               "info-text": "Target all adjacent enemiesw"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 98,
           "imgName": "savvas-icestorm-7",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
               "pull": 1
-            }, {
+            },
+            {
               "infuse": [
                 "wind"
               ]
@@ -6161,7 +6551,8 @@
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Savvas Lavaflow",
       "attributes": {
         "health": [
@@ -6290,18 +6681,21 @@
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
               "range": "=3",
               "target": 2
-            }, {
+            },
+            {
               "infuse": [
                 "fire"
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 31,
           "imgName": "savvas-lavaflow-2",
           "actions": [
@@ -6311,7 +6705,8 @@
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 51,
           "imgName": "savvas-lavaflow-3",
           "actions": [
@@ -6319,19 +6714,22 @@
               "info-text": "All enemies suffer 2 damage."
             }
           ]
-        }, {
+        },
+        {
           "initiative": 41,
           "imgName": "savvas-lavaflow-4",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 68,
           "shuffle": true,
           "imgName": "savvas-lavaflow-5",
@@ -6339,49 +6737,57 @@
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1",
               "range": "=3",
               "info-text": "All allies and enemies adjacent to the target suffer 2 damage."
-            }, {
+            },
+            {
               "infuse": [
                 "earth"
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 22,
           "imgName": "savvas-lavaflow-6",
           "actions": [
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
               "info-text": "Target all adjacent enemies"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 97,
           "imgName": "savvas-lavaflow-7",
           "actions": [
             {
               "info-text": "Summon normal Earth Demon"
-            }, {
+            },
+            {
               "infuse": [
                 "earth"
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 97,
           "imgName": "savvas-lavaflow-8",
           "actions": [
             {
               "info-text": "Summon normal Flame Demon"
-            }, {
+            },
+            {
               "infuse": [
                 "fire"
               ]
@@ -6389,7 +6795,8 @@
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Spitting Drake",
       "attributes": {
         "health": [
@@ -6502,19 +6909,22 @@
               "poison": true
             }
           ]
-        }, {
+        },
+        {
           "initiative": 87,
           "imgName": "spitting-drake-2",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 89,
           "imgName": "spitting-drake-3",
           "actions": [
@@ -6524,7 +6934,8 @@
               "stun": true
             }
           ]
-        }, {
+        },
+        {
           "initiative": 57,
           "shuffle": true,
           "imgName": "spitting-drake-4",
@@ -6532,28 +6943,33 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
               "range": "-1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 6,
           "imgName": "spitting-drake-5",
           "actions": [
             {
               "action": "shield",
               "value": 2
-            }, {
+            },
+            {
               "heal": [
                 2, 0
               ]
-            }, {
+            },
+            {
               "strengthen": true
             }
           ]
-        }, {
+        },
+        {
           "initiative": 89,
           "shuffle": true,
           "imgName": "spitting-drake-6",
@@ -6561,33 +6977,38 @@
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-2",
               "range": "-2",
               "poison": true
             }
           ]
-        }, {
+        },
+        {
           "initiative": 52,
           "imgName": "spitting-drake-7",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 32,
           "imgName": "spitting-drake-8",
           "actions": [
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
             }
@@ -6595,7 +7016,8 @@
         }
       ],
       "flying": true
-    }, {
+    },
+    {
       "name": "Stone Golem",
       "attributes": {
         "health": [
@@ -6706,12 +7128,14 @@
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 72,
           "imgName": "stone-golem-2",
           "actions": [
@@ -6719,11 +7143,13 @@
               "action": "attack",
               "value": "+1",
               "range": "=3"
-            }, {
+            },
+            {
               "info-text": "Stone Golem suffers 2 damage."
             }
           ]
-        }, {
+        },
+        {
           "initiative": 11,
           "imgName": "stone-golem-3",
           "actions": [
@@ -6733,14 +7159,16 @@
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 28,
           "imgName": "stone-golem-4",
           "actions": [
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+2",
               "range": "=3",
@@ -6748,20 +7176,23 @@
               "immobilize": true
             }
           ]
-        }, {
+        },
+        {
           "initiative": 83,
           "imgName": "stone-golem-5",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1",
               "info-text": "Target all adjacent enemies"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 90,
           "shuffle": true,
           "imgName": "stone-golem-6",
@@ -6773,35 +7204,41 @@
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 65,
           "imgName": "stone-golem-7",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 28,
           "imgName": "stone-golem-8",
           "actions": [
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
-            }, {
+            },
+            {
               "info-text": "Stone Golem suffers 1 damage."
             }
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Sun Demon",
       "attributes": {
         "health": [
@@ -6932,26 +7369,30 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
               "range": "=3"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 88,
           "imgName": "sun-demon-2",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
               "info-text": "Target all adjacent enemies"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 73,
           "shuffle": true,
           "imgName": "sun-demon-3",
@@ -6959,41 +7400,48 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 95,
           "imgName": "sun-demon-4",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
               "range": "=4"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 68,
           "imgName": "sun-demon-5",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
-            }, {
+            },
+            {
               "infuse": [
                 "sun"
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 17,
           "shuffle": true,
           "imgName": "sun-demon-6",
@@ -7004,18 +7452,21 @@
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 36,
           "imgName": "sun-demon-7",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
               "info-text": "Target all adjacent enemies"
-            }, {
+            },
+            {
               "infuse": [
                 "sun"
               ]
@@ -7024,7 +7475,8 @@
         }
       ],
       "flying": true
-    }, {
+    },
+    {
       "name": "Vermling Scout",
       "attributes": {
         "health": [
@@ -7112,49 +7564,57 @@
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 29,
           "imgName": "scout-2",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
               "range": "=3"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 53,
           "imgName": "scout-3",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 69,
           "imgName": "scout-4",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 79,
           "imgName": "scout-5",
           "actions": [
@@ -7165,21 +7625,24 @@
               "target": 2
             }
           ]
-        }, {
+        },
+        {
           "initiative": 54,
           "imgName": "scout-6",
           "actions": [
             {
               "action": "move",
               "value": "-2"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
               "range": "=3",
               "poison": true
             }
           ]
-        }, {
+        },
+        {
           "initiative": 92,
           "shuffle": true,
           "imgName": "scout-7",
@@ -7190,7 +7653,8 @@
               "poison": true
             }
           ]
-        }, {
+        },
+        {
           "initiative": 35,
           "shuffle": true,
           "imgName": "scout-8",
@@ -7199,13 +7663,15 @@
               "action": "move",
               "value": "+1",
               "jump": true
-            }, {
+            },
+            {
               "loot": 1
             }
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Vermling Shaman",
       "attributes": {
         "health": [
@@ -7322,87 +7788,101 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "heal": [
                 3, 3
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 8,
           "imgName": "shaman-2",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
               "disarm": true
             }
           ]
-        }, {
+        },
+        {
           "initiative": 62,
           "imgName": "shaman-3",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 89,
           "imgName": "shaman-4",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "heal": [
                 1
               ],
               "info-text": "Affect all adjacent allies"
-            }, {
+            },
+            {
               "bless": true
             }
           ]
-        }, {
+        },
+        {
           "initiative": 9,
           "imgName": "shaman-5",
           "actions": [
             {
               "action": "move",
               "value": "+1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
               "curse": true,
               "target": 2
             }
           ]
-        }, {
+        },
+        {
           "initiative": 74,
           "imgName": "shaman-6",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 8,
           "imgName": "shaman-7",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
               "immobilize": true
@@ -7410,7 +7890,8 @@
           ]
         }
       ]
-    }, {
+    },
+    {
       "name": "Wind Demon",
       "attributes": {
         "health": [
@@ -7541,65 +8022,76 @@
             {
               "action": "shield",
               "value": 1
-            }, {
+            },
+            {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 43,
           "imgName": "wind-demon-2",
           "actions": [
             {
               "action": "move",
               "value": "-1"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+1"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 29,
           "imgName": "wind-demon-3",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "-1",
               "target": 2
             }
           ]
-        }, {
+        },
+        {
           "initiative": 9,
           "imgName": "wind-demon-4",
           "actions": [
             {
               "action": "attack",
               "value": "-1"
-            }, {
+            },
+            {
               "heal": [
                 1, 0
               ]
             }
           ]
-        }, {
+        },
+        {
           "initiative": 37,
           "imgName": "wind-demon-5",
           "actions": [
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 43,
           "imgName": "wind-demon-6",
           "actions": [
@@ -7607,12 +8099,14 @@
               "action": "push",
               "value": 1,
               "info-text": "Target all adjacent enemies"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0"
             }
           ]
-        }, {
+        },
+        {
           "initiative": 21,
           "count": 2,
           "shuffle": true,
@@ -7621,11 +8115,13 @@
             {
               "action": "move",
               "value": "+0"
-            }, {
+            },
+            {
               "action": "attack",
               "value": "+0",
               "pull": 1
-            }, {
+            },
+            {
               "infuse": [
                 "wind"
               ]

@@ -52,34 +52,52 @@ export class ActionDirective implements OnInit, OnDestroy {
         actionTextEl.innerHTML = this._titleCasePipe.transform(this._appAction.action);
         mainLineDivEl.appendChild(actionTextEl);
 
+        const imgEL: HTMLImageElement = this._renderer.createElement('img');
+        this._renderer.setStyle(imgEL, 'display', 'inline-block');
+        imgEL.src = `/assets/icons/${this._appAction.action}.png`;
+        mainLineDivEl.appendChild(imgEL);
+
         if (this._appAction.value) {
           actionValueEl = this._renderer.createElement('span');
-          actionValueEl.innerHTML = `&nbsp;&nbsp;${this._statModifierPipe.transform(this._appAction.value)}&nbsp;&nbsp;`;
+          actionValueEl.innerHTML = this._appAction.value as string;
           mainLineDivEl.appendChild(actionValueEl);
-        }
-
-        if (this._appAction.action) {
-          const imgEL: HTMLImageElement = this._renderer.createElement('img');
-          this._renderer.setStyle(imgEL, 'display', 'inline-block');
-          imgEL.src = `/assets/icons/${this._appAction.action}.png`;
-          mainLineDivEl.appendChild(imgEL);
         }
     }
 
     this._addedEl.appendChild(mainLineDivEl);
 
     this._appAction.modifiers?.forEach(mod => {
+      const [[modName, modValue]] = Object.entries(mod);
+
       const modifierLineDivEl: HTMLDivElement = this._renderer.createElement('div');
       this._renderer.addClass(modifierLineDivEl, 'action-modifier-wrapper');
+      this._renderer.addClass(modifierLineDivEl, modName);
 
-      const modNameEl: HTMLSpanElement = this._renderer.createElement('span');
-      const [[modName, modValue]] = Object.entries(mod);
-      modNameEl.textContent = this._titleCasePipe.transform(modName);
-      modifierLineDivEl.appendChild(modNameEl);
+      let modValueEl: HTMLSpanElement;
+      switch(modName) {
+        case 'text':
+          modValueEl = this._renderer.createElement('span');
+          modValueEl.innerHTML = modValue;
+          break;
+        default:
+          const modNameEl: HTMLSpanElement = this._renderer.createElement('span');
+          modNameEl.innerHTML = this._titleCasePipe.transform(modName);
+          modifierLineDivEl.appendChild(modNameEl);
 
-      const imgEl = this._renderer.createElement('img');
-      this._renderer.setStyle(imgEl, 'display', 'inline-block');
+          const imgEl = this._renderer.createElement('img');
+          imgEl.src = `/assets/icons/${modName}.png`;
+          this._renderer.setStyle(imgEl, 'display', 'inline-block');
+          modifierLineDivEl.appendChild(imgEl);
 
+          if (typeof modValue !== 'boolean') {
+            modValueEl = this._renderer.createElement('span');
+            modValueEl.innerHTML = modValue;
+          }
+
+          break;
+      }
+
+      modValueEl && modifierLineDivEl.appendChild(modValueEl);
       this._addedEl.appendChild(modifierLineDivEl);
     });
 

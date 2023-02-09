@@ -172,7 +172,7 @@ export type ActionModifier =
 
 export type Action = {
   action: ActionNames;
-  value?: StatModifier | string;
+  value?: StatModifier | string | undefined;
   modifiers: ActionModifier[];
 }
 
