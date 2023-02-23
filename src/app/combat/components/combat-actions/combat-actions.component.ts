@@ -1,18 +1,18 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, Input} from '@angular/core';
 import {CommonModule, TitleCasePipe} from '@angular/common';
 import {Action} from "../../../monster/services/model";
-import {ActionDirective} from "../../directives/action.directive";
+import {CombatAction} from "../combat-action/combat-action.component";
 import {StatModifierPipe} from "../../../monster/pipes/stat-modifier.pipe";
 
 @Component({
   selector: 'app-combat-actions',
   standalone: true,
-  imports: [CommonModule, ActionDirective],
+  imports: [CommonModule, CombatAction],
   providers: [StatModifierPipe, TitleCasePipe],
   templateUrl: './combat-actions.component.html',
   styleUrls: ['./combat-actions.component.scss']
 })
-export class CombatActionsComponent implements OnInit {
+export class CombatActionsComponent {
 
   @HostBinding('class.combat-actions') public readonly combatActionsClass: boolean = true;
 
@@ -20,8 +20,4 @@ export class CombatActionsComponent implements OnInit {
 
   constructor() {
   }
-
-  ngOnInit(): void {
-  }
-
 }

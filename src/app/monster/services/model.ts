@@ -137,7 +137,7 @@ export type StatModifier = number | string;
 export type Mob = Boss | Monster;
 
 export type MoveModifierNames = 'jump' | 'flying';
-export type ActionNames = ConditionNames | BonusNames | AttackEffectNames | 'attack' | 'move' | 'text' | 'heal';
+export type ActionNames = ConditionNames | BonusNames | AttackEffectNames | 'attack' | 'move' | 'heal';
 
 export type AttackEffectModifier = {
   [p in AttackEffectNames]: number;
@@ -163,17 +163,26 @@ export type BonusModifier = {
   [p in BonusNames]: number | [number, number];
 }
 
-export type ActionModifier =
-  AttackEffectModifier
+export type ActionModifier = { modifier: string } &
+  (AttackEffectModifier
   | TextModifier
   | RangeModifier
   | BonusModifier
-  | ConditionModifier;
+  | ConditionModifier);
 
 export type Action = {
-  action: ActionNames;
-  value?: StatModifier | string | undefined;
-  modifiers: ActionModifier[];
+  [p in ActionNames]?: StatModifier;
+} & {
+  action: ActionNames,
+  modifiers?: ActionModifier[]
+};
+
+export const isAction = (value: any): value is Action => {
+  return !!value && value['action'] !== undefined;
+}
+
+export const isActionModifier = (value: any): value is Action => {
+  return !!value && value['modifier'] !== undefined;
 }
 
 /**

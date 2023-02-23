@@ -1,8 +1,8 @@
-import { ActionDirective } from './action.directive';
+import {CombatAction} from './combat-action.component';
 
 describe('ActionIconDirective', () => {
   it('should create an instance', () => {
-    const directive = new ActionDirective();
+    const directive = new CombatAction();
     expect(directive).toBeTruthy();
   });
 });

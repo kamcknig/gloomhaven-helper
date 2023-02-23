@@ -15,14 +15,12 @@ add way to add arbitrary tokens like the guys in tribal assault scenario 44
 
 brighten the non-active conditions on the token dialog
 
-when drawing a card manually, i don't think it's sorting
+add way to manually shuffle deck
 
 the monster-ability-deck-component and monster-detail-component both create an observable to get the activeCard$.
 This should be combined into one place.
 
 bosses dont' have a way to lower hit points
-
-forest imp is missing shield icon, are others?
 
 add infuse actions
 
