@@ -1,7 +1,7 @@
 import {Component, HostBinding, Input, OnInit} from '@angular/core';
 import {Action, ActionNames} from "../../../monster/services/model";
 import {CommonModule} from "@angular/common";
-import {ActionTextDirective} from "../../directives/action-text.directive";
+import {ActionTextDirective} from "./action-text.directive";
 
 @Component({
   templateUrl: './combat-action.component.html',
