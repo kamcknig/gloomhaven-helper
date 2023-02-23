@@ -598,8 +598,7 @@
         ]
       },
       "bonuses": {
-        "action": "shield",
-        "value": [
+        "shield": [
           [
             0, 0
           ], [
@@ -1295,8 +1294,7 @@
         ]
       },
       "bonuses": {
-        "action": "shield",
-        "value": [
+        "shield": [
           [
             0, 0
           ], [
@@ -2577,8 +2575,7 @@
             ]
           ]
         ],
-        "action": "shield",
-        "value": [
+        "shield": [
           [
             2, 3
           ], [
@@ -2810,8 +2807,7 @@
         ]
       },
       "bonuses": {
-        "action": "shield",
-        "value": [
+        "shield": [
           [
             1, 1
           ], [
@@ -4779,8 +4775,7 @@
         ]
       },
       "bonuses": {
-        "action": "shield",
-        "value": [
+        "shield": [
           [
             0, 0
           ], [
@@ -5210,8 +5205,7 @@
         ]
       },
       "bonuses": {
-        "action": "shield",
-        "value": [
+        "shield": [
           [
             1, 2
           ], [
@@ -5480,8 +5474,7 @@
         ]
       },
       "bonuses": {
-        "action": "shield",
-        "value": [
+        "shield": [
           [
             0, 1
           ], [
@@ -5707,8 +5700,7 @@
         ]
       },
       "bonuses": {
-        "action": "shield",
-        "value": [
+        "shield": [
           [
             0, 0
           ], [
@@ -6414,8 +6406,7 @@
         ]
       },
       "bonuses": {
-        "action": "shield",
-        "value": [
+        "shield": [
           [
             0, 0
           ], [
@@ -7098,8 +7089,7 @@
         ]
       },
       "bonuses": {
-        "action": "shield",
-        "value": [
+        "shield": [
           [
             0, 1
           ], [
@@ -7340,8 +7330,7 @@
         ]
       },
       "bonuses": {
-        "action": "shield",
-        "value": [
+        "shield": [
           [
             1, 1
           ], [
@@ -7757,8 +7746,7 @@
         ]
       },
       "bonuses": {
-        "action": "shield",
-        "value": [
+        "shield": [
           [
             2, 2
           ], [
@@ -7993,8 +7981,7 @@
         ]
       },
       "bonuses": {
-        "action": "shield",
-        "value": [
+        "shield": [
           [
             1, 1
           ], [

@@ -93,7 +93,7 @@ export class MonsterDetailComponent implements OnInit, AfterViewInit {
 
   public monster$: BehaviorSubject<Monster> = new BehaviorSubject<Monster>(undefined);
 
-  public drawerOpen: boolean = true;
+  public drawerOpen: boolean = false;
 
   get monster(): Monster {
     return this._monster;
