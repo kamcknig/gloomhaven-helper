@@ -24,7 +24,5 @@ export class ActionTextDirective implements OnInit {
   ngOnInit(): void {
     const txt = this._actionTextService.getActionHtml(this.action)
     this._renderer.setProperty(this._elRef.nativeElement, 'innerHTML', txt);
-    /*this._renderer.setProperty()*/
-
   }
 }

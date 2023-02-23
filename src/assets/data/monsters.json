@@ -317,11 +317,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -331,9 +331,9 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                { "target":  2 }
+                { "modifier": "target", "target": 2 }
               ]
             }
           ]
@@ -345,9 +345,9 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+1",
+              "attack": "+1",
               "modifiers": [
-                { "range":  "+1" }
+                { "modifier": "range", "range": "+1" }
               ]
             }
           ]
@@ -359,14 +359,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                { "range": "+1" },
-                { "immobilize":  true }
+                { "modifier": "range", "range": "+1" },
+                { "modifier": "immobilize", "immobilize":  true }
               ]
             }
           ]
@@ -377,11 +377,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -391,13 +391,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+1",
+              "attack": "+1",
               "modifiers": [
-                { "range": "-1" }
+                { "modifier": "range", "range": "-1" }
               ]
             }
           ]
@@ -408,11 +408,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -422,15 +422,15 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             },
             {
-              "action": "text",
-              "value": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
+              "action": "html",
+              "html": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
             }
           ]
         }
@@ -469,16 +469,16 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             },
             {
               "action": "strengthen",
               "modifiers": [
-                { "text": "Self" }
+                { "modifier": "html" ,"html": "Self" }
               ]
             }
           ]
@@ -490,13 +490,13 @@
           "actions": [
             {
               "action": "shield",
-              "value": 1
+              "shield": 1
             },
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                { "poison": true }
+                { "modifier": "poison", "poison": true }
               ]
             }
           ]
@@ -507,11 +507,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -522,11 +522,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -536,13 +536,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"range": "2"}
+                {"modifier": "range", "range": "2"}
               ]
             }
           ]
@@ -554,11 +554,11 @@
           "actions": [
             {
               "action": "shield",
-              "value": 1
+              "shield": 1
             },
             {
               "action": "retaliate",
-              "value": "2"
+              "retaliate": "2"
             }
           ]
         },
@@ -568,11 +568,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         }
@@ -609,13 +609,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "heal",
-              "value": 2,
+              "heal": 2,
               "modifiers": [
-                { "range":  "3" }
+                { "modifier": "range", "range":  "3" }
               ]
             }
           ]
@@ -627,14 +627,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                {"target":  2},
-                {"poison":  true}
+                {"modifier": "target", "target":  2},
+                {"modifier": "poison", "poison":  true}
               ]
             }
           ]
@@ -645,11 +645,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -660,13 +660,13 @@
             {
               "action": "strengthen",
               "modifiers": [
-                { "text":  "Affect all allies within <span class=\"icon range\">Range<span> 2"}
+                {"modifier": "html", "html":  "Affect all allies within <span class=\"icon range\">Range<span> 2"}
               ]
             },
             {
               "action": "muddle",
               "modifiers": [
-                {"text":  "Target all enemies within <span class=\"icon range\">Range<span> 2"}
+                {"modifier": "html", "html":  "Target all enemies within <span class=\"icon range\">Range<span> 2"}
               ]
             }
           ]
@@ -677,13 +677,13 @@
           "actions": [
             {
               "action": "shield",
-              "value": 5
+              "shield": 5
             },
             {
               "action": "heal",
-              "value": 1,
+              "heal": 1,
               "modifiers": [
-                { "text":  "Self" }
+                {"modifier":"html", "html":  "Self" }
               ]
             }
           ]
@@ -695,11 +695,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -710,14 +710,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                {"target": 2},
-                {"curse":  true}
+                {"modifier": "target","target": 2},
+                {"modifier":"curse", "curse":  true}
               ]
             }
           ]
@@ -752,11 +752,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -766,11 +766,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -780,17 +780,17 @@
           "actions": [
             {
               "action": "shield",
-              "value": 1
+              "shield": 1
             },
             {
               "action": "retaliate",
-              "value":  2
+              "retaliate":  2
             },
             {
               "action": "heal",
-              "value":  2,
+              "heal":  2,
               "modifiers": [
-                {"text":  "Self"}
+                {"modifier": "html","html":  "Self"}
               ]
             }
           ]
@@ -801,13 +801,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                {"immobilize": true}
+                {"modifier": "immobilize","immobilize": true}
               ]
             }
           ]
@@ -818,13 +818,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                {"target": 2}
+                {"modifier":"target","target": 2}
               ]
             }
           ]
@@ -836,17 +836,17 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             },
             {
               "action": "move",
-              "value": "-2"
+              "move": "-2"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                {"wound": true}
+                {"modifier":"wound","wound": true}
               ]
             }
           ]
@@ -858,9 +858,9 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+1",
+              "attack": "+1",
               "modifiers": [
-                {"wound": true}
+                {"modifier":"wound","wound": true}
               ]
             }
           ]
@@ -871,11 +871,11 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         }
@@ -914,11 +914,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -928,9 +928,9 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                {"target": 2}
+                {"modifier":"target","target": 2}
               ]
             }
           ]
@@ -942,9 +942,9 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+1",
+              "attack": "+1",
               "modifiers": [
-                {"range": "+1"}
+                {"modifier":"range","range": "+1"}
               ]
             }
           ]
@@ -956,14 +956,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                { "range": "+1" },
-                { "immobilize": true }
+                { "modifier": "range","range": "+1" },
+                { "modifier": "immobilize","immobilize": true }
               ]
             }
           ]
@@ -974,11 +974,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -988,13 +988,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+1",
+              "attack": "+1",
               "modifiers": [
-                {"range": "-1"}
+                {"modifier": "range","range": "-1"}
               ]
             }
           ]
@@ -1005,11 +1005,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -1019,15 +1019,15 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             },
             {
-              "action": "text",
-              "value": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
+              "action": "html",
+              "html": "Create a 3 damage trap in an adjacent empty hex closest to an enemy."
             }
           ]
         }
@@ -1087,16 +1087,16 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             },
             {
               "action": "strengthen",
               "modifiers": [
-                {"text":  "Self"}
+                {"modifier": "html","html":  "Self"}
               ]
             }
           ]
@@ -1108,13 +1108,13 @@
           "actions": [
             {
               "action": "shield",
-              "value": 1
+              "shield": 1
             },
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"poison": true}
+                {"modifier": "poison","poison": true}
               ]
             }
           ]
@@ -1125,11 +1125,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -1140,11 +1140,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -1154,13 +1154,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"range": 2}
+                {"modifier": "range","range": 2}
               ]
             }
           ]
@@ -1172,11 +1172,11 @@
           "actions": [
             {
               "action": "shield",
-              "value": 1
+              "shield": 1
             },
             {
               "action":  "retaliate",
-              "value": 2
+              "retaliate": 2
             }
           ]
         },
@@ -1186,11 +1186,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         }
@@ -1224,17 +1224,17 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             },
             {
               "action": "heal",
-              "value": 1,
+              "heal": 1,
               "modifiers": [
-                {"text":  "Self"}
+                {"modifier":"html","html": "Self"}
               ]
             }
           ]
@@ -1245,13 +1245,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "heal",
-              "value": 3,
+              "heal": 3,
               "modifiers": [
-                {"range":  3}
+                {"modifier":"range","range":  3}
               ]
             }
           ]
@@ -1262,11 +1262,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -1277,12 +1277,12 @@
           "shuffle": true,
           "actions": [
             {
-              "action": "text",
-              "value": "Summon normal Living Bones."
+              "action": "html",
+              "html": "Summon normal Living Bones."
             },
             {
-              "action": "text",
-              "value": "Cultist suffers 2 damage."
+              "action": "html",
+              "html": "Cultist suffers 2 damage."
             }
           ]
         },
@@ -1292,11 +1292,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -1306,11 +1306,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -1320,11 +1320,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         }
@@ -1471,20 +1471,20 @@
             {
               "action": "wound",
               "modifiers": [
-                {"text": "Target all adjacent enemies"}
+                {"modifier": "html","html": "Target all adjacent enemies"}
               ]
             },
             {
               "action": "poison",
               "modifiers": [
-                {"text": "Target all adjacent enemies"}
+                {"modifier": "html","html": "Target all adjacent enemies"}
               ]
             },
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"range": 4}
+                {"modifier":"range","range": 4}
               ]
             }
           ]
@@ -1495,9 +1495,9 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-2",
+              "attack": "-2",
               "modifiers": [
-                {"text": "Target all adjacent enemies"}
+                {"modifier":"html","html": "Target all adjacent enemies"}
               ]
             },
             {
@@ -1505,10 +1505,10 @@
             },
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"range": 3},
-                {"target": 2}
+                {"modifier":"range","range": 3},
+                {"modifier":"target","target": 2}
               ]
             }
           ]
@@ -1521,9 +1521,9 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"pierce": 3}
+                {"modifier":"pierce","pierce": 3}
               ]
             }
           ]
@@ -1534,17 +1534,17 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"poison": true}
+                {"modifier":"poison","poison": true}
               ]
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                {"range": 5},
-                {"immobilize": true}
+                {"modifier":"range","range": 5},
+                {"modifier":"immobilize","immobilize": true}
               ]
             }
           ]
@@ -1555,11 +1555,11 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"range": 3},
-                {"target": 3},
-                {"curse": true}
+                {"modifier":"range","range": 3},
+                {"modifier":"target","target": 3},
+                {"modifier":"curse","curse": true}
               ]
             }
           ]
@@ -1570,17 +1570,17 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                {"text": "Target all adjacent enemies"}
+                {"modifier":"html","html": "Target all adjacent enemies"}
               ]
             },
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"range": 4},
-                {"wound": true}
+                {"modifier":"range","range": 4},
+                {"modifier":"wound","wound": true}
               ]
             }
           ]
@@ -1591,10 +1591,10 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-2",
+              "attack": "-2",
               "modifiers": [
-                {"range": 6},
-                {"text": "Summon normal Deep Terror in a hex adjacent to the target"}
+                {"modifier":"range","range": 6},
+                {"modifier":"html","html": "Summon normal Deep Terror in a hex adjacent to the target"}
               ]
             }
           ]
@@ -1709,11 +1709,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -1724,9 +1724,9 @@
           "actions": [
             {
               "action": "heal",
-              "value": 3,
+              "heal": 3,
               "modifiers": [
-                {"text":  "Self"}
+                {"modifier":"html","html":  "Self"}
               ]
             }
           ]
@@ -1737,11 +1737,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -1751,13 +1751,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                {"text": "Target all adjacent enemies"}
+                {"modifier":"html","html": "Target all adjacent enemies"}
               ]
             }
           ]
@@ -1768,9 +1768,9 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"range": 4}
+                {"modifier":"range","range": 4}
               ]
             }
           ]
@@ -1781,13 +1781,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             },
             {
+              "action": "infuse",
               "infuse": [
                 "earth"
               ]
@@ -1800,13 +1801,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             },
             {
+              "action": "infuse",
               "infuse": [
                 "earth"
               ]
@@ -1820,11 +1822,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         }
@@ -1990,7 +1992,7 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -2000,11 +2002,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
-              "action": "text",
-              "value": "Create a 4 damage trap in an adjacent empty hex closest to an enemy."
+              "action": "html",
+              "html": "Create a 4 damage trap in an adjacent empty hex closest to an enemy."
             }
           ]
         },
@@ -2014,13 +2016,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             },
             {
+              "action": "infuse",
               "infuse": [
                 "fire"
               ]
@@ -2033,13 +2036,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             },
             {
+              "action": "infuse",
               "infuse": [
                 "fire"
               ]
@@ -2052,9 +2056,9 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"text":  "Target all adjacent enemies"}
+                {"modifier":"html", "html":  "Target all adjacent enemies"}
               ]
             }
           ]
@@ -2065,7 +2069,7 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -2075,16 +2079,17 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1",
+              "attack": "+1",
               "modifiers": [
-                {"range": "-1"}
+                {"modifier":"range","range": "-1"}
               ]
             },
             {
+              "action": "infuse",
               "infuse": [
                 "fire"
               ]
@@ -2098,14 +2103,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-2",
+              "attack": "-2",
               "modifiers": [
-                {"wound": true},
-                {"target": 2}
+                {"modifier":"wound","wound": true},
+                {"modifier":"target","target": 2}
               ]
             }
           ]

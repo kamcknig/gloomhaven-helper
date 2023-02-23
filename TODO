@@ -5,6 +5,8 @@ actual attributes with their currently drawn card
 
 on death effect for monster abilities like cultist # 7 card
 
+monster ability actions for using an element to do something
+
 optional monster attack card options such as earth demon 5
 
 Mouse over for tokens in list view to show status
@@ -21,8 +23,6 @@ the monster-ability-deck-component and monster-detail-component both create an o
 This should be combined into one place.
 
 bosses dont' have a way to lower hit points
-
-add infuse actions
 
 add icons inside of text actions like with forest imp (there are others, you'll have to look at
 all the card images to find them)
