@@ -3043,133 +3043,28 @@
       "name": "Inox Guard",
       "attributes": {
         "health": [
-          [
-            5, 9
-          ], [
-            8, 10
-          ], [
-            9, 12
-          ], [
-            11, 15
-          ], [
-            12, 17
-          ], [
-            13, 19
-          ], [
-            16, 21
-          ], [
-            19, 23
-          ]
+          [5, 9], [8, 10], [9, 12], [11, 15], [12, 17], [13, 19], [16, 21], [19, 23]
         ],
         "move": [
-          [
-            2, 1
-          ], [
-            2, 2
-          ], [
-            2, 2
-          ], [
-            3, 2
-          ], [
-            3, 2
-          ], [
-            3, 2
-          ], [
-            3, 3
-          ], [
-            3, 3
-          ]
+          [2, 1], [2, 2], [2, 2], [3, 2], [3, 2], [3, 2], [3, 3], [3, 3]
         ],
         "attack": [
-          [
-            2, 3
-          ], [
-            2, 3
-          ], [
-            3, 4
-          ], [
-            3, 4
-          ], [
-            3, 5
-          ], [
-            4, 5
-          ], [
-            4, 5
-          ], [
-            4, 6
-          ]
+          [2, 3], [2, 3], [3, 4], [3, 4], [3, 5], [4, 5], [4, 5], [4, 6]
         ],
         "range": [
-          [
-            0, 0
-          ], [
-            0, 0
-          ], [
-            0, 0
-          ], [
-            0, 0
-          ], [
-            0, 0
-          ], [
-            0, 0
-          ], [
-            0, 0
-          ], [
-            0, 0
-          ]
+          [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]
         ]
       },
       "bonuses": {
         "retaliate": [
-          [
-            [
-              0, 0
-            ], [
-            1, 0
-          ]
-          ], [
-            [
-              0, 0
-            ], [
-              2, 0
-            ]
-          ], [
-            [
-              0, 0
-            ], [
-              2, 0
-            ]
-          ], [
-            [
-              0, 0
-            ], [
-              3, 0
-            ]
-          ], [
-            [
-              1, 0
-            ], [
-              3, 0
-            ]
-          ], [
-            [
-              1, 0
-            ], [
-              4, 0
-            ]
-          ], [
-            [
-              1, 0
-            ], [
-              4, 0
-            ]
-          ], [
-            [
-              2, 0
-            ], [
-              4, 0
-            ]
-          ]
+          [[0, 0], [1, 0]],
+          [[0, 0], [2, 0]],
+          [[0, 0], [2, 0]],
+          [[0, 0], [3, 0]],
+          [[1, 0], [3, 0]],
+          [[1, 0], [4, 0]],
+          [[1, 0], [4, 0]],
+          [[2, 0], [4, 0]]
         ]
       },
       "abilities": [
@@ -3179,14 +3074,15 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             },
             {
               "action": "strengthen",
+              "strengthen": true,
               "modifiers": [
                 {"modifier":"html", "html":  "Self"}
               ]
@@ -3200,13 +3096,13 @@
           "actions": [
             {
               "action": "shield",
-              "value": 1
+              "shield": 1
             },
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"poison": true}
+                {"modifier":"poison","poison": true}
               ]
             }
           ]
@@ -3217,11 +3113,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -3232,11 +3128,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -3246,13 +3142,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"range": 2}
+                {"modifier":"range","range": 2}
               ]
             }
           ]
@@ -3264,11 +3160,11 @@
           "actions": [
             {
               "action": "shield",
-              "value": 1
+              "shield": 1
             },
             {
               "action": "retaliate",
-              "value": 2
+              "retaliate": 2
             }
           ]
         },
@@ -3278,11 +3174,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         }
@@ -3292,80 +3188,16 @@
       "name": "Inox Shaman",
       "attributes": {
         "health": [
-          [
-            4, 6
-          ], [
-            6, 9
-          ], [
-            7, 11
-          ], [
-            9, 14
-          ], [
-            10, 16
-          ], [
-            13, 20
-          ], [
-            15, 24
-          ], [
-            16, 27
-          ]
+          [4, 6], [6, 9], [7, 11], [9, 14], [10, 16], [13, 20], [15, 24], [16, 27]
         ],
         "move": [
-          [
-            1, 2
-          ], [
-            1, 2
-          ], [
-            2, 3
-          ], [
-            2, 3
-          ], [
-            2, 3
-          ], [
-            2, 3
-          ], [
-            3, 4
-          ], [
-            3, 4
-          ]
+          [1, 2], [1, 2], [2, 3], [2, 3], [2, 3], [2, 3], [3, 4], [3, 4]
         ],
         "attack": [
-          [
-            2, 3
-          ], [
-            2, 3
-          ], [
-            2, 3
-          ], [
-            2, 3
-          ], [
-            3, 4
-          ], [
-            3, 4
-          ], [
-            3, 4
-          ], [
-            4, 5
-          ]
+          [2, 3], [2, 3], [2, 3], [2, 3], [3, 4], [3, 4], [3, 4], [4, 5]
         ],
         "range": [
-          [
-            3, 3
-          ], [
-            3, 3
-          ], [
-            3, 3
-          ], [
-            4, 4
-          ], [
-            4, 4
-          ], [
-            4, 4
-          ], [
-            4, 4
-          ], [
-            4, 4
-          ]
+          [3, 3], [3, 3], [3, 3], [4, 4], [4, 4], [4, 4], [4, 4], [4, 4]
         ]
       },
       "abilities": [
@@ -3377,13 +3209,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "heal",
-              "value":  3,
+              "heal":  3,
               "modifiers":  [
-                {"range":  3}
+                {"modifier":"range","range":  3}
               ]
             }
           ]
@@ -3394,13 +3226,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers":  [
-                {"disarm": true}
+                {"modifier":"disarm","disarm": true}
               ]
             }
           ]
@@ -3411,11 +3243,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -3425,17 +3257,18 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "heal",
-              "value": 1,
+              "heal": 1,
               "modifiers":  [
                 {"modifier":"html", "html": "Affect all adjacent allies"}
               ]
             },
             {
               "action": "bless",
+              "bless": true,
               "modifiers": [
                 {"modifier":"html", "html": "Self"}
               ]
@@ -3448,14 +3281,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                {"curse": true},
-                {"target": 2}
+                {"modifier":"curse","curse": true},
+                {"modifier":"target","target": 2}
               ]
             }
           ]
@@ -3466,11 +3299,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -3480,13 +3313,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"immobilize": true}
+                {"modifier":"immobilize","immobilize": true}
               ]
             }
           ]
