@@ -27,12 +27,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "attack": "-1",
-              "range": "=3",
-              "target": 2
+              "modifiers": [
+                {"modifier": "range", "range": "=3"},
+                {"modifier": "target", "target": 2}
+              ]
             }
           ]
         },
@@ -69,7 +71,7 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "attack": "+0"
@@ -163,9 +165,9 @@
           "actions": [
             {
               "action": "push",
-              "push": 1,
               "modifiers": [
-                {"modifier": "html", "html": "Target all adjacent enemies"}
+                {"modifier": "html", "html": "Target all adjacent enemies"},
+                {"modifier": "push", "push": 1}
               ]
             },
             {
@@ -209,9 +211,9 @@
           "actions": [
             {
               "action": "push",
-              "push": 2,
               "modifiers": [
-                {"modifier": "html", "html": "Target all adjacent enemies"}
+                {"modifier": "html", "html": "Target all adjacent enemies"},
+                {"modifier": "push", "push": 2}
               ]
             },
             { "action": "shield", "shield": 2},
@@ -224,9 +226,9 @@
           "actions": [
             {
               "action": "push",
-              "push": 1,
               "modifiers": [
-                {"modifier": "html", "html": "Target all adjacent enemies"}
+                {"modifier": "html", "html": "Target all adjacent enemies"},
+                {"modifier": "push", "push": 1}
               ]
             },
             {
@@ -3330,122 +3332,26 @@
       "name": "Living Bones",
       "attributes": {
         "health": [
-          [
-            5, 6
-          ], [
-            5, 6
-          ], [
-            5, 7
-          ], [
-            7, 10
-          ], [
-            7, 11
-          ], [
-            9, 11
-          ], [
-            10, 11
-          ], [
-            13, 14
-          ]
+          [5, 6], [5, 6], [5, 7], [7, 10], [7, 11], [9, 11], [10, 11], [13, 14]
         ],
         "move": [
-          [
-            2, 4
-          ], [
-            3, 4
-          ], [
-            3, 4
-          ], [
-            3, 4
-          ], [
-            3, 4
-          ], [
-            3, 4
-          ], [
-            4, 6
-          ], [
-            4, 6
-          ]
+          [2, 4], [3, 4], [3, 4], [3, 4], [3, 4], [3, 4], [4, 6], [4, 6]
         ],
         "attack": [
-          [
-            1, 2
-          ], [
-            1, 2
-          ], [
-            2, 3
-          ], [
-            2, 3
-          ], [
-            3, 4
-          ], [
-            3, 4
-          ], [
-            3, 4
-          ], [
-            3, 4
-          ]
+          [1, 2], [1, 2], [2, 3], [2, 3], [3, 4], [3, 4], [3, 4], [3, 4]
         ],
         "range": [
-          [
-            0, 0
-          ], [
-            0, 0
-          ], [
-            0, 0
-          ], [
-            0, 0
-          ], [
-            0, 0
-          ], [
-            0, 0
-          ], [
-            0, 0
-          ], [
-            0, 0
-          ]
+          [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]
         ]
       },
       "attackEffects": {
         "target": [
-          [
-            2, 2
-          ], [
-            2, 3
-          ], [
-            2, 3
-          ], [
-            2, 3
-          ], [
-            2, 3
-          ], [
-            2, 3
-          ], [
-            2, 3
-          ], [
-            2, 3
-          ]
+          [2, 2], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3], [2, 3]
         ]
       },
       "bonuses": {
         "shield": [
-          [
-            0, 0
-          ], [
-            1, 1
-          ], [
-            1, 1
-          ], [
-            1, 1
-          ], [
-            1, 1
-          ], [
-            1, 2
-          ], [
-            1, 2
-          ], [
-            1, 2
-          ]
+          [0, 0], [1, 1], [1, 1], [1, 1], [1, 1], [1, 2], [1, 2], [1, 2]
         ]
       },
       "abilities": [
@@ -3455,11 +3361,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -3469,11 +3375,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -3484,11 +3390,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -3499,15 +3405,15 @@
           "actions": [
             {
               "action": "move",
-              "value": "-2"
+              "move": "-2"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             },
             {
               "action": "heal",
-              "value": 2,
+              "heal": 2,
               "modifiers":  [
                 {"modifier":"html", "html": "Self"}
               ]
@@ -3521,11 +3427,11 @@
           "actions": [
             {
               "action": "shield",
-              "value": 1
+              "shield": 1
             },
             {
               "action": "heal",
-              "value": 2,
+              "heal": 2,
               "modifiers":  [
                 {"modifier":"html", "html": "Self"}
               ]
@@ -3538,7 +3444,7 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+2"
+              "attack": "+2"
             }
           ]
         },
@@ -3548,11 +3454,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers":  [
                 {"modifier":"html", "html": "Target one enemy with all attacks"}
               ]
@@ -3565,42 +3471,10 @@
       "name": "Living Corpse",
       "attributes": {
         "health": [
-          [
-            5, 10
-          ], [
-            7, 10
-          ], [
-            9, 13
-          ], [
-            10, 13
-          ], [
-            11, 15
-          ], [
-            13, 17
-          ], [
-            14, 21
-          ], [
-            15, 25
-          ]
+          [5, 10], [7, 10], [9, 13], [10, 13], [11, 15], [13, 17], [14, 21], [5, 25]
         ],
         "move": [
-          [
-            1, 1
-          ], [
-            1, 1
-          ], [
-            1, 1
-          ], [
-            1, 2
-          ], [
-            2, 2
-          ], [
-            2, 2
-          ], [
-            2, 2
-          ], [
-            2, 2
-          ]
+          [1, 1], [1, 1], [1, 1], [1, 2], [2, 2], [2, 2], [2, 2], [2, 2]
         ],
         "attack": [
           [
@@ -3669,11 +3543,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -3685,11 +3559,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -3699,11 +3573,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "html",
-              "value": "Muddle and Immobilize",
+              "html": "Muddle and Immobilize",
               "modifiers": [
                 {"modifier":"html", "html": "Target one adjacent enemy"}
               ]
@@ -3716,14 +3590,14 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+2",
+              "attack": "+2",
               "modifiers": [
                 {"push": 1}
               ]
             },
             {
               "action": "html",
-              "value": "Living corpse suffers 1 damage."
+              "html": "Living corpse suffers 1 damage."
             }
           ]
         },
@@ -3733,11 +3607,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             },
             {
               "action": "poison",
@@ -3753,11 +3627,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -3767,11 +3641,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "html",
-              "value": "Living Corpse suffers 1 damage."
+              "html": "Living Corpse suffers 1 damage."
             }
           ]
         }
@@ -3886,11 +3760,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -3900,11 +3774,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -3914,18 +3788,18 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1",
+              "attack": "+1",
               "modifiers": [
-                {"range": "-1"}
+                {"modifier": "range", "range": "-1"}
               ]
             },
             {
               "action": "heal",
-              "value": 1,
+              "heal": 1,
               "modifiers": [
                 {"modifier":"html", "html":  "Self"}
               ]
@@ -3938,10 +3812,10 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+0",
+              "attack": "+0",
               "modifiers": [
-                {"range": "-1"},
-                {"target": 2}
+                {"modifier": "range", "range": "-1"},
+                {"modifier": "target", "target": 2}
               ]
             }
           ]
@@ -3952,7 +3826,7 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "curse",
@@ -3974,13 +3848,13 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
-                {"muddle": true}
+                {"modifier": "muddle", "muddle": true}
               ]
             }
           ]
@@ -3992,11 +3866,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "modifiers": [
                 {"modifier":"html", "html": "Target all enemies within range"}
               ]
@@ -4155,15 +4029,15 @@
           "actions": [
             {
               "action": "shield",
-              "value": 1
+              "shield": 1
             },
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             },
             {
               "infuse": [
@@ -4178,11 +4052,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -4192,11 +4066,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -4206,11 +4080,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -4220,12 +4094,16 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0",
-              "info-text": "Target one enemy with all attacks"
+              "attack": "+0",
+              "modifiers": [
+                { "modifier": "immobilize", "immobilize":  true },
+                { "modifier": "target", "target": 2 },
+                { "modifier": "html", "html": "Target one enemy with all attacks" }
+              ]
             }
           ]
         },
@@ -4235,8 +4113,10 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+1",
-              "info-text": "Target all adjacent enemies"
+              "attack": "+1",
+              "modifiers": [
+                { "modifier": "html", "html": "Target all adjacent enemies" }
+              ]
             }
           ]
         },
@@ -4247,11 +4127,14 @@
           "actions": [
             {
               "action": "shield",
-              "value": 1
+              "shield": 1
             },
             {
+              "action": "wound",
               "wound": true,
-              "info-text": "Target all adjacent enemies"
+              "modifiers": [
+                { "modifier": "html", "html": "Target all adjacent enemies" }
+              ]
             }
           ]
         },
@@ -4261,11 +4144,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "wound": true
             }
           ]
@@ -4401,7 +4284,7 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "loot": 1
@@ -4420,10 +4303,12 @@
           "imgName": "ooze-2",
           "actions": [
             {
-              "info-text": "Ooze suffers 2 damage."
+              "action": "html",
+              "html": "Ooze suffers 2 damage."
             },
             {
-              "info-text": "Summon normal Ooze with a hit point value equal to the summoning Ooze's current hit point value (limited by a normal Ooze's specified maximum hit point value)."
+              "action": "html",
+              "html": "Summon normal Ooze with a hit point value equal to the summoning Ooze's current hit point value (limited by a normal Ooze's specified maximum hit point value)."
             }
           ]
         },
@@ -4433,12 +4318,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1",
-              "range": "+1"
+              "attack": "+1",
+              "modifiers": [
+                {"modifier": "range", "range": "+1"}
+              ]
             }
           ]
         },
@@ -4448,14 +4335,18 @@
           "actions": [
             {
               "action": "push",
-              "value": 1,
-              "poison": true,
-              "info-text": "Target all adjacent enemies"
+              "push": 1,
+              "modifiers": [
+                { "modifier": "html", "html": "Target all adjacent enemies" },
+                { "modifier": "poison", "poison": true}
+              ]
             },
             {
               "action": "attack",
-              "value": "+1",
-              "range": "-1"
+              "attack": "+1",
+              "modifiers": [
+                {"modifier": "range", "range": "-1"}
+              ]
             }
           ]
         },
@@ -4465,9 +4356,11 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+0",
-              "target": 2,
-              "poison": true
+              "attack": "+0",
+              "modifiers": [
+                { "modifier": "target", "target": 2 },
+                { "modifier": "poison", "poison": true}
+              ]
             }
           ]
         },
@@ -4477,11 +4370,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -4491,11 +4384,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         }
@@ -4611,11 +4504,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -4625,14 +4518,15 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             },
             {
-              "info-text": "All adjacent enemies and allies suffer 1 damage."
+              "action": "html",
+              "html": "All adjacent enemies and allies suffer 1 damage."
             }
           ]
         },
@@ -4643,11 +4537,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             },
             {
               "infuse": [
@@ -4662,11 +4556,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             },
             {
               "infuse": [
@@ -4681,11 +4575,11 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "pierce": 2
             }
           ]
@@ -4696,9 +4590,11 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-2",
-              "range": "=3",
-              "target": 4
+              "attack": "-2",
+              "modifiers": [
+                {"modifier": "range", "range": "=3"},
+                {"modifier": "target", "target": 4}
+              ]
             }
           ]
         },
@@ -4708,11 +4604,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             },
             {
               "infuse": [
@@ -4831,11 +4727,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -4846,15 +4742,15 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             },
             {
               "action": "attack",
-              "value": "-2"
+              "attack": "-2"
             }
           ]
         },
@@ -4864,7 +4760,7 @@
           "actions": [
             {
               "action": "shield",
-              "value": 2
+              "shield": 2
             },
             {
               "heal": [
@@ -4882,11 +4778,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -4896,14 +4792,16 @@
           "actions": [
             {
               "action": "move",
-              "value": "-2"
+              "move": "-2"
             },
             {
               "action": "attack",
-              "value": "-1",
-              "range": "=3",
-              "target": 2,
-              "poison": true
+              "attack": "-1",
+              "modifiers": [
+                {"modifier": "range", "range": "=3"},
+                {"modifier": "target", "target": 2},
+                {"modifier": "poison", "poison":  true}
+              ]
             }
           ]
         },
@@ -4913,11 +4811,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -4927,12 +4825,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "-2"
+              "move": "-2"
             },
             {
               "action": "attack",
-              "value": "+1",
-              "target": 2
+              "attack": "+1",
+              "modifiers": [
+                { "modifier": "target", "target": 2 }
+              ]
             }
           ]
         },
@@ -4943,15 +4843,15 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             },
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         }
@@ -5087,15 +4987,15 @@
           "actions": [
             {
               "action": "shield",
-              "value": 1
+              "shield": 1
             },
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -5106,11 +5006,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -5120,12 +5020,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1",
-              "target": 2
+              "attack": "-1",
+              "modifiers": [
+                { "modifier": "target", "target": 2 }
+              ]
             }
           ]
         },
@@ -5135,7 +5037,7 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             },
             {
               "heal": [
@@ -5150,11 +5052,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -5165,12 +5067,14 @@
           "actions": [
             {
               "action": "push",
-              "value": 1,
-              "info-text": "Target all adjacent enemiesw"
+              "push": 1,
+              "modifiers": [
+                { "modifier": "html", "html": "Target all adjacent enemies" }
+              ]
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -5180,12 +5084,19 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0",
-              "pull": 1
+              "attack": "+0",
+              "modifiers": [
+                { "modifier": "immobilize", "immobilize":  true },
+                { "modifier": "target", "target": 2 },
+                { "modifier": "html", "html": "" },
+                { "modifier": "wound", "wound": true },
+                { "modifier": "poison", "poison": true },
+                { "modifier": "pull", "pull": 1 }
+              ]
             },
             {
               "infuse": [
@@ -5324,13 +5235,15 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-1",
-              "range": "=3",
-              "target": 2
+              "attack": "-1",
+              "modifiers": [
+                {"modifier": "range", "range": "=3"},
+                {"modifier": "target", "target": 2}
+              ]
             },
             {
               "infuse": [
@@ -5355,7 +5268,8 @@
           "imgName": "savvas-lavaflow-3",
           "actions": [
             {
-              "info-text": "All enemies suffer 2 damage."
+              "action": "html",
+              "html": "All enemies suffer 2 damage."
             }
           ]
         },
@@ -5365,11 +5279,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -5380,13 +5294,15 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1",
-              "range": "=3",
-              "info-text": "All allies and enemies adjacent to the target suffer 2 damage."
+              "attack": "+1",
+              "modifiers": [
+                {"modifier": "range", "range": "=3"},
+                {"modifier": "html", "html": "All allies and enemies adjacent to the target suffer 2 damage."}
+              ]
             },
             {
               "infuse": [
@@ -5401,12 +5317,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1",
-              "info-text": "Target all adjacent enemies"
+              "attack": "-1",
+              "modifiers": [
+                { "modifier": "html", "html": "Target all adjacent enemies" }
+              ]
             }
           ]
         },
@@ -5415,7 +5333,8 @@
           "imgName": "savvas-lavaflow-7",
           "actions": [
             {
-              "info-text": "Summon normal Earth Demon"
+              "action": "html",
+              "html": "Summon normal Earth Demon"
             },
             {
               "infuse": [
@@ -5429,7 +5348,8 @@
           "imgName": "savvas-lavaflow-8",
           "actions": [
             {
-              "info-text": "Summon normal Flame Demon"
+              "action": "html",
+              "html": "Summon normal Flame Demon"
             },
             {
               "infuse": [
@@ -5548,9 +5468,11 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+0",
-              "target": 2,
-              "poison": true
+              "attack": "+0",
+              "modifiers": [
+                {"modifier": "poison", "poison": true},
+                {"modifier": "target", "target": 2}
+              ]
             }
           ]
         },
@@ -5560,11 +5482,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -5574,7 +5496,7 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-2",
+              "attack": "-2",
               "stun": true
             }
           ]
@@ -5586,12 +5508,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1",
-              "range": "-1"
+              "attack": "-1",
+              "modifiers": [
+                {"modifier": "range", "range": "-1"}
+              ]
             }
           ]
         },
@@ -5601,7 +5525,7 @@
           "actions": [
             {
               "action": "shield",
-              "value": 2
+              "shield": 2
             },
             {
               "heal": [
@@ -5620,13 +5544,15 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-2",
-              "range": "-2",
-              "poison": true
+              "attack": "-2",
+              "modifiers": [
+                {"modifier": "range", "range": "-2"},
+                {"modifier": "poison", "poison": true}
+              ]
             }
           ]
         },
@@ -5636,11 +5562,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -5650,11 +5576,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         }
@@ -5770,11 +5696,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -5784,11 +5710,14 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+1",
-              "range": "=3"
+              "attack": "+1",
+              "modifiers": [
+                {"modifier": "range", "range": "=3"}
+              ]
             },
             {
-              "info-text": "Stone Golem suffers 2 damage."
+              "action": "html",
+              "html": "Stone Golem suffers 2 damage."
             }
           ]
         },
@@ -5809,14 +5738,16 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "+2",
-              "range": "=3",
-              "pull": 2,
-              "immobilize": true
+              "attack": "+2",
+              "modifiers": [
+                {"modifier": "range", "range": "=3"},
+                {"modifier": "pull", "pull": true},
+                {"modifier": "immobilize", "immobilize": true}
+              ]
             }
           ]
         },
@@ -5826,12 +5757,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+1",
-              "info-text": "Target all adjacent enemies"
+              "attack": "+1",
+              "modifiers": [
+                { "modifier": "html", "html": "Target all adjacent enemies" }
+              ]
             }
           ]
         },
@@ -5842,9 +5775,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1",
+              "move": "-1"
+            },
+            {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -5854,11 +5789,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -5868,14 +5803,15 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             },
             {
-              "info-text": "Stone Golem suffers 1 damage."
+              "action": "html",
+              "html": "Stone Golem suffers 1 damage."
             }
           ]
         }
@@ -6010,12 +5946,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0",
-              "range": "=3"
+              "attack": "+0",
+              "modifiers": [
+                {"modifier": "range", "range": "=3"}
+              ]
             }
           ]
         },
@@ -6025,12 +5963,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-1",
-              "info-text": "Target all adjacent enemies"
+              "attack": "-1",
+              "modifiers": [
+                { "modifier": "html", "html": "Target all adjacent enemies" }
+              ]
             }
           ]
         },
@@ -6041,11 +5981,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -6055,12 +5995,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+0",
-              "range": "=4"
+              "attack": "+0",
+              "modifiers": [
+                {"modifier": "range", "range": "=4"}
+              ]
             }
           ]
         },
@@ -6070,11 +6012,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             },
             {
               "infuse": [
@@ -6101,12 +6043,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0",
-              "info-text": "Target all adjacent enemies"
+              "attack": "+0",
+              "modifiers": [
+                { "modifier": "html", "html": "Target all adjacent enemies" }
+              ]
             },
             {
               "infuse": [
@@ -6205,11 +6149,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -6219,12 +6163,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-1",
-              "range": "=3"
+              "attack": "-1",
+              "modifiers": [
+                {"modifier": "range", "range": "=3"}
+              ]
             }
           ]
         },
@@ -6234,11 +6180,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -6248,11 +6194,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -6262,9 +6208,11 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-1",
-              "range": "=4",
-              "target": 2
+              "attack": "-1",
+              "modifiers": [
+                {"modifier": "range", "range": "=4"},
+                {"modifier": "target", "target": 2}
+              ]
             }
           ]
         },
@@ -6274,13 +6222,15 @@
           "actions": [
             {
               "action": "move",
-              "value": "-2"
+              "move": "-2"
             },
             {
               "action": "attack",
-              "value": "+0",
-              "range": "=3",
-              "poison": true
+              "attack": "+0",
+              "modifiers": [
+                {"modifier": "range", "range": "=4"},
+                {"modifier": "poison", "poison": true}
+              ]
             }
           ]
         },
@@ -6291,8 +6241,11 @@
           "actions": [
             {
               "action": "attack",
-              "value": "+2",
-              "poison": true
+              "attack": "+2",
+              "modifiers": [
+                {"modifier": "poison", "range": true},
+                {"modifier": "target", "target": 2}
+              ]
             }
           ]
         },
@@ -6303,7 +6256,7 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1",
+              "move": "+1",
               "jump": true
             },
             {
@@ -6428,7 +6381,7 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "heal": [
@@ -6443,11 +6396,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1",
+              "attack": "-1",
               "disarm": true
             }
           ]
@@ -6458,11 +6411,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -6472,15 +6425,18 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "heal": [
                 1
               ],
-              "info-text": "Affect all adjacent allies"
+              "modifiers": [
+                { "modifier": "html", "html": "Affect all adjacent allies" }
+              ]
             },
             {
+              "action": "bless",
               "bless": true
             }
           ]
@@ -6491,13 +6447,15 @@
           "actions": [
             {
               "action": "move",
-              "value": "+1"
+              "move": "+1"
             },
             {
               "action": "attack",
-              "value": "-1",
-              "curse": true,
-              "target": 2
+              "attack": "-1",
+              "modifiers": [
+                { "modifier": "target", "target": 2 },
+                { "modifier": "curse", "curse": true }
+              ]
             }
           ]
         },
@@ -6507,11 +6465,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -6521,12 +6479,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+0",
-              "immobilize": true
+              "attack": "+0",
+              "modifiers": [
+                { "modifier": "immobilize", "immobilize":  true }
+              ]
             }
           ]
         }
@@ -6661,15 +6621,15 @@
           "actions": [
             {
               "action": "shield",
-              "value": 1
+              "shield": 1
             },
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             }
           ]
         },
@@ -6679,11 +6639,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "-1"
+              "move": "-1"
             },
             {
               "action": "attack",
-              "value": "+1"
+              "attack": "+1"
             }
           ]
         },
@@ -6693,12 +6653,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "-1",
-              "target": 2
+              "attack": "-1",
+              "modifiers": [
+                { "modifier": "target", "target": 2 }
+              ]
             }
           ]
         },
@@ -6708,7 +6670,7 @@
           "actions": [
             {
               "action": "attack",
-              "value": "-1"
+              "attack": "-1"
             },
             {
               "heal": [
@@ -6723,11 +6685,11 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -6737,12 +6699,16 @@
           "actions": [
             {
               "action": "push",
-              "value": 1,
-              "info-text": "Target all adjacent enemies"
+              "push": 1,
+              "modifiers": [
+                { "modifier": "immobilize", "immobilize":  true },
+                { "modifier": "target", "target": 2 },
+                { "modifier": "html", "html": "Target all adjacent enemies"}
+              ]
             },
             {
               "action": "attack",
-              "value": "+0"
+              "attack": "+0"
             }
           ]
         },
@@ -6754,12 +6720,14 @@
           "actions": [
             {
               "action": "move",
-              "value": "+0"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "value": "+0",
-              "pull": 1
+              "attack": "+0",
+              "modifiers": [
+                { "modifier": "pull", "pull": 1 }
+              ]
             },
             {
               "infuse": [
