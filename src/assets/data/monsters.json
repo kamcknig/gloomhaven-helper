@@ -30,6 +30,7 @@
               "move": "-1"
             },
             {
+              "action": "attack",
               "attack": "-1",
               "modifiers": [
                 {"modifier": "range", "range": "=3"},
@@ -165,9 +166,9 @@
           "actions": [
             {
               "action": "push",
+              "push": 1,
               "modifiers": [
-                {"modifier": "html", "html": "Target all adjacent enemies"},
-                {"modifier": "push", "push": 1}
+                {"modifier": "html", "html": "Target all adjacent enemies"}
               ]
             },
             {
@@ -211,9 +212,9 @@
           "actions": [
             {
               "action": "push",
+              "push": 2,
               "modifiers": [
-                {"modifier": "html", "html": "Target all adjacent enemies"},
-                {"modifier": "push", "push": 2}
+                {"modifier": "html", "html": "Target all adjacent enemies"}
               ]
             },
             { "action": "shield", "shield": 2},
@@ -226,9 +227,9 @@
           "actions": [
             {
               "action": "push",
+              "push": 1,
               "modifiers": [
-                {"modifier": "html", "html": "Target all adjacent enemies"},
-                {"modifier": "push", "push": 1}
+                {"modifier": "html", "html": "Target all adjacent enemies"}
               ]
             },
             {
@@ -4100,8 +4101,6 @@
               "action": "attack",
               "attack": "+0",
               "modifiers": [
-                { "modifier": "immobilize", "immobilize":  true },
-                { "modifier": "target", "target": 2 },
                 { "modifier": "html", "html": "Target one enemy with all attacks" }
               ]
             }
@@ -5090,11 +5089,6 @@
               "action": "attack",
               "attack": "+0",
               "modifiers": [
-                { "modifier": "immobilize", "immobilize":  true },
-                { "modifier": "target", "target": 2 },
-                { "modifier": "html", "html": "" },
-                { "modifier": "wound", "wound": true },
-                { "modifier": "poison", "poison": true },
                 { "modifier": "pull", "pull": 1 }
               ]
             },
@@ -5497,7 +5491,10 @@
             {
               "action": "attack",
               "attack": "-2",
-              "stun": true
+              "stun": true,
+              "modifiers": [
+                {"modifier": "stun", "stun": true}
+              ]
             }
           ]
         },
@@ -5745,7 +5742,7 @@
               "attack": "+2",
               "modifiers": [
                 {"modifier": "range", "range": "=3"},
-                {"modifier": "pull", "pull": true},
+                {"modifier": "pull", "pull": 2},
                 {"modifier": "immobilize", "immobilize": true}
               ]
             }
@@ -6228,7 +6225,7 @@
               "action": "attack",
               "attack": "+0",
               "modifiers": [
-                {"modifier": "range", "range": "=4"},
+                {"modifier": "range", "range": "=3"},
                 {"modifier": "poison", "poison": true}
               ]
             }
@@ -6243,8 +6240,7 @@
               "action": "attack",
               "attack": "+2",
               "modifiers": [
-                {"modifier": "poison", "range": true},
-                {"modifier": "target", "target": 2}
+                {"modifier": "poison", "poison": true}
               ]
             }
           ]
@@ -6701,8 +6697,6 @@
               "action": "push",
               "push": 1,
               "modifiers": [
-                { "modifier": "immobilize", "immobilize":  true },
-                { "modifier": "target", "target": 2 },
                 { "modifier": "html", "html": "Target all adjacent enemies"}
               ]
             },
