@@ -618,7 +618,7 @@
               "action": "heal",
               "heal": 2,
               "modifiers": [
-                { "modifier": "range", "range":  "3" }
+                { "modifier": "range", "range": "3" }
               ]
             }
           ]
@@ -686,7 +686,7 @@
               "action": "heal",
               "heal": 1,
               "modifiers": [
-                {"modifier":"html", "html":  "Self" }
+                {"modifier":"html", "html": "Self" }
               ]
             }
           ]
@@ -793,7 +793,7 @@
               "action": "heal",
               "heal":  2,
               "modifiers": [
-                {"modifier": "html","html":  "Self"}
+                {"modifier": "html","html": "Self"}
               ]
             }
           ]
@@ -1254,7 +1254,7 @@
               "action": "heal",
               "heal": 3,
               "modifiers": [
-                {"modifier":"range","range":  3}
+                {"modifier":"range","range": 3}
               ]
             }
           ]
@@ -1729,7 +1729,7 @@
               "action": "heal",
               "heal": 3,
               "modifiers": [
-                {"modifier":"html","html":  "Self"}
+                {"modifier":"html","html": "Self"}
               ]
             }
           ]
@@ -3218,7 +3218,7 @@
               "action": "heal",
               "heal":  3,
               "modifiers":  [
-                {"modifier":"range","range":  3}
+                {"modifier":"range","range": 3}
               ]
             }
           ]
@@ -3802,7 +3802,7 @@
               "action": "heal",
               "heal": 1,
               "modifiers": [
-                {"modifier":"html", "html":  "Self"}
+                {"modifier":"html", "html": "Self"}
               ]
             }
           ]
