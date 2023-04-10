@@ -40,7 +40,7 @@ export class ActionTextService {
           ''
         );
       default:
-        return `${this._titleCasePipe.transform(actionName)}${action[actionName]}`;
+        return `${this._titleCasePipe.transform(actionName)} ${action[actionName]}`;
     }
   }
 }

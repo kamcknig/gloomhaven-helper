@@ -37,3 +37,11 @@
         (click)="appService.toggleViewMode$.next()">
   <mat-icon>list</mat-icon>
 </button>
+
+<button
+  class="activate-monster"
+  type="button"
+  mat-fab
+  color="accent"
+  (click)="monsterService.selectMonsterToActivate().subscribe()">M
+</button>

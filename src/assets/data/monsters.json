@@ -4985,16 +4985,17 @@
           "imgName": "savvas-icestorm-1",
           "actions": [
             {
-              "action": "shield",
-              "shield": 1
-            },
-            {
               "action": "move",
               "move": "-1"
             },
             {
               "action": "attack",
               "attack": "-1"
+            },
+            {
+              "infuse": [
+                "cold"
+              ]
             }
           ]
         },
@@ -5004,12 +5005,24 @@
           "imgName": "savvas-icestorm-2",
           "actions": [
             {
+              "action": "disarm",
+              "disarm": "true",
+              "modifiers": [
+                { "modifier": "html", "html": "Target all adjacent enemies"}
+              ]
+            },
+            {
               "action": "move",
-              "move": "-1"
+              "move": "+0"
             },
             {
               "action": "attack",
-              "attack": "+1"
+              "attack": "-1"
+            },
+            {
+              "infuse": [
+                "wind"
+              ]
             }
           ]
         },
@@ -5018,15 +5031,12 @@
           "imgName": "savvas-icestorm-3",
           "actions": [
             {
-              "action": "move",
-              "move": "+0"
+              "action": "shield",
+              "shield": "4"
             },
             {
-              "action": "attack",
-              "attack": "-1",
-              "modifiers": [
-                { "modifier": "target", "target": 2 }
-              ]
+              "action": "heal",
+              "heal": 2
             }
           ]
         },
@@ -5036,12 +5046,11 @@
           "actions": [
             {
               "action": "attack",
-              "attack": "-1"
+              "attack": "+0"
             },
             {
-              "heal": [
-                1, 0
-              ]
+              "action": "retaliate",
+              "retaliate": 2
             }
           ]
         },
@@ -5055,7 +5064,13 @@
             },
             {
               "action": "attack",
-              "attack": "+0"
+              "attack": "-1",
+              "modifiers": [
+                {"modifier": "range", "range": "-1"}
+              ],
+              "infuse": [
+                "cold"
+              ]
             }
           ]
         },
@@ -5065,15 +5080,13 @@
           "imgName": "savvas-icestorm-6",
           "actions": [
             {
-              "action": "push",
-              "push": 1,
-              "modifiers": [
-                { "modifier": "html", "html": "Target all adjacent enemies" }
-              ]
+              "action": "html",
+              "html": "Summon normal Frost Demon"
             },
             {
-              "action": "attack",
-              "attack": "+0"
+              "infuse": [
+                "cold"
+              ]
             }
           ]
         },
@@ -5082,15 +5095,8 @@
           "imgName": "savvas-icestorm-7",
           "actions": [
             {
-              "action": "move",
-              "move": "+0"
-            },
-            {
-              "action": "attack",
-              "attack": "+0",
-              "modifiers": [
-                { "modifier": "pull", "pull": 1 }
-              ]
+              "action": "html",
+              "html": "Summon normal Frost Demon"
             },
             {
               "infuse": [
@@ -5491,7 +5497,6 @@
             {
               "action": "attack",
               "attack": "-2",
-              "stun": true,
               "modifiers": [
                 {"modifier": "stun", "stun": true}
               ]
