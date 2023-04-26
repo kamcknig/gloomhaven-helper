@@ -132,5 +132,10 @@
     </button>
   </mat-card>
 
-  <app-monster-ability-deck [monster]="monster$ | async"></app-monster-ability-deck>
+  <div id="deck-actions-container">
+    <app-monster-ability-deck #abilityDeck [monster]="monster$ | async"></app-monster-ability-deck>
+    <app-combat-actions [@drawerOpenClose]="drawerOpen ? 'actions-up' : 'actions-down'"
+                        [actions]="(activeCard$ | async)?.actions"></app-combat-actions>
+    <div #drawerHandle [@drawerOpenClose]="drawerOpen ? 'drawer-open' : 'drawer-closed'" class="drawer-handle"></div>
+  </div>
 </ng-container>

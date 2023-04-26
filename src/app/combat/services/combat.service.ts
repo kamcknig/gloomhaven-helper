@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {createAdapter} from '@state-adapt/core';
+import {buildAdapter, createAdapter} from '@state-adapt/core';
 import {MonsterService} from '../../monster/services/monster.service';
 import {adapt} from '@state-adapt/angular';
 import {isBoss, Mob, MonsterAbility, MonsterId} from '../../monster/services/model';
@@ -19,37 +19,22 @@ export class CombatService {
   public toggleTokenCondition$: Source<{ token: TokenInfo, condition: string }> = new Source(
     'toggleTokenCondition$');
 
-  private shuffleArray = (src: any[]) => {
-    for (let i = src.length - 1; i >= 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = src[i];
-      src[i] = src[j];
-      src[j] = temp;
-    }
-  }
-
   /**
-   * Returns the {@link MonsterAbility} that was drawn
-   *
-   * @param abilities
-   * @private
+   * Shuffles an Array and returns a NEW Array of the shuffled elements
+   * @param src
    */
-  private drawCard(abilities: MonsterAbility[]): MonsterAbility {
-    let ability = abilities.find(a => !a.drawn);
-
-    // if we couldn't find an ability that hasn't been drawn, shuffle the deck and
-    // reset the drawn property on them all
-    if (!ability) {
-      this.shuffleArray(abilities);
-      abilities.forEach(a => a.drawn = false);
-      ability = abilities[0];
+  private shuffleArray = <T>(src: T[]): T[] => {
+    const out = src.concat();
+    for (let i = out.length - 1; i >= 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = out[i];
+      out[i] = out[j];
+      out[j] = temp;
     }
-
-    ability.drawn = true;
-    return ability;
+    return out;
   }
 
-  private _adapter = createAdapter<CombatState>()({
+  private _combatAdapter = createAdapter<CombatState>()({
     toggleTokenElite: (state, event: TokenInfo | TokenInfo[]) => {
       const toggleTokens = Array.isArray(event) ? event : [event];
 
@@ -141,23 +126,32 @@ export class CombatService {
         activeMonsters: {
           ...state.activeMonsters,
           [event.id]: {
+            id: event.id,
             boss: isBoss(event) ? event.boss : false,
-            abilities
+            abilities,
+            name: event.name
           }
         }
       };
     },
-    monsterAbilityCardDraw: (state, event: MonsterId) => {
-      let abilities = [...state.activeMonsters[event].abilities];
-      const ability = this.drawCard(abilities);
+    drawMonsterAbilityCard: (state, event: MonsterId) => {
+      const combatMob = state.activeMonsters[event];
+      let newCard = isNaN(combatMob.card) ? 0 : combatMob.card + 1;
+      let abilities = combatMob.abilities;
+
+      if (newCard >= combatMob.abilities.length) {
+        abilities = this.shuffleArray(combatMob.abilities);
+        newCard = 0;
+      }
 
       return {
         ...state,
         activeMonsters: {
           ...state.activeMonsters,
           [event]: {
-            abilities,
-            initiative: ability.initiative
+            ...state.activeMonsters[event],
+            card: newCard,
+            abilities
           }
         }
       }
@@ -175,22 +169,18 @@ export class CombatService {
               return prev;
             }
 
-            const l = monster.abilities.length;
-            const cards = monster.abilities;
-            for (let i = l - 1; i >= 0; i--) {
-              if (cards[i].drawn && cards[i].shuffle) {
-                this.shuffleArray(cards);
-                cards.forEach(c => c.drawn = false);
-                break;
-              }
+            let newCard = isNaN(monster.card) ? 0 : monster.card + 1;
+            let abilities = monster.abilities;
+            if ((!isNaN(monster.card) && abilities[monster.card].shuffle) || newCard >= monster.abilities.length) {
+              abilities = this.shuffleArray(abilities);
+              newCard = 0;
             }
-
-            const ability = this.drawCard(cards);
 
             prev[monsterId] = {
               ...monster,
-              abilities: [...cards],
-              initiative: ability.initiative
+              abilities,
+              initiative: abilities[newCard].initiative,
+              card: newCard
             };
 
             return prev;
@@ -213,9 +203,42 @@ export class CombatService {
       round: state => state.round,
       tokens: state => state.tokens,
       activeMonsters: state => state.activeMonsters,
+      sortedMonsters: state => Object.values(state.activeMonsters)
+        .sort((mob1, mob2) => {
+          const m1Initiative = mob1.initiative;
+          const m2Initiative = mob2.initiative;
+
+          if (m1Initiative === undefined && m2Initiative === undefined) {
+            if (mob1.name < mob2.name) {
+              return -1;
+            } else if (mob2.name > mob1.name) {
+              return 1;
+            } else {
+              return 0;
+            }
+          }
+
+          if (m1Initiative === undefined) {
+            return 1;
+          }
+
+          if (m2Initiative === undefined) {
+            return -1;
+          }
+
+          return m1Initiative - m2Initiative;
+        }),
       turn: state => state.turn
     }
   });
+
+  private _actionAdapter = buildAdapter<CombatState>()(this._combatAdapter)({
+    actions: s => {
+      console.log(Object.values(s.sortedMonsters));
+      const monster = Object.values(s.sortedMonsters)?.[s.turn - 1] as CombatState['activeMonsters'][string];
+      return monster?.abilities?.[monster.card]?.actions ?? [];
+    }
+  })();
 
   public store = adapt(
     [
@@ -226,10 +249,10 @@ export class CombatService {
         tokens: [],
         activeMonsters: {}
       } as CombatState,
-      this._adapter
+      this._actionAdapter
     ],
     {
-      monsterAbilityCardDraw: this._monsterService.monsterAbilityCardDraw$,
+      drawMonsterAbilityCard: this._monsterService.drawMonsterAbilityCard$,
       activateMonster: this._monsterService.activateMonster$,
       deactivateMonster: this._monsterService.deactivateMonster$,
       roundComplete: this.roundComplete$,
@@ -240,7 +263,7 @@ export class CombatService {
       nextTurn: this.nextTurn$,
       previousTurn: this.previousTurn$
     }
-  )
+  );
 
   constructor(
     private _monsterService: MonsterService

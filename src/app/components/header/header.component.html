@@ -32,10 +32,11 @@
          [ngClass]="{
               'infused': element.level === ElementPhases.infused,
               'waning': element.level === ElementPhases.waning,
-              'dark': element.name.toLowerCase() === 'dark'
+              'dark': $any(element.name) === 'dark'
              }"
          (click)="elementService.cycleElement$.next(element.name)">
-      <img [src]="'assets/icons/element-' + element.name.toLowerCase() + '.png'">
+      <img [src]="'assets/icons/element-' + element.name + '.png'"
+           alt="">
     </div>
   </div>
 </mat-toolbar>

@@ -1,5 +1,3 @@
-import {ElementNames} from "../../elements/model";
-
 export type MonsterId = number | string;
 
 export enum Conditions {
@@ -14,19 +12,23 @@ export enum Conditions {
   stun = "stun",
   wound = "wound"
 }
-export type Condition = keyof typeof Conditions;
-export const isCondition = (value: string): value is Condition => {
+
+export type ConditionNames = keyof typeof Conditions;
+
+export const isCondition = (value: string): value is ConditionNames => {
   return Object.values(Conditions).includes(value as Conditions);
 }
 
 export enum AttackEffects {
   pull = 'pull',
-  push = "push",
-  pierce = "pierce",
-  target = "target"
+  push = 'push',
+  pierce = 'pierce',
+  target = 'target'
 }
-export type AttackEffect = keyof typeof AttackEffects;
-export const isAttackEffect = (value: string): value is AttackEffect => {
+
+export type AttackEffectNames = keyof typeof AttackEffects;
+
+export const isAttackEffect = (value: string): value is AttackEffectNames => {
   return Object.values(AttackEffects).includes(value as AttackEffects);
 }
 
@@ -34,8 +36,10 @@ export enum Bonuses {
   'shield' = 'shield',
   'retaliate' = "retaliate"
 }
-export type Bonus = keyof typeof Bonuses;
-export const isBonus = (value: string): value is Bonus => {
+
+export type BonusNames = keyof typeof Bonuses;
+
+export const isBonus = (value: string): value is BonusNames => {
   return Object.values(Bonuses).includes(value as Bonuses);
 }
 
@@ -55,6 +59,10 @@ export const ApplicableConditions = [
   'wound'
 ] as const;
 
+/**
+ * Represents the values of a stat for a monster. It represents the values at a particular level. The first number
+ * of the tuple is the normal monster value, and the second in the tuple is the elite monster value
+ */
 export type Stat = [number, number];
 
 export enum Attributes {
@@ -63,9 +71,11 @@ export enum Attributes {
   'attack' = "attack",
   'range' = "range"
 }
+
 export type Attribute = keyof typeof Attributes;
 
 export type Boss = Monster & { boss: true };
+
 export const isBoss = (value: Monster): value is Boss => {
   return !!value && value.hasOwnProperty('boss') && value['boss'] === true;
 }
@@ -82,24 +92,24 @@ export interface Monster {
   };
 
   /**
-   * Contains info on the conditions a {@link Monster} has. The conditions are {@link Condition}
+   * Contains info on the conditions a {@link Monster} has. The conditions are {@link ConditionNames}
    */
   conditions: {
-    [key in Condition]: Stat[];
+    [key in ConditionNames]: Stat[];
   }
 
   /**
-   * Contains info on the attack effects a {@link Monster} has. The attack effects are {@link AttackEffect}
+   * Contains info on the attack effects a {@link Monster} has. The attack effects are {@link AttackEffectNames}
    */
   attackEffects: {
-    [key in AttackEffect]: Stat[];
+    [key in AttackEffectNames]: Stat[];
   }
 
   /**
-   * Contains info on the bonuses a monster has. The bonuses are {@link Bonus}
+   * Contains info on the bonuses a monster has. The bonuses are {@link BonusNames}
    */
   bonuses: {
-    [key in Bonus]: (Stat | [Stat, Stat])[];
+    [key in BonusNames]: (Stat | [Stat, Stat])[];
   }
 
   flying?: boolean;
@@ -121,123 +131,70 @@ export interface Monster {
  */
 export type StatModifier = number | string;
 
+/**
+ * Generic monster type
+ */
 export type Mob = Boss | Monster;
 
-export type MobAction = {
-  /**
-   * Indicates the {@link StatModifier} that modifies the {@link MobAction}s attack power
-   */
-  attack?: StatModifier;
+export type MoveModifierNames = 'jump' | 'flying';
+export type ActionNames = ConditionNames | BonusNames | AttackEffectNames | 'attack' | 'move' | 'heal';
 
-  /**
-   * Indicates the {@link MobAction} should apply {@link Condition.bless}
-   */
-  // todo: might change to a [number, number] or [boolean, number]?
-  bless?: boolean;
+export type AttackEffectModifier = {
+  [p in AttackEffectNames]: number;
+}
 
-  /**
-   * Indicates the {@link MobAction} applies {@link Condition.curse} to the target
-   */
-  curse?: boolean;
+export type TextModifier = {
+  text: string;
+}
 
-  /**
-   * Indicates that the {@link MobAction} applies {@link Condition.immobilize}
-   */
-  immobilize?: boolean;
+export type RangeModifier = {
+  range: StatModifier;
+}
 
-  /**
-   * Indicates that the {@link MobAction} provides jump for any movement
-   */
-  jump?:boolean;
+export type MoveModifier = {
+  [p in MoveModifierNames]: boolean;
+}
 
-  /**
-   * Indicates that the {@link MobAction} applies a heal effect to the target and at what range if any
-   */
-  heal?: [number, number];
+export type ConditionModifier = {
+  [p in ConditionNames]: boolean;
+}
 
-  /**
-   * Any text on the card that might modify the {@link MobAction}
-   */
-  'info-text': string;
+export type BonusModifier = {
+  [p in BonusNames]: number | [number, number];
+}
 
-  /**
-   * Indicates which elements the {@link MobAction} infuses during the turn
-   */
-  infuse?: ElementNames[];
+export type ActionModifier = { modifier: string } &
+  (AttackEffectModifier
+  | TextModifier
+  | RangeModifier
+  | BonusModifier
+  | ConditionModifier);
 
-  /**
-   * Indicates a loot {@link MobAction}
-   */
-  loot?: boolean;
+export type Action = {
+  [p in ActionNames]?: StatModifier;
+} & {
+  action: ActionNames,
+  modifiers?: ActionModifier[]
+};
 
-  /**
-   * Indicates the number of hexes to modify the {@link MobAction} movement value
-   */
-  move?: StatModifier;
+export const isAction = (value: any): value is Action => {
+  return !!value && value['action'] !== undefined;
+}
 
-  /**
-   * Indicates that the {@link MobAction} applies {@link Condition.muddle} to the target
-   */
-  muddle?: boolean;
-
-  /**
-   * Indicates the number amount of shield a {@link MobAction}s ignores
-   */
-  pierce?: number;
-
-  /**
-   * Indicates the number of hexes the {@link MobAction}s targets are pulled
-   */
-  pull?: StatModifier;
-
-  /**
-   * Indicates the number of hexes the {@link MobAction}s targets are pushed
-   */
-  push?: StatModifier;
-
-  /**
-   * Indicates the {@link StatModifier} that modifies the {@link MobAction}s range
-   */
-  range?: StatModifier;
-
-  /**
-   * Indicates the {@link MobAction} imbues the {@link Mob} with {@link Bonus.retaliate} and the range
-   * at which it applies
-   */
-  retaliate?: [StatModifier, number];
-
-  /**
-   * Indicates the shield value the {@link MobAction} adds to the attacker
-   */
-  shield?: StatModifier;
-
-  /**
-   * Indicates that the {@link MobAction} applies {@link Bonus.shield}
-   */
-  strengthen?: boolean;
-
-  /**
-   * Indicates the {@link StatModifier} that modifies the {@link MobAction}s number of targets
-   */
-  target?: StatModifier;
-
-  /**
-   * Indicates the {@link MobAction} applies {@link Condition.wound} to the target
-   */
-  wound?: boolean;
+export const isActionModifier = (value: any): value is Action => {
+  return !!value && value['modifier'] !== undefined;
 }
 
 /**
  * Represents a single round ability a monster has. These are the monster "cards".
  */
 export type MonsterAbility = {
-  initiative: number,
-  shuffle?: boolean,
-  imgName: string,
-  count?: number,
-  drawn?: boolean;
+  initiative: number;
+  shuffle?: boolean;
+  imgName: string;
+  count?: number;
 
-  actions?: MobAction[]
+  actions?: Action[];
 }
 
 export type MonsterNoId = Omit<Monster, 'id'>;

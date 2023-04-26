@@ -77,7 +77,7 @@ export class MonsterService {
   public deactivateMonster$: Source<Monster> = new Source('deactivateMonster$')
 
   // trigger draw action, pass monster ID
-  public monsterAbilityCardDraw$: Source<MonsterId> = new Source('drawAbilityCard$');
+  public drawMonsterAbilityCard$: Source<MonsterId> = new Source('drawAbilityCard$');
 
   public overrideMonsterLevel$: Source<{ monsterId: MonsterId; level: number }> = new Source('overrideMonsterLevel$');
 

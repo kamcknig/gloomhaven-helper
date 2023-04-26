@@ -1,0 +1,9 @@
+<div class="action-wrapper">
+  <div class="main-line-action-wrapper" [ngClass]="actionClass">
+    <span [actionText]="action"></span>
+  </div>
+
+  <div class="action-modifier-wrapper" *ngFor="let mod of action.modifiers">
+    <span [actionText]="mod"></span>
+  </div>
+</div>

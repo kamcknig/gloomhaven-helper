@@ -20,8 +20,27 @@
     margin-bottom: 10px;
   }
 
-  app-monster-ability-deck {
-    flex: 1 1 0;
+  #deck-actions-container {
+    overflow: hidden;
+    position: relative;
+
+    app-monster-ability-deck {
+      height: 100%;
+    }
+
+    app-combat-actions {
+      width: calc(100% - 20px);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    .combat-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   &.active ::ng-deep .mat-card {
@@ -35,13 +54,13 @@
   }
 
   #add-token {
-    right: 5px;
+    left: 5px;
     bottom: 5px;
   }
 
   #remove-monster {
     top: 5px;
-    right: 5px;
+    left: 5px;
   }
 
   &:hover {
@@ -140,4 +159,16 @@
       }
     }
   }
+}
+
+.drawer-handle {
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-bottom: 20px solid red;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  user-select: none;
 }

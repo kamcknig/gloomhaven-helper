@@ -32,7 +32,7 @@ export class AppService {
       'scenario',
       {
         level: 1,
-        viewMode: 'list' as ViewMode
+        viewMode: 'normal' as ViewMode
       },
       this._scenarioAdapter
     ],
@@ -58,4 +58,3 @@ export class AppService {
   ) {
   }
 }
-

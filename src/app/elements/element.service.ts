@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { createAdapter } from '@state-adapt/core';
-import { Element, ElementNames, ElementPhases, Elements, ElementState } from './model';
-import { adapt } from '@state-adapt/angular';
-import { CombatService } from '../combat/services/combat.service';
-import { Source } from '@state-adapt/rxjs';
+import {Injectable} from '@angular/core';
+import {createAdapter} from '@state-adapt/core';
+import {Element, ElementNames, ElementPhases, Elements, ElementState} from './model';
+import {adapt} from '@state-adapt/angular';
+import {CombatService} from '../combat/services/combat.service';
+import {Source} from '@state-adapt/rxjs';
 
 @Injectable({
   providedIn: 'root'

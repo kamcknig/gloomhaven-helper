@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {AppService} from '../../../app.service';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import {map, switchMap, takeUntil} from 'rxjs/operators';
 import {MatDialog} from '@angular/material/dialog';
-import {isBoss, Monster} from '../../services/model';
+import {isBoss, Monster, MonsterAbility} from '../../services/model';
 import {TokenInfo} from '../../../combat/services/model';
 import {CombatService} from '../../../combat/services/combat.service';
 import {MonsterService} from '../../services/monster.service';
@@ -25,6 +25,8 @@ import {ConditionListPipe} from '../../pipes/condition-list.pipe';
 import {AttackEffectListPipe} from '../../pipes/attack-effect-list.pipe';
 import {BonusListPipe} from '../../pipes/bonus-list.pipe';
 import {LetModule} from "@ngrx/component";
+import {CombatActionsComponent} from "../../../combat/components/combat-actions/combat-actions.component";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'monster-detail',
@@ -48,15 +50,50 @@ import {LetModule} from "@ngrx/component";
     ConditionListPipe,
     AttackEffectListPipe,
     BonusListPipe,
-    LetModule
+    LetModule,
+    CombatActionsComponent
+  ],
+  animations: [
+    trigger('drawerOpenClose', [
+      state('drawer-open', style({
+        transform: 'translateY(-100%) translateX(-50%)',
+        top: 0,
+        bottom: 'unset',
+        opacity: 0
+      })),
+      state('drawer-closed', style({
+        bottom: 0,
+        opacity: 1
+      })),
+      state('actions-up', style({
+        transform: 'translateY(-50%) translateX(-50%)',
+        left: '50%',
+        top: '50%',
+        bottom: 'unset'
+      })),
+      state('actions-down', style({
+        bottom: 0,
+        top: 'unset',
+        left: '50%',
+        transform: 'translateY(100%) translateX(-50%)'
+      })),
+      transition('* => *', [
+        animate('.5s ease-out')
+      ])
+    ])
   ]
 })
-export class MonsterDetailComponent implements OnInit {
+export class MonsterDetailComponent implements OnInit, AfterViewInit {
   private _monster: Monster;
+
+  @ViewChild('drawerHandle') public drawerHandle: ElementRef;
+  @ViewChild('abilityDeck', { read: ElementRef}) public abilityDeck: ElementRef;
 
   public isBoss = isBoss;
 
   public monster$: BehaviorSubject<Monster> = new BehaviorSubject<Monster>(undefined);
+
+  public drawerOpen: boolean = false;
 
   get monster(): Monster {
     return this._monster;
@@ -71,6 +108,7 @@ export class MonsterDetailComponent implements OnInit {
   public monsterLevel$: Observable<number | undefined>;
   public scenarioLevel$: Observable<number | undefined>;
   public tokenCount$: Observable<number>;
+  public activeCard$: Observable<MonsterAbility>;
 
   private _destroy$: Subject<void> = new Subject<void>();
 
@@ -108,11 +146,38 @@ export class MonsterDetailComponent implements OnInit {
       takeUntil(this._destroy$)
     );
 
-    this.monsterLevel$ = this.appService.monsterLevel(this._monster.id).level$;
+    this.monsterLevel$ = this.appService.monsterLevel(this.monster$.value.id).level$;
+
+    const deck$ = this.monster$.pipe(
+      switchMap(monster => this.combatService.store.activeMonsters$.pipe(map(value => value[monster.id]?.abilities)))
+    );
+
+    this.activeCard$ = combineLatest([
+      deck$,
+      this.monster$,
+      this.combatService.store.activeMonsters$
+    ]).pipe(
+      map(([deck, monster, combatMobs]) => {
+        if (!deck?.length) {
+          return undefined;
+        }
+
+        return deck[combatMobs[monster.id].card];
+      })
+    );
+  }
+
+  ngAfterViewInit():void {
+    this.drawerHandle.nativeElement.addEventListener('mouseover', () => {
+      this.drawerOpen = true;
+      this.abilityDeck.nativeElement.addEventListener('mouseout', () => {
+        this.drawerOpen = false;
+      })
+    });
   }
 
   removeMonster() {
-    this.monsterService.deactivateMonster$.next(this._monster);
+    this.monsterService.deactivateMonster$.next(this.monster$.value);
   }
 
   getTokenConditionsAndEffects(token: TokenInfo) {
