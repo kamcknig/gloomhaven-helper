@@ -2,7 +2,7 @@ import {Component, Input, OnInit, Renderer2} from '@angular/core';
 import {MonsterService} from "../../services/monster.service";
 import {BehaviorSubject, combineLatest, Observable} from "rxjs";
 import {isBoss, Monster} from "../../services/model";
-import {CommonModule} from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import {AppService} from '../../../app.service';
 import {MonsterAttributesComponent} from '../monster-attributes-component/monster-attributes.component';
 import {MatIconModule} from '@angular/material/icon';
@@ -41,7 +41,8 @@ import {MatButtonModule} from "@angular/material/button";
     ConditionListPipe,
     AttackEffectListPipe,
     BonusListPipe,
-    LetModule
+    LetModule,
+    NgOptimizedImage
   ]
 })
 export class MonsterListItemComponent implements OnInit {

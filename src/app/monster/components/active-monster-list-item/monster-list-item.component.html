@@ -13,14 +13,17 @@
         </ng-container>
 
         <span *ngIf="(monster$ | async)?.flying">
-        <img class="flying-icon"
-             src="/assets/icons/flying.png"
-             alt="flying">
-      </span>
+          <img class="flying-icon"
+               [ngSrc]="'/assets/icons/flying.png'"
+               width="1"
+               height="1"
+               alt="flying">
+        </span>
 
         <ng-container *ngIf="!isBoss(monster)">
           <div class="header-button-container">
-            <button mat-mini-fab
+            <button mat-fab
+                    extended
                     id="add-token"
                     type="button"
                     [disabled]="(tokenCount$ | async) === 10"
@@ -30,9 +33,9 @@
         </ng-container>
       </div>
 
-      <div class="stats-token-container">
+      <div class="all-stats-token-container">
         <ng-container *ngFor="let elite of isBoss(monster) ? [0] : [0, 1]; last as last;">
-          <div [class]="!elite ? 'normal' : 'elite'">
+          <div class="stats-token-container" [class]="!elite ? 'normal' : 'elite'">
             <!-- displays monster attributes such as health, movement, etc. -->
             <app-monster-attributes [monster]="monster"
                                     [index]="elite"

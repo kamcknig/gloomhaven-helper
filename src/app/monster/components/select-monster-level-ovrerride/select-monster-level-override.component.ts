@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 
 @Component({
   selector: 'app-select-monster-level-override',
@@ -19,7 +19,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
     MatCardModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ]
 })
 export class SelectMonsterLevelOverrideComponent implements OnInit {

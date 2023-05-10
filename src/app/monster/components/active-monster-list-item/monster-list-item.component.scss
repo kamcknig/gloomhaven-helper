@@ -45,9 +45,13 @@
       }
     }
 
-    .stats-token-container {
+    .all-stats-token-container {
       display: flex;
       width: 100%;
+
+      .stats-token-container {
+        flex: 0 0 50%;
+      }
 
       .normal, .elite {
         display: flex;
@@ -122,14 +126,9 @@
     }
   }
 
-
-
-
   app-monster-ability-deck {
     flex: 0 1 9.9rem;
   }
-
-
 }
 
 :host ::ng-deep app-monster-attributes.boss {
@@ -138,7 +137,7 @@
     font-size: 1.2rem;
 
     .icon {
-      height:auto;
+      height: auto;
       max-width: 2rem;
     }
   }
