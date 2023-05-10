@@ -1,14 +1,14 @@
 import {AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, QueryList, ViewChildren} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInput, MatInputModule} from "@angular/material/input";
+import {MatLegacyFormFieldModule as MatFormFieldModule} from "@angular/material/legacy-form-field";
+import {MatLegacyInput as MatInput, MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";
 import {FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {MatDialogModule} from "@angular/material/dialog";
-import {MatButtonModule} from "@angular/material/button";
+import {MatLegacyDialogModule as MatDialogModule} from "@angular/material/legacy-dialog";
+import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy-button";
 import {DIALOG_DATA} from "@angular/cdk/dialog";
 import {AttackEffects, Attributes, Bonuses, Conditions, Monster} from "../../services/model";
 import {MatDividerModule} from '@angular/material/divider';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatLegacyCheckboxModule as MatCheckboxModule} from '@angular/material/legacy-checkbox';
 import {Subject} from "rxjs";
 
 type BossForm = {

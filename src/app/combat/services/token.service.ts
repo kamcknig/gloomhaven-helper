@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AddTokenDialogComponent} from '../../monster/components/add-token-dialog/add-token-dialog.component';
 import {filter, map, switchMap, withLatestFrom} from 'rxjs/operators';
 import {TokenInfo} from './model';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {AppService} from '../../app.service';
 import {CombatService} from './combat.service';
 import {Subject} from 'rxjs';

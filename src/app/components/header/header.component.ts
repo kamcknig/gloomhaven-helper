@@ -3,7 +3,7 @@ import {ElementService} from '../../elements/element.service';
 import {ElementPhases} from '../../elements/model';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CommonModule} from '@angular/common';
-import {MatButtonModule} from '@angular/material/button';
+import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {ScenarioLevelInputComponent} from '../scenario-level-input/scenario-level-input.component';
 import {ScenarioRoundComponent} from '../scenario-round/scenario-round.component';

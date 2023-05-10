@@ -1,16 +1,16 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatButtonModule} from "@angular/material/button";
+import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy-button";
 import {MatIconModule} from "@angular/material/icon";
 import {FlexModule} from "@angular/flex-layout";
 import {ApplicableConditions} from '../../../monster/services/model';
 import {CombatService} from "../../../combat/services/combat.service";
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialogModule as MatDialogModule, MatLegacyDialogRef as MatDialogRef} from "@angular/material/legacy-dialog";
 import {TokenInfo} from "../../../combat/services/model";
 import {filter, map, takeUntil, tap} from "rxjs/operators";
 import {Observable, Subject} from "rxjs";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
+import {MatLegacyFormFieldModule as MatFormFieldModule} from "@angular/material/legacy-form-field";
+import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";
 import {FormControl, ReactiveFormsModule, Validators} from "@angular/forms";
 import {LetModule} from "@ngrx/component";
 
