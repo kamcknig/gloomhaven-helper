@@ -1,13 +1,9 @@
 <ng-container *ngrxLet="monster$ as monster">
-  <div fxLayout="row"
-       fxLayoutGap="5px"
-       fxLayoutAlign="start center">
+  <div class="monster-list-item-container">
     <div class="active-indicator"
-         fxFlex="20px"
          [ngStyle]="{'display': active ? 'block' : 'none'}"></div>
 
-    <section fxLayout="column"
-             fxFlex="1 0 18rem">
+    <section class="section-container">
       <div class="header">
         <!-- the name and level -->
         <span class="monster-name">{{ monster.name }}</span>
@@ -17,14 +13,17 @@
         </ng-container>
 
         <span *ngIf="(monster$ | async)?.flying">
-        <img class="flying-icon"
-             src="/assets/icons/flying.png"
-             alt="flying">
-      </span>
+          <img class="flying-icon"
+               [ngSrc]="'/assets/icons/flying.png'"
+               width="1"
+               height="1"
+               alt="flying">
+        </span>
 
         <ng-container *ngIf="!isBoss(monster)">
           <div class="header-button-container">
-            <button mat-mini-fab
+            <button mat-fab
+                    extended
                     id="add-token"
                     type="button"
                     [disabled]="(tokenCount$ | async) === 10"
@@ -34,13 +33,9 @@
         </ng-container>
       </div>
 
-      <div class="stats-token-container"
-           fxLayout="row">
+      <div class="all-stats-token-container">
         <ng-container *ngFor="let elite of isBoss(monster) ? [0] : [0, 1]; last as last;">
-          <div fxLayout="column"
-               fxFlex
-               fxLayoutGap=".5rem"
-               [class]="!elite ? 'normal' : 'elite'">
+          <div class="stats-token-container" [class]="!elite ? 'normal' : 'elite'">
             <!-- displays monster attributes such as health, movement, etc. -->
             <app-monster-attributes [monster]="monster"
                                     [index]="elite"
@@ -50,27 +45,20 @@
 
             <!-- displays the Monsters stats including conditions, bonuses, etc. -->
             <div *ngIf="monsterLevel$ | async as level"
-                 [fxLayout]="!elite  ? 'row wrap' : 'row-reverse wrap'"
-                 style="gap: .15rem;">
+                 class="stats-conditions-bonuses-container">
               <app-monster-stat *ngFor="let effect of monster | conditionList : level : $any(elite)"
                                 [condition]="$any(effect)"
-                                [conditionAmount]="monster | monsterStat : effect : level : $any(elite)"
-                                fxLayout="row"
-                                fxLayoutAlign="start center">
+                                [conditionAmount]="monster | monsterStat : effect : level : $any(elite)">
               </app-monster-stat>
 
               <app-monster-stat *ngFor="let effect of monster | attackEffectList : level : $any(elite)"
                                 [condition]="$any(effect)"
-                                [conditionAmount]="monster | monsterStat : effect : level : $any(elite)"
-                                fxLayout="row"
-                                fxLayoutAlign="start center">
+                                [conditionAmount]="monster | monsterStat : effect : level : $any(elite)">
               </app-monster-stat>
 
               <app-monster-stat *ngFor="let effect of monster | bonusList : level : $any(elite)"
                                 [condition]="$any(effect)"
-                                [conditionAmount]="monster | monsterStat : effect : level : $any(elite)"
-                                fxLayout="row"
-                                fxLayoutAlign="start center">
+                                [conditionAmount]="monster | monsterStat : effect : level : $any(elite)">
               </app-monster-stat>
             </div>
 

@@ -12,38 +12,40 @@
 $default-font-size: 1.5rem;
 
 $my-custom-typography: mat.define-typography-config(
- $font-family: 'gloomhaven',
- $display-4:     mat.define-typography-level(6.2rem, 6.2rem, 300, $letter-spacing: -0.05em),
- $display-3:     mat.define-typography-level(3.1rem, 3.1rem, 400, $letter-spacing: -0.02em),
- $display-2:     mat.define-typography-level(2.5rem, 2.6rem, 400, $letter-spacing: -0.005em),
- $display-1:     mat.define-typography-level(1.8rem, 2.0rem, 400),
- $headline:      mat.define-typography-level(1.3rem, 1.6rem, 400),
- $title:         mat.define-typography-level($default-font-size, calc(#{$default-font-size} * .8), 500),
- $subheading-2:  mat.define-typography-level(.88rem, 1.5rem, 400),
- $subheading-1:  mat.define-typography-level(.83rem, 1.3rem, 400),
- $body-2:        mat.define-typography-level(.77rem, 1.3rem, 500),
- $body-1:        mat.define-typography-level(.77rem, 1.1rem, 400),
+ $font-family:   'gloomhaven',
+ $headline-1:    mat.define-typography-level(6.2rem, 6.2rem, 300, $letter-spacing: -0.05em),
+ $headline-2:    mat.define-typography-level(3.1rem, 3.1rem, 400, $letter-spacing: -0.02em),
+ $headline-3:    mat.define-typography-level(2.5rem, 2.6rem, 400, $letter-spacing: -0.005em),
+ $headline-4:    mat.define-typography-level(1.8rem, 2.0rem, 400),
+ $headline-5:    mat.define-typography-level(1.3rem, 1.6rem, 400),
+ $headline-6:    mat.define-typography-level($default-font-size, calc(#{$default-font-size} * .8), 500),
+ $subtitle-1:    mat.define-typography-level(.88rem, 1.5rem, 400),
+ $body-1:        mat.define-typography-level(.83rem, 1.3rem, 400),
+ $subtitle-2:    mat.define-typography-level(.77rem, 1.3rem, 500),
+ $body-2:        mat.define-typography-level(.77rem, 1.1rem, 400),
  $caption:       mat.define-typography-level(.66rem, 1.1rem, 400),
- $button:        mat.define-typography-level(.77rem, .77rem, 500),
-   // Line-height must be unit-less fraction of the font-size.
- $input:         mat.define-typography-level(inherit, 1.125, 400)
+ $button:        mat.define-typography-level(1rem, .77rem, 500)
 );
 
-@include mat.core($my-custom-typography);
+// TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
+//  The following line adds:
+//    1. Default typography styles for all components
+//    2. Styles for typography hierarchy classes (e.g. .mat-headline-1)
+//  If you specify typography styles for the components you use elsewhere, you should delete this line.
+//  If you don't need the default component typographies but still want the hierarchy styles,
+//  you can delete this line and instead use:
+//    `@include mat.legacy-typography-hierarchy($my-custom-typography);`
+@include mat.all-component-typographies($my-custom-typography);
+@include mat.core();
 
-@mixin app-mat-button() {
-  .mat-raised-button, .mat-mini-fab {
-    font-size: $default-font-size;
-  }
-}
+$palette: mat.define-palette(mat.$deep-purple-palette);
 
 @mixin app-mat-input() {
   mat-form-field {
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
+    /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
     .mat-form-field-infix {
-      > .mat-input-element {
-        font-size: $default-font-size;
-      }
-
+      /* TODO(mdc-migration): The following rule targets internal classes of form-field that may no longer apply for the MDC version. */
       .mat-form-field-label-wrapper {
         font-size: calc(#{$default-font-size} * .8);
       }
@@ -51,20 +53,10 @@ $my-custom-typography: mat.define-typography-config(
   }
 }
 
-@mixin app-mat-card() {
-  mat-card {
-    .mat-card-content {
-      font-size: $default-font-size;
-    }
-  }
-}
-
 @mixin components() {
-  @include app-mat-button();
   @include app-mat-input();
-  @include app-mat-card();
 
-  .mat-option {
+  .mat-mdc-option {
     font-size: calc(#{$default-font-size} * .8);
   }
 }
@@ -73,6 +65,10 @@ $my-custom-typography: mat.define-typography-config(
 
 .button {
   cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 html, body { height: 100%; font-size: 20px; }

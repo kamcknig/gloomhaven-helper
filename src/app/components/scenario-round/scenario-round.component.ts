@@ -3,10 +3,9 @@ import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CombatService } from '../../combat/services/combat.service';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-scenario-round',
@@ -15,7 +14,6 @@ import { MatIconModule } from "@angular/material/icon";
   standalone: true,
   imports: [
     CommonModule,
-    FlexLayoutModule,
     MatButtonModule,
     MatIconModule
   ]

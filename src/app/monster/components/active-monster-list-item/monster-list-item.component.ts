@@ -2,11 +2,9 @@ import {Component, Input, OnInit, Renderer2} from '@angular/core';
 import {MonsterService} from "../../services/monster.service";
 import {BehaviorSubject, combineLatest, Observable} from "rxjs";
 import {isBoss, Monster} from "../../services/model";
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {CommonModule} from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import {AppService} from '../../../app.service';
 import {MonsterAttributesComponent} from '../monster-attributes-component/monster-attributes.component';
-import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {TokenService} from "../../../combat/services/token.service";
 import {MonsterLevelComponent} from "../monster-level/monster-level.component";
@@ -22,6 +20,7 @@ import {ConditionListPipe} from '../../pipes/condition-list.pipe';
 import {AttackEffectListPipe} from '../../pipes/attack-effect-list.pipe';
 import {BonusListPipe} from '../../pipes/bonus-list.pipe';
 import {LetModule} from "@ngrx/component";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'monster-list-item',
@@ -30,7 +29,6 @@ import {LetModule} from "@ngrx/component";
   standalone: true,
   imports: [
     CommonModule,
-    FlexLayoutModule,
     MonsterAttributesComponent,
     MatButtonModule,
     MatIconModule,
@@ -43,7 +41,8 @@ import {LetModule} from "@ngrx/component";
     ConditionListPipe,
     AttackEffectListPipe,
     BonusListPipe,
-    LetModule
+    LetModule,
+    NgOptimizedImage
   ]
 })
 export class MonsterListItemComponent implements OnInit {

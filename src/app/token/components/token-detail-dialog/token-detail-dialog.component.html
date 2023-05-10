@@ -13,14 +13,10 @@
                min="0"
                placeholder="max {{(token$ | async)?.maxHealth}}">
 
-        <mat-hint>Setting to 0 will delete token<br/>Token hit point changes apply when focus leaves the input
-        </mat-hint>
+        <mat-hint>Setting to 0 will delete token</mat-hint>
       </mat-form-field>
 
-      <div fxFlexFill
-           fxLayout="row wrap"
-           fxLayoutAlign="center center"
-           fxLayoutGap=".7rem grid"
+      <div class="conditions-container"
            style="padding: 1rem; overflow: hidden">
         <ng-container *ngFor="let value of ApplicableConditions">
           <ng-container *ngIf="token$ | async as token">

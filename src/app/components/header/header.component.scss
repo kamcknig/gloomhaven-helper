@@ -8,6 +8,10 @@
   border-radius: 50%;
 }
 
+:host ::ng-deep button {
+  transform: scale(.6);
+}
+
 :host {
   position: fixed;
   top: 0;
@@ -15,9 +19,29 @@
   width: 100vw;
 
   .mat-toolbar {
+    height: 120px;
     padding: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .round-turn-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .shortcuts-container {
+      display: flex;
+      flex-direction: column;
+      gap: -.15rem;
+    }
 
     .element-wrapper {
+      display: flex;
+      gap: 30px;
+
       .element-icon {
         img {
           width: 100%;

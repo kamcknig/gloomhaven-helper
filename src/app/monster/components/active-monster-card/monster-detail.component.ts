@@ -2,16 +2,12 @@ import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@a
 import {AppService} from '../../../app.service';
 import {BehaviorSubject, combineLatest, Observable, Subject} from 'rxjs';
 import {map, switchMap, takeUntil} from 'rxjs/operators';
-import {MatDialog} from '@angular/material/dialog';
 import {isBoss, Monster, MonsterAbility} from '../../services/model';
 import {TokenInfo} from '../../../combat/services/model';
 import {CombatService} from '../../../combat/services/combat.service';
 import {MonsterService} from '../../services/monster.service';
 import {CommonModule} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
 import {MatDividerModule} from '@angular/material/divider';
 import {MonsterAbilityDeckComponent} from '../monster-ability-deck/monster-ability-deck.component';
 import {TokenListItemComponent} from '../../../token/components/token-list-item/token-list-item.component';
@@ -27,6 +23,9 @@ import {BonusListPipe} from '../../pipes/bonus-list.pipe';
 import {LetModule} from "@ngrx/component";
 import {CombatActionsComponent} from "../../../combat/components/combat-actions/combat-actions.component";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'monster-detail',
@@ -36,7 +35,6 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   imports: [
     CommonModule,
     MatIconModule,
-    FlexLayoutModule,
     MatCardModule,
     MatButtonModule,
     MatDividerModule,

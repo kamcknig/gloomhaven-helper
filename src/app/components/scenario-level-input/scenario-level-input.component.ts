@@ -1,9 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { AppService } from '../../app.service';
 import { takeUntil } from 'rxjs/operators';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MAX_LEVEL } from 'src/app/scenario-options/max-level.token';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-scenario-level-input',
@@ -11,24 +15,24 @@ import { MatInputModule } from '@angular/material/input';
   styleUrls: ['./scenario-level-input.component.scss'],
   standalone: true,
   imports: [
+    CommonModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class ScenarioLevelInputComponent implements OnInit, OnDestroy {
   private _destroy$: Subject<void> = new Subject<void>();
 
-  public levelInputControl = new FormControl('');
+  protected readonly Math = Math;
 
-  constructor(public appService: AppService) { }
+  public level$: BehaviorSubject<number> = new BehaviorSubject<number>(undefined);
+
+  constructor(@Inject(MAX_LEVEL) public MAX_LEVEL: number, public appService: AppService) { }
 
   ngOnInit(): void {
-    this.appService.scenarioStore.level$.pipe(takeUntil(this._destroy$))
-      .subscribe({
-        next: (value) => {
-          this.levelInputControl.setValue(value.toString());
-        }
-      })
+    this.appService.scenarioStore.level$.pipe(takeUntil(this._destroy$)).subscribe(this.level$);
   }
 
   ngOnDestroy(): void {

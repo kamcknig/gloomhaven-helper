@@ -5,84 +5,130 @@
   max-width: 30rem;
 }
 
-.header {
-  font-size: 1.5rem;
-  position: relative;
-  background: linear-gradient(to right, white -25%, rgba(var(--gray), .5) 50%, rgba(var(--gold), .5) 50%, white 125%);
-  padding: 1rem;
+.monster-list-item-container {
+  display: flex;
+  gap: 5px;
+  justify-content: start;
+  align-items: center;
 
-  .monster-name {
-    text-decoration: underline;
-    margin: 0;
+  .active-indicator {
+    background: map.get(mat.$deep-purple-palette, 500);
+    align-self: stretch;
+    flex: 20px;
   }
 
-  .header-button-container {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-  }
-
-  .flying-icon {
-    max-width: 2rem;
-    max-height: 2rem;
-  }
-}
-
-.stats-token-container {
-  width: 100%;
-
-  .normal {
-    background: linear-gradient(to right, rgba(var(--gray), .5) -25%, rgba(var(--gray), .2) 125%);
-  }
-
-  .elite {
-    background: rgba(var(--gold), .5);
-    background: linear-gradient(to right, rgba(var(--gold), .2) -25%, rgba(var(--gold), .5) 125%);
-  }
-
-  .token-container {
-    flex-flow: row wrap;
+  .section-container {
     display: flex;
-    box-sizing: border-box;
-    margin: 0 6px 6px 0;
-    gap: 17px 4px;
+    flex-direction: column;
+    flex: 1 0 18rem;
 
-    > .token-info {
-      cursor: pointer;
-      padding: 5px;
+    .header {
+      font-size: 1.5rem;
+      position: relative;
+      background: linear-gradient(to right, white -25%, rgba(var(--gray), .5) 50%, rgba(var(--gold), .5) 50%, white 125%);
+      padding: 1rem;
+
+      .monster-name {
+        text-decoration: underline;
+        margin: 0;
+      }
+
+      .header-button-container {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+      }
+
+      .flying-icon {
+        max-width: 2rem;
+        max-height: 2rem;
+      }
     }
 
-    app-token-health {
-      background: rgba(var(--gray), .2);
-      border-radius: 5px;
-      padding: 0 2px;
+    .all-stats-token-container {
+      display: flex;
+      width: 100%;
+
+      .stats-token-container {
+        flex: 0 0 50%;
+      }
+
+      .normal, .elite {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+      }
+
+      .stats-conditions-bonuses-container {
+        gap: .5rem;
+
+        app-monster-stat {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      .normal {
+        background: linear-gradient(to right, rgba(var(--gray), .5) -25%, rgba(var(--gray), .2) 125%);
+
+        .stats-conditions-bonuses-container {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+      }
+
+      .elite {
+        background: rgba(var(--gold), .5);
+        background: linear-gradient(to right, rgba(var(--gold), .2) -25%, rgba(var(--gold), .5) 125%);
+
+        .stats-conditions-bonuses-container {
+          display: flex;
+          flex-direction: row-reverse;
+          flex-wrap: wrap;
+        }
+      }
+
+      .token-container {
+        flex-flow: row wrap;
+        display: flex;
+        box-sizing: border-box;
+        margin: 0 6px 6px 0;
+        gap: 17px 4px;
+
+        > .token-info {
+          cursor: pointer;
+          padding: 5px;
+        }
+
+        app-token-health {
+          background: rgba(var(--gray), .2);
+          border-radius: 5px;
+          padding: 0 2px;
+        }
+
+        .token-wrapper {
+          cursor: pointer;
+        }
+      }
     }
 
-    .token-wrapper {
-      cursor: pointer;
+    app-monster-stat {
+      font-size: 1.3rem;
+
+      ::ng-deep .icon {
+        max-width: 1.5rem;
+      }
+    }
+
+    .token-info {
+      font-size: 1.3rem;
     }
   }
-}
 
-app-monster-ability-deck {
-  flex: 0 1 9.9rem;
-}
-
-app-monster-stat {
-  font-size: 1.3rem;
-
-  ::ng-deep .icon {
-    max-width: 1.5rem;
+  app-monster-ability-deck {
+    flex: 0 1 9.9rem;
   }
-}
-
-.active-indicator {
-  background: map.get(mat.$deep-purple-palette, 500);
-  align-self: stretch;
-}
-
-.token-info {
-  font-size: 1.3rem;
 }
 
 :host ::ng-deep app-monster-attributes.boss {
@@ -91,7 +137,7 @@ app-monster-stat {
     font-size: 1.2rem;
 
     .icon {
-      height:auto;
+      height: auto;
       max-width: 2rem;
     }
   }
