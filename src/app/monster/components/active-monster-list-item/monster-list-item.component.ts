@@ -19,7 +19,7 @@ import {MonsterStatPipe} from '../../pipes/monster-stat.pipe';
 import {ConditionListPipe} from '../../pipes/condition-list.pipe';
 import {AttackEffectListPipe} from '../../pipes/attack-effect-list.pipe';
 import {BonusListPipe} from '../../pipes/bonus-list.pipe';
-import {LetModule} from "@ngrx/component";
+import {LetDirective} from "@ngrx/component";
 import {MatButtonModule} from "@angular/material/button";
 
 @Component({
@@ -41,7 +41,7 @@ import {MatButtonModule} from "@angular/material/button";
     ConditionListPipe,
     AttackEffectListPipe,
     BonusListPipe,
-    LetModule,
+    LetDirective,
     NgOptimizedImage
   ]
 })

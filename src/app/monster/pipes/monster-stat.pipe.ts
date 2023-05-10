@@ -31,21 +31,21 @@ export class MonsterStatPipe implements PipeTransform {
     level--;
 
     if (['health', 'move', 'attack', 'range'].includes(statName)) {
-      return monster.attributes[statName]?.[level ?? 0]?.[elite];
+      return (monster.attributes as any)[statName]?.[level ?? 0]?.[elite];
     } else if (isCondition(statName)) {
       return [
         monster?.conditions?.[statName]?.[level ?? 0]?.[elite],
-        monster?.conditions?.[statName]?.[level ?? 0]?.[elite]?.[1]
+        (monster?.conditions as any)?.[statName]?.[level ?? 0]?.[elite]?.[1]
       ]
     } else if (isAttackEffect(statName)) {
       return [
         monster?.attackEffects?.[statName]?.[level ?? 0]?.[elite],
-        monster?.attackEffects?.[statName]?.[level ?? 0]?.[elite]?.[1]
+        (monster?.attackEffects as any)?.[statName]?.[level ?? 0]?.[elite]?.[1]
       ]
     } else if (isBonus(statName)) {
       return [
-        monster?.bonuses?.[statName]?.[level ?? 0]?.[elite]?.[0] ?? monster?.bonuses?.[statName]?.[level ?? 0]?.[elite],
-        monster?.bonuses?.[statName]?.[level ?? 0]?.[elite]?.[1]
+        (monster?.bonuses as any)?.[statName]?.[level ?? 0]?.[elite]?.[0] ?? monster?.bonuses?.[statName]?.[level ?? 0]?.[elite],
+        (monster?.bonuses as any)?.[statName]?.[level ?? 0]?.[elite]?.[1]
       ];
     }
 

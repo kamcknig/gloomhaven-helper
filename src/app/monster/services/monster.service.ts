@@ -23,7 +23,7 @@ export class MonsterService {
       ...state,
       ...(Array.isArray(event) ? event : [event]).reduce((prev, next) => {
         const id = ++MonsterService._idIncrementer;
-        prev[id] = {
+        (prev as any)[id] = {
           ...next,
           id
         }
@@ -64,7 +64,7 @@ export class MonsterService {
   // request to retrieve the monsters.json file
   private _monsterGet = this._http.get('assets/data/monsters.json')
     .pipe(
-      map(res => res['monsters']),
+      map(res => (res as any)['monsters']),
       share(),
       toSource('[GET Monsters]')
     );

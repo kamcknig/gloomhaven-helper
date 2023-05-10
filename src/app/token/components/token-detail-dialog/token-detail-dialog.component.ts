@@ -7,7 +7,7 @@ import {TokenInfo} from "../../../combat/services/model";
 import {filter, map, takeUntil, tap} from "rxjs/operators";
 import {Observable, Subject} from "rxjs";
 import {FormControl, ReactiveFormsModule, Validators} from "@angular/forms";
-import {LetModule} from "@ngrx/component";
+import {LetDirective} from "@ngrx/component";
 import {MatButtonModule} from "@angular/material/button";
 import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -16,7 +16,7 @@ import {MatInputModule} from "@angular/material/input";
 @Component({
   selector: 'app-token-detail-dialog',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, LetModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, LetDirective],
   templateUrl: './token-detail-dialog.component.html',
   styleUrls: ['./token-detail-dialog.component.scss']
 })

@@ -78,7 +78,7 @@
                     <div cdkDropList
                          [cdkDropListData]="tokenType"
                          (cdkDropListDropped)="$event.previousContainer !== $event.container ? combatService.toggleTokenElite$.next($event.item.data) : undefined">
-                      <app-token-list-item *ngFor="let token of tokens?.[tokenType]"
+                      <app-token-list-item *ngFor="let token of $any(tokens)?.[tokenType]"
                                            cdkDrag
                                            [cdkDragData]="token"
                                            style="width: 100%;"

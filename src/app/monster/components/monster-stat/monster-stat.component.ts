@@ -1,11 +1,11 @@
 import {Component, Input} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import {AttackEffectNames, BonusNames, ConditionNames} from "../../services/model";
 
 @Component({
   selector: 'app-monster-stat',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './monster-stat.component.html',
   styleUrls: ['./monster-stat.component.scss']
 })

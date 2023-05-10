@@ -77,7 +77,7 @@ export type Attribute = keyof typeof Attributes;
 export type Boss = Monster & { boss: true };
 
 export const isBoss = (value: Monster): value is Boss => {
-  return !!value && value.hasOwnProperty('boss') && value['boss'] === true;
+  return !!value && value.hasOwnProperty('boss') && (value as Boss)['boss'] === true;
 }
 
 export interface Monster {
@@ -137,7 +137,7 @@ export type StatModifier = number | string;
 export type Mob = Boss | Monster;
 
 export type MoveModifierNames = 'jump' | 'flying';
-export type ActionNames = ConditionNames | BonusNames | AttackEffectNames | 'attack' | 'move' | 'heal';
+export type ActionNames = ConditionNames | BonusNames | AttackEffectNames | 'attack' | 'move' | 'heal' | 'html';
 
 export type AttackEffectModifier = {
   [p in AttackEffectNames]: number;
@@ -145,6 +145,10 @@ export type AttackEffectModifier = {
 
 export type TextModifier = {
   text: string;
+}
+
+export type HtmlModifier = {
+  html: string;
 }
 
 export type RangeModifier = {
@@ -166,6 +170,7 @@ export type BonusModifier = {
 export type ActionModifier = { modifier: string } &
   (AttackEffectModifier
   | TextModifier
+  | HtmlModifier
   | RangeModifier
   | BonusModifier
   | ConditionModifier);

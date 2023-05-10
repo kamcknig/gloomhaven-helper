@@ -22,7 +22,7 @@ export class ActionTextService {
     const actionName: string = isAction(action) ? action.action : action.modifier;
     switch (actionName) {
       case 'html':
-        return action[actionName];
+        return (action as any)[actionName];
       case 'immobilize':
       case 'poison':
       case 'wound':
@@ -35,12 +35,12 @@ export class ActionTextService {
       case 'bless':
         return this._titleCasePipe.transform(actionName);
       case 'infuse':
-        return (action[actionName] as ElementNames[]).reduce(
+        return ((action as any)[actionName] as ElementNames[]).reduce(
           (prev, next) => prev.concat(`<img class="icon element infuse" src="/assets/icons/element-${next}.png" />`),
           ''
         );
       default:
-        return `${this._titleCasePipe.transform(actionName)} ${action[actionName]}`;
+        return `${this._titleCasePipe.transform(actionName)} ${(action as any)[actionName]}`;
     }
   }
 }

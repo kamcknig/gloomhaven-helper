@@ -5,12 +5,12 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {AppService} from "../../../app.service";
 import {Monster} from "../../services/model";
 import {switchMap} from "rxjs/operators";
-import {LetModule} from "@ngrx/component";
+import {LetDirective} from "@ngrx/component";
 
 @Component({
   selector: 'app-monster-level',
   standalone: true,
-  imports: [CommonModule, LetModule],
+  imports: [CommonModule, LetDirective],
   templateUrl: './monster-level.component.html',
   styleUrls: ['./monster-level.component.scss']
 })

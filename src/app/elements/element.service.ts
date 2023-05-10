@@ -13,7 +13,7 @@ export class ElementService {
 
   private _elementAdapter = createAdapter<ElementState>()({
     cycleElement: (state, event) => {
-      const element: Element = state[event];
+      const element: Element = (state as any)[event];
       if (element.level === ElementPhases.off) {
         element.level = ElementPhases.infused;
       } else {
@@ -29,9 +29,9 @@ export class ElementService {
     },
     roundComplete: (state) => Object.entries(state)
       .reduce((prev, [id, element]) => {
-        prev[id] = {
+        (prev as any)[id] = {
           ...element,
-          level: Math.max(0, --state[id].level)
+          level: Math.max(0, --(state as any)[id].level)
         }
         return prev;
       }, {} as ElementState),
@@ -51,7 +51,7 @@ export class ElementService {
       'elements',
       Object.keys(Elements)
         .reduce((prev, key) => {
-          prev[key] = { name: key, level: 0 }
+          (prev as any)[key] = { name: key, level: 0 }
           return prev;
         }, {} as ElementState),
       this._elementAdapter

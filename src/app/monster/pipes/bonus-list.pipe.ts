@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Monster} from '../services/model';
+import { Monster, Stat } from '../services/model';
 
 @Pipe({
   name: 'bonusList',
@@ -14,7 +14,7 @@ export class BonusListPipe implements PipeTransform {
     level--;
 
     return Object.entries(value.bonuses).reduce((prev, [key, bonusValue]) => {
-      if (bonusValue[level ?? 0]?.[elite] > 0 || bonusValue[level ?? 0]?.[elite]?.[0] > 0) {
+      if (+bonusValue[level ?? 0]?.[elite] > 0 || (bonusValue[level ?? 0]?.[elite] as Stat)?.[0] > 0) {
         return prev.concat(key);
       }
 
