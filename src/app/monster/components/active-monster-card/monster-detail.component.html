@@ -1,5 +1,5 @@
 <ng-container *ngrxLet="monster$ as monster">
-  <mat-card appearance="outlined">
+  <mat-card>
     <mat-card-header>
       <mat-card-title>
         <span class="main">{{monster.name}}</span>
@@ -46,23 +46,17 @@
                      style="gap: .2rem;">
                   <app-monster-stat *ngFor="let effect of monster | conditionList : level : $any(index)"
                                     [condition]="$any(effect)"
-                                    [conditionAmount]="monster | monsterStat : effect : level : $any(index)"
-                                    fxLayout="row"
-                                    fxLayoutAlign="start center">
+                                    [conditionAmount]="monster | monsterStat : effect : level : $any(index)">
                   </app-monster-stat>
 
                   <app-monster-stat *ngFor="let effect of monster | attackEffectList : level : $any(index)"
                                     [condition]="$any(effect)"
-                                    [conditionAmount]="monster | monsterStat : effect : level : $any(index)"
-                                    fxLayout="row"
-                                    fxLayoutAlign="start center">
+                                    [conditionAmount]="monster | monsterStat : effect : level : $any(index)">
                   </app-monster-stat>
 
                   <app-monster-stat *ngFor="let effect of monster | bonusList : level : $any(index)"
                                     [condition]="$any(effect)"
-                                    [conditionAmount]="monster | monsterStat : effect : level : $any(index)"
-                                    fxLayout="row"
-                                    fxLayoutAlign="start center">
+                                    [conditionAmount]="monster | monsterStat : effect : level : $any(index)">
                   </app-monster-stat>
                 </div>
               </div>
@@ -73,26 +67,15 @@
         <mat-divider style="width: 100%; margin: 1rem 0;"></mat-divider>
 
         <ng-container *ngIf="!isBoss(monster)">
-          <div fxFlex
-               class="token-info-wrapper"
-               fxLayout="column">
-            <div class="mat-headline-6"
-                 style="text-align: center">Tokens
-            </div>
+          <div class="token-info-wrapper">
+            <div class="tokens-title">Tokens</div>
 
             <div class="token-list-wrapper"
-                 fxLayoutGap="2rem"
-                 fxLayout="row"
-                 cdkDropListGroup
-                 fxFlex>
+                 cdkDropListGroup>
               <ng-container *ngIf="tokens$ | async as tokens">
                 <ng-container *ngFor="let tokenType of ['normals', 'elites']">
-                  <div fxFlex="50"
-                       class="token-list">
-                    <div fxFlex
-                         fxLayout="column"
-                         fxLayoutAlign="start start"
-                         cdkDropList
+                  <div class="token-list">
+                    <div cdkDropList
                          [cdkDropListData]="tokenType"
                          (cdkDropListDropped)="$event.previousContainer !== $event.container ? combatService.toggleTokenElite$.next($event.item.data) : undefined">
                       <app-token-list-item *ngFor="let token of tokens?.[tokenType]"

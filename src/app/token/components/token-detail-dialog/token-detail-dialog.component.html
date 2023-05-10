@@ -17,10 +17,7 @@
         </mat-hint>
       </mat-form-field>
 
-      <div fxFlexFill
-           fxLayout="row wrap"
-           fxLayoutAlign="center center"
-           fxLayoutGap=".7rem grid"
+      <div class="conditions-container"
            style="padding: 1rem; overflow: hidden">
         <ng-container *ngFor="let value of ApplicableConditions">
           <ng-container *ngIf="token$ | async as token">

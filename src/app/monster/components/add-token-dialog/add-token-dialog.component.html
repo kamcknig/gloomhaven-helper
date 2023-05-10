@@ -1,13 +1,9 @@
 <div mat-dialog-title>Choose a token</div>
 
 <mat-dialog-content>
-  <div fxLayout="row"
-       fxLayoutAlign="center center"
-       fxLayoutGap="1rem">
-    <div fxLayout="row wrap"
-         fxLayoutAlign="center start"
-         fxLayoutGap=".5rem grid">
-      <div fxFlex="50"
+  <div class="container">
+    <div class="token-icons-grid">
+      <div class="token-icon"
            *ngFor="let index of defaultNumbers">
         <ng-container [ngTemplateOutlet]="buttonTemplate"
                       [ngTemplateOutletContext]="{ $implicit: index, elite: false }">
@@ -15,10 +11,8 @@
       </div>
     </div>
 
-    <div fxLayout="row wrap"
-         fxLayoutAlign="center start"
-         fxLayoutGap=".5rem grid">
-      <div fxFlex="50"
+    <div class="token-icons-grid">
+      <div class="token-icon"
            *ngFor="let index of defaultNumbers">
         <ng-container [ngTemplateOutlet]="buttonTemplate"
                       [ngTemplateOutletContext]="{ $implicit: index, elite: true }">

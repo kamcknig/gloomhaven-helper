@@ -1,20 +1,13 @@
 <div
   [id]="'list-item-' + (value.elite ? 'elite' : 'normal')"
-  fxLayout="row"
-  fxLayoutAlign="space-between center"
-  fxLayoutGap=".3rem"
   class="list-item">
   <!-- token health display -->
-  <div fxLayout="row"
-       fxLayoutAlign="start center"
-       fxLayoutGap=".5rem">
+  <div class="health-container">
     <!-- Token and health display -->
     <app-token-health [token]="value"></app-token-health>
 
     <!-- token health adjustment buttons -->
-    <div fxLayout="column"
-         fxLayoutAlign="space-between center"
-         fxLayoutGap="-.25rem">
+    <div class="arrows-container">
         <mat-icon (click)="combatService.updateTokenHitPoint$.next([value, (value.health ?? value.maxHealth) + 1])"
                   class="button">arrow_drop_up</mat-icon>
 
@@ -24,11 +17,7 @@
   </div>
 
   <!-- active statuses -->
-  <div fxLayout="row wrap"
-       fxLayoutAlign="end center"
-       fxLayoutGap="0 grid"
-       fxFlex="1 1 0"
-       class="button"
+  <div class="button"
        (click)="statusPress.emit()">
     <ng-container *ngIf="(statuses || []).length > 0; else openApplicableConditions">
       <ng-container *ngFor="let value of statuses">

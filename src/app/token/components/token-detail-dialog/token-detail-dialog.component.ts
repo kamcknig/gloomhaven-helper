@@ -1,23 +1,22 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import {FlexModule} from "@angular/flex-layout";
 import {ApplicableConditions} from '../../../monster/services/model';
 import {CombatService} from "../../../combat/services/combat.service";
-import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {TokenInfo} from "../../../combat/services/model";
 import {filter, map, takeUntil, tap} from "rxjs/operators";
 import {Observable, Subject} from "rxjs";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
 import {FormControl, ReactiveFormsModule, Validators} from "@angular/forms";
 import {LetModule} from "@ngrx/component";
+import {MatButtonModule} from "@angular/material/button";
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @Component({
   selector: 'app-token-detail-dialog',
   standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, FlexModule, MatDialogModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, LetModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatDialogModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, LetModule],
   templateUrl: './token-detail-dialog.component.html',
   styleUrls: ['./token-detail-dialog.component.scss']
 })

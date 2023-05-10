@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TokenInfo } from '../../../combat/services/model';
 import { CombatService } from '../../../combat/services/combat.service';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { TokenHealthComponent } from '../../../combat/components/token-health/token-health.component';
@@ -13,7 +12,6 @@ import { TokenHealthComponent } from '../../../combat/components/token-health/to
   standalone: true,
   imports: [
     CommonModule,
-    FlexLayoutModule,
     MatIconModule,
     TokenHealthComponent
   ]
