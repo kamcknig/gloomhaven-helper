@@ -68,7 +68,7 @@
 
         <ng-container *ngIf="!isBoss(monster)">
           <div class="token-info-wrapper">
-            <div class="tokens-title">Tokens</div>
+            <div class="mat-h1 tokens-title">Tokens</div>
 
             <div class="token-list-wrapper"
                  cdkDropListGroup>
@@ -96,23 +96,27 @@
       </div>
     </mat-card-content>
 
-    <ng-container *ngrxLet="monster$ as monster">
-      <ng-container *ngIf="!isBoss(monster)">
-        <button mat-mini-fab
-                id="add-token"
+    <mat-card-actions align="end">
+      <ng-container *ngrxLet="monster$ as monster">
+        <ng-container *ngrxLet="!isBoss(monster)">
+          <button mat-fab
+                  extended
+                  id="add-token"
+                  type="button"
+                  color="accent"
+                  [disabled]="(tokenCount$ | async) === 10"
+                  (click)="tokenService.addToken$.next(monster.id)">T
+          </button>
+        </ng-container>
+
+        <button mat-fab
+                extended
+                id="remove-monster"
                 type="button"
-                [disabled]="(tokenCount$ | async) === 10"
-                (click)="tokenService.addToken$.next(monster.id)">T
+                (click)="removeMonster()">DEL
         </button>
       </ng-container>
-    </ng-container>
-
-    <button mat-mini-fab
-            id="remove-monster"
-            type="button"
-            (click)="removeMonster()">
-      <mat-icon>delete</mat-icon>
-    </button>
+    </mat-card-actions>
   </mat-card>
 
   <div id="deck-actions-container">

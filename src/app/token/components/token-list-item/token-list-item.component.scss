@@ -15,15 +15,13 @@
     gap: .5rem;
 
     .arrows-container {
-      display: flex;
-      flex-direction: column;
       gap: -.25rem;
     }
   }
 
   .status-icon {
-    max-height: 2rem;
-    max-width: 2rem
+    max-height: 1.5rem;
+    max-width: 1.5rem
   }
 
   .button {

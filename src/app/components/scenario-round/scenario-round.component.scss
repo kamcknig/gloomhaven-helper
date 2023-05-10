@@ -1,3 +1,5 @@
-:host ::ng-deep button {
-  transform: scale(.7);
+.content {
+  display: flex;
+  gap: .25rem;
+  align-items: center;
 }

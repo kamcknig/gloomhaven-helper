@@ -1,12 +1,11 @@
-<mat-form-field color="accent"
-                style="margin-right: 1rem">
-  <mat-label>Scenario Level</mat-label>
+<button mat-mini-fab
+        (click)="appService.scenarioLevelUpdate$.next(Math.max(1, level$.value - 1))">
+  <mat-icon>navigate_before</mat-icon>
+</button>
 
-  <input [formControl]="levelInputControl"
-         placeholder="Scenario Level"
-         (change)="this.appService.scenarioLevelUpdate$.next(+(levelInputControl?.value ?? 0))"
-         matInput
-         type="number"
-         [min]="1"
-         [max]="7">
-</mat-form-field>
+<span>Scenario<br />Level</span><span class="level">: {{level$ | async}}</span>
+
+<button mat-mini-fab
+        (click)="appService.scenarioLevelUpdate$.next(Math.min(level$.value + 1, MAX_LEVEL))">
+  <mat-icon>navigate_next</mat-icon>
+</button>

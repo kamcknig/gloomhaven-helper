@@ -1,14 +1,3 @@
-:host ::ng-deep app-monster-attributes.large {
-  .container {
-    font-size: 1.5rem;
-
-    .icon {
-      max-height: 2.5rem;
-      max-width: 2.5rem;
-    }
-  }
-}
-
 :host {
   display: flex;
   flex-direction: column;
@@ -20,164 +9,152 @@
     margin-bottom: 10px;
   }
 
-  #deck-actions-container {
-    overflow: hidden;
-    position: relative;
-
-    app-monster-ability-deck {
-      height: 100%;
-    }
-
-    app-combat-actions {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translateX(-50%) translateY(-50%);
-    }
-
-    .combat-actions {
-      display: block;
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-
   &.active ::ng-deep .mat-mdc-card {
     border: solid 5px purple;
   }
 
-  /** The mini fab button to trigger adding a token for the monster */
-  #add-token, #remove-monster {
-    position: absolute;
-    visibility: hidden;
-  }
+  ::ng-deep .mat-mdc-card {
+    background: linear-gradient(to right, white -25%, rgba(var(--gray), .5) 50%, rgba(var(--gold), .5) 50%, white 125%);
 
-  #add-token {
-    left: 5px;
-    bottom: 5px;
-  }
+    .mat-mdc-card-content {
+      width: 26rem;
+      height: 21rem;
+      margin-bottom: 0;
 
-  #remove-monster {
-    top: 5px;
-    left: 5px;
-  }
-
-  &:hover {
-    #add-token, #remove-monster {
-      visibility: visible;
+      /*TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
+      .mat-card-content-wrapper {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+      }
     }
   }
+}
 
-  ::ng-deep {
-    .mat-mdc-card {
-      /*TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
-      mat-card-header {
-        .main {
-          text-decoration: underline;
-        }
+:host ::ng-deep app-monster-attributes.large {
+  .container {
+    font-size: 1.5rem;
 
-        .flying-icon {
-          max-height: 2rem;
-          max-width: 2rem;
-        }
+    .icon {
+      max-height: 2.5rem;
+      max-width: 2.5rem;
+    }
+  }
+}
+
+#add-token, #remove-monster {
+  font-size: 1.5rem;
+}
+
+.mat-headline-6 {
+  text-decoration: underline;
+}
+
+.mat-mdc-card-actions {
+  display: flex;
+  gap: .5rem;
+}
+
+#deck-actions-container {
+  overflow: hidden;
+  position: relative;
+
+  app-monster-ability-deck {
+    height: 100%;
+  }
+
+  app-combat-actions {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  .combat-actions {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.main {
+  text-decoration: underline;
+}
+
+.flying-icon {
+  max-height: 2rem;
+  max-width: 2rem;
+}
+
+.monster-stat-parent-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  &.boss {
+    justify-content: center;
+  }
+
+  position: relative;
+
+  .monster-stat-attribute-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    &.elite {
+      align-items: flex-end;
+    }
+
+    .stats-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+
+      app-monster-stat {
+        display: flex;
+        align-items: center;
       }
 
-      background: linear-gradient(to right, white -25%, rgba(var(--gray), .5) 50%, rgba(var(--gold), .5) 50%, white 125%);
-
-      .mat-mdc-card-content {
-        width: 26rem;
-        height: 21rem;
-        margin-bottom: 0;
-        /*TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
-        .mat-card-content-wrapper {
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: stretch;
-          justify-content: flex-start;
-        }
-
-        .mat-headline-6 {
-          text-decoration: underline;
-        }
-
-        .monster-stat-parent-wrapper {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-
-          &.boss {
-            justify-content: center;
-          }
-
-          position: relative;
-
-          .monster-stat-attribute-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            justify-content: flex-start;
-
-            &.elite {
-              align-items: flex-end;
-            }
-
-            .stats-wrapper {
-              display: flex;
-              flex-wrap: wrap;
-
-              app-monster-stat {
-                display: flex;
-                align-items: center;
-              }
-
-              &.elite {
-                flex-wrap: wrap-reverse;
-              }
-
-              &.boss {
-                flex-wrap: unset;
-                justify-content: center;
-              }
-            }
-
-            > *:not(:last-child) {
-              margin-bottom: .5rem;
-            }
-          }
-        }
-
-        .token-info-wrapper {
-          display: flex;
-          flex: 0 0 50%;
-          flex-direction: column;
-          position: relative;
-          height: 100%;
-
-          .tokens-title {
-            text-align: center;
-          }
-
-          .token-list-wrapper {
-            display: flex;
-            flex: 1 1 0;
-            gap: 2rem;
-            height: 100%;
-            max-height: 17rem;
-            overflow: auto;
-
-            .token-lists-container {
-              overflow: auto;
-
-              .token-list-container {
-                display: flex;
-                flex-direction: column;
-                flex: 1 1 0;
-              }
-            }
-          }
-        }
+      &.elite {
+        flex-wrap: wrap-reverse;
       }
+
+      &.boss {
+        flex-wrap: unset;
+        justify-content: center;
+      }
+    }
+
+    > *:not(:last-child) {
+      margin-bottom: .5rem;
+    }
+  }
+}
+
+.token-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1 1 0;
+  overflow: hidden;
+
+  .tokens-title {
+    text-align: center;
+  }
+
+  .token-list-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 100%;
+    overflow: hidden;
+
+    .token-list {
+      flex: 0 0 calc(50% - 1rem);
+      overflow: auto;
     }
   }
 }

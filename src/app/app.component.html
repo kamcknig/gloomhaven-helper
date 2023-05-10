@@ -1,10 +1,7 @@
 <app-header></app-header>
 
 <div *ngIf="(appService.scenarioStore.viewMode$ | async) === 'normal'; else listView"
-     class="content"
-     fxLayout="row"
-     fxLayoutAlign="start start"
-     fxLayoutGap="20px">
+     class="detail-content">
   <monster-detail *ngFor="let monster of sortedMonsters$ | async; index as i"
                   [monster]="monster"
                   [ngClass]="{'active': (combatService.store.turn$ | async) === i + 1 }">
@@ -12,12 +9,8 @@
 </div>
 
 <ng-template #listView>
-  <div class="content"
-       fxLayout="row">
-    <div class="list-content"
-         fxLayout="column"
-         fxLayoutAlign="start start"
-         fxLayoutGap="10px">
+  <div class="list-content">
+    <div class="monster-list-wrapper">
       <monster-list-item *ngFor="let monster of sortedMonsters$ | async; index as i"
                          [monster]="monster"
                          [active]="(combatService.store.turn$ | async) === i + 1">
@@ -25,23 +18,24 @@
     </div>
 
     <div class="details-content">
-      <monster-detail *ngIf="!!(combatService.store.turn$ | async) && (sortedMonsters$ | async)?.[(combatService.store.turn$ | async) - 1] as monster"
-                      [monster]="monster">
+      <monster-detail
+        *ngIf="!!(combatService.store.turn$ | async) && (sortedMonsters$ | async)?.[(combatService.store.turn$ | async) - 1] as monster"
+        [monster]="monster">
       </monster-detail>
     </div>
   </div>
 </ng-template>
 
-<button mat-fab
+<button mat-mini-fab
         class="list-style-button"
         (click)="appService.toggleViewMode$.next()">
   <mat-icon>list</mat-icon>
 </button>
 
-<button
-  class="activate-monster"
-  type="button"
-  mat-fab
-  color="accent"
-  (click)="monsterService.selectMonsterToActivate().subscribe()">M
+<button class="activate-monster"
+        type="button"
+        mat-fab
+        extended
+        color="accent"
+        (click)="monsterService.selectMonsterToActivate().subscribe()">M
 </button>

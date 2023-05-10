@@ -7,14 +7,18 @@ $header-height: 120px;
   right: 1rem;
 }
 
-.content {
+.detail-content, .list-content {
+  display: flex;
   position: relative;
   padding: 5px;
   margin-top: calc($header-height + 10px);
   height: calc(100vh - 120px);
 
-  .list-content {
+  .monster-list-wrapper {
     overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
   }
 
   monster-detail {
@@ -32,15 +36,12 @@ $header-height: 120px;
   }
 }
 
+.detail-content {
+  gap: 1rem;
+}
+
 .list-style-button {
   position: fixed;
   right: 1rem;
   top: calc($header-height + 1rem);
-
-  .mat-icon {
-    font-size: 48px;
-    width: 48px;
-    height: 48px;
-    line-height: 24px;
-  }
 }

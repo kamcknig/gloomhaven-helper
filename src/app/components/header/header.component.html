@@ -1,20 +1,14 @@
-<mat-toolbar color="primary"
-             fxLayout="row"
-             fxLayoutAlign="start center"
-             fxLayoutGap="2rem">
+<mat-toolbar color="primary">
 
   <app-scenario-level-input></app-scenario-level-input>
 
-  <div fxLayout="column"
-       fxLayoutAlign="start end"
-       fxLayoutGap="1rem">
+  <div class="round-turn-container">
     <app-scenario-round></app-scenario-round>
 
     <app-turn-selector></app-turn-selector>
   </div>
 
-  <div fxLayout="column"
-       fxLayoutGap="-.15rem">
+  <div>
     <div>Shortcuts:</div>
 
     <div class="mat-subtitle-2">Ctrl + up or down: change scenario level</div>
@@ -24,9 +18,7 @@
 
   <span style="flex: 1 1 auto;"></span>
 
-  <div fxLayout="row"
-       fxLayoutGap="30px"
-       class="element-wrapper">
+  <div class="element-wrapper">
     <div *ngFor="let element of elementService.elementStore.elements$ | async"
          class="element-icon"
          [ngClass]="{
@@ -35,7 +27,9 @@
               'dark': $any(element.name) === 'dark'
              }"
          (click)="elementService.cycleElement$.next(element.name)">
-      <img [src]="'assets/icons/element-' + element.name + '.png'"
+      <img [ngSrc]="'assets/icons/element-' + element.name + '.png'"
+           width="1"
+           height="1"
            alt="">
     </div>
   </div>

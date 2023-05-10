@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {ElementService} from '../../elements/element.service';
 import {ElementPhases} from '../../elements/model';
-import {CommonModule} from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {ScenarioLevelInputComponent} from '../scenario-level-input/scenario-level-input.component';
 import {ScenarioRoundComponent} from '../scenario-round/scenario-round.component';
@@ -19,7 +19,8 @@ import {MatButtonModule} from "@angular/material/button";
     MatToolbarModule,
     ScenarioLevelInputComponent,
     ScenarioRoundComponent,
-    TurnSelectorComponent
+    TurnSelectorComponent,
+    NgOptimizedImage
   ]
 })
 export class HeaderComponent {

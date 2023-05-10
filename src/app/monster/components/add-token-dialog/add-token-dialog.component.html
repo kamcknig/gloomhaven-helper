@@ -39,7 +39,8 @@
     (click)="toggleTokenNumber(index, elite)"
     [ngStyle]="{'visibility': getTokenButtonVisible(index, elite)}"
     type="button"
-    mat-mini-fab>
+    extended
+    mat-fab>
     {{index}}
   </button>
 </ng-template>
