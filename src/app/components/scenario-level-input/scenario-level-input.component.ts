@@ -3,7 +3,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { AppService } from '../../app.service';
 import { takeUntil } from 'rxjs/operators';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-scenario-level-input',

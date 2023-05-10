@@ -1,12 +1,12 @@
 import {AfterViewInit, Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
-import {MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA, MatLegacyDialog as MatDialog, MatLegacyDialogModule as MatDialogModule, MatLegacyDialogRef as MatDialogRef} from '@angular/material/legacy-dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {filter, map, startWith} from 'rxjs/operators';
 import {Monster} from '../../services/model';
-import {MatLegacyAutocompleteModule as MatAutocompleteModule, MatLegacyAutocompleteTrigger as MatAutocompleteTrigger} from "@angular/material/legacy-autocomplete";
-import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
-import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
+import {MatAutocompleteModule, MatAutocompleteTrigger} from "@angular/material/autocomplete";
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 import {CommonModule} from '@angular/common';
 import {CreateBossComponent} from "../create-boss/create-boss.component";
 import {MonsterService} from "../../services/monster.service";

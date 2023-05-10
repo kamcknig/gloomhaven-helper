@@ -42,7 +42,7 @@
     }
   }
 
-  &.active ::ng-deep .mat-card {
+  &.active ::ng-deep .mat-mdc-card {
     border: solid 5px purple;
   }
 
@@ -69,7 +69,8 @@
   }
 
   ::ng-deep {
-    .mat-card {
+    .mat-mdc-card {
+      /*TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
       mat-card-header {
         .main {
           text-decoration: underline;
@@ -83,11 +84,11 @@
 
       background: linear-gradient(to right, white -25%, rgba(var(--gray), .5) 50%, rgba(var(--gold), .5) 50%, white 125%);
 
-      .mat-card-content {
+      .mat-mdc-card-content {
         width: 26rem;
         height: 21rem;
         margin-bottom: 0;
-
+        /*TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
         .mat-card-content-wrapper {
           height: 100%;
           display: flex;
@@ -96,7 +97,7 @@
           justify-content: flex-start;
         }
 
-        .mat-title {
+        .mat-headline-6 {
           text-decoration: underline;
         }
 

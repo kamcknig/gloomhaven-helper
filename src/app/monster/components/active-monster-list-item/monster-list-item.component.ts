@@ -6,7 +6,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {CommonModule} from '@angular/common';
 import {AppService} from '../../../app.service';
 import {MonsterAttributesComponent} from '../monster-attributes-component/monster-attributes.component';
-import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
+import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {TokenService} from "../../../combat/services/token.service";
 import {MonsterLevelComponent} from "../monster-level/monster-level.component";
