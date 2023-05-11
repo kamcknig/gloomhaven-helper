@@ -17,7 +17,7 @@
   </div>
 
   <!-- active statuses -->
-  <div class="button"
+  <div class="button status-container"
        (click)="statusPress.emit()">
     <ng-container *ngIf="(statuses || []).length > 0; else openApplicableConditions">
       <ng-container *ngFor="let value of statuses">
