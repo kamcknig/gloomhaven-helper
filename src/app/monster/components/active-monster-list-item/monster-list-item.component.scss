@@ -8,7 +8,7 @@
 .monster-list-item-container {
   display: flex;
   gap: 5px;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 
   .active-indicator {
