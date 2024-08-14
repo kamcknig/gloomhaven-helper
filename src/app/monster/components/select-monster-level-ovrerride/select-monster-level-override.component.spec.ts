@@ -8,8 +8,8 @@ describe('SelectMonsterLevelOverrideComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectMonsterLevelOverrideComponent ]
-    })
+    imports: [SelectMonsterLevelOverrideComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(SelectMonsterLevelOverrideComponent);

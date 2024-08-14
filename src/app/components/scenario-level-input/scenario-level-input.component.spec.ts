@@ -8,8 +8,8 @@ describe('ScenarioLevelInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScenarioLevelInputComponent ]
-    })
+    imports: [ScenarioLevelInputComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ScenarioLevelInputComponent);

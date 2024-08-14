@@ -1,16 +1,24 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {MonsterService} from './monster/services/monster.service';
-import {AppService} from './app.service';
-import {CombatService} from './combat/services/combat.service';
-import {combineLatest, Observable, Subject} from 'rxjs';
-import {filter, map, switchMap, withLatestFrom} from 'rxjs/operators';
-import {ActivatedRoute} from "@angular/router";
-import {Monster} from './monster/services/model';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { MonsterService } from './monster/services/monster.service';
+import { AppService } from './app.service';
+import { CombatService } from './combat/services/combat.service';
+import { combineLatest, Observable, Subject } from 'rxjs';
+import { filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
+import { ActivatedRoute } from "@angular/router";
+import { Monster } from './monster/services/model';
+import { HeaderComponent } from './components/header/header.component';
+import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { MonsterDetailComponent } from './monster/components/active-monster-card/monster-detail.component';
+import { MonsterListItemComponent } from './monster/components/active-monster-list-item/monster-list-item.component';
+import { MatFabButton, MatMiniFabButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [HeaderComponent, NgIf, NgFor, MonsterDetailComponent, NgClass, MonsterListItemComponent, MatMiniFabButton, MatIcon, MatFabButton, AsyncPipe]
 })
 export class AppComponent implements OnInit {
   public title = 'gloomhaven-helper';
@@ -56,14 +64,15 @@ export class AppComponent implements OnInit {
     combineLatest([
       this._route.queryParams.pipe(map(r => r['v']), filter(r => !!r)),
       this.appService.scenarioStore.viewMode$
-    ]).subscribe({
-      next: ([paramViewMode, currentViewMode]) => paramViewMode && currentViewMode !== paramViewMode ? this.appService.toggleViewMode$.next() : null
-    });
+    ])
+      .subscribe({
+        next: ([paramViewMode, currentViewMode]) => paramViewMode && currentViewMode !== paramViewMode ? this.appService.toggleViewMode$.next() : null
+      });
 
     this._roundComplete$.pipe(
-        switchMap(() => this.combatService.store.activeMonsters$),
-        filter(monsters => !!Object.keys(monsters)?.length)
-      )
+      switchMap(() => this.combatService.store.activeMonsters$),
+      filter(monsters => !!Object.keys(monsters)?.length)
+    )
       .subscribe({
         next: () => this.combatService.roundComplete$.next()
       });
@@ -71,7 +80,7 @@ export class AppComponent implements OnInit {
     this.sortedMonsters$ = this.combatService.store.sortedMonsters$.pipe(
       withLatestFrom(this.monsterService.monsterStore.activeMonsters$),
       map(([combatMobs, monsters]) =>
-        combatMobs.map(({id}) => monsters.find(m => m.id.toString() === id.toString()))
+        combatMobs.map(({ id }) => monsters.find(m => m.id.toString() === id.toString()))
       )
     );
   }

@@ -8,8 +8,8 @@ describe('ActivateMonsterDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ActivateMonsterDialogComponent ]
-    })
+    imports: [ActivateMonsterDialogComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ActivateMonsterDialogComponent);

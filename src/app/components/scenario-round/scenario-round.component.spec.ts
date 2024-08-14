@@ -8,8 +8,8 @@ describe('ScenarioRoundComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScenarioRoundComponent ]
-    })
+    imports: [ScenarioRoundComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ScenarioRoundComponent);

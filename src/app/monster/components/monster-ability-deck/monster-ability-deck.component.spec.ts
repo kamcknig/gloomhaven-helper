@@ -8,8 +8,8 @@ describe('MonsterAbilityDeckComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MonsterAbilityDeckComponent ]
-    })
+    imports: [MonsterAbilityDeckComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(MonsterAbilityDeckComponent);
