@@ -8,7 +8,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ScenarioOptionsModule} from './scenario-options/scenario-options.module';
 import {MAX_LEVEL} from './scenario-options/max-level.token';
 import {MonsterModule} from './monster/monster.module';
-import {HttpClientModule} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {HeaderComponent} from './components/header/header.component';
@@ -26,35 +26,29 @@ const enableReduxDevtools = (window as any).__REDUX_DEVTOOLS_EXTENSION__?.({
   stateSanitizer
 });
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    HeaderComponent,
-    MonsterDetailComponent,
-    MonsterListItemComponent,
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    MatDialogModule,
-    FormsModule,
-    ScenarioOptionsModule.forRoot(),
-    MonsterModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule
-  ],
-  providers: [
-    defaultStoreProvider,
-    { provide: MAX_LEVEL, useValue: 7 }
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent
+    ],
+    bootstrap: [AppComponent], imports: [HeaderComponent,
+        MonsterDetailComponent,
+        MonsterListItemComponent,
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        MatDialogModule,
+        FormsModule,
+        ScenarioOptionsModule.forRoot(),
+        MonsterModule,
+        MatDividerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule], providers: [
+        defaultStoreProvider,
+        { provide: MAX_LEVEL, useValue: 7 },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule {
 }
