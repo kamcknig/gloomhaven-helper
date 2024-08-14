@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {createAdapter} from '@state-adapt/core';
-import {Element, ElementNames, ElementPhases, Elements, ElementState} from './model';
-import {adapt} from '@state-adapt/angular';
-import {CombatService} from '../combat/services/combat.service';
-import {Source} from '@state-adapt/rxjs';
+import { Injectable } from '@angular/core';
+import { createAdapter } from '@state-adapt/core';
+import { Element, ElementNames, ElementPhases, Elements, ElementState } from './model';
+import { adapt } from '@state-adapt/angular';
+import { CombatService } from '../combat/services/combat.service';
+import { Source } from '@state-adapt/rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -47,18 +47,17 @@ export class ElementService {
   });
 
   public elementStore = adapt(
-    [
-      'elements',
-      Object.keys(Elements)
-        .reduce((prev, key) => {
-          (prev as any)[key] = { name: key, level: 0 }
-          return prev;
-        }, {} as ElementState),
-      this._elementAdapter
-    ],
+    Object.keys(Elements)
+      .reduce((prev, key) => {
+        (prev as any)[key] = { name: key, level: 0 }
+        return prev;
+      }, {} as ElementState),
     {
-      cycleElement: this.cycleElement$,
-      roundComplete: this._combatService.roundComplete$
+      adapter: this._elementAdapter,
+      sources: {
+        cycleElement: this.cycleElement$,
+        roundComplete: this._combatService.roundComplete$
+      }
     }
   )
 

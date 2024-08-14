@@ -1,16 +1,18 @@
-import {Injectable} from '@angular/core';
-import {createAdapter} from '@state-adapt/core';
+import { Injectable } from '@angular/core';
+import { createAdapter } from '@state-adapt/core';
 import { HttpClient } from '@angular/common/http';
-import {ActivateMonsterDialogComponent} from '../components/activate-monster-dialog/activate-monster-dialog.component';
-import {MatDialog} from '@angular/material/dialog';
-import {filter, map, share, switchMap, take, tap, withLatestFrom} from 'rxjs/operators';
-import {Observable, of} from 'rxjs';
-import {adapt} from '@state-adapt/angular';
-import {Monster, MonsterId, MonsterNoId, MonsterState} from './model';
+import {
+  ActivateMonsterDialogComponent
+} from '../components/activate-monster-dialog/activate-monster-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { filter, map, share, switchMap, take, tap, withLatestFrom } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { adapt } from '@state-adapt/angular';
+import { Monster, MonsterId, MonsterNoId, MonsterState } from './model';
 import {
   SelectMonsterLevelOverrideComponent
 } from "../components/select-monster-level-ovrerride/select-monster-level-override.component";
-import {Source, toSource} from '@state-adapt/rxjs';
+import { Source, toSource } from '@state-adapt/rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -82,16 +84,15 @@ export class MonsterService {
   public overrideMonsterLevel$: Source<{ monsterId: MonsterId; level: number }> = new Source('overrideMonsterLevel$');
 
   public monsterStore = adapt(
-    [
-      'monsters',
-      {},
-      this.monsterAdapter
-    ],
+    {},
     {
-      add: this._monsterGet as Observable<any>,
-      activateMonster: this.activateMonster$,
-      deactivateMonster: this.deactivateMonster$,
-      overrideLevel: this.overrideMonsterLevel$
+      adapter: this.monsterAdapter,
+      sources: {
+        activateMonster: this.activateMonster$,
+        deactivateMonster: this.deactivateMonster$,
+        overrideLevel: this.overrideMonsterLevel$,
+        add: this._monsterGet as Observable<any>,
+      }
     }
   );
 

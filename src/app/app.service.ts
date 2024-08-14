@@ -27,20 +27,19 @@ export class AppService {
     }
   });
 
-  scenarioStore = adapt(
-    [
-      'scenario',
-      {
-        level: 1,
-        viewMode: 'normal' as ViewMode
-      },
-      this._scenarioAdapter
-    ],
+  public scenarioStore = adapt(
     {
-      scenarioLevelUpdate: this.scenarioLevelUpdate$,
-      toggleViewMode: this.toggleViewMode$
+      level: 1,
+      viewMode: 'normal' as ViewMode
+    },
+    {
+      adapter: this._scenarioAdapter,
+      sources: {
+        scenarioLevelUpdate: this.scenarioLevelUpdate$,
+        toggleViewMode: this.toggleViewMode$
+      }
     }
-  )
+  );
 
   public monsterLevel(monsterId: MonsterId) {
     return joinStores({

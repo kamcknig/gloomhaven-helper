@@ -25,7 +25,7 @@
     <div class="details-content">
       @if (!!(combatService.store.turn$ | async) && (sortedMonsters$ | async)?.[(combatService.store.turn$ | async) - 1]; as monster) {
 <monster-detail
-       
+
         [monster]="monster">
       </monster-detail>
 }

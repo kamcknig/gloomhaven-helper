@@ -241,27 +241,26 @@ export class CombatService {
   })();
 
   public store = adapt(
-    [
-      'combat',
-      {
-        round: 0,
-        turn: 0,
-        tokens: [],
-        activeMonsters: {}
-      } as CombatState,
-      this._actionAdapter
-    ],
     {
-      drawMonsterAbilityCard: this._monsterService.drawMonsterAbilityCard$,
-      activateMonster: this._monsterService.activateMonster$,
-      deactivateMonster: this._monsterService.deactivateMonster$,
-      roundComplete: this.roundComplete$,
-      addToken: this.addToken$,
-      updateTokenHitPoint: this.updateTokenHitPoint$,
-      toggleTokenCondition: this.toggleTokenCondition$,
-      toggleTokenElite: this.toggleTokenElite$,
-      nextTurn: this.nextTurn$,
-      previousTurn: this.previousTurn$
+      round: 0,
+      turn: 0,
+      tokens: [],
+      activeMonsters: {}
+    } as CombatState,
+    {
+      adapter: this._actionAdapter,
+      sources: {
+        drawMonsterAbilityCard: this._monsterService.drawMonsterAbilityCard$,
+        activateMonster: this._monsterService.activateMonster$,
+        deactivateMonster: this._monsterService.deactivateMonster$,
+        roundComplete: this.roundComplete$,
+        addToken: this.addToken$,
+        updateTokenHitPoint: this.updateTokenHitPoint$,
+        toggleTokenCondition: this.toggleTokenCondition$,
+        toggleTokenElite: this.toggleTokenElite$,
+        nextTurn: this.nextTurn$,
+        previousTurn: this.previousTurn$
+      }
     }
   );
 
