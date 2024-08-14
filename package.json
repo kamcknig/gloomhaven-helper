@@ -21,14 +21,14 @@
     "@angular/platform-browser-dynamic": "16.0.1",
     "@angular/router": "16.0.1",
     "@ngrx/component": "16.0.0",
-    "@state-adapt/angular": "1.0.0",
-    "@state-adapt/core": "1.0.0",
-    "@state-adapt/rxjs": "1.0.0",
+    "@state-adapt/angular": "2.0.8",
+    "@state-adapt/core": "2.0.8",
+    "@state-adapt/rxjs": "2.0.8",
     "reselect": "4.1.6",
     "rxjs": "6.6.6",
     "tslib": "2.3.0",
     "uuid": "^9.0.0",
-    "zone.js": "0.13.0"
+    "zone.js": "0.14.10"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "16.0.0",
@@ -42,6 +42,6 @@
     "karma-coverage": "2.2.0",
     "karma-jasmine": "5.0.0",
     "karma-jasmine-html-reporter": "1.7.0",
-    "typescript": "5.0.4"
+    "typescript": "5.2.2"
   }
 }
