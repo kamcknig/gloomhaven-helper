@@ -12,8 +12,9 @@
       <h2>Attributes</h2>
 
       <div class="flex-wrap">
-        <div class="stat-input"
-             *ngFor="let stat of Attributes; index as idx">
+        @for (stat of Attributes; track stat; let idx = $index) {
+<div class="stat-input"
+            >
           <img [src]="'/assets/icons/' + stat + '.png'"
                style="max-width: 40px; height: auto;"/>
 
@@ -25,6 +26,7 @@
                    type="number"/>
           </mat-form-field>
         </div>
+}
       </div>
     </section>
 
@@ -32,12 +34,14 @@
       <h2>Condition Immunities</h2>
 
       <div class="flex-wrap">
-        <mat-checkbox style="margin-right: 20px;"
+        @for (condition of Conditions; track condition; let idx = $index) {
+<mat-checkbox style="margin-right: 20px;"
                       [formControlName]="idx"
-                      *ngFor="let condition of Conditions; index as idx">
+                     >
           <img [src]="'/assets/icons/' + condition + '.png'"
                style="margin-left: 10px; max-width: 40px; height: auto;"/>
         </mat-checkbox>
+}
       </div>
     </section>
 
@@ -45,7 +49,8 @@
       <h2>Attack Effects</h2>
 
       <div class="flex-wrap">
-        <div *ngFor="let attackEffect of AttackEffects; index as idx"
+        @for (attackEffect of AttackEffects; track attackEffect; let idx = $index) {
+<div
              [formGroupName]="idx">
           <mat-checkbox style="margin-right: 20px;"
                         [formControlName]="'has'">
@@ -60,6 +65,7 @@
                    [formControlName]="'value'">
           </mat-form-field>
         </div>
+}
       </div>
     </section>
 
@@ -68,7 +74,8 @@
       <h2>Bonuses</h2>
 
       <div class="flex-wrap">
-        <div *ngFor="let bonus of Bonuses; index as idx"
+        @for (bonus of Bonuses; track bonus; let idx = $index) {
+<div
              [formGroupName]="idx">
           <mat-checkbox style="margin-right: 20px;"
                         #bonusChkBox
@@ -88,7 +95,8 @@
                    [formControlName]="'value'">
           </mat-form-field>
 
-          <mat-form-field *ngIf="bonus === 'retaliate'">
+          @if (bonus === 'retaliate') {
+<mat-form-field>
             <mat-label>Range</mat-label>
             <input matInput
                    min="0"
@@ -96,7 +104,9 @@
                    [disabled]="!bonusChkBox.checked"
                    [formControlName]="'value-2'">
           </mat-form-field>
+}
         </div>
+}
       </div>
     </section>
   </form>

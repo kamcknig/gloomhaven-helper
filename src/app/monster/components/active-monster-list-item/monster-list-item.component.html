@@ -8,19 +8,24 @@
         <!-- the name and level -->
         <span class="monster-name">{{ monster.name }}</span>
 
-        <ng-container *ngIf="!isBoss(monster)">
-          <app-monster-level [monster]="monster"></app-monster-level>
-        </ng-container>
+        @if (!isBoss(monster)) {
 
-        <span *ngIf="(monster$ | async)?.flying">
+          <app-monster-level [monster]="monster"></app-monster-level>
+        
+}
+
+        @if ((monster$ | async)?.flying) {
+<span>
           <img class="flying-icon"
                [ngSrc]="'/assets/icons/flying.png'"
                width="1"
                height="1"
                alt="flying">
         </span>
+}
 
-        <ng-container *ngIf="!isBoss(monster)">
+        @if (!isBoss(monster)) {
+
           <div class="header-button-container">
             <button mat-fab
                     extended
@@ -30,11 +35,13 @@
                     (click)="tokenService.addToken$.next(monster.id)">T
             </button>
           </div>
-        </ng-container>
+        
+}
       </div>
 
       <div class="all-stats-token-container">
-        <ng-container *ngFor="let elite of isBoss(monster) ? [0] : [0, 1]; last as last;">
+        @for (elite of isBoss(monster) ? [0] : [0, 1]; track elite; let last = $last) {
+
           <div class="stats-token-container" [class]="!elite ? 'normal' : 'elite'">
             <!-- displays monster attributes such as health, movement, etc. -->
             <app-monster-attributes [monster]="monster"
@@ -44,38 +51,51 @@
             </app-monster-attributes>
 
             <!-- displays the Monsters stats including conditions, bonuses, etc. -->
-            <div *ngIf="monsterLevel$ | async as level"
+            @if (monsterLevel$ | async; as level) {
+<div
                  class="stats-conditions-bonuses-container">
-              <app-monster-stat *ngFor="let effect of monster | conditionList : level : $any(elite)"
+              @for (effect of monster | conditionList : level : $any(elite); track effect) {
+<app-monster-stat
                                 [condition]="$any(effect)"
                                 [conditionAmount]="monster | monsterStat : effect : level : $any(elite)">
               </app-monster-stat>
+}
 
-              <app-monster-stat *ngFor="let effect of monster | attackEffectList : level : $any(elite)"
+              @for (effect of monster | attackEffectList : level : $any(elite); track effect) {
+<app-monster-stat
                                 [condition]="$any(effect)"
                                 [conditionAmount]="monster | monsterStat : effect : level : $any(elite)">
               </app-monster-stat>
+}
 
-              <app-monster-stat *ngFor="let effect of monster | bonusList : level : $any(elite)"
+              @for (effect of monster | bonusList : level : $any(elite); track effect) {
+<app-monster-stat
                                 [condition]="$any(effect)"
                                 [conditionAmount]="monster | monsterStat : effect : level : $any(elite)">
               </app-monster-stat>
+}
             </div>
+}
 
             <div class="token-container">
-              <app-token-health class="token-info"
-                                *ngFor="let token of (tokens$ | async)?.[!elite ? 'normal' : 'elite']"
+              @for (token of (tokens$ | async)?.[!elite ? 'normal' : 'elite']; track token) {
+<app-token-health class="token-info"
+                               
                                 (click)="tokenService.updateTokenDetails$.next(token)"
                                 [token]="token">
               </app-token-health>
+}
             </div>
           </div>
 
-          <mat-divider *ngIf="!elite && !last"
+          @if (!elite && !last) {
+<mat-divider
                        style="border-right-color: rgba(var(--gold), .5); border-right-width: 2px"
                        [vertical]="true">
           </mat-divider>
-        </ng-container>
+}
+        
+}
       </div>
     </section>
 

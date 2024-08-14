@@ -4,15 +4,19 @@
       <mat-card-title>
         <span class="main">{{monster.name}}</span>
 
-        <ng-container *ngIf="!isBoss(monster)">
-          <app-monster-level [monster]="monster"></app-monster-level>
-        </ng-container>
+        @if (!isBoss(monster)) {
 
-        <span *ngIf="monster.flying">
+          <app-monster-level [monster]="monster"></app-monster-level>
+        
+}
+
+        @if (monster.flying) {
+<span>
         <img class="flying-icon"
              src="/assets/icons/flying.png"
              alt="flying">
       </span>
+}
       </mat-card-title>
     </mat-card-header>
 
@@ -23,7 +27,8 @@
              [ngClass]="{ boss: isBoss(monster) }">
           <!-- loop for normal vs elite monsters -->
           <ng-container *ngrxLet="monsterLevel$ | async as level">
-            <ng-container *ngFor="let index of isBoss(monster) ? [0] : [0, 1]">
+            @for (index of isBoss(monster) ? [0] : [0, 1]; track index) {
+
               <div class="monster-stat-attribute-wrapper"
                    [ngClass]="{
                     elite: index === 1,
@@ -44,41 +49,52 @@
                       boss: isBoss(monster)
                      }"
                      style="gap: .2rem;">
-                  <app-monster-stat *ngFor="let effect of monster | conditionList : level : $any(index)"
+                  @for (effect of monster | conditionList : level : $any(index); track effect) {
+<app-monster-stat
                                     [condition]="$any(effect)"
                                     [conditionAmount]="monster | monsterStat : effect : level : $any(index)">
                   </app-monster-stat>
+}
 
-                  <app-monster-stat *ngFor="let effect of monster | attackEffectList : level : $any(index)"
+                  @for (effect of monster | attackEffectList : level : $any(index); track effect) {
+<app-monster-stat
                                     [condition]="$any(effect)"
                                     [conditionAmount]="monster | monsterStat : effect : level : $any(index)">
                   </app-monster-stat>
+}
 
-                  <app-monster-stat *ngFor="let effect of monster | bonusList : level : $any(index)"
+                  @for (effect of monster | bonusList : level : $any(index); track effect) {
+<app-monster-stat
                                     [condition]="$any(effect)"
                                     [conditionAmount]="monster | monsterStat : effect : level : $any(index)">
                   </app-monster-stat>
+}
                 </div>
               </div>
-            </ng-container>
+            
+}
           </ng-container>
         </div>
 
         <mat-divider style="margin: 1rem 0;"></mat-divider>
 
-        <ng-container *ngIf="!isBoss(monster)">
+        @if (!isBoss(monster)) {
+
           <div class="token-info-wrapper">
             <div class="mat-h1 tokens-title">Tokens</div>
 
             <div class="token-list-wrapper"
                  cdkDropListGroup>
-              <ng-container *ngIf="tokens$ | async as tokens">
-                <ng-container *ngFor="let tokenType of ['normals', 'elites']">
+              @if (tokens$ | async; as tokens) {
+
+                @for (tokenType of ['normals', 'elites']; track tokenType) {
+
                   <div class="token-list">
                     <div cdkDropList
                          [cdkDropListData]="tokenType"
                          (cdkDropListDropped)="$event.previousContainer !== $event.container ? combatService.toggleTokenElite$.next($event.item.data) : undefined">
-                      <app-token-list-item *ngFor="let token of $any(tokens)?.[tokenType]"
+                      @for (token of $any(tokens)?.[tokenType]; track token) {
+<app-token-list-item
                                            cdkDrag
                                            [cdkDragData]="token"
                                            style="width: 100%;"
@@ -86,13 +102,17 @@
                                            [statuses]="getTokenConditionsAndEffects(token)"
                                            (statusPress)="tokenService.updateTokenDetails$.next(token)">
                       </app-token-list-item>
+}
                     </div>
                   </div>
-                </ng-container>
-              </ng-container>
+                
+}
+              
+}
             </div>
           </div>
-        </ng-container>
+        
+}
       </div>
     </mat-card-content>
 

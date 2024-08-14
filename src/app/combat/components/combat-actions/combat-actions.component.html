@@ -1,2 +1,4 @@
-<app-combat-action *ngFor="let action of actions" [action]="action">
+@for (action of actions; track action) {
+<app-combat-action [action]="action">
 </app-combat-action>
+}

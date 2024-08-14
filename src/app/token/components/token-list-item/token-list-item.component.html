@@ -19,16 +19,22 @@
   <!-- active statuses -->
   <div class="button status-container"
        (click)="statusPress.emit()">
-    <ng-container *ngIf="(statuses || []).length > 0; else openApplicableConditions">
-      <ng-container *ngFor="let value of statuses">
+    @if ((statuses || []).length > 0) {
+
+      @for (value of statuses; track value) {
+
         <img
           [src]="'assets/icons/' + value.name.toLowerCase() + '.png'"
           class="status-icon">
-      </ng-container>
-    </ng-container>
+      
+}
+    
+} @else {
 
-    <ng-template #openApplicableConditions>
       <span class="material-icons-outlined">more_horiz</span>
-    </ng-template>
+    
+}
+
+    
   </div>
 </div>

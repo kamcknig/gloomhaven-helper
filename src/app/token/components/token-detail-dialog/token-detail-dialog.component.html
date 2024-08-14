@@ -18,14 +18,18 @@
 
       <div class="conditions-container"
            style="padding: 1rem; overflow: hidden">
-        <ng-container *ngFor="let value of ApplicableConditions">
-          <ng-container *ngIf="token$ | async as token">
+        @for (value of ApplicableConditions; track value) {
+
+          @if (token$ | async; as token) {
+
             <img [src]="'assets/icons/' + value.toLowerCase() + '.png'"
                  [ngStyle]="{ 'filter': (token.appliedConditionsAndEffects?.[value.toString()] ?? 0) > 0 ? 'brightness(100%)' : 'brightness(35%)' }"
                  (click)="combatService.toggleTokenCondition$.next({ token, condition: value})"
                  [alt]="value + ' ' + ((token.appliedConditionsAndEffects?.[value.toString()] ?? 0) > 0).toString()">
-          </ng-container>
-        </ng-container>
+          
+}
+        
+}
       </div>
     </form>
   </mat-dialog-content>

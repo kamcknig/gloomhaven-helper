@@ -12,10 +12,12 @@
     <mat-autocomplete #autocompleteTemplateRefId="matAutocomplete"
                       [autoActiveFirstOption]="true"
                       [displayWith]="displayAutocompleteForValue">
-      <mat-option *ngFor="let choice of filteredAvailableMonsters$ | async"
+      @for (choice of filteredAvailableMonsters$ | async; track choice) {
+<mat-option
                   [value]="choice">
         {{choice.name}}
       </mat-option>
+}
     </mat-autocomplete>
   </mat-form-field>
 

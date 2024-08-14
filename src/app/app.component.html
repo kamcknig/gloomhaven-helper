@@ -1,30 +1,40 @@
 <app-header></app-header>
 
-<div *ngIf="(appService.scenarioStore.viewMode$ | async) === 'normal'; else listView"
+@if ((appService.scenarioStore.viewMode$ | async) === 'normal') {
+<div
      class="detail-content">
-  <monster-detail *ngFor="let monster of sortedMonsters$ | async; index as i"
+  @for (monster of sortedMonsters$ | async; track monster; let i = $index) {
+<monster-detail
                   [monster]="monster"
                   [ngClass]="{'active': (combatService.store.turn$ | async) === i + 1 }">
   </monster-detail>
+}
 </div>
+} @else {
 
-<ng-template #listView>
   <div class="list-content">
     <div class="monster-list-wrapper">
-      <monster-list-item *ngFor="let monster of sortedMonsters$ | async; index as i"
+      @for (monster of sortedMonsters$ | async; track monster; let i = $index) {
+<monster-list-item
                          [monster]="monster"
                          [active]="(combatService.store.turn$ | async) === i + 1">
       </monster-list-item>
+}
     </div>
 
     <div class="details-content">
-      <monster-detail
-        *ngIf="!!(combatService.store.turn$ | async) && (sortedMonsters$ | async)?.[(combatService.store.turn$ | async) - 1] as monster"
+      @if (!!(combatService.store.turn$ | async) && (sortedMonsters$ | async)?.[(combatService.store.turn$ | async) - 1]; as monster) {
+<monster-detail
+       
         [monster]="monster">
       </monster-detail>
+}
     </div>
   </div>
-</ng-template>
+
+}
+
+
 
 <button mat-mini-fab
         class="list-style-button"

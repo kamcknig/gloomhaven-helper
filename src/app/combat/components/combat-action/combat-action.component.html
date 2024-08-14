@@ -3,7 +3,9 @@
     <span [actionText]="action"></span>
   </div>
 
-  <div class="action-modifier-wrapper" *ngFor="let mod of action.modifiers">
+  @for (mod of action.modifiers; track mod) {
+<div class="action-modifier-wrapper">
     <span [actionText]="mod"></span>
   </div>
+}
 </div>

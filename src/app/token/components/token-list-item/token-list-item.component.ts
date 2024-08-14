@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TokenInfo } from '../../../combat/services/model';
 import { CombatService } from '../../../combat/services/combat.service';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonModule } from '@angular/common';
+
 import { TokenHealthComponent } from '../../../combat/components/token-health/token-health.component';
 
 @Component({
@@ -11,10 +11,9 @@ import { TokenHealthComponent } from '../../../combat/components/token-health/to
   styleUrls: ['./token-list-item.component.scss'],
   standalone: true,
   imports: [
-    CommonModule,
     MatIconModule,
     TokenHealthComponent
-  ]
+]
 })
 export class TokenListItemComponent implements OnInit {
   @Input() public value: TokenInfo | undefined;

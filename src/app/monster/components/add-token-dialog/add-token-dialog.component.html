@@ -3,21 +3,25 @@
 <mat-dialog-content>
   <div class="container">
     <div class="token-icons-grid">
-      <div class="token-icon"
-           *ngFor="let index of defaultNumbers">
+      @for (index of defaultNumbers; track index) {
+<div class="token-icon"
+          >
         <ng-container [ngTemplateOutlet]="buttonTemplate"
                       [ngTemplateOutletContext]="{ $implicit: index, elite: false }">
         </ng-container>
       </div>
+}
     </div>
 
     <div class="token-icons-grid">
-      <div class="token-icon"
-           *ngFor="let index of defaultNumbers">
+      @for (index of defaultNumbers; track index) {
+<div class="token-icon"
+          >
         <ng-container [ngTemplateOutlet]="buttonTemplate"
                       [ngTemplateOutletContext]="{ $implicit: index, elite: true }">
         </ng-container>
       </div>
+}
     </div>
   </div>
 </mat-dialog-content>

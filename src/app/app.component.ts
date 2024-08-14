@@ -7,7 +7,7 @@ import { filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { ActivatedRoute } from "@angular/router";
 import { Monster } from './monster/services/model';
 import { HeaderComponent } from './components/header/header.component';
-import { AsyncPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { MonsterDetailComponent } from './monster/components/active-monster-card/monster-detail.component';
 import { MonsterListItemComponent } from './monster/components/active-monster-list-item/monster-list-item.component';
 import { MatFabButton, MatMiniFabButton } from '@angular/material/button';
@@ -18,7 +18,7 @@ import { MatIcon } from '@angular/material/icon';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [HeaderComponent, NgIf, NgFor, MonsterDetailComponent, NgClass, MonsterListItemComponent, MatMiniFabButton, MatIcon, MatFabButton, AsyncPipe]
+  imports: [HeaderComponent, MonsterDetailComponent, NgClass, MonsterListItemComponent, MatMiniFabButton, MatIcon, MatFabButton, AsyncPipe]
 })
 export class AppComponent implements OnInit {
   public title = 'gloomhaven-helper';

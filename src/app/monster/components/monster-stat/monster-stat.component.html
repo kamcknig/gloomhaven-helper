@@ -1,7 +1,9 @@
 <img class="icon"
      [ngSrc]="'assets/icons/' + condition.toLowerCase() + '.png'" width="800" height="795">
 
-<span class="mat-body-1" *ngIf="showAdditionalConditionEffectInfo(condition)"
+@if (showAdditionalConditionEffectInfo(condition)) {
+<span class="mat-body-1"
       style="margin: 0 .35rem;">
   {{ ($any(conditionAmount)?.[0] ?? conditionAmount) + (condition === 'retaliate' && $any(conditionAmount)[1] > 1 ? '@' + $any(conditionAmount)[1] : '') }}
 </span>
+}
